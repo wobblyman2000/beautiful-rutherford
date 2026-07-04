@@ -1,0 +1,14 @@
+-I
+/home/dave/Documents/antigravity/beautiful-rutherford/build
+-I
+/home/dave/Documents/antigravity/beautiful-rutherford/build/Aether
+-I
+/home/dave/Documents/antigravity/beautiful-rutherford/build
+-I
+/usr/lib/qt6/qml
+--resource
+/home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/qmake_Aether.qrc
+--resource
+/home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/aether_raw_qml_0.qrc
+--module
+Aether

@@ -1,0 +1,12 @@
+--resource
+/home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/qmake_Aether.qrc
+--resource
+/home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/aether_raw_qml_0.qrc
+/Aether/qml/Main.qml
+/Aether/qml/Sidebar.qml
+/Aether/qml/PlayerBar.qml
+/Aether/qml/AlbumGrid.qml
+/Aether/qml/ArtistList.qml
+/Aether/qml/GenreGrid.qml
+/Aether/qml/CollectionGrid.qml
+/Aether/qml/AlbumModal.qml

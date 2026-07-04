@@ -1,0 +1,370 @@
+{
+    "classes": [
+        {
+            "className": "Player",
+            "lineNumber": 13,
+            "methods": [
+                {
+                    "access": "public",
+                    "index": 14,
+                    "lineNumber": 44,
+                    "name": "play",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 15,
+                    "lineNumber": 45,
+                    "name": "pause",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 16,
+                    "lineNumber": 46,
+                    "name": "stop",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 17,
+                    "lineNumber": 47,
+                    "name": "togglePlay",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 18,
+                    "lineNumber": 48,
+                    "name": "next",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 19,
+                    "lineNumber": 49,
+                    "name": "previous",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "tracks",
+                            "type": "QVariantList"
+                        },
+                        {
+                            "name": "startIndex",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 20,
+                    "lineNumber": 51,
+                    "name": "setQueue",
+                    "returnType": "void"
+                }
+            ],
+            "object": true,
+            "properties": [
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 0,
+                    "lineNumber": 15,
+                    "name": "currentTrack",
+                    "notify": "currentTrackChanged",
+                    "override": false,
+                    "read": "currentTrack",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QVariantMap",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 1,
+                    "lineNumber": 16,
+                    "name": "playbackStatus",
+                    "notify": "playbackStatusChanged",
+                    "override": false,
+                    "read": "playbackStatus",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QString",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 2,
+                    "lineNumber": 17,
+                    "name": "queueIndex",
+                    "notify": "queueIndexChanged",
+                    "override": false,
+                    "read": "queueIndex",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "int",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 3,
+                    "lineNumber": 18,
+                    "name": "volume",
+                    "notify": "volumeChanged",
+                    "override": false,
+                    "read": "volume",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "double",
+                    "user": false,
+                    "virtual": false,
+                    "write": "setVolume"
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 4,
+                    "lineNumber": 19,
+                    "name": "position",
+                    "notify": "positionChanged",
+                    "override": false,
+                    "read": "position",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "double",
+                    "user": false,
+                    "virtual": false,
+                    "write": "setPosition"
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 5,
+                    "lineNumber": 20,
+                    "name": "duration",
+                    "notify": "durationChanged",
+                    "override": false,
+                    "read": "duration",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "double",
+                    "user": false,
+                    "virtual": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 6,
+                    "lineNumber": 21,
+                    "name": "shuffle",
+                    "notify": "shuffleChanged",
+                    "override": false,
+                    "read": "shuffle",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "virtual": false,
+                    "write": "setShuffle"
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 7,
+                    "lineNumber": 22,
+                    "name": "loopStatus",
+                    "notify": "loopStatusChanged",
+                    "override": false,
+                    "read": "loopStatus",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QString",
+                    "user": false,
+                    "virtual": false,
+                    "write": "setLoopStatus"
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 8,
+                    "lineNumber": 23,
+                    "name": "queue",
+                    "notify": "queueChanged",
+                    "override": false,
+                    "read": "queue",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QVariantList",
+                    "user": false,
+                    "virtual": false
+                }
+            ],
+            "qualifiedClassName": "Player",
+            "signals": [
+                {
+                    "access": "public",
+                    "index": 0,
+                    "lineNumber": 54,
+                    "name": "currentTrackChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 1,
+                    "lineNumber": 55,
+                    "name": "playbackStatusChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 2,
+                    "lineNumber": 56,
+                    "name": "queueIndexChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 3,
+                    "lineNumber": 57,
+                    "name": "volumeChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 4,
+                    "lineNumber": 58,
+                    "name": "positionChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 5,
+                    "lineNumber": 59,
+                    "name": "durationChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 6,
+                    "lineNumber": 60,
+                    "name": "shuffleChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 7,
+                    "lineNumber": 61,
+                    "name": "loopStatusChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "index": 8,
+                    "lineNumber": 62,
+                    "name": "queueChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "positionSeconds",
+                            "type": "double"
+                        }
+                    ],
+                    "index": 9,
+                    "lineNumber": 65,
+                    "name": "seeked",
+                    "returnType": "void"
+                }
+            ],
+            "slots": [
+                {
+                    "access": "private",
+                    "arguments": [
+                        {
+                            "name": "ms",
+                            "type": "qint64"
+                        }
+                    ],
+                    "index": 10,
+                    "lineNumber": 68,
+                    "name": "onPositionChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "private",
+                    "arguments": [
+                        {
+                            "name": "ms",
+                            "type": "qint64"
+                        }
+                    ],
+                    "index": 11,
+                    "lineNumber": 69,
+                    "name": "onDurationChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "private",
+                    "arguments": [
+                        {
+                            "name": "state",
+                            "type": "QMediaPlayer::PlaybackState"
+                        }
+                    ],
+                    "index": 12,
+                    "lineNumber": 70,
+                    "name": "onPlaybackStateChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "private",
+                    "arguments": [
+                        {
+                            "name": "status",
+                            "type": "QMediaPlayer::MediaStatus"
+                        }
+                    ],
+                    "index": 13,
+                    "lineNumber": 71,
+                    "name": "onMediaStatusChanged",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "player.h",
+    "outputRevision": 69
+}

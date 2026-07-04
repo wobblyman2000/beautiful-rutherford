@@ -1,0 +1,14 @@
+-rootPath
+/home/dave/Documents/antigravity/beautiful-rutherford
+-cmake-output
+-output-file
+/home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/qml_imports/aether_conf.cmake
+-importPath
+/home/dave/Documents/antigravity/beautiful-rutherford/build
+-importPath
+/home/dave/Documents/antigravity/beautiful-rutherford/build/Aether
+-importPath
+/usr/lib/qt6/qml
+-qrcFiles
+/home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/qmake_Aether.qrc
+/home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/aether_raw_qml_0.qrc

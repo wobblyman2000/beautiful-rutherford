@@ -1,0 +1,1271 @@
+[
+    {
+        "classes": [
+            {
+                "className": "Database",
+                "lineNumber": 63,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "dir",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 3,
+                        "lineNumber": 83,
+                        "name": "addMusicDir",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "dir",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 4,
+                        "lineNumber": 84,
+                        "name": "removeMusicDir",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "name",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "coverPath",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "rules",
+                                "type": "QVariantList"
+                            }
+                        ],
+                        "index": 5,
+                        "lineNumber": 87,
+                        "name": "saveCollection",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "id",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 6,
+                        "lineNumber": 88,
+                        "name": "deleteCollection",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 65,
+                        "name": "musicDirs",
+                        "notify": "musicDirsChanged",
+                        "override": false,
+                        "read": "musicDirs",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QStringList",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setMusicDirs"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 66,
+                        "name": "tracks",
+                        "notify": "tracksChanged",
+                        "override": false,
+                        "read": "tracksVariant",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVariantList",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 67,
+                        "name": "collections",
+                        "notify": "collectionsChanged",
+                        "override": false,
+                        "read": "collectionsVariant",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVariantList",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "Database",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 91,
+                        "name": "musicDirsChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 92,
+                        "name": "tracksChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 93,
+                        "name": "collectionsChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "database.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "D-Bus Interface",
+                        "value": "org.mpris.MediaPlayer2"
+                    }
+                ],
+                "className": "MprisRootAdaptor",
+                "lineNumber": 15,
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 19,
+                        "name": "CanQuit",
+                        "override": false,
+                        "read": "CanQuit",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 20,
+                        "name": "Fullscreen",
+                        "override": false,
+                        "read": "Fullscreen",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setFullscreen"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 21,
+                        "name": "CanSetFullscreen",
+                        "override": false,
+                        "read": "CanSetFullscreen",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 22,
+                        "name": "CanRaise",
+                        "override": false,
+                        "read": "CanRaise",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 23,
+                        "name": "HasTrackList",
+                        "override": false,
+                        "read": "HasTrackList",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 5,
+                        "lineNumber": 24,
+                        "name": "Identity",
+                        "override": false,
+                        "read": "Identity",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 6,
+                        "lineNumber": 25,
+                        "name": "DesktopEntry",
+                        "override": false,
+                        "read": "DesktopEntry",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 7,
+                        "lineNumber": 26,
+                        "name": "SupportedUriSchemes",
+                        "override": false,
+                        "read": "SupportedUriSchemes",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QStringList",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 8,
+                        "lineNumber": 27,
+                        "name": "SupportedMimeTypes",
+                        "override": false,
+                        "read": "SupportedMimeTypes",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QStringList",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "MprisRootAdaptor",
+                "slots": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 44,
+                        "name": "Raise",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 45,
+                        "name": "Quit",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QDBusAbstractAdaptor"
+                    }
+                ]
+            },
+            {
+                "classInfos": [
+                    {
+                        "name": "D-Bus Interface",
+                        "value": "org.mpris.MediaPlayer2.Player"
+                    }
+                ],
+                "className": "MprisPlayerAdaptor",
+                "lineNumber": 49,
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 53,
+                        "name": "PlaybackStatus",
+                        "override": false,
+                        "read": "PlaybackStatus",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 54,
+                        "name": "LoopStatus",
+                        "override": false,
+                        "read": "LoopStatus",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setLoopStatus"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 55,
+                        "name": "Rate",
+                        "override": false,
+                        "read": "Rate",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "double",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setRate"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 56,
+                        "name": "Shuffle",
+                        "override": false,
+                        "read": "Shuffle",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setShuffle"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 57,
+                        "name": "Metadata",
+                        "override": false,
+                        "read": "Metadata",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVariantMap",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 5,
+                        "lineNumber": 58,
+                        "name": "Volume",
+                        "override": false,
+                        "read": "Volume",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "double",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setVolume"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 6,
+                        "lineNumber": 59,
+                        "name": "Position",
+                        "override": false,
+                        "read": "Position",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "qlonglong",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 7,
+                        "lineNumber": 60,
+                        "name": "MinimumRate",
+                        "override": false,
+                        "read": "MinimumRate",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "double",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 8,
+                        "lineNumber": 61,
+                        "name": "MaximumRate",
+                        "override": false,
+                        "read": "MaximumRate",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "double",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 9,
+                        "lineNumber": 62,
+                        "name": "CanGoNext",
+                        "override": false,
+                        "read": "CanGoNext",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 10,
+                        "lineNumber": 63,
+                        "name": "CanGoPrevious",
+                        "override": false,
+                        "read": "CanGoPrevious",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 11,
+                        "lineNumber": 64,
+                        "name": "CanPlay",
+                        "override": false,
+                        "read": "CanPlay",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 12,
+                        "lineNumber": 65,
+                        "name": "CanPause",
+                        "override": false,
+                        "read": "CanPause",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 13,
+                        "lineNumber": 66,
+                        "name": "CanSeek",
+                        "override": false,
+                        "read": "CanSeek",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 14,
+                        "lineNumber": 67,
+                        "name": "CanControl",
+                        "override": false,
+                        "read": "CanControl",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "MprisPlayerAdaptor",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "Position",
+                                "type": "qlonglong"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 111,
+                        "name": "Seeked",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 100,
+                        "name": "Next",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 101,
+                        "name": "Previous",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "lineNumber": 102,
+                        "name": "Pause",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "lineNumber": 103,
+                        "name": "PlayPause",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 5,
+                        "lineNumber": 104,
+                        "name": "Stop",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 6,
+                        "lineNumber": 105,
+                        "name": "Play",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "Offset",
+                                "type": "qlonglong"
+                            }
+                        ],
+                        "index": 7,
+                        "lineNumber": 106,
+                        "name": "Seek",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "TrackId",
+                                "type": "QDBusObjectPath"
+                            },
+                            {
+                                "name": "Position",
+                                "type": "qlonglong"
+                            }
+                        ],
+                        "index": 8,
+                        "lineNumber": 107,
+                        "name": "SetPosition",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "Uri",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 9,
+                        "lineNumber": 108,
+                        "name": "OpenUri",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "positionSeconds",
+                                "type": "double"
+                            }
+                        ],
+                        "index": 10,
+                        "lineNumber": 114,
+                        "name": "onPlayerSeeked",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "index": 11,
+                        "lineNumber": 115,
+                        "name": "onPlayerChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QDBusAbstractAdaptor"
+                    }
+                ]
+            },
+            {
+                "className": "MprisService",
+                "lineNumber": 121,
+                "object": true,
+                "qualifiedClassName": "MprisService",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "mpris.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "Player",
+                "lineNumber": 13,
+                "methods": [
+                    {
+                        "access": "public",
+                        "index": 14,
+                        "lineNumber": 44,
+                        "name": "play",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 15,
+                        "lineNumber": 45,
+                        "name": "pause",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 16,
+                        "lineNumber": 46,
+                        "name": "stop",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 17,
+                        "lineNumber": 47,
+                        "name": "togglePlay",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 18,
+                        "lineNumber": 48,
+                        "name": "next",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 19,
+                        "lineNumber": 49,
+                        "name": "previous",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "tracks",
+                                "type": "QVariantList"
+                            },
+                            {
+                                "name": "startIndex",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 20,
+                        "lineNumber": 51,
+                        "name": "setQueue",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 15,
+                        "name": "currentTrack",
+                        "notify": "currentTrackChanged",
+                        "override": false,
+                        "read": "currentTrack",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVariantMap",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 1,
+                        "lineNumber": 16,
+                        "name": "playbackStatus",
+                        "notify": "playbackStatusChanged",
+                        "override": false,
+                        "read": "playbackStatus",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 2,
+                        "lineNumber": 17,
+                        "name": "queueIndex",
+                        "notify": "queueIndexChanged",
+                        "override": false,
+                        "read": "queueIndex",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 18,
+                        "name": "volume",
+                        "notify": "volumeChanged",
+                        "override": false,
+                        "read": "volume",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "double",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setVolume"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 19,
+                        "name": "position",
+                        "notify": "positionChanged",
+                        "override": false,
+                        "read": "position",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "double",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setPosition"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 5,
+                        "lineNumber": 20,
+                        "name": "duration",
+                        "notify": "durationChanged",
+                        "override": false,
+                        "read": "duration",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "double",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 6,
+                        "lineNumber": 21,
+                        "name": "shuffle",
+                        "notify": "shuffleChanged",
+                        "override": false,
+                        "read": "shuffle",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setShuffle"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 7,
+                        "lineNumber": 22,
+                        "name": "loopStatus",
+                        "notify": "loopStatusChanged",
+                        "override": false,
+                        "read": "loopStatus",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QString",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setLoopStatus"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 8,
+                        "lineNumber": 23,
+                        "name": "queue",
+                        "notify": "queueChanged",
+                        "override": false,
+                        "read": "queue",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVariantList",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "Player",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 54,
+                        "name": "currentTrackChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "lineNumber": 55,
+                        "name": "playbackStatusChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 56,
+                        "name": "queueIndexChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 3,
+                        "lineNumber": 57,
+                        "name": "volumeChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "lineNumber": 58,
+                        "name": "positionChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 5,
+                        "lineNumber": 59,
+                        "name": "durationChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 6,
+                        "lineNumber": 60,
+                        "name": "shuffleChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 7,
+                        "lineNumber": 61,
+                        "name": "loopStatusChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 8,
+                        "lineNumber": 62,
+                        "name": "queueChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "positionSeconds",
+                                "type": "double"
+                            }
+                        ],
+                        "index": 9,
+                        "lineNumber": 65,
+                        "name": "seeked",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "ms",
+                                "type": "qint64"
+                            }
+                        ],
+                        "index": 10,
+                        "lineNumber": 68,
+                        "name": "onPositionChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "ms",
+                                "type": "qint64"
+                            }
+                        ],
+                        "index": 11,
+                        "lineNumber": 69,
+                        "name": "onDurationChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "state",
+                                "type": "QMediaPlayer::PlaybackState"
+                            }
+                        ],
+                        "index": 12,
+                        "lineNumber": 70,
+                        "name": "onPlaybackStateChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "status",
+                                "type": "QMediaPlayer::MediaStatus"
+                            }
+                        ],
+                        "index": 13,
+                        "lineNumber": 71,
+                        "name": "onMediaStatusChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "player.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "ScanWorker",
+                "lineNumber": 30,
+                "object": true,
+                "qualifiedClassName": "ScanWorker",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "current",
+                                "type": "int"
+                            },
+                            {
+                                "name": "total",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 0,
+                        "lineNumber": 39,
+                        "name": "progress",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "tracks",
+                                "type": "QList<Track>"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 40,
+                        "name": "finished",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "index": 2,
+                        "lineNumber": 36,
+                        "name": "process",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            },
+            {
+                "className": "LibraryScanner",
+                "lineNumber": 50,
+                "methods": [
+                    {
+                        "access": "public",
+                        "index": 4,
+                        "lineNumber": 59,
+                        "name": "startScan",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 0,
+                        "lineNumber": 52,
+                        "name": "scanning",
+                        "notify": "scanningChanged",
+                        "override": false,
+                        "read": "scanning",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false,
+                        "virtual": false
+                    }
+                ],
+                "qualifiedClassName": "LibraryScanner",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "lineNumber": 62,
+                        "name": "scanningChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "totalTracks",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 1,
+                        "lineNumber": 63,
+                        "name": "scanFinished",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "current",
+                                "type": "int"
+                            },
+                            {
+                                "name": "total",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 2,
+                        "lineNumber": 64,
+                        "name": "scanProgress",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "tracks",
+                                "type": "QList<Track>"
+                            }
+                        ],
+                        "index": 3,
+                        "lineNumber": 67,
+                        "name": "onScanFinished",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "scanner.h",
+        "outputRevision": 69
+    }
+]

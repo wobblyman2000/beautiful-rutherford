@@ -1,0 +1,4 @@
+/home/dave/Documents/antigravity/beautiful-rutherford/build/aether_autogen/include/../UVLADIE3JM/moc_database.cpp.json
+/home/dave/Documents/antigravity/beautiful-rutherford/build/aether_autogen/include/../UVLADIE3JM/moc_mpris.cpp.json
+/home/dave/Documents/antigravity/beautiful-rutherford/build/aether_autogen/include/../UVLADIE3JM/moc_player.cpp.json
+/home/dave/Documents/antigravity/beautiful-rutherford/build/aether_autogen/include/../UVLADIE3JM/moc_scanner.cpp.json

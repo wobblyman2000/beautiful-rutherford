@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="/Aether">/home/dave/Documents/antigravity/beautiful-rutherford/build/Aether</file>
+
+  </qresource>
+</RCC>

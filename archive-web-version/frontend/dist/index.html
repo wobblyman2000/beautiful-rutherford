@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aether Player</title>
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@0.363.0/dist/umd/lucide.min.js"></script>
+  <script type="module" crossorigin src="./assets/index-Buyx71C4.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-ChumMPoa.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="logo-glow">Aether</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#albums" class="nav-item active" id="nav-albums">
+          <i data-lucide="disc"></i> <span>Albums</span>
+        </a>
+        <a href="#artists" class="nav-item" id="nav-artists">
+          <i data-lucide="users"></i> <span>Artists</span>
+        </a>
+        <a href="#genres" class="nav-item" id="nav-genres">
+          <i data-lucide="tag"></i> <span>Genres</span>
+        </a>
+        <a href="#collections" class="nav-item" id="nav-collections">
+          <i data-lucide="library"></i> <span>Collections</span>
+        </a>
+        <a href="#settings" class="nav-item" id="nav-settings">
+          <i data-lucide="settings"></i> <span>Settings</span>
+        </a>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <button id="btn-quick-collection" class="btn btn-secondary">
+          <i data-lucide="plus-circle"></i> Create Collection
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Top Action Bar (Search, Scan Status) -->
+      <header class="top-bar">
+        <div class="search-container">
+          <i data-lucide="search"></i>
+          <input type="text" id="search-input" placeholder="Search albums, artists, songs...">
+        </div>
+        <div id="scan-indicator" class="scan-indicator hidden">
+          <div class="spinner"></div>
+          <span>Scanning Library...</span>
+        </div>
+      </header>
+
+      <!-- Pages View Wrapper -->
+      <div class="view-container">
+        
+        <!-- Albums Page -->
+        <section id="page-albums" class="page-view">
+          <h1 class="page-title">Albums</h1>
+          <div class="az-navigation" id="albums-az"></div>
+          <div class="albums-grid grid-layout" id="albums-grid">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+
+        <!-- Artists Page -->
+        <section id="page-artists" class="page-view hidden">
+          <h1 class="page-title">Artists</h1>
+          <div class="az-navigation" id="artists-az"></div>
+          <div class="artists-list" id="artists-list">
+            <!-- Dynamically populated list/grid -->
+          </div>
+        </section>
+
+        <!-- Genres Page -->
+        <section id="page-genres" class="page-view hidden">
+          <h1 class="page-title">Genres</h1>
+          <div class="az-navigation" id="genres-az"></div>
+          <div class="genres-grid grid-layout" id="genres-grid">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+
+        <!-- Collections Page -->
+        <section id="page-collections" class="page-view hidden">
+          <div class="page-header-row">
+            <h1 class="page-title">Smart Collections</h1>
+            <button id="btn-new-collection" class="btn btn-primary">
+              <i data-lucide="plus"></i> New Collection
+            </button>
+          </div>
+          <div class="collections-grid grid-layout" id="collections-grid">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+
+        <!-- Settings Page -->
+        <section id="page-settings" class="page-view hidden">
+          <h1 class="page-title">Settings</h1>
+          <div class="settings-card glass-panel">
+            <h2>Music Directories</h2>
+            <p class="settings-desc">Add the folders on your computer where your music is stored. Aether will scan them for metadata and album covers.</p>
+            
+            <form id="form-add-dir" class="dir-input-row">
+              <input type="text" id="dir-input" placeholder="e.g. /home/user/Music" required>
+              <button type="submit" class="btn btn-primary">Add Directory</button>
+            </form>
+
+            <ul class="dirs-list" id="dirs-list">
+              <!-- Configured directories -->
+            </ul>
+
+            <div class="settings-actions">
+              <button id="btn-scan-library" class="btn btn-accent btn-large">
+                <i data-lucide="refresh-cw"></i> Scan Library Now
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Bottom Player Bar -->
+    <footer class="player-bar">
+      <!-- Track Details -->
+      <div class="player-track-info">
+        <div class="player-cover-container">
+          <img id="player-cover" src="" alt="" class="hidden">
+          <div id="player-cover-fallback" class="fallback-cover">
+            <i data-lucide="music"></i>
+          </div>
+        </div>
+        <div class="track-text">
+          <div class="track-title" id="player-title">Not Playing</div>
+          <div class="track-artist" id="player-artist"></div>
+        </div>
+      </div>
+
+      <!-- Controls & Progress -->
+      <div class="player-controls-container">
+        <div class="control-buttons">
+          <button id="btn-shuffle" class="btn-icon" title="Shuffle">
+            <i data-lucide="shuffle"></i>
+          </button>
+          <button id="btn-prev" class="btn-icon" title="Previous">
+            <i data-lucide="skip-back"></i>
+          </button>
+          <button id="btn-play-pause" class="btn-icon btn-play" title="Play">
+            <i data-lucide="play" id="play-icon"></i>
+          </button>
+          <button id="btn-next" class="btn-icon" title="Next">
+            <i data-lucide="skip-forward"></i>
+          </button>
+          <button id="btn-repeat" class="btn-icon" title="Repeat">
+            <i data-lucide="repeat"></i>
+          </button>
+        </div>
+        <div class="progress-row">
+          <span class="time-label" id="time-current">0:00</span>
+          <div class="slider-container flex-grow">
+            <input type="range" id="progress-bar" min="0" max="100" value="0" step="0.1">
+            <div class="custom-slider-fill" id="progress-fill"></div>
+          </div>
+          <span class="time-label" id="time-total">0:00</span>
+        </div>
+      </div>
+
+      <!-- Volume & Extra -->
+      <div class="player-volume-container">
+        <button id="btn-mute" class="btn-icon">
+          <i data-lucide="volume-2" id="volume-icon"></i>
+        </button>
+        <div class="slider-container volume-slider">
+          <input type="range" id="volume-bar" min="0" max="100" value="80">
+          <div class="custom-slider-fill" id="volume-fill"></div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modals -->
+
+    <!-- Album Details Modal -->
+    <div class="modal-overlay hidden" id="modal-album">
+      <div class="modal-content album-details-modal glass-panel">
+        <button class="modal-close" id="btn-close-album-modal">
+          <i data-lucide="x"></i>
+        </button>
+        
+        <div class="album-details-header">
+          <div class="detail-cover-container">
+            <img id="detail-album-cover" src="" alt="Album Cover">
+            <div id="detail-album-cover-fallback" class="fallback-cover large">
+              <i data-lucide="disc"></i>
+            </div>
+            <button class="btn-play-overlay" id="btn-play-album-overlay">
+              <i data-lucide="play"></i>
+            </button>
+          </div>
+          <div class="detail-metadata">
+            <span class="tag">Album</span>
+            <h2 id="detail-album-name">Album Name</h2>
+            <h3 id="detail-album-artist">Artist Name</h3>
+            <div class="meta-meta">
+              <span id="detail-album-year">Year</span>
+              <span class="bullet">&bull;</span>
+              <span id="detail-album-genre">Genre</span>
+              <span class="bullet">&bull;</span>
+              <span id="detail-album-tracks-count">0 tracks</span>
+              <span class="bullet">&bull;</span>
+              <span id="detail-album-duration">0 min</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="album-tracks-section" id="album-tracks-container">
+          <!-- Dynamic tracks grouped by CD -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Create/Edit Smart Collection Modal -->
+    <div class="modal-overlay hidden" id="modal-collection">
+      <div class="modal-content collection-modal glass-panel">
+        <button class="modal-close" id="btn-close-collection-modal">
+          <i data-lucide="x"></i>
+        </button>
+        
+        <h2 id="collection-modal-title">Create Smart Collection</h2>
+        
+        <form id="form-collection">
+          <input type="hidden" id="collection-edit-id">
+          
+          <div class="form-group">
+            <label for="collection-name">Collection Name</label>
+            <input type="text" id="collection-name" placeholder="e.g. Chill Beats, Christmas Soundtracks" required>
+          </div>
+
+          <div class="form-group">
+            <label>Cover Art URL (Optional)</label>
+            <input type="text" id="collection-cover" placeholder="e.g. https://images.unsplash.com/... or leave blank">
+          </div>
+
+          <div class="form-group">
+            <label>Rules (Combine with AND logic)</label>
+            <p class="form-desc">Tracks matching ALL of these criteria will belong to this collection.</p>
+            
+            <div class="rules-container" id="rules-container">
+              <!-- Dynamically added rule rows -->
+            </div>
+            
+            <button type="button" class="btn btn-secondary" id="btn-add-rule">
+              <i data-lucide="plus"></i> Add Condition
+            </button>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" id="btn-cancel-collection">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="btn-save-collection">Save Collection</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

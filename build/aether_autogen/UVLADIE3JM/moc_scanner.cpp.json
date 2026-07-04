@@ -1,0 +1,153 @@
+{
+    "classes": [
+        {
+            "className": "ScanWorker",
+            "lineNumber": 30,
+            "object": true,
+            "qualifiedClassName": "ScanWorker",
+            "signals": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "current",
+                            "type": "int"
+                        },
+                        {
+                            "name": "total",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 0,
+                    "lineNumber": 39,
+                    "name": "progress",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "tracks",
+                            "type": "QList<Track>"
+                        }
+                    ],
+                    "index": 1,
+                    "lineNumber": 40,
+                    "name": "finished",
+                    "returnType": "void"
+                }
+            ],
+            "slots": [
+                {
+                    "access": "public",
+                    "index": 2,
+                    "lineNumber": 36,
+                    "name": "process",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        },
+        {
+            "className": "LibraryScanner",
+            "lineNumber": 50,
+            "methods": [
+                {
+                    "access": "public",
+                    "index": 4,
+                    "lineNumber": 59,
+                    "name": "startScan",
+                    "returnType": "void"
+                }
+            ],
+            "object": true,
+            "properties": [
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 0,
+                    "lineNumber": 52,
+                    "name": "scanning",
+                    "notify": "scanningChanged",
+                    "override": false,
+                    "read": "scanning",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "bool",
+                    "user": false,
+                    "virtual": false
+                }
+            ],
+            "qualifiedClassName": "LibraryScanner",
+            "signals": [
+                {
+                    "access": "public",
+                    "index": 0,
+                    "lineNumber": 62,
+                    "name": "scanningChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "totalTracks",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 1,
+                    "lineNumber": 63,
+                    "name": "scanFinished",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "current",
+                            "type": "int"
+                        },
+                        {
+                            "name": "total",
+                            "type": "int"
+                        }
+                    ],
+                    "index": 2,
+                    "lineNumber": 64,
+                    "name": "scanProgress",
+                    "returnType": "void"
+                }
+            ],
+            "slots": [
+                {
+                    "access": "private",
+                    "arguments": [
+                        {
+                            "name": "tracks",
+                            "type": "QList<Track>"
+                        }
+                    ],
+                    "index": 3,
+                    "lineNumber": 67,
+                    "name": "onScanFinished",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "scanner.h",
+    "outputRevision": 69
+}

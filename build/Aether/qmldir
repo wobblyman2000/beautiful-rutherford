@@ -1,0 +1,13 @@
+module Aether
+typeinfo aether.qmltypes
+prefer :/Aether/
+Main 1.0 qml/Main.qml
+Sidebar 1.0 qml/Sidebar.qml
+PlayerBar 1.0 qml/PlayerBar.qml
+AlbumGrid 1.0 qml/AlbumGrid.qml
+ArtistList 1.0 qml/ArtistList.qml
+GenreGrid 1.0 qml/GenreGrid.qml
+CollectionGrid 1.0 qml/CollectionGrid.qml
+AlbumModal 1.0 qml/AlbumModal.qml
+depends QtQuick
+

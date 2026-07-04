@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/Aether">
+    <file alias="qmldir">/home/dave/Documents/antigravity/beautiful-rutherford/build/Aether/qmldir</file>
+  </qresource>
+</RCC>
+
