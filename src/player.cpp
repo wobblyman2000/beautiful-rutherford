@@ -270,6 +270,19 @@ void Player::setAutoDJ(bool enabled) {
     if (m_autoDJ == enabled) return;
     m_autoDJ = enabled;
     emit autoDJChanged();
+
+    // HUMAN-READABLE COMMENT:
+    // When the Auto-DJ feature is toggled on, check if the play queue is currently empty
+    // or if the player is currently in a stopped state. If so, automatically query the
+    // database for all scanned tracks, select a random track, populate the playback queue,
+    // and start playing immediately. This allows Auto-DJ to initiate playback automatically.
+    if (m_autoDJ && (m_queue.isEmpty() || m_mediaPlayer->playbackState() == QMediaPlayer::StoppedState)) {
+        QVariantList allTracks = Database::instance()->tracksVariant();
+        if (!allTracks.isEmpty()) {
+            int randIdx = QRandomGenerator::global()->bounded(allTracks.size());
+            setQueue(QVariantList() << allTracks[randIdx], 0);
+        }
+    }
 }
 
 void Player::onPositionChanged(qint64 ms) {

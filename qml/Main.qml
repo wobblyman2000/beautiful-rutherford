@@ -7,6 +7,7 @@ ApplicationWindow {
     width: 1100
     height: 720
     visible: true
+    visibility: isTheaterMode ? ApplicationWindow.FullScreen : ApplicationWindow.Windowed
     title: qsTr("Aether Player")
     
     // Global properties
@@ -14,6 +15,7 @@ ApplicationWindow {
     property string searchQuery: ""
     property bool isCompactMode: false
     property bool isTheaterMode: false
+    property bool autoTheaterEnabled: false
 
     onIsCompactModeChanged: {
         if (isCompactMode) {
@@ -23,6 +25,42 @@ ApplicationWindow {
         } else {
             window.width = 1100;
             window.height = 720;
+        }
+    }
+
+    // Global User Inactivity Monitor (1-minute timer)
+    Timer {
+        id: inactivityTimer
+        interval: 60000 // 1 minute inactivity
+        running: window.autoTheaterEnabled && !window.isTheaterMode && !window.isCompactMode
+        repeat: false
+        onTriggered: {
+            // HUMAN-READABLE COMMENT:
+            // When the inactivity timer expires, automatically transition the application
+            // into Theater Mode to display full-screen ambient visuals.
+            window.isTheaterMode = true;
+        }
+    }
+
+    // Transparent event listener covering the window to detect interactions and reset the inactivity timer
+    MouseArea {
+        anchors.fill: parent
+        propagateComposedEvents: true
+        hoverEnabled: true
+        // Position on top of normal controls, but let everything propagate down
+        z: 9999
+        // Do not block actual mouse clicks on other components
+        onPressed: (mouse) => {
+            inactivityTimer.restart();
+            mouse.accepted = false;
+        }
+        onReleased: (mouse) => {
+            inactivityTimer.restart();
+            mouse.accepted = false;
+        }
+        onPositionChanged: (mouse) => {
+            inactivityTimer.restart();
+            mouse.accepted = false;
         }
     }
 
@@ -296,6 +334,85 @@ ApplicationWindow {
                                     }
                                 }
                             }
+
+                            // Preferences & Version Info Card
+                            Rectangle {
+                                Layout.fillWidth: true
+                                implicitHeight: prefLayout.implicitHeight + 40
+                                color: "#73191928"
+                                border.color: "#14ffffff"
+                                border.width: 1
+                                radius: 16
+
+                                ColumnLayout {
+                                    id: prefLayout
+                                    anchors.fill: parent
+                                    anchors.margins: 20
+                                    spacing: 16
+
+                                    Text {
+                                        text: qsTr("Preferences")
+                                        color: "#ffffff"
+                                        font.pixelSize: 18
+                                        font.weight: Font.Bold
+                                    }
+
+                                    // Switch for Auto-Theater Mode
+                                    RowLayout {
+                                        Layout.fillWidth: true
+                                        spacing: 12
+
+                                        Switch {
+                                            id: autoTheaterSwitch
+                                            checked: window.autoTheaterEnabled
+                                            onCheckedChanged: window.autoTheaterEnabled = checked
+                                        }
+
+                                        ColumnLayout {
+                                            spacing: 2
+                                            Text {
+                                                text: qsTr("Auto Theater Mode on Inactivity")
+                                                color: "#ffffff"
+                                                font.pixelSize: 14
+                                                font.weight: Font.Medium
+                                            }
+                                            Text {
+                                                text: qsTr("Automatically switch to Theater Mode if the player is inactive for 1 minute.")
+                                                color: "#666a8a"
+                                                font.pixelSize: 11
+                                            }
+                                        }
+                                    }
+
+                                    // Action line separator
+                                    Rectangle {
+                                        Layout.fillWidth: true
+                                        height: 1
+                                        color: "#14ffffff"
+                                    }
+
+                                    // Version Info
+                                    RowLayout {
+                                        Layout.fillWidth: true
+                                        spacing: 8
+
+                                        ColumnLayout {
+                                            spacing: 2
+                                            Text {
+                                                text: qsTr("Aether Player — Version 1.1.0")
+                                                color: "#00f2fe"
+                                                font.pixelSize: 13
+                                                font.weight: Font.Bold
+                                            }
+                                            Text {
+                                                text: qsTr("Copyright © 2026 Aether Development Team. All rights reserved.")
+                                                color: "#666a8a"
+                                                font.pixelSize: 11
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -350,6 +467,30 @@ ApplicationWindow {
         visible: window.isTheaterMode
         z: 999 // Overlays everything!
 
+        property bool showControls: true
+
+        Timer {
+            id: controlsTimer
+            interval: 3000
+            running: window.isTheaterMode
+            repeat: false
+            onTriggered: theaterOverlay.showControls = false
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            hoverEnabled: true
+            cursorShape: theaterOverlay.showControls ? Qt.ArrowCursor : Qt.BlankCursor
+            onPositionChanged: {
+                theaterOverlay.showControls = true;
+                controlsTimer.restart();
+            }
+            onClicked: {
+                theaterOverlay.showControls = true;
+                controlsTimer.restart();
+            }
+        }
+
         // Ambient Background (low opacity album art over gradient)
         Image {
             id: theaterAmbientBg
@@ -370,6 +511,7 @@ ApplicationWindow {
 
         // Close Button
         Button {
+            visible: theaterOverlay.showControls
             anchors.top: parent.top
             anchors.right: parent.right
             anchors.margins: 24
