@@ -335,10 +335,11 @@ Item {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     clip: true
+                    ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
                     ColumnLayout {
                         id: rulesListContainer
-                        width: parent.width
+                        width: parent.width - 12
                         spacing: 10
 
                         Repeater {
@@ -346,7 +347,7 @@ Item {
                             model: editDialog.rulesModel
 
                             delegate: RowLayout {
-                                width: parent.width
+                                Layout.fillWidth: true
                                 spacing: 8
 
                                 property string fieldVal: modelData.field || "album"

@@ -283,7 +283,7 @@ ApplicationWindow {
                         // Left Pane: Filters & Configuration
                         Rectangle {
                             id: rulesCardLeftDJ
-                            Layout.preferredWidth: 420
+                            Layout.preferredWidth: 460
                             Layout.fillHeight: true
                             color: "#73191928"
                             border.color: "#14ffffff"
@@ -377,10 +377,11 @@ ApplicationWindow {
                                     Layout.fillWidth: true
                                     Layout.fillHeight: true
                                     clip: true
+                                    ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
 
                                     ColumnLayout {
                                         id: djRulesListContainer
-                                        width: parent.width
+                                        width: parent.width - 12
                                         spacing: 10
 
                                         Repeater {
@@ -389,7 +390,7 @@ ApplicationWindow {
 
                                             delegate: RowLayout {
                                                 id: ruleRow
-                                                width: parent.width
+                                                Layout.fillWidth: true
                                                 spacing: 6
 
                                                 function getFieldKey() { return fieldCombo.getFieldKey(); }
