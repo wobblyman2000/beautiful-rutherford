@@ -17,6 +17,7 @@ ApplicationWindow {
     property bool isCompactMode: false
     property bool isTheaterMode: false
     property bool autoTheaterEnabled: false
+    property bool autoTheaterOnlyWhenPlaying: false
     property var djRulesModel: [{ field: "album", operator: "contains", value: "" }]
 
     onAutoTheaterEnabledChanged: {
@@ -24,6 +25,18 @@ ApplicationWindow {
             inactivityTimer.stop();
         } else {
             inactivityTimer.restart();
+        }
+    }
+
+    onAutoTheaterOnlyWhenPlayingChanged: {
+        inactivityTimer.restart();
+    }
+
+    onIsTheaterModeChanged: {
+        if (!isTheaterMode) {
+            window.visibility = window.isCompactMode ? ApplicationWindow.Windowed : ApplicationWindow.Maximized;
+            window.raise();
+            window.requestActivate();
         }
     }
     onClosing: (close) => {
@@ -96,7 +109,13 @@ ApplicationWindow {
     Timer {
         id: inactivityTimer
         interval: 60000 // 1 minute inactivity
-        running: window.autoTheaterEnabled && !window.isTheaterMode && !window.isCompactMode
+        running: {
+            var enabled = window.autoTheaterEnabled && !window.isTheaterMode && !window.isCompactMode;
+            if (enabled && window.autoTheaterOnlyWhenPlaying) {
+                return player.playbackStatus === "Playing";
+            }
+            return enabled;
+        }
         repeat: false
         onTriggered: {
             // HUMAN-READABLE COMMENT:
@@ -133,15 +152,15 @@ ApplicationWindow {
         z: 9999
         // Do not block actual mouse clicks on other components
         onPressed: (mouse) => {
-            inactivityTimer.restart();
+            if (window.autoTheaterEnabled) inactivityTimer.restart();
             mouse.accepted = false;
         }
         onReleased: (mouse) => {
-            inactivityTimer.restart();
+            if (window.autoTheaterEnabled) inactivityTimer.restart();
             mouse.accepted = false;
         }
         onPositionChanged: (mouse) => {
-            inactivityTimer.restart();
+            if (window.autoTheaterEnabled) inactivityTimer.restart();
             mouse.accepted = false;
         }
     }
@@ -892,6 +911,35 @@ ApplicationWindow {
                                             }
                                             Text {
                                                 text: qsTr("Automatically switch to Theater Mode if the player is inactive for 1 minute.")
+                                                color: "#666a8a"
+                                                font.pixelSize: 11
+                                            }
+                                        }
+                                    }
+
+                                    // Switch for Auto-Theater Mode only when playing
+                                    RowLayout {
+                                        Layout.fillWidth: true
+                                        spacing: 12
+                                        opacity: window.autoTheaterEnabled ? 1.0 : 0.4
+                                        enabled: window.autoTheaterEnabled
+
+                                        Switch {
+                                            id: autoTheaterOnlyWhenPlayingSwitch
+                                            checked: window.autoTheaterOnlyWhenPlaying
+                                            onCheckedChanged: window.autoTheaterOnlyWhenPlaying = checked
+                                        }
+
+                                        ColumnLayout {
+                                            spacing: 2
+                                            Text {
+                                                text: qsTr("Only Switch to Theater Mode if Music is Playing")
+                                                color: "#ffffff"
+                                                font.pixelSize: 14
+                                                font.weight: Font.Medium
+                                            }
+                                            Text {
+                                                text: qsTr("Prevent transitioning to Theater Mode if playback is paused or stopped.")
                                                 color: "#666a8a"
                                                 font.pixelSize: 11
                                             }
