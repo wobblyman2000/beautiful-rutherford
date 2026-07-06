@@ -86,9 +86,9 @@ public:
     QVariantList tracksVariant() const;
     QVariantList collectionsVariant() const;
     
-    QStringList allGenres() const;
-    QStringList allArtists() const;
-    QStringList allAlbums() const;
+    Q_INVOKABLE QStringList allGenres() const;
+    Q_INVOKABLE QStringList allArtists() const;
+    Q_INVOKABLE QStringList allAlbums() const;
 
     Q_INVOKABLE void addMusicDir(const QString &dir);
     Q_INVOKABLE void removeMusicDir(const QString &dir);

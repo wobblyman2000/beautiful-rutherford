@@ -18,6 +18,7 @@ find_package(Qt6 REQUIRED COMPONENTS
     QuickControls2
     Multimedia
     DBus
+    Widgets
 )
 
 # Find TagLib using PkgConfig
@@ -58,6 +59,7 @@ target_link_libraries(aether PRIVATE
     Qt6::QuickControls2
     Qt6::Multimedia
     Qt6::DBus
+    Qt6::Widgets
     PkgConfig::TAGLIB
 )
 

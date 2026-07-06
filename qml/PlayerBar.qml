@@ -409,6 +409,7 @@ Rectangle {
 
     Popup {
         id: eqPopup
+        padding: 0
         x: root.width - width - 20
         y: -height - 10
         width: 320

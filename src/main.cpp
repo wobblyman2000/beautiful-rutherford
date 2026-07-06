@@ -1,4 +1,4 @@
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QIcon>
@@ -25,7 +25,7 @@ public:
 };
 
 int main(int argc, char *argv[]) {
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
     
     app.setApplicationName(QStringLiteral("aether"));
     app.setApplicationDisplayName(QStringLiteral("Aether Player"));

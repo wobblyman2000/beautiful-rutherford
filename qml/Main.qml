@@ -1,13 +1,14 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
+import Qt.labs.platform 1.1
 
 ApplicationWindow {
     id: window
     width: 1100
     height: 720
     visible: true
-    visibility: window.isCompactMode ? ApplicationWindow.Windowed : ApplicationWindow.FullScreen
+    visibility: isTheaterMode ? ApplicationWindow.FullScreen : (window.isCompactMode ? ApplicationWindow.Windowed : ApplicationWindow.Maximized)
     title: qsTr("Aether Player")
     
     // Global properties
@@ -24,7 +25,61 @@ ApplicationWindow {
             inactivityTimer.restart();
         }
     }
+    onClosing: (close) => {
+        // HUMAN-READABLE COMMENT:
+        // Intercept the close event to keep the application running in the system tray.
+        // Hiding the main window allows background playback to continue uninterrupted.
+        if (systemTray.visible) {
+            close.accepted = false;
+            window.hide();
+        }
+    }
 
+    SystemTrayIcon {
+        id: systemTray
+        visible: true
+        icon.name: "media-optical"
+        tooltip: qsTr("Aether Player")
+
+        onActivated: (reason) => {
+            if (reason === SystemTrayIcon.Trigger || reason === SystemTrayIcon.DoubleClick) {
+                window.show();
+                window.raise();
+                window.requestActivate();
+            }
+        }
+
+        menu: Menu {
+            MenuItem {
+                text: qsTr("Play / Pause")
+                onTriggered: player.togglePlay()
+            }
+            MenuItem {
+                text: qsTr("Next Track")
+                onTriggered: player.next()
+            }
+            MenuItem {
+                text: qsTr("Previous Track")
+                onTriggered: player.previous()
+            }
+            MenuSeparator {}
+            MenuItem {
+                text: qsTr("Show Aether")
+                onTriggered: {
+                    window.show();
+                    window.raise();
+                    window.requestActivate();
+                }
+            }
+            MenuItem {
+                text: qsTr("Quit")
+                onTriggered: {
+                    systemTray.visible = false;
+                    Qt.quit();
+                }
+            }
+        }
+    }
     onIsCompactModeChanged: {
         if (isCompactMode) {
             window.isTheaterMode = false;
@@ -261,14 +316,26 @@ ApplicationWindow {
                                     Layout.fillWidth: true
                                     spacing: 4
                                     Text { text: qsTr("Filter by Genre"); color: "#9ea2c0"; font.pixelSize: 12 }
-                                    TextField {
-                                        id: filterGenre
+                                    ComboBox {
+                                        id: filterGenreCombo
                                         Layout.fillWidth: true
-                                        placeholderText: qsTr("e.g. Christmas, Rock, Country")
-                                        text: player.autoDJGenre
-                                        color: "#ffffff"
-                                        background: Rectangle { color: "#33000000"; border.color: "#14ffffff"; radius: 6 }
-                                        onEditingFinished: player.autoDJGenre = text.trim()
+                                        model: {
+                                            var list = [""];
+                                            var dbGenres = database.allGenres;
+                                            if (dbGenres) {
+                                                for (var i = 0; i < dbGenres.length; ++i) {
+                                                    list.push(dbGenres[i]);
+                                                }
+                                            }
+                                            return list;
+                                        }
+                                        currentIndex: {
+                                            var idx = model ? model.indexOf(player.autoDJGenre) : -1;
+                                            return idx >= 0 ? idx : 0;
+                                        }
+                                        onActivated: (index) => {
+                                            player.autoDJGenre = model[index];
+                                        }
                                     }
                                 }
 
@@ -308,7 +375,7 @@ ApplicationWindow {
                                     text: qsTr("Reset Filters")
                                     Layout.fillWidth: true
                                     onClicked: {
-                                        filterGenre.text = "";
+                                        filterGenreCombo.currentIndex = 0;
                                         filterArtist.text = "";
                                         filterAlbumArtist.text = "";
                                         player.autoDJGenre = "";
