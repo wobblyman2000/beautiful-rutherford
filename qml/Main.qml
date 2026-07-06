@@ -1,7 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
-import Qt.labs.platform 1.1
+import Qt.labs.platform 1.1 as Platform
 
 ApplicationWindow {
     id: window
@@ -17,6 +17,7 @@ ApplicationWindow {
     property bool isCompactMode: false
     property bool isTheaterMode: false
     property bool autoTheaterEnabled: false
+    property var djRulesModel: [{ field: "album", operator: "contains", value: "" }]
 
     onAutoTheaterEnabledChanged: {
         if (!autoTheaterEnabled) {
@@ -35,35 +36,35 @@ ApplicationWindow {
         }
     }
 
-    SystemTrayIcon {
+    Platform.SystemTrayIcon {
         id: systemTray
         visible: true
         icon.name: "media-optical"
         tooltip: qsTr("Aether Player")
 
         onActivated: (reason) => {
-            if (reason === SystemTrayIcon.Trigger || reason === SystemTrayIcon.DoubleClick) {
+            if (reason === Platform.SystemTrayIcon.Trigger || reason === Platform.SystemTrayIcon.DoubleClick) {
                 window.show();
                 window.raise();
                 window.requestActivate();
             }
         }
 
-        menu: Menu {
-            MenuItem {
+        menu: Platform.Menu {
+            Platform.MenuItem {
                 text: qsTr("Play / Pause")
                 onTriggered: player.togglePlay()
             }
-            MenuItem {
+            Platform.MenuItem {
                 text: qsTr("Next Track")
                 onTriggered: player.next()
             }
-            MenuItem {
+            Platform.MenuItem {
                 text: qsTr("Previous Track")
                 onTriggered: player.previous()
             }
-            MenuSeparator {}
-            MenuItem {
+            Platform.MenuSeparator {}
+            Platform.MenuItem {
                 text: qsTr("Show Aether")
                 onTriggered: {
                     window.show();
@@ -71,7 +72,7 @@ ApplicationWindow {
                     window.requestActivate();
                 }
             }
-            MenuItem {
+            Platform.MenuItem {
                 text: qsTr("Quit")
                 onTriggered: {
                     systemTray.visible = false;
@@ -103,6 +104,24 @@ ApplicationWindow {
             // into Theater Mode to display full-screen ambient visuals.
             window.isTheaterMode = true;
         }
+    }
+
+    function applyDJRules() {
+        // HUMAN-READABLE COMMENT:
+        // Reads the active visual rules repeater configurations, maps drop-down choices
+        // to fields/operators, and saves them to the C++ player.autoDJRules property.
+        var list = [];
+        for (var i = 0; i < djRulesRepeater.count; ++i) {
+            var item = djRulesRepeater.itemAt(i);
+            if (item) {
+                list.push({
+                    field: item.getFieldKey(),
+                    operator: item.getOpKey(),
+                    value: item.getValue()
+                });
+            }
+        }
+        player.autoDJRules = list;
     }
 
     // Transparent event listener covering the window to detect interactions and reset the inactivity timer
@@ -263,7 +282,8 @@ ApplicationWindow {
 
                         // Left Pane: Filters & Configuration
                         Rectangle {
-                            Layout.preferredWidth: 360
+                            id: rulesCardLeftDJ
+                            Layout.preferredWidth: 420
                             Layout.fillHeight: true
                             color: "#73191928"
                             border.color: "#14ffffff"
@@ -273,7 +293,7 @@ ApplicationWindow {
                             ColumnLayout {
                                 anchors.fill: parent
                                 anchors.margins: 20
-                                spacing: 16
+                                spacing: 14
 
                                 Text {
                                     text: qsTr("Auto-DJ Settings")
@@ -282,109 +302,240 @@ ApplicationWindow {
                                     font.weight: Font.Bold
                                 }
 
-                                RowLayout {
-                                    Layout.fillWidth: true
-                                    spacing: 12
-                                    Switch {
-                                        id: autoDJViewSwitch
-                                        checked: player.autoDJ
-                                        onCheckedChanged: player.autoDJ = checked
-                                    }
-                                    Text {
-                                        text: qsTr("Enable Auto-DJ")
-                                        color: "#ffffff"
-                                        font.pixelSize: 14
-                                        font.weight: Font.Medium
-                                    }
-                                }
-
                                 Rectangle {
                                     Layout.fillWidth: true
                                     height: 1
                                     color: "#14ffffff"
                                 }
 
-                                Text {
-                                    text: qsTr("Queue Filter Rules")
-                                    color: "#00f2fe"
-                                    font.pixelSize: 15
-                                    font.weight: Font.Bold
-                                }
-
-                                // Genre Filter
-                                ColumnLayout {
+                                // Load existing rules from collections
+                                RowLayout {
                                     Layout.fillWidth: true
-                                    spacing: 4
-                                    Text { text: qsTr("Filter by Genre"); color: "#9ea2c0"; font.pixelSize: 12 }
+                                    spacing: 8
+                                    Text { text: qsTr("Preset:"); color: "#9ea2c0"; font.pixelSize: 11 }
                                     ComboBox {
-                                        id: filterGenreCombo
+                                        id: loadCollectionCombo
                                         Layout.fillWidth: true
                                         model: {
-                                            var list = [""];
-                                            var dbGenres = database.allGenres;
-                                            if (dbGenres) {
-                                                for (var i = 0; i < dbGenres.length; ++i) {
-                                                    list.push(dbGenres[i]);
+                                            var list = [qsTr("Load from Saved Collection...")];
+                                            var collections = database.collections;
+                                            if (collections) {
+                                                for (var i = 0; i < collections.length; ++i) {
+                                                    list.push(collections[i].name);
                                                 }
                                             }
                                             return list;
                                         }
-                                        currentIndex: {
-                                            var idx = model ? model.indexOf(player.autoDJGenre) : -1;
-                                            return idx >= 0 ? idx : 0;
-                                        }
+                                        currentIndex: 0
                                         onActivated: (index) => {
-                                            player.autoDJGenre = model[index];
+                                            if (index === 0) return;
+                                            var colName = model[index];
+                                            var collections = database.collections;
+                                            for (var i = 0; i < collections.length; ++i) {
+                                                if (collections[i].name === colName) {
+                                                    var list = [];
+                                                    for (var j = 0; j < collections[i].rules.length; ++j) {
+                                                        list.push({
+                                                            field: collections[i].rules[j].field,
+                                                            operator: collections[i].rules[j].operator,
+                                                            value: collections[i].rules[j].value
+                                                        });
+                                                    }
+                                                    window.djRulesModel = list;
+                                                    applyDJRules();
+                                                    break;
+                                                }
+                                            }
+                                            currentIndex = 0;
                                         }
                                     }
                                 }
 
-                                // Artist Filter
-                                ColumnLayout {
+                                RowLayout {
                                     Layout.fillWidth: true
-                                    spacing: 4
-                                    Text { text: qsTr("Filter by Artist"); color: "#9ea2c0"; font.pixelSize: 12 }
-                                    TextField {
-                                        id: filterArtist
-                                        Layout.fillWidth: true
-                                        placeholderText: qsTr("e.g. ABBA, Queen")
-                                        text: player.autoDJArtist
-                                        color: "#ffffff"
-                                        background: Rectangle { color: "#33000000"; border.color: "#14ffffff"; radius: 6 }
-                                        onEditingFinished: player.autoDJArtist = text.trim()
+                                    Text {
+                                        text: qsTr("Rules (AND conditions)")
+                                        color: "#00f2fe"
+                                        font.pixelSize: 13
+                                        font.weight: Font.Bold
+                                    }
+                                    Item { Layout.fillWidth: true }
+                                    Button {
+                                        id: addRuleBtnBtn
+                                        flat: true
+                                        contentItem: Text { text: qsTr("+ Add Rule"); color: "#00f2fe"; font.bold: true; font.pixelSize: 12 }
+                                        onClicked: {
+                                            var current = window.djRulesModel;
+                                            current.push({ field: "album", operator: "contains", value: "" });
+                                            window.djRulesModel = [];
+                                            window.djRulesModel = current;
+                                        }
                                     }
                                 }
 
-                                // Album Artist Filter
-                                ColumnLayout {
+                                ScrollView {
                                     Layout.fillWidth: true
-                                    spacing: 4
-                                    Text { text: qsTr("Filter by Album Artist"); color: "#9ea2c0"; font.pixelSize: 12 }
-                                    TextField {
-                                        id: filterAlbumArtist
+                                    Layout.fillHeight: true
+                                    clip: true
+
+                                    ColumnLayout {
+                                        id: djRulesListContainer
+                                        width: parent.width
+                                        spacing: 10
+
+                                        Repeater {
+                                            id: djRulesRepeater
+                                            model: window.djRulesModel
+
+                                            delegate: RowLayout {
+                                                id: ruleRow
+                                                width: parent.width
+                                                spacing: 6
+
+                                                function getFieldKey() { return fieldCombo.getFieldKey(); }
+                                                function getOpKey() { return opCombo.getOpKey(); }
+                                                function getValue() { return ruleValueInput.text.trim(); }
+
+                                                ComboBox {
+                                                    id: fieldCombo
+                                                    model: ["Album", "Artist", "Genre", "Title", "FilePath"]
+                                                    currentIndex: {
+                                                        var f = modelData.field || "album";
+                                                        if (f === "artist") return 1;
+                                                        if (f === "genre") return 2;
+                                                        if (f === "title") return 3;
+                                                        if (f === "filePath") return 4;
+                                                        return 0;
+                                                    }
+                                                    Layout.preferredWidth: 85
+                                                    
+                                                    function getFieldKey() {
+                                                        var idx = currentIndex;
+                                                        if (idx === 1) return "artist";
+                                                        if (idx === 2) return "genre";
+                                                        if (idx === 3) return "title";
+                                                        if (idx === 4) return "filePath";
+                                                        return "album";
+                                                    }
+                                                }
+
+                                                ComboBox {
+                                                    id: opCombo
+                                                    model: ["Contains", "Is", "Starts", "Ends", "Not Contain"]
+                                                    currentIndex: {
+                                                        var o = modelData.operator || "contains";
+                                                        if (o === "is") return 1;
+                                                        if (o === "starts_with") return 2;
+                                                        if (o === "ends_with") return 3;
+                                                        if (o === "not_contains") return 4;
+                                                        return 0;
+                                                    }
+                                                    Layout.preferredWidth: 85
+
+                                                    function getOpKey() {
+                                                        var idx = currentIndex;
+                                                        if (idx === 1) return "is";
+                                                        if (idx === 2) return "starts_with";
+                                                        if (idx === 3) return "ends_with";
+                                                        if (idx === 4) return "not_contains";
+                                                        return "contains";
+                                                    }
+                                                }
+
+                                                TextField {
+                                                    id: ruleValueInput
+                                                    text: modelData.value || ""
+                                                    Layout.fillWidth: true
+                                                    color: "#ffffff"
+                                                    font.pixelSize: 12
+                                                    placeholderText: qsTr("Value")
+                                                    background: Rectangle {
+                                                        color: "#33000000"
+                                                        border.color: "#14ffffff"
+                                                        radius: 6
+                                                    }
+                                                }
+
+                                                Button {
+                                                    id: suggestBtnBtn
+                                                    flat: true
+                                                    Layout.preferredWidth: 20
+                                                    Layout.preferredHeight: 28
+                                                    contentItem: Text { text: "▾"; color: "#9ea2c0"; font.bold: true; font.pixelSize: 14; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter }
+                                                    visible: fieldCombo.currentIndex === 0 || fieldCombo.currentIndex === 1 || fieldCombo.currentIndex === 2
+                                                    onClicked: suggestionsMenu.open()
+
+                                                    Menu {
+                                                        id: suggestionsMenu
+                                                        y: parent.height
+                                                        width: 200
+
+                                                        Repeater {
+                                                            model: {
+                                                                var f = fieldCombo.currentIndex;
+                                                                if (f === 1) return database.allArtists;
+                                                                if (f === 2) return database.allGenres;
+                                                                if (f === 0) return database.allAlbums;
+                                                                return [];
+                                                            }
+                                                            delegate: MenuItem {
+                                                                text: modelData
+                                                                onTriggered: {
+                                                                    ruleValueInput.text = modelData;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+
+                                                Button {
+                                                    flat: true
+                                                    Layout.preferredWidth: 20
+                                                    Layout.preferredHeight: 28
+                                                    contentItem: Text { text: "✕"; color: "#ff5555"; font.bold: true; font.pixelSize: 12; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter }
+                                                    onClicked: {
+                                                        var current = window.djRulesModel;
+                                                        current.splice(index, 1);
+                                                        window.djRulesModel = [];
+                                                        window.djRulesModel = current;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                RowLayout {
+                                    Layout.fillWidth: true
+                                    spacing: 8
+
+                                    Button {
+                                        id: applyDjRulesBtn
                                         Layout.fillWidth: true
-                                        placeholderText: qsTr("e.g. Various Artists")
-                                        text: player.autoDJAlbumArtist
-                                        color: "#ffffff"
-                                        background: Rectangle { color: "#33000000"; border.color: "#14ffffff"; radius: 6 }
-                                        onEditingFinished: player.autoDJAlbumArtist = text.trim()
+                                        highlighted: true
+                                        contentItem: Text { text: qsTr("Apply Filters"); color: "#1a1a2a"; font.bold: true }
+                                        onClicked: applyDJRules()
+                                    }
+
+                                    Button {
+                                        id: resetDjFiltersBtn
+                                        Layout.preferredWidth: 70
+                                        contentItem: Text { text: qsTr("Reset"); color: "#ffffff"; horizontalAlignment: Text.AlignHCenter }
+                                        onClicked: {
+                                            window.djRulesModel = [{ field: "album", operator: "contains", value: "" }];
+                                            applyDJRules();
+                                        }
                                     }
                                 }
 
                                 Button {
-                                    text: qsTr("Reset Filters")
+                                    id: saveAsPlaylistBtn
                                     Layout.fillWidth: true
+                                    contentItem: Text { text: qsTr("Save Filters as Collection..."); color: "#ffffff"; font.bold: true; horizontalAlignment: Text.AlignHCenter }
                                     onClicked: {
-                                        filterGenreCombo.currentIndex = 0;
-                                        filterArtist.text = "";
-                                        filterAlbumArtist.text = "";
-                                        player.autoDJGenre = "";
-                                        player.autoDJArtist = "";
-                                        player.autoDJAlbumArtist = "";
+                                        saveColDialog.open();
                                     }
                                 }
-
-                                Item { Layout.fillHeight: true }
                             }
                         }
 
@@ -412,7 +563,7 @@ ApplicationWindow {
                                     }
                                     Item { Layout.fillWidth: true }
                                     Button {
-                                        text: qsTr("Clear Queue")
+                                        id: clearQueueBtnBtn
                                         flat: true
                                         contentItem: Text { text: qsTr("Clear Queue"); color: "#ff5555"; font.weight: Font.Bold }
                                         onClicked: player.clearQueue()
@@ -1035,6 +1186,91 @@ ApplicationWindow {
                             }
                             Rectangle { width: 3; height: 12; color: "#ffffff"; radius: 1 }
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    Popup {
+        id: saveColDialog
+        x: (window.width - width) / 2
+        y: (window.height - height) / 2
+        width: 320
+        height: 240
+        modal: true
+        focus: true
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+
+        background: Rectangle {
+            color: "#1e1e30"
+            border.color: "#14ffffff"
+            radius: 12
+        }
+
+        ColumnLayout {
+            anchors.fill: parent
+            anchors.margins: 20
+            spacing: 12
+
+            Text {
+                text: qsTr("Save as Smart Collection")
+                color: "#ffffff"
+                font.pixelSize: 16
+                font.weight: Font.Bold
+            }
+
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: 4
+                Text { text: qsTr("Collection Name"); color: "#9ea2c0"; font.pixelSize: 11 }
+                TextField {
+                    id: saveColNameInput
+                    Layout.fillWidth: true
+                    color: "#ffffff"
+                    background: Rectangle { color: "#33000000"; border.color: "#14ffffff"; radius: 6 }
+                }
+            }
+
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: 4
+                Text { text: qsTr("Display Mode"); color: "#9ea2c0"; font.pixelSize: 11 }
+                ComboBox {
+                    id: saveColDisplayCombo
+                    Layout.fillWidth: true
+                    model: ["Track List View", "Album Cover Grid"]
+                }
+            }
+
+            Item { Layout.fillHeight: true }
+
+            RowLayout {
+                Layout.fillWidth: true
+                spacing: 12
+                Item { Layout.fillWidth: true }
+                Button {
+                    text: qsTr("Cancel")
+                    onClicked: saveColDialog.close()
+                }
+                Button {
+                    text: qsTr("Save")
+                    highlighted: true
+                    onClicked: {
+                        var name = saveColNameInput.text.trim();
+                        if (name === "") return;
+                        var colId = "col_" + Date.now();
+                        var activeRules = [];
+                        for (var i = 0; i < window.djRulesModel.length; ++i) {
+                            activeRules.push({
+                                field: window.djRulesModel[i].field,
+                                operator: window.djRulesModel[i].operator,
+                                value: window.djRulesModel[i].value
+                            });
+                        }
+                        database.saveCollection(colId, name, "", saveColDisplayCombo.currentText, activeRules);
+                        saveColDialog.close();
+                        saveColNameInput.text = "";
                     }
                 }
             }

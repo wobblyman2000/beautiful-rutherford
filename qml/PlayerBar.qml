@@ -284,14 +284,13 @@ Rectangle {
             Layout.alignment: Qt.AlignRight
 
             Button {
+                id: djBtnBtn
                 flat: true
-                text: qsTr("Auto-DJ")
-                font.pixelSize: 10
-                font.weight: Font.Bold
                 opacity: player.autoDJ ? 1.0 : 0.5
                 contentItem: Text {
-                    text: parent.text
-                    font: parent.font
+                    text: qsTr("Auto-DJ")
+                    font.pixelSize: 10
+                    font.weight: Font.Bold
                     color: player.autoDJ ? "#00f2fe" : "#ffffff"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
@@ -300,13 +299,12 @@ Rectangle {
             }
 
             Button {
+                id: eqBtnBtn
                 flat: true
-                text: qsTr("EQ")
-                font.pixelSize: 10
-                font.weight: Font.Bold
                 contentItem: Text {
-                    text: parent.text
-                    font: parent.font
+                    text: qsTr("EQ")
+                    font.pixelSize: 10
+                    font.weight: Font.Bold
                     color: eqPopup.visible ? "#00f2fe" : "#ffffff"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
@@ -315,13 +313,12 @@ Rectangle {
             }
 
             Button {
+                id: miniBtnBtn
                 flat: true
-                text: qsTr("Mini")
-                font.pixelSize: 10
-                font.weight: Font.Bold
                 contentItem: Text {
-                    text: parent.text
-                    font: parent.font
+                    text: qsTr("Mini")
+                    font.pixelSize: 10
+                    font.weight: Font.Bold
                     color: window.isCompactMode ? "#00f2fe" : "#ffffff"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
@@ -330,13 +327,12 @@ Rectangle {
             }
 
             Button {
+                id: theaterBtnBtn
                 flat: true
-                text: qsTr("Theater")
-                font.pixelSize: 10
-                font.weight: Font.Bold
                 contentItem: Text {
-                    text: parent.text
-                    font: parent.font
+                    text: qsTr("Theater")
+                    font.pixelSize: 10
+                    font.weight: Font.Bold
                     color: window.isTheaterMode ? "#00f2fe" : "#ffffff"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter

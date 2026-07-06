@@ -12,9 +12,7 @@ Player::Player(QObject *parent) : QObject(parent) {
 
     m_audioOutput->setVolume(0.8); // Default volume
 
-    m_autoDJGenre = QString();
-    m_autoDJArtist = QString();
-    m_autoDJAlbumArtist = QString();
+    m_autoDJRules = QVariantList();
 
     connect(m_mediaPlayer, &QMediaPlayer::positionChanged, this, &Player::onPositionChanged);
     connect(m_mediaPlayer, &QMediaPlayer::durationChanged, this, &Player::onDurationChanged);
@@ -323,34 +321,49 @@ void Player::onMediaStatusChanged(QMediaPlayer::MediaStatus status) {
     }
 }
 
-QString Player::autoDJGenre() const {
-    return m_autoDJGenre;
+QVariantList Player::autoDJRules() const {
+    return m_autoDJRules;
 }
 
-void Player::setAutoDJGenre(const QString &genre) {
-    if (m_autoDJGenre == genre) return;
-    m_autoDJGenre = genre;
-    emit autoDJGenreChanged();
+void Player::setAutoDJRules(const QVariantList &rules) {
+    m_autoDJRules = rules;
+    emit autoDJRulesChanged();
 }
 
-QString Player::autoDJArtist() const {
-    return m_autoDJArtist;
-}
+bool matchAutoDJRules(const QVariantMap &track, const QVariantList &rules) {
+    if (rules.isEmpty()) return true;
 
-void Player::setAutoDJArtist(const QString &artist) {
-    if (m_autoDJArtist == artist) return;
-    m_autoDJArtist = artist;
-    emit autoDJArtistChanged();
-}
+    for (const QVariant &ruleVar : rules) {
+        QVariantMap rule = ruleVar.toMap();
+        QString field = rule["field"].toString().trimmed().toLower();
+        QString op = rule["operator"].toString().trimmed().toLower();
+        QString criteria = rule["value"].toString().trimmed().toLower();
 
-QString Player::autoDJAlbumArtist() const {
-    return m_autoDJAlbumArtist;
-}
+        QString fieldKey = field;
+        if (field == QStringLiteral("album")) fieldKey = QStringLiteral("album");
+        else if (field == QStringLiteral("artist")) fieldKey = QStringLiteral("artist");
+        else if (field == QStringLiteral("genre")) fieldKey = QStringLiteral("genre");
+        else if (field == QStringLiteral("title")) fieldKey = QStringLiteral("title");
+        else if (field == QStringLiteral("filepath")) fieldKey = QStringLiteral("filePath");
 
-void Player::setAutoDJAlbumArtist(const QString &albumArtist) {
-    if (m_autoDJAlbumArtist == albumArtist) return;
-    m_autoDJAlbumArtist = albumArtist;
-    emit autoDJAlbumArtistChanged();
+        QString val = track[fieldKey].toString().trimmed().toLower();
+        bool matched = false;
+
+        if (op == QStringLiteral("contains")) {
+            matched = val.contains(criteria);
+        } else if (op == QStringLiteral("is")) {
+            matched = (val == criteria);
+        } else if (op == QStringLiteral("starts_with")) {
+            matched = val.startsWith(criteria);
+        } else if (op == QStringLiteral("ends_with")) {
+            matched = val.endsWith(criteria);
+        } else if (op == QStringLiteral("not_contains")) {
+            matched = !val.contains(criteria);
+        }
+
+        if (!matched) return false;
+    }
+    return true;
 }
 
 void Player::clearQueue() {
@@ -392,44 +405,24 @@ void Player::removeQueueIndex(int index) {
 
 QVariantList Player::getAutoDJMatchingTracks() {
     // HUMAN-READABLE COMMENT:
-    // Performs database track filtering for Auto-DJ. If a Genre, Artist, or Album Artist
-    // filter is active, it runs case-insensitive matches against each database track.
+    // Performs database track filtering for Auto-DJ using complex collection rules list.
+    // If a rule fails the AND condition check, it is filtered out of matching list.
     // Falls back to all database tracks if no matches are found, so player never stalls.
     QVariantList allTracks = Database::instance()->tracksVariant();
-    if (m_autoDJGenre.isEmpty() && m_autoDJArtist.isEmpty() && m_autoDJAlbumArtist.isEmpty()) {
+    if (m_autoDJRules.isEmpty()) {
         return allTracks;
     }
 
     QVariantList matching;
     for (const QVariant &trackVar : allTracks) {
         QVariantMap t = trackVar.toMap();
-
-        if (!m_autoDJGenre.isEmpty()) {
-            QString g = t["genre"].toString().trimmed();
-            if (g.compare(m_autoDJGenre.trimmed(), Qt::CaseInsensitive) != 0) {
-                continue;
-            }
+        if (matchAutoDJRules(t, m_autoDJRules)) {
+            matching.append(trackVar);
         }
-
-        if (!m_autoDJArtist.isEmpty()) {
-            QString a = t["artist"].toString().trimmed();
-            if (a.compare(m_autoDJArtist.trimmed(), Qt::CaseInsensitive) != 0) {
-                continue;
-            }
-        }
-
-        if (!m_autoDJAlbumArtist.isEmpty()) {
-            QString aa = t["artist"].toString().trimmed(); // Various Artists matching
-            if (aa.compare(m_autoDJAlbumArtist.trimmed(), Qt::CaseInsensitive) != 0) {
-                continue;
-            }
-        }
-
-        matching.append(trackVar);
     }
 
     if (matching.isEmpty()) {
-        qDebug() << "Auto-DJ: No matching tracks found for specified filters. Falling back to all tracks.";
+        qDebug() << "Auto-DJ: No matching tracks found for rules. Falling back to all tracks.";
         return allTracks;
     }
     return matching;
