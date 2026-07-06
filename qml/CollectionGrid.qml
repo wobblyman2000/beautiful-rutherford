@@ -413,6 +413,11 @@ Item {
                                         border.color: "#14ffffff"
                                         radius: 6
                                     }
+                                    onTextChanged: {
+                                        if (activeFocus && text.trim() !== "") {
+                                            suggestionsMenu.open();
+                                        }
+                                    }
                                 }
 
                                 Button {
@@ -432,15 +437,27 @@ Item {
                                         Repeater {
                                             model: {
                                                 var f = fieldCombo.currentIndex;
-                                                if (f === 1) return database.allArtists;
-                                                if (f === 2) return database.allGenres;
-                                                if (f === 0) return database.allAlbums;
-                                                return [];
+                                                var rawList = [];
+                                                if (f === 1) rawList = database.allArtists;
+                                                else if (f === 2) rawList = database.allGenres;
+                                                else if (f === 0) rawList = database.allAlbums;
+                                                
+                                                var typed = ruleValueInput.text.toLowerCase().trim();
+                                                if (typed === "") return rawList;
+                                                
+                                                var filtered = [];
+                                                for (var i = 0; i < rawList.length; ++i) {
+                                                    if (rawList[i].toLowerCase().indexOf(typed) !== -1) {
+                                                        filtered.push(rawList[i]);
+                                                    }
+                                                }
+                                                return filtered;
                                             }
                                             delegate: MenuItem {
                                                 text: modelData
                                                 onTriggered: {
                                                     ruleValueInput.text = modelData;
+                                                    suggestionsMenu.close();
                                                 }
                                             }
                                         }

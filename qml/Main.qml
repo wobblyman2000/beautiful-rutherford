@@ -454,6 +454,11 @@ ApplicationWindow {
                                                         border.color: "#14ffffff"
                                                         radius: 6
                                                     }
+                                                    onTextChanged: {
+                                                        if (activeFocus && text.trim() !== "") {
+                                                            suggestionsMenu.open();
+                                                        }
+                                                    }
                                                 }
 
                                                 Button {
@@ -473,15 +478,27 @@ ApplicationWindow {
                                                         Repeater {
                                                             model: {
                                                                 var f = fieldCombo.currentIndex;
-                                                                if (f === 1) return database.allArtists;
-                                                                if (f === 2) return database.allGenres;
-                                                                if (f === 0) return database.allAlbums;
-                                                                return [];
+                                                                var rawList = [];
+                                                                if (f === 1) rawList = database.allArtists;
+                                                                else if (f === 2) rawList = database.allGenres;
+                                                                else if (f === 0) rawList = database.allAlbums;
+                                                                
+                                                                var typed = ruleValueInput.text.toLowerCase().trim();
+                                                                if (typed === "") return rawList;
+                                                                
+                                                                var filtered = [];
+                                                                for (var i = 0; i < rawList.length; ++i) {
+                                                                    if (rawList[i].toLowerCase().indexOf(typed) !== -1) {
+                                                                        filtered.push(rawList[i]);
+                                                                    }
+                                                                }
+                                                                return filtered;
                                                             }
                                                             delegate: MenuItem {
                                                                 text: modelData
                                                                 onTriggered: {
                                                                     ruleValueInput.text = modelData;
+                                                                    suggestionsMenu.close();
                                                                 }
                                                             }
                                                         }
@@ -607,7 +624,9 @@ ApplicationWindow {
                                                     color: index === player.queueIndex ? "#00f2fe" : "#666a8a"
                                                     font.pixelSize: 13
                                                     font.weight: Font.DemiBold
-                                                    Layout.preferredWidth: 20
+                                                    Layout.preferredWidth: 24
+                                                    horizontalAlignment: Text.AlignRight
+                                                    Layout.alignment: Qt.AlignVCenter
                                                 }
 
                                                 Rectangle {
@@ -616,6 +635,7 @@ ApplicationWindow {
                                                     radius: 4
                                                     color: "#111111"
                                                     clip: true
+                                                    Layout.alignment: Qt.AlignVCenter
 
                                                     Image {
                                                         source: modelData.coverPath || ""
@@ -637,6 +657,7 @@ ApplicationWindow {
                                                 ColumnLayout {
                                                     Layout.fillWidth: true
                                                     spacing: 2
+                                                    Layout.alignment: Qt.AlignVCenter
                                                     Text {
                                                         text: modelData.title || qsTr("Unknown Track")
                                                         color: index === player.queueIndex ? "#00f2fe" : "#ffffff"
@@ -656,12 +677,15 @@ ApplicationWindow {
                                                     text: playerBar.formatTime(modelData.duration)
                                                     color: index === player.queueIndex ? "#00f2fe" : "#666a8a"
                                                     font.pixelSize: 12
+                                                    Layout.alignment: Qt.AlignVCenter
                                                 }
 
                                                 Button {
+                                                    id: queueItemDelBtnBtn
                                                     flat: true
                                                     Layout.preferredWidth: 32
                                                     Layout.preferredHeight: 32
+                                                    Layout.alignment: Qt.AlignVCenter
                                                     onClicked: player.removeQueueIndex(index)
                                                     contentItem: Text {
                                                         text: "✕"
