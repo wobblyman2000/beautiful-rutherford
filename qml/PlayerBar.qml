@@ -102,9 +102,25 @@ Rectangle {
 
                 // Previous
                 Button {
-                    icon.name: "media-skip-backward"
                     flat: true
                     onClicked: player.previous()
+                    contentItem: Item {
+                        width: 24
+                        height: 24
+                        Row {
+                            anchors.centerIn: parent
+                            spacing: 2
+                            Rectangle { width: 3; height: 12; color: "#ffffff"; radius: 1 }
+                            Canvas {
+                                width: 9; height: 12
+                                onPaint: {
+                                    var ctx = getContext("2d");
+                                    ctx.reset(); ctx.fillStyle = "#ffffff";
+                                    ctx.beginPath(); ctx.moveTo(width, 0); ctx.lineTo(0, height/2); ctx.lineTo(width, height); ctx.closePath(); ctx.fill();
+                                }
+                            }
+                        }
+                    }
                 }
 
                 // Play / Pause
@@ -119,11 +135,32 @@ Rectangle {
                         radius: width / 2
                     }
                     
-                    contentItem: Image {
-                        source: player.playbackStatus === "Playing" ? "image://theme/media-playback-pause" : "image://theme/media-playback-start"
-                        anchors.centerIn: parent
-                        width: 20
-                        height: 20
+                    contentItem: Item {
+                        anchors.fill: parent
+                        Row {
+                            anchors.centerIn: parent
+                            spacing: 4
+                            visible: player.playbackStatus === "Playing"
+                            Rectangle { width: 4; height: 16; color: "#1a1a2a"; radius: 1 }
+                            Rectangle { width: 4; height: 16; color: "#1a1a2a"; radius: 1 }
+                        }
+                        Canvas {
+                            anchors.centerIn: parent
+                            width: 14
+                            height: 16
+                            visible: player.playbackStatus !== "Playing"
+                            onPaint: {
+                                var ctx = getContext("2d");
+                                ctx.reset();
+                                ctx.fillStyle = "#1a1a2a";
+                                ctx.beginPath();
+                                ctx.moveTo(0, 0);
+                                ctx.lineTo(width, height / 2);
+                                ctx.lineTo(0, height);
+                                ctx.closePath();
+                                ctx.fill();
+                            }
+                        }
                     }
                     
                     onClicked: player.togglePlay()
@@ -131,9 +168,25 @@ Rectangle {
 
                 // Next
                 Button {
-                    icon.name: "media-skip-forward"
                     flat: true
                     onClicked: player.next()
+                    contentItem: Item {
+                        width: 24
+                        height: 24
+                        Row {
+                            anchors.centerIn: parent
+                            spacing: 2
+                            Canvas {
+                                width: 9; height: 12
+                                onPaint: {
+                                    var ctx = getContext("2d");
+                                    ctx.reset(); ctx.fillStyle = "#ffffff";
+                                    ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(width, height/2); ctx.lineTo(0, height); ctx.closePath(); ctx.fill();
+                                }
+                            }
+                            Rectangle { width: 3; height: 12; color: "#ffffff"; radius: 1 }
+                        }
+                    }
                 }
 
                 // Repeat
@@ -167,15 +220,13 @@ Rectangle {
                     Layout.fillWidth: true
                     from: 0
                     to: player.duration > 0 ? player.duration : 100
-                    value: player.position
-                    
+
                     background: Rectangle {
-                        x: progressSlider.leftPadding
-                        y: progressSlider.topPadding + progressSlider.availableHeight / 2 - height / 2
-                        width: progressSlider.availableWidth
+                        width: parent.width
                         height: 4
-                        radius: 2
+                        anchors.verticalCenter: parent.verticalCenter
                         color: "#1affffff"
+                        radius: 2
 
                         Rectangle {
                             width: progressSlider.visualPosition * parent.width
@@ -184,10 +235,10 @@ Rectangle {
                             radius: 2
                         }
                     }
-                    
+
                     handle: Rectangle {
-                        x: progressSlider.leftPadding + progressSlider.visualPosition * (progressSlider.availableWidth - width)
-                        y: progressSlider.topPadding + progressSlider.availableHeight / 2 - height / 2
+                        x: progressSlider.visualPosition * (progressSlider.width - width)
+                        anchors.verticalCenter: parent.verticalCenter
                         width: 12
                         height: 12
                         radius: 6
@@ -196,6 +247,24 @@ Rectangle {
 
                     // Seek on release to avoid constant jumping
                     onMoved: player.position = value
+
+                    Connections {
+                        target: player
+                        function onPositionChanged() {
+                            if (!progressSlider.pressed) {
+                                progressSlider.value = player.position;
+                            }
+                        }
+                        function onDurationChanged() {
+                            if (!progressSlider.pressed) {
+                                progressSlider.value = player.position;
+                            }
+                        }
+                    }
+
+                    Component.onCompleted: {
+                        value = player.position;
+                    }
                 }
 
                 Text {
@@ -213,6 +282,67 @@ Rectangle {
             Layout.fillHeight: true
             spacing: 8
             Layout.alignment: Qt.AlignRight
+
+            Button {
+                flat: true
+                text: qsTr("Auto-DJ")
+                font.pixelSize: 10
+                font.weight: Font.Bold
+                opacity: player.autoDJ ? 1.0 : 0.5
+                contentItem: Text {
+                    text: parent.text
+                    font: parent.font
+                    color: player.autoDJ ? "#00f2fe" : "#ffffff"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+                onClicked: player.autoDJ = !player.autoDJ
+            }
+
+            Button {
+                flat: true
+                text: qsTr("EQ")
+                font.pixelSize: 10
+                font.weight: Font.Bold
+                contentItem: Text {
+                    text: parent.text
+                    font: parent.font
+                    color: eqPopup.visible ? "#00f2fe" : "#ffffff"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+                onClicked: eqPopup.visible = !eqPopup.visible
+            }
+
+            Button {
+                flat: true
+                text: qsTr("Mini")
+                font.pixelSize: 10
+                font.weight: Font.Bold
+                contentItem: Text {
+                    text: parent.text
+                    font: parent.font
+                    color: window.isCompactMode ? "#00f2fe" : "#ffffff"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+                onClicked: window.isCompactMode = !window.isCompactMode
+            }
+
+            Button {
+                flat: true
+                text: qsTr("Theater")
+                font.pixelSize: 10
+                font.weight: Font.Bold
+                contentItem: Text {
+                    text: parent.text
+                    font: parent.font
+                    color: window.isTheaterMode ? "#00f2fe" : "#ffffff"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+                onClicked: window.isTheaterMode = !window.isTheaterMode
+            }
 
             Button {
                 id: muteBtn
@@ -234,16 +364,13 @@ Rectangle {
                 Layout.preferredWidth: 100
                 from: 0
                 to: 1
-                value: player.volume
-                onMoved: player.volume = value
 
                 background: Rectangle {
-                    x: volumeSlider.leftPadding
-                    y: volumeSlider.topPadding + volumeSlider.availableHeight / 2 - height / 2
-                    width: volumeSlider.availableWidth
+                    width: parent.width
                     height: 4
-                    radius: 2
+                    anchors.verticalCenter: parent.verticalCenter
                     color: "#1affffff"
+                    radius: 2
 
                     Rectangle {
                         width: volumeSlider.visualPosition * parent.width
@@ -254,12 +381,119 @@ Rectangle {
                 }
 
                 handle: Rectangle {
-                    x: volumeSlider.leftPadding + volumeSlider.visualPosition * (volumeSlider.availableWidth - width)
-                    y: volumeSlider.topPadding + volumeSlider.availableHeight / 2 - height / 2
+                    x: volumeSlider.visualPosition * (volumeSlider.width - width)
+                    anchors.verticalCenter: parent.verticalCenter
                     width: 12
                     height: 12
                     radius: 6
                     color: "#ffffff"
+                }
+
+                onMoved: player.volume = value
+
+                Connections {
+                    target: player
+                    function onVolumeChanged() {
+                        if (!volumeSlider.pressed) {
+                            volumeSlider.value = player.volume;
+                        }
+                    }
+                }
+
+                Component.onCompleted: {
+                    value = player.volume;
+                }
+            }
+        }
+    }
+
+    Popup {
+        id: eqPopup
+        x: muteBtn.x - width/2
+        y: -height - 10
+        width: 320
+        height: 220
+        modal: true
+        focus: true
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+
+        background: Rectangle {
+            color: "#1e1e30"
+            border.color: "#14ffffff"
+            radius: 12
+        }
+
+        ColumnLayout {
+            anchors.fill: parent
+            anchors.margins: 14
+            spacing: 10
+
+            RowLayout {
+                Layout.fillWidth: true
+                Text {
+                    text: qsTr("Graphic Equalizer")
+                    color: "#ffffff"
+                    font.pixelSize: 14
+                    font.weight: Font.Bold
+                }
+                Item { Layout.fillWidth: true }
+                ComboBox {
+                    id: eqPresetCombo
+                    model: ["Flat", "Rock", "Pop", "Classical", "Bass Boost"]
+                    Layout.preferredWidth: 120
+                    onCurrentIndexChanged: {
+                        var flat = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50];
+                        var rock = [75, 68, 55, 45, 42, 45, 52, 60, 68, 75];
+                        var pop = [42, 48, 55, 65, 70, 68, 60, 52, 48, 42];
+                        var classical = [70, 60, 55, 52, 45, 48, 52, 58, 62, 68];
+                        var bass = [85, 80, 70, 55, 50, 48, 48, 48, 48, 48];
+                        var current = flat;
+                        if (currentIndex === 1) current = rock;
+                        else if (currentIndex === 2) current = pop;
+                        else if (currentIndex === 3) current = classical;
+                        else if (currentIndex === 4) current = bass;
+
+                        for (var i = 0; i < current.length; ++i) {
+                            eqSlidersRepeater.itemAt(i).sliderValue = current[i];
+                        }
+                    }
+                }
+            }
+
+            RowLayout {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                spacing: 8
+
+                Repeater {
+                    id: eqSlidersRepeater
+                    model: 10
+
+                    delegate: ColumnLayout {
+                        id: eqCol
+                        Layout.fillHeight: true
+                        spacing: 4
+                        property alias sliderValue: bandSlider.value
+
+                        Slider {
+                            id: bandSlider
+                            Layout.fillHeight: true
+                            orientation: Qt.Vertical
+                            from: 0
+                            to: 100
+                            value: 50
+                        }
+
+                        Text {
+                            text: {
+                                var bands = ["32", "64", "125", "250", "500", "1k", "2k", "4k", "8k", "16k"];
+                                return bands[index];
+                            }
+                            color: "#9ea2c0"
+                            font.pixelSize: 8
+                            Layout.alignment: Qt.AlignHCenter
+                        }
+                    }
                 }
             }
         }

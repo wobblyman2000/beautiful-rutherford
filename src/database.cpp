@@ -1,4 +1,7 @@
 #include "database.h"
+#include <taglib/fileref.h>
+#include <taglib/tag.h>
+#include <taglib/tpropertymap.h>
 
 Database* Database::m_instance = nullptr;
 
@@ -116,6 +119,8 @@ void Database::saveTracks(const QList<Track> &tracks) {
     emit tracksChanged();
 }
 
+#include <QSet>
+
 QVariantList Database::tracksVariant() const {
     QVariantList list;
     for (const auto &track : m_tracks) {
@@ -131,6 +136,7 @@ QVariantList Database::tracksVariant() const {
         map["discNo"] = track.discNo;
         map["duration"] = track.duration;
         map["coverPath"] = track.coverPath;
+        map["albumType"] = track.albumType;
         list.append(map);
     }
     return list;
@@ -138,6 +144,47 @@ QVariantList Database::tracksVariant() const {
 
 QVariantList Database::collectionsVariant() const {
     return m_collections.toVariantList();
+}
+
+QStringList Database::allGenres() const {
+    QSet<QString> genresSet;
+    for (const auto &track : m_tracks) {
+        if (track.genre.isEmpty()) continue;
+        QStringList list = track.genre.split(QLatin1Char(','));
+        for (const auto &genre : list) {
+            QString trimmed = genre.trimmed();
+            if (!trimmed.isEmpty()) {
+                genresSet.insert(trimmed);
+            }
+        }
+    }
+    QStringList result = genresSet.values();
+    result.sort(Qt::CaseInsensitive);
+    return result;
+}
+
+QStringList Database::allArtists() const {
+    QSet<QString> artistsSet;
+    for (const auto &track : m_tracks) {
+        if (!track.artist.isEmpty()) {
+            artistsSet.insert(track.artist.trimmed());
+        }
+    }
+    QStringList result = artistsSet.values();
+    result.sort(Qt::CaseInsensitive);
+    return result;
+}
+
+QStringList Database::allAlbums() const {
+    QSet<QString> albumsSet;
+    for (const auto &track : m_tracks) {
+        if (!track.album.isEmpty()) {
+            albumsSet.insert(track.album.trimmed());
+        }
+    }
+    QStringList result = albumsSet.values();
+    result.sort(Qt::CaseInsensitive);
+    return result;
 }
 
 void Database::addMusicDir(const QString &dir) {
@@ -155,7 +202,7 @@ void Database::removeMusicDir(const QString &dir) {
     }
 }
 
-void Database::saveCollection(const QString &id, const QString &name, const QString &coverPath, const QVariantList &rules) {
+void Database::saveCollection(const QString &id, const QString &name, const QString &coverPath, const QString &displayMode, const QVariantList &rules) {
     QJsonObject colObj;
     QString finalId = id;
     
@@ -166,6 +213,7 @@ void Database::saveCollection(const QString &id, const QString &name, const QStr
     colObj["id"] = finalId;
     colObj["name"] = name;
     colObj["coverPath"] = coverPath;
+    colObj["displayMode"] = displayMode;
     colObj["rules"] = QJsonArray::fromVariantList(rules);
 
     // If updating, replace existing
@@ -196,4 +244,51 @@ void Database::deleteCollection(const QString &id) {
             return;
         }
     }
+}
+
+bool Database::writeTrackTags(const QString &filePath, const QString &title, const QString &artist, const QString &album, const QString &genre, int year, const QString &albumType) {
+    TagLib::FileRef fileRef(filePath.toLocal8Bit().constData());
+    if (fileRef.isNull() || !fileRef.tag()) {
+        qWarning() << "Failed to open audio file with TagLib for writing:" << filePath;
+        return false;
+    }
+
+    TagLib::Tag *tag = fileRef.tag();
+    tag->setTitle(TagLib::String(title.toUtf8().constData(), TagLib::String::UTF8));
+    tag->setArtist(TagLib::String(artist.toUtf8().constData(), TagLib::String::UTF8));
+    tag->setAlbum(TagLib::String(album.toUtf8().constData(), TagLib::String::UTF8));
+    tag->setGenre(TagLib::String(genre.toUtf8().constData(), TagLib::String::UTF8));
+    tag->setYear(year);
+
+    if (fileRef.file()) {
+        TagLib::PropertyMap properties = fileRef.file()->properties();
+        properties["ALBUMTYPE"] = TagLib::StringList(TagLib::String(albumType.toUtf8().constData(), TagLib::String::UTF8));
+        fileRef.file()->setProperties(properties);
+    }
+
+    if (!fileRef.save()) {
+        qWarning() << "Failed to save audio tags to file:" << filePath;
+        return false;
+    }
+
+    // Update in-memory track cache
+    bool found = false;
+    for (int i = 0; i < m_tracks.size(); ++i) {
+        if (m_tracks[i].filePath == filePath) {
+            m_tracks[i].title = title;
+            m_tracks[i].artist = artist;
+            m_tracks[i].album = album;
+            m_tracks[i].genre = genre;
+            m_tracks[i].year = year;
+            m_tracks[i].albumType = albumType;
+            found = true;
+            break;
+        }
+    }
+
+    if (found) {
+        save();
+        emit tracksChanged();
+    }
+    return true;
 }

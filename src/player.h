@@ -21,6 +21,7 @@ class Player : public QObject {
     Q_PROPERTY(bool shuffle READ shuffle WRITE setShuffle NOTIFY shuffleChanged)
     Q_PROPERTY(QString loopStatus READ loopStatus WRITE setLoopStatus NOTIFY loopStatusChanged)
     Q_PROPERTY(QVariantList queue READ queue NOTIFY queueChanged)
+    Q_PROPERTY(bool autoDJ READ autoDJ WRITE setAutoDJ NOTIFY autoDJChanged)
 
 public:
     explicit Player(QObject *parent = nullptr);
@@ -35,6 +36,8 @@ public:
     bool shuffle() const;
     QString loopStatus() const;
     QVariantList queue() const;
+    bool autoDJ() const;
+    void setAutoDJ(bool enabled);
 
     void setVolume(double volume);
     void setPosition(double positionSeconds);
@@ -60,6 +63,7 @@ signals:
     void shuffleChanged();
     void loopStatusChanged();
     void queueChanged();
+    void autoDJChanged();
 
     // Signal emitted when seek completes
     void seeked(double positionSeconds);
@@ -81,6 +85,7 @@ private:
     QVariantList m_originalQueue; // Holds unshuffled order
     int m_queueIndex = -1;
     bool m_shuffle = false;
+    bool m_autoDJ = false;
     QString m_loopStatus = QStringLiteral("None"); // None, Track, Playlist
 
     static Player* m_instance;

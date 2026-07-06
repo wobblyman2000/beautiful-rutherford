@@ -12,6 +12,19 @@ ApplicationWindow {
     // Global properties
     property string activePage: "albums"
     property string searchQuery: ""
+    property bool isCompactMode: false
+    property bool isTheaterMode: false
+
+    onIsCompactModeChanged: {
+        if (isCompactMode) {
+            window.isTheaterMode = false;
+            window.width = 360;
+            window.height = 130;
+        } else {
+            window.width = 1100;
+            window.height = 720;
+        }
+    }
 
     background: Rectangle {
         gradient: Gradient {
@@ -29,6 +42,7 @@ ApplicationWindow {
             Layout.fillWidth: true
             Layout.fillHeight: true
             spacing: 0
+            visible: !window.isCompactMode
 
             // Left Sidebar
             Sidebar {
@@ -292,7 +306,7 @@ ApplicationWindow {
         PlayerBar {
             id: playerBar
             Layout.fillWidth: true
-            Layout.preferredHeight: 90
+            Layout.preferredHeight: window.isCompactMode ? 130 : 90
         }
     }
 
@@ -301,9 +315,249 @@ ApplicationWindow {
         id: albumModal
         anchors.fill: parent
     }
+
+    // Global Artist Details Modal Overlay
+    ArtistModal {
+        id: artistModal
+        anchors.fill: parent
+    }
     
     // Method to trigger album modal opening from child views
     function openAlbum(albumObj) {
         albumModal.openAlbum(albumObj);
+    }
+
+    // Method to trigger artist modal opening from child views
+    function openArtist(artistName) {
+        artistModal.loadArtistCatalog(artistName);
+        artistModal.visible = true;
+    }
+
+    // Shortcut to exit Theater or Compact Mode using Escape
+    Shortcut {
+        sequence: "Escape"
+        onActivated: {
+            if (window.isTheaterMode) window.isTheaterMode = false;
+            if (window.isCompactMode) window.isCompactMode = false;
+        }
+    }
+
+    // Theater Mode Overlay
+    Rectangle {
+        id: theaterOverlay
+        anchors.fill: parent
+        color: "#12121c"
+        visible: window.isTheaterMode
+        z: 999 // Overlays everything!
+
+        // Ambient Background (low opacity album art over gradient)
+        Image {
+            id: theaterAmbientBg
+            source: player.currentTrack.coverPath || ""
+            anchors.fill: parent
+            fillMode: Image.PreserveAspectCrop
+            opacity: 0.15
+            visible: source !== ""
+        }
+
+        Rectangle {
+            anchors.fill: parent
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: "#00000000" }
+                GradientStop { position: 1.0; color: "#cc000000" }
+            }
+        }
+
+        // Close Button
+        Button {
+            anchors.top: parent.top
+            anchors.right: parent.right
+            anchors.margins: 24
+            flat: true
+            onClicked: window.isTheaterMode = false
+            contentItem: Item {
+                width: 16
+                height: 16
+                Rectangle { anchors.centerIn: parent; width: 16; height: 2; color: "#ffffff"; rotation: 45; radius: 1 }
+                Rectangle { anchors.centerIn: parent; width: 16; height: 2; color: "#ffffff"; rotation: -45; radius: 1 }
+            }
+        }
+
+        ColumnLayout {
+            anchors.centerIn: parent
+            width: Math.min(parent.width - 80, 500)
+            spacing: 24
+            Layout.alignment: Qt.AlignCenter
+
+            // Album Art
+            Rectangle {
+                Layout.preferredWidth: 260
+                Layout.preferredHeight: 260
+                color: "#111111"
+                radius: 16
+                Layout.alignment: Qt.AlignHCenter
+                clip: true
+
+                Image {
+                    source: player.currentTrack.coverPath || ""
+                    anchors.fill: parent
+                    fillMode: Image.PreserveAspectCrop
+                    visible: source !== ""
+                }
+
+                Image {
+                    anchors.centerIn: parent
+                    source: "image://theme/media-optical"
+                    width: 80
+                    height: 80
+                    visible: !player.currentTrack.coverPath
+                    opacity: 0.4
+                }
+            }
+
+            // Track details
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: 4
+                Layout.alignment: Qt.AlignHCenter
+
+                Text {
+                    text: player.currentTrack.title || qsTr("Not Playing")
+                    color: "#ffffff"
+                    font.pixelSize: 26
+                    font.weight: Font.Bold
+                    elide: Text.ElideRight
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignHCenter
+                }
+
+                Text {
+                    text: (player.currentTrack.artist || "") + ((player.currentTrack.album) ? " — " + player.currentTrack.album : "")
+                    color: "#a0a4c5"
+                    font.pixelSize: 16
+                    elide: Text.ElideRight
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignHCenter
+                }
+            }
+
+            // Scrubber
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: 4
+
+                Slider {
+                    id: theaterScrubber
+                    Layout.fillWidth: true
+                    from: 0
+                    to: player.duration > 0 ? player.duration : 1
+                    value: player.position
+                    onMoved: player.setPosition(value)
+                }
+
+                RowLayout {
+                    Layout.fillWidth: true
+                    Text {
+                        text: playerBar.formatTime(player.position)
+                        color: "#9ea2c0"
+                        font.pixelSize: 12
+                    }
+                    Item { Layout.fillWidth: true }
+                    Text {
+                        text: playerBar.formatTime(player.duration)
+                        color: "#9ea2c0"
+                        font.pixelSize: 12
+                    }
+                }
+            }
+
+            // Playback buttons
+            RowLayout {
+                spacing: 24
+                Layout.alignment: Qt.AlignHCenter
+
+                Button {
+                    flat: true
+                    onClicked: player.previous()
+                    contentItem: Item {
+                        width: 24
+                        height: 24
+                        Row {
+                            anchors.centerIn: parent
+                            spacing: 2
+                            Rectangle { width: 3; height: 12; color: "#ffffff"; radius: 1 }
+                            Canvas {
+                                width: 9; height: 12
+                                onPaint: {
+                                    var ctx = getContext("2d");
+                                    ctx.reset(); ctx.fillStyle = "#ffffff";
+                                    ctx.beginPath(); ctx.moveTo(width, 0); ctx.lineTo(0, height/2); ctx.lineTo(width, height); ctx.closePath(); ctx.fill();
+                                }
+                            }
+                        }
+                    }
+                }
+
+                Button {
+                    width: 54
+                    height: 54
+                    flat: true
+                    background: Rectangle {
+                        color: "#ffffff"
+                        radius: width / 2
+                    }
+                    contentItem: Item {
+                        anchors.fill: parent
+                        Row {
+                            anchors.centerIn: parent
+                            spacing: 4
+                            visible: player.playbackStatus === "Playing"
+                            Rectangle { width: 5; height: 20; color: "#1a1a2a"; radius: 1 }
+                            Rectangle { width: 5; height: 20; color: "#1a1a2a"; radius: 1 }
+                        }
+                        Canvas {
+                            anchors.centerIn: parent
+                            width: 16
+                            height: 18
+                            visible: player.playbackStatus !== "Playing"
+                            onPaint: {
+                                var ctx = getContext("2d");
+                                ctx.reset();
+                                ctx.fillStyle = "#1a1a2a";
+                                ctx.beginPath();
+                                ctx.moveTo(0, 0);
+                                ctx.lineTo(width, height / 2);
+                                ctx.lineTo(0, height);
+                                ctx.closePath();
+                                ctx.fill();
+                            }
+                        }
+                    }
+                    onClicked: player.togglePlay()
+                }
+
+                Button {
+                    flat: true
+                    onClicked: player.next()
+                    contentItem: Item {
+                        width: 24
+                        height: 24
+                        Row {
+                            anchors.centerIn: parent
+                            spacing: 2
+                            Canvas {
+                                width: 9; height: 12
+                                onPaint: {
+                                    var ctx = getContext("2d");
+                                    ctx.reset(); ctx.fillStyle = "#ffffff";
+                                    ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(width, height/2); ctx.lineTo(0, height); ctx.closePath(); ctx.fill();
+                                }
+                            }
+                            Rectangle { width: 3; height: 12; color: "#ffffff"; radius: 1 }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

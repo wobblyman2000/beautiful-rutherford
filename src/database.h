@@ -26,6 +26,7 @@ struct Track {
     int discNo = 1;
     double duration = 0.0;
     QString coverPath;
+    QString albumType;
 
     QJsonObject toJsonObject() const {
         QJsonObject obj;
@@ -40,6 +41,7 @@ struct Track {
         obj["discNo"] = discNo;
         obj["duration"] = duration;
         obj["coverPath"] = coverPath;
+        obj["albumType"] = albumType;
         return obj;
     }
 
@@ -56,6 +58,7 @@ struct Track {
         t.discNo = obj["discNo"].toInt(1);
         t.duration = obj["duration"].toDouble();
         t.coverPath = obj["coverPath"].toString();
+        t.albumType = obj["albumType"].toString(QStringLiteral("Studio Albums"));
         return t;
     }
 };
@@ -65,6 +68,9 @@ class Database : public QObject {
     Q_PROPERTY(QStringList musicDirs READ musicDirs WRITE setMusicDirs NOTIFY musicDirsChanged)
     Q_PROPERTY(QVariantList tracks READ tracksVariant NOTIFY tracksChanged)
     Q_PROPERTY(QVariantList collections READ collectionsVariant NOTIFY collectionsChanged)
+    Q_PROPERTY(QStringList allGenres READ allGenres NOTIFY tracksChanged)
+    Q_PROPERTY(QStringList allArtists READ allArtists NOTIFY tracksChanged)
+    Q_PROPERTY(QStringList allAlbums READ allAlbums NOTIFY tracksChanged)
 
 public:
     explicit Database(QObject *parent = nullptr);
@@ -79,13 +85,18 @@ public:
 
     QVariantList tracksVariant() const;
     QVariantList collectionsVariant() const;
+    
+    QStringList allGenres() const;
+    QStringList allArtists() const;
+    QStringList allAlbums() const;
 
     Q_INVOKABLE void addMusicDir(const QString &dir);
     Q_INVOKABLE void removeMusicDir(const QString &dir);
     
     // Smart Collections CRUD
-    Q_INVOKABLE void saveCollection(const QString &id, const QString &name, const QString &coverPath, const QVariantList &rules);
+    Q_INVOKABLE void saveCollection(const QString &id, const QString &name, const QString &coverPath, const QString &displayMode, const QVariantList &rules);
     Q_INVOKABLE void deleteCollection(const QString &id);
+    Q_INVOKABLE bool writeTrackTags(const QString &filePath, const QString &title, const QString &artist, const QString &album, const QString &genre, int year, const QString &albumType);
 
 signals:
     void musicDirsChanged();

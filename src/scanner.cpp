@@ -83,8 +83,9 @@ Track ScanWorker::parseTrack(const QString &filePath, const QString &coversCache
         t.duration = fileRef.audioProperties()->lengthInSeconds();
     }
 
-    // Try reading disc number tag (custom property)
+    // Try reading disc number tag (custom property) and album type
     int tagDiscNo = 1;
+    QString albumTypeVal = QStringLiteral("Studio Albums");
     if (!fileRef.isNull() && fileRef.file()) {
         // TagLib property mapping
         TagLib::PropertyMap properties = fileRef.file()->properties();
@@ -93,7 +94,28 @@ Track ScanWorker::parseTrack(const QString &filePath, const QString &coversCache
             int d = QString::fromStdString(properties["DISCNUMBER"].front().to8Bit(true)).toInt(&ok);
             if (ok) tagDiscNo = d;
         }
+        
+        QString rawType;
+        if (properties.contains("ALBUMTYPE")) {
+            rawType = QString::fromStdString(properties["ALBUMTYPE"].front().to8Bit(true)).trimmed();
+        } else if (properties.contains("ALBUM_TYPE")) {
+            rawType = QString::fromStdString(properties["ALBUM_TYPE"].front().to8Bit(true)).trimmed();
+        }
+        
+        if (!rawType.isEmpty()) {
+            QString typeLower = rawType.toLower();
+            if (typeLower.contains(QLatin1String("single"))) {
+                albumTypeVal = QStringLiteral("Singles");
+            } else if (typeLower.contains(QLatin1String("live"))) {
+                albumTypeVal = QStringLiteral("Live Albums");
+            } else if (typeLower.contains(QLatin1String("compilation")) || typeLower.contains(QLatin1String("greatest")) || typeLower.contains(QLatin1String("hits")) || typeLower.contains(QLatin1String("gold"))) {
+                albumTypeVal = QStringLiteral("Compilations");
+            } else {
+                albumTypeVal = QStringLiteral("Studio Albums");
+            }
+        }
     }
+    t.albumType = albumTypeVal;
 
     // Normalize CD/disc grouping
     auto albumNorm = normalizeAlbum(t.album, filePath, tagDiscNo);

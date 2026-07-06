@@ -88,18 +88,20 @@ Item {
             }
         }
 
-        // 4. Convert to list model format (only keep letters with items)
+        // 4. Convert to list model format (only keep letters with items to prevent scroll jitter)
         var resultModel = [];
         for (var idx = 0; idx < alphabet.length; ++idx) {
             var char = alphabet[idx];
             var list = letterGroups[char];
+            if (list.length === 0) continue;
+            
             // Sort albums alphabetically
             list.sort(function(x, y) { return x.name.localeCompare(y.name); });
             
             resultModel.push({
                 letter: char,
                 albums: list,
-                hasItems: list.length > 0
+                hasItems: true
             });
         }
         return resultModel;
@@ -205,6 +207,10 @@ Item {
             clip: true
             spacing: 24
             model: root.groupedAlbums
+
+            ScrollBar.vertical: ScrollBar {
+                policy: ScrollBar.AsNeeded
+            }
 
             delegate: ColumnLayout {
                 width: albumsListView.width
@@ -323,11 +329,24 @@ Item {
                                                 radius: width / 2
                                             }
 
-                                            contentItem: Image {
-                                                source: "image://theme/media-playback-start"
-                                                anchors.centerIn: parent
-                                                width: 18
-                                                height: 18
+                                            contentItem: Item {
+                                                anchors.fill: parent
+                                                Canvas {
+                                                    anchors.centerIn: parent
+                                                    width: 11
+                                                    height: 13
+                                                    onPaint: {
+                                                        var ctx = getContext("2d");
+                                                        ctx.reset();
+                                                        ctx.fillStyle = "#1a1a2a";
+                                                        ctx.beginPath();
+                                                        ctx.moveTo(0, 0);
+                                                        ctx.lineTo(width, height / 2);
+                                                        ctx.lineTo(0, height);
+                                                        ctx.closePath();
+                                                        ctx.fill();
+                                                    }
+                                                }
                                             }
 
                                             onClicked: {

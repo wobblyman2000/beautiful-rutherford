@@ -101,17 +101,19 @@ Item {
             }
         }
 
-        // 4. Final list model (keep empty check)
+        // 4. Final list model (only keep letters with items to prevent scroll jitter)
         var resultModel = [];
         for (var idx = 0; idx < alphabet.length; ++idx) {
             var char = alphabet[idx];
             var list = letterGroups[char];
+            if (list.length === 0) continue;
+            
             list.sort(function(x, y) { return x.name.localeCompare(y.name); });
             
             resultModel.push({
                 letter: char,
                 artists: list,
-                hasItems: list.length > 0
+                hasItems: true
             });
         }
         return resultModel;
@@ -213,6 +215,10 @@ Item {
             clip: true
             spacing: 24
             model: root.groupedArtists
+
+            ScrollBar.vertical: ScrollBar {
+                policy: ScrollBar.AsNeeded
+            }
 
             delegate: ColumnLayout {
                 width: artistsListView.width

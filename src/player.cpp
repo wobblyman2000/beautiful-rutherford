@@ -1,4 +1,5 @@
 #include "player.h"
+#include "database.h"
 
 Player* Player::m_instance = nullptr;
 
@@ -241,13 +242,34 @@ void Player::handleTrackEnded() {
     if (m_loopStatus == QLatin1String("Track")) {
         m_mediaPlayer->setPosition(0);
         m_mediaPlayer->play();
-    } else if (m_queueIndex < m_queue.size() - 1) {
-        playTrack(m_queueIndex + 1);
-    } else if (m_loopStatus == QLatin1String("Playlist")) {
-        playTrack(0);
     } else {
-        stop();
+        if (m_autoDJ && m_queueIndex >= m_queue.size() - 1) {
+            QVariantList allTracks = Database::instance()->tracksVariant();
+            if (!allTracks.isEmpty()) {
+                int randIdx = QRandomGenerator::global()->bounded(allTracks.size());
+                m_queue.append(allTracks[randIdx]);
+                emit queueChanged();
+            }
+        }
+
+        if (m_queueIndex < m_queue.size() - 1) {
+            playTrack(m_queueIndex + 1);
+        } else if (m_loopStatus == QLatin1String("Playlist")) {
+            playTrack(0);
+        } else {
+            stop();
+        }
     }
+}
+
+bool Player::autoDJ() const {
+    return m_autoDJ;
+}
+
+void Player::setAutoDJ(bool enabled) {
+    if (m_autoDJ == enabled) return;
+    m_autoDJ = enabled;
+    emit autoDJChanged();
 }
 
 void Player::onPositionChanged(qint64 ms) {

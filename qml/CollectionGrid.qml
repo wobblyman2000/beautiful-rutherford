@@ -77,19 +77,55 @@ Item {
             Layout.fillWidth: true
             Layout.fillHeight: true
             cellWidth: 194
-            cellHeight: 250
+            cellHeight: 265
             clip: true
             model: database.collections
 
+            ScrollBar.vertical: ScrollBar {
+                policy: ScrollBar.AsNeeded
+            }
+
             delegate: Rectangle {
                 width: 170
-                height: 230
+                height: 240
                 color: "#73191928"
                 border.color: colMouse.containsMouse ? "#1effffff" : "#12ffffff"
                 radius: 16
                 clip: true
 
                 property var matchedTracks: root.getCollectionTracks(modelData.rules)
+
+                MouseArea {
+                    id: colMouse
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    onClicked: {
+                        var relativePos = mapToItem(colPlayBtn, mouse.x, mouse.y);
+                        if (colPlayBtn.contains(relativePos)) {
+                            return;
+                        }
+                        
+                        // Mock as album and open details modal
+                        var mockAlbum = {
+                            id: modelData.id,
+                            name: modelData.name,
+                            artist: qsTr("Smart Collection"),
+                            year: 0,
+                            genre: "",
+                            coverPath: modelData.coverPath || "",
+                            displayMode: modelData.displayMode || "tracks",
+                            tracks: matchedTracks,
+                            discs: [1],
+                            totalDuration: matchedTracks.reduce(function(acc, val) { return acc + (val.duration || 0); }, 0)
+                        };
+                        window.openAlbum(mockAlbum);
+                    }
+                    onDoubleClicked: {
+                        if (matchedTracks.length > 0) {
+                            player.setQueue(matchedTracks, 0);
+                        }
+                    }
+                }
 
                 ColumnLayout {
                     anchors.fill: parent
@@ -98,8 +134,8 @@ Item {
 
                     // Cover Art Wrapper
                     Rectangle {
-                        Layout.preferredWidth: 150
-                        Layout.preferredHeight: 150
+                        Layout.preferredWidth: 130
+                        Layout.preferredHeight: 130
                         color: "#111111"
                         radius: 12
                         clip: true
@@ -141,11 +177,24 @@ Item {
                                     radius: width / 2
                                 }
 
-                                contentItem: Image {
-                                    source: "image://theme/media-playback-start"
-                                    anchors.centerIn: parent
-                                    width: 18
-                                    height: 18
+                                contentItem: Item {
+                                    anchors.fill: parent
+                                    Canvas {
+                                        anchors.centerIn: parent
+                                        width: 11
+                                        height: 13
+                                        onPaint: {
+                                            var ctx = getContext("2d");
+                                            ctx.reset();
+                                            ctx.fillStyle = "#1a1a2a";
+                                            ctx.beginPath();
+                                            ctx.moveTo(0, 0);
+                                            ctx.lineTo(width, height / 2);
+                                            ctx.lineTo(0, height);
+                                            ctx.closePath();
+                                            ctx.fill();
+                                        }
+                                    }
                                 }
 
                                 onClicked: {
@@ -176,59 +225,33 @@ Item {
 
                     // Edit / Delete buttons row
                     RowLayout {
-                        spacing: 8
-                        Layout.alignment: Qt.AlignRight
+                        Layout.fillWidth: true
                         Layout.preferredHeight: 24
 
                         Button {
-                            icon.name: "document-edit"
                             flat: true
-                            icon.width: 14
-                            icon.height: 14
                             onClicked: editCollection(modelData)
-                        }
-
-                        Button {
-                            icon.name: "edit-delete"
-                            flat: true
-                            icon.width: 14
-                            icon.height: 14
-                            onClicked: {
-                                if (confirm(qsTr("Delete collection '%1'?").arg(modelData.name))) {
-                                    database.deleteCollection(modelData.id);
-                                }
+                            contentItem: Text {
+                                text: qsTr("Edit")
+                                color: "#ffffff"
+                                font.pixelSize: 12
+                                font.weight: Font.Medium
+                                horizontalAlignment: Text.AlignLeft
                             }
                         }
-                    }
-                }
 
-                MouseArea {
-                    id: colMouse
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    onClicked: {
-                        var relativePos = mapToItem(colPlayBtn, mouse.x, mouse.y);
-                        if (colPlayBtn.contains(relativePos)) {
-                            return;
-                        }
-                        
-                        // Mock as album and open details modal
-                        var mockAlbum = {
-                            id: modelData.id,
-                            name: modelData.name,
-                            artist: qsTr("Smart Collection"),
-                            year: 0,
-                            genre: "",
-                            coverPath: modelData.coverPath || "",
-                            tracks: matchedTracks,
-                            discs: [1],
-                            totalDuration: matchedTracks.reduce(function(acc, val) { return acc + (val.duration || 0); }, 0)
-                        };
-                        window.openAlbum(mockAlbum);
-                    }
-                    onDoubleClicked: {
-                        if (matchedTracks.length > 0) {
-                            player.setQueue(matchedTracks, 0);
+                        Item { Layout.fillWidth: true }
+
+                        Button {
+                            flat: true
+                            onClicked: database.deleteCollection(modelData.id)
+                            contentItem: Text {
+                                text: qsTr("Delete")
+                                color: "#ff5555"
+                                font.pixelSize: 12
+                                font.weight: Font.Medium
+                                horizontalAlignment: Text.AlignRight
+                            }
                         }
                     }
                 }
@@ -248,7 +271,7 @@ Item {
 
         Rectangle {
             width: 500
-            height: 520
+            height: 570
             anchors.centerIn: parent
             color: "#1e1e30"
             border.color: "#14ffffff"
@@ -290,6 +313,18 @@ Item {
                         Layout.fillWidth: true
                         color: "#ffffff"
                         background: Rectangle { color: "#33000000"; border.color: "#14ffffff"; radius: 8 }
+                    }
+                }
+
+                // Display Mode Input
+                ColumnLayout {
+                    Layout.fillWidth: true
+                    spacing: 4
+                    Text { text: qsTr("Display Mode"); color: "#ffffff"; font.pixelSize: 13 }
+                    ComboBox {
+                        id: colDisplayModeCombo
+                        Layout.fillWidth: true
+                        model: ["Track List View", "Album Cover Grid"]
                     }
                 }
 
@@ -367,12 +402,49 @@ Item {
                                 }
 
                                 TextField {
-                                    id: ruleTextInput
-                                    text: modelData.value
+                                    id: ruleValueInput
+                                    text: modelData.value || ""
                                     Layout.fillWidth: true
                                     color: "#ffffff"
-                                    background: Rectangle { color: "#33000000"; border.color: "#14ffffff"; radius: 6 }
+                                    font.pixelSize: 13
                                     placeholderText: qsTr("Value")
+                                    background: Rectangle {
+                                        color: "#33000000"
+                                        border.color: "#14ffffff"
+                                        radius: 6
+                                    }
+                                }
+
+                                Button {
+                                    id: suggestBtn
+                                    icon.name: "arrow-down"
+                                    flat: true
+                                    icon.width: 14
+                                    icon.height: 14
+                                    visible: fieldCombo.currentIndex === 0 || fieldCombo.currentIndex === 1 || fieldCombo.currentIndex === 2
+                                    onClicked: suggestionsMenu.open()
+
+                                    Menu {
+                                        id: suggestionsMenu
+                                        y: parent.height
+                                        width: 220
+
+                                        Repeater {
+                                            model: {
+                                                var f = fieldCombo.currentIndex;
+                                                if (f === 1) return database.allArtists;
+                                                if (f === 2) return database.allGenres;
+                                                if (f === 0) return database.allAlbums;
+                                                return [];
+                                            }
+                                            delegate: MenuItem {
+                                                text: modelData
+                                                onTriggered: {
+                                                    ruleValueInput.text = modelData;
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
 
                                 Button {
@@ -428,7 +500,8 @@ Item {
                                 }
                             }
 
-                            database.saveCollection(editDialog.colId, colNameInput.text.trim(), colCoverInput.text.trim(), updatedRules);
+                            var displayMode = colDisplayModeCombo.currentIndex === 1 ? "albums" : "tracks";
+                            database.saveCollection(editDialog.colId, colNameInput.text.trim(), colCoverInput.text.trim(), displayMode, updatedRules);
                             editDialog.visible = false;
                         }
                     }
@@ -442,6 +515,7 @@ Item {
             editDialog.colId = collection.id;
             colNameInput.text = collection.name;
             colCoverInput.text = collection.coverPath || "";
+            colDisplayModeCombo.currentIndex = (collection.displayMode === "albums") ? 1 : 0;
             // Construct a deep copy of rules list
             var list = [];
             for (var i = 0; i < collection.rules.length; ++i) {
@@ -456,6 +530,7 @@ Item {
             editDialog.colId = "";
             colNameInput.text = "";
             colCoverInput.text = "";
+            colDisplayModeCombo.currentIndex = 0;
             editDialog.rulesModel = [{ field: "album", operator: "contains", value: "" }];
         }
         editDialog.visible = true;

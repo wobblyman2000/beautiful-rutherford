@@ -46,6 +46,7 @@ qt_add_qml_module(aether
         qml/GenreGrid.qml
         qml/CollectionGrid.qml
         qml/AlbumModal.qml
+        qml/ArtistModal.qml
 )
 
 # Link libraries

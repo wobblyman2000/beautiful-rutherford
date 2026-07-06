@@ -1,48 +1,15 @@
 {
     "collections": [
         {
-            "coverPath": "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=400&auto=format&fit=crop",
-            "id": "col-christmas-soundtracks",
-            "name": "Christmas Soundtracks",
-            "rules": [
-                {
-                    "field": "album",
-                    "operator": "contains",
-                    "value": "Home"
-                },
-                {
-                    "field": "genre",
-                    "operator": "contains",
-                    "value": "Christmas"
-                }
-            ]
-        },
-        {
-            "coverPath": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400&auto=format&fit=crop",
-            "id": "col-beatles-pop",
-            "name": "Beatles Pop",
+            "coverPath": "",
+            "displayMode": "albums",
+            "id": "col-1783301561019",
+            "name": "TEST",
             "rules": [
                 {
                     "field": "artist",
                     "operator": "contains",
-                    "value": "Beatles"
-                },
-                {
-                    "field": "genre",
-                    "operator": "contains",
-                    "value": "Pop"
-                }
-            ]
-        },
-        {
-            "coverPath": "https://i.etsystatic.com/36820080/r/il/ed0168/4086710949/il_fullxfull.4086710949_c44z.jpg",
-            "id": "col-1783120077775",
-            "name": "Rock",
-            "rules": [
-                {
-                    "field": "genre",
-                    "operator": "contains",
-                    "value": "Rock"
+                    "value": "Choirboys"
                 }
             ]
         }
@@ -55,6 +22,7 @@
     "tracks": [
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -68,6 +36,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -81,6 +50,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -94,6 +64,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -107,6 +78,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -120,6 +92,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -133,6 +106,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -146,6 +120,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -159,6 +134,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -172,6 +148,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -185,6 +162,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -198,6 +176,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -211,6 +190,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -224,6 +204,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -237,6 +218,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -250,6 +232,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -263,6 +246,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -276,6 +260,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -289,6 +274,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -302,6 +288,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -315,6 +302,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -328,6 +316,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -341,6 +330,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -354,6 +344,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -367,6 +358,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -380,6 +372,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -393,6 +386,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -406,6 +400,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -419,6 +414,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -432,6 +428,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -445,6 +442,7 @@
         },
         {
             "album": "All Of Me",
+            "albumType": "Studio Albums",
             "artist": "Anne Murray",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/37c2a75cc2a1b033e8169c0a9068e340.jpg",
             "discNo": 1,
@@ -458,6 +456,7 @@
         },
         {
             "album": "Abba Greatest Hits Vol.2",
+            "albumType": "Studio Albums",
             "artist": "ABBA",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/614ac6e5f884e7df9e8999eb01d9a948.jpg",
             "discNo": 1,
@@ -471,6 +470,7 @@
         },
         {
             "album": "Abba Greatest Hits Vol.2",
+            "albumType": "Studio Albums",
             "artist": "ABBA",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/614ac6e5f884e7df9e8999eb01d9a948.jpg",
             "discNo": 1,
@@ -484,6 +484,7 @@
         },
         {
             "album": "Abba Greatest Hits Vol.2",
+            "albumType": "Studio Albums",
             "artist": "ABBA",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/614ac6e5f884e7df9e8999eb01d9a948.jpg",
             "discNo": 1,
@@ -497,6 +498,7 @@
         },
         {
             "album": "Abba Greatest Hits Vol.2",
+            "albumType": "Studio Albums",
             "artist": "ABBA",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/614ac6e5f884e7df9e8999eb01d9a948.jpg",
             "discNo": 1,
@@ -510,6 +512,7 @@
         },
         {
             "album": "Abba Greatest Hits Vol.2",
+            "albumType": "Studio Albums",
             "artist": "ABBA",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/614ac6e5f884e7df9e8999eb01d9a948.jpg",
             "discNo": 1,
@@ -523,6 +526,7 @@
         },
         {
             "album": "Abba Greatest Hits Vol.2",
+            "albumType": "Studio Albums",
             "artist": "ABBA",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/614ac6e5f884e7df9e8999eb01d9a948.jpg",
             "discNo": 1,
@@ -536,6 +540,7 @@
         },
         {
             "album": "Abba Greatest Hits Vol.2",
+            "albumType": "Studio Albums",
             "artist": "ABBA",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/614ac6e5f884e7df9e8999eb01d9a948.jpg",
             "discNo": 1,
@@ -549,6 +554,7 @@
         },
         {
             "album": "Abba Greatest Hits Vol.2",
+            "albumType": "Studio Albums",
             "artist": "ABBA",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/614ac6e5f884e7df9e8999eb01d9a948.jpg",
             "discNo": 1,
@@ -562,6 +568,7 @@
         },
         {
             "album": "Abba Greatest Hits Vol.2",
+            "albumType": "Studio Albums",
             "artist": "ABBA",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/614ac6e5f884e7df9e8999eb01d9a948.jpg",
             "discNo": 1,
@@ -575,6 +582,7 @@
         },
         {
             "album": "Abba Greatest Hits Vol.2",
+            "albumType": "Studio Albums",
             "artist": "ABBA",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/614ac6e5f884e7df9e8999eb01d9a948.jpg",
             "discNo": 1,
@@ -588,6 +596,7 @@
         },
         {
             "album": "Abba Greatest Hits Vol.2",
+            "albumType": "Studio Albums",
             "artist": "ABBA",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/614ac6e5f884e7df9e8999eb01d9a948.jpg",
             "discNo": 1,
@@ -601,6 +610,7 @@
         },
         {
             "album": "Abba Greatest Hits Vol.2",
+            "albumType": "Studio Albums",
             "artist": "ABBA",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/614ac6e5f884e7df9e8999eb01d9a948.jpg",
             "discNo": 1,
@@ -614,6 +624,7 @@
         },
         {
             "album": "Abba Greatest Hits Vol.2",
+            "albumType": "Studio Albums",
             "artist": "ABBA",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/614ac6e5f884e7df9e8999eb01d9a948.jpg",
             "discNo": 1,
@@ -627,6 +638,7 @@
         },
         {
             "album": "Abba Greatest Hits Vol.2",
+            "albumType": "Studio Albums",
             "artist": "ABBA",
             "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/614ac6e5f884e7df9e8999eb01d9a948.jpg",
             "discNo": 1,
@@ -637,6 +649,244 @@
             "title": "Thank You For The Music",
             "trackNo": 14,
             "year": 1979
+        },
+        {
+            "album": "Fireworks (12'' Single)",
+            "albumType": "Studio Albums",
+            "artist": "Choirboys",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/904351b1f49923a40101f6a6dca6939e.jpg",
+            "discNo": 1,
+            "duration": 236,
+            "filePath": "/home/dave/1111111111111111/C/Choirboys - 1986 - Fireworks (12'' Single) FLAC/01 Fireworks.flac",
+            "genre": "Unknown",
+            "id": "8958918909eb7903e80bf55f731e1a3f",
+            "title": "Fireworks",
+            "trackNo": 1,
+            "year": 1986
+        },
+        {
+            "album": "Unknown Album",
+            "albumType": "Studio Albums",
+            "artist": "Unknown Artist",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/5167e79c227da8ec6b2bef58e5d0f2ce.jpg",
+            "discNo": 1,
+            "duration": 0,
+            "filePath": "/home/dave/1111111111111111/C/Choirboys - 1986 - Fireworks (12'' Single) FLAC/02 We Can Dance.flac",
+            "genre": "Unknown",
+            "id": "dc33f5d45a01026719f18b2479b1567c",
+            "title": "02 We Can Dance",
+            "trackNo": 0,
+            "year": 0
+        },
+        {
+            "album": "Fireworks (12'' Single)",
+            "albumType": "Studio Albums",
+            "artist": "Choirboys",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/904351b1f49923a40101f6a6dca6939e.jpg",
+            "discNo": 1,
+            "duration": 252,
+            "filePath": "/home/dave/1111111111111111/C/Choirboys - 1986 - Fireworks (12'' Single) FLAC/03 When You're Young.flac",
+            "genre": "Unknown",
+            "id": "ceff3eaaf97e028ba22e0063bf9cf26a",
+            "title": "When You're Young",
+            "trackNo": 3,
+            "year": 1986
+        },
+        {
+            "album": "Big Bad Noise",
+            "albumType": "Studio Albums",
+            "artist": "Choirboys",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/939c1cd627594b3b813db6de7c8bee70.jpg",
+            "discNo": 1,
+            "duration": 248,
+            "filePath": "/home/dave/1111111111111111/C/Choirboys - 1987 - Big Bad Noise FLAC/01 Run To Paradise.flac",
+            "genre": "Rock",
+            "id": "c32d877bff899d3e7644ce58112cdcb0",
+            "title": "Run To Paradise",
+            "trackNo": 1,
+            "year": 1987
+        },
+        {
+            "album": "Big Bad Noise",
+            "albumType": "Studio Albums",
+            "artist": "Choirboys",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/939c1cd627594b3b813db6de7c8bee70.jpg",
+            "discNo": 1,
+            "duration": 230,
+            "filePath": "/home/dave/1111111111111111/C/Choirboys - 1987 - Big Bad Noise FLAC/02 Struggle Town.flac",
+            "genre": "Rock",
+            "id": "f297b730498ef42a32f8b2c3e7740967",
+            "title": "Struggle Town",
+            "trackNo": 2,
+            "year": 1987
+        },
+        {
+            "album": "Big Bad Noise",
+            "albumType": "Studio Albums",
+            "artist": "Choirboys",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/939c1cd627594b3b813db6de7c8bee70.jpg",
+            "discNo": 1,
+            "duration": 207,
+            "filePath": "/home/dave/1111111111111111/C/Choirboys - 1987 - Big Bad Noise FLAC/03 Boys Will Be Boys.flac",
+            "genre": "Rock",
+            "id": "c528f66fc0a80f14aaecc780972dc2b9",
+            "title": "Boys Will Be Boys",
+            "trackNo": 3,
+            "year": 1987
+        },
+        {
+            "album": "Big Bad Noise",
+            "albumType": "Studio Albums",
+            "artist": "Choirboys",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/939c1cd627594b3b813db6de7c8bee70.jpg",
+            "discNo": 1,
+            "duration": 215,
+            "filePath": "/home/dave/1111111111111111/C/Choirboys - 1987 - Big Bad Noise FLAC/04 Brave New World.flac",
+            "genre": "Rock",
+            "id": "92d2be7d5c0a260953bc6c92af5118f0",
+            "title": "Brave New World",
+            "trackNo": 4,
+            "year": 1987
+        },
+        {
+            "album": "Big Bad Noise",
+            "albumType": "Studio Albums",
+            "artist": "Choirboys",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/939c1cd627594b3b813db6de7c8bee70.jpg",
+            "discNo": 1,
+            "duration": 210,
+            "filePath": "/home/dave/1111111111111111/C/Choirboys - 1987 - Big Bad Noise FLAC/05 Guilty.flac",
+            "genre": "Rock",
+            "id": "d0cf549eeb22dd52ab14f79cf379535b",
+            "title": "Guilty",
+            "trackNo": 5,
+            "year": 1987
+        },
+        {
+            "album": "Big Bad Noise",
+            "albumType": "Studio Albums",
+            "artist": "Choirboys",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/939c1cd627594b3b813db6de7c8bee70.jpg",
+            "discNo": 1,
+            "duration": 245,
+            "filePath": "/home/dave/1111111111111111/C/Choirboys - 1987 - Big Bad Noise FLAC/06 Like Fire.flac",
+            "genre": "Rock",
+            "id": "f8fa016473f9b3f36c80e2a8621f1dbc",
+            "title": "Like Fire",
+            "trackNo": 6,
+            "year": 1987
+        },
+        {
+            "album": "Big Bad Noise",
+            "albumType": "Studio Albums",
+            "artist": "Choirboys",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/939c1cd627594b3b813db6de7c8bee70.jpg",
+            "discNo": 1,
+            "duration": 219,
+            "filePath": "/home/dave/1111111111111111/C/Choirboys - 1987 - Big Bad Noise FLAC/07 Big Bad Noise.flac",
+            "genre": "Rock",
+            "id": "a79bf9afb8c19975857b469a40b021d5",
+            "title": "Big Bad Noise",
+            "trackNo": 7,
+            "year": 1987
+        },
+        {
+            "album": "Big Bad Noise",
+            "albumType": "Studio Albums",
+            "artist": "Choirboys",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/939c1cd627594b3b813db6de7c8bee70.jpg",
+            "discNo": 1,
+            "duration": 272,
+            "filePath": "/home/dave/1111111111111111/C/Choirboys - 1987 - Big Bad Noise FLAC/08 Fireworks.flac",
+            "genre": "Rock",
+            "id": "a47441e446aeaaf1dc0d274d29272484",
+            "title": "Fireworks",
+            "trackNo": 8,
+            "year": 1987
+        },
+        {
+            "album": "Big Bad Noise",
+            "albumType": "Studio Albums",
+            "artist": "Choirboys",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/939c1cd627594b3b813db6de7c8bee70.jpg",
+            "discNo": 1,
+            "duration": 236,
+            "filePath": "/home/dave/1111111111111111/C/Choirboys - 1987 - Big Bad Noise FLAC/09 Gasoline.flac",
+            "genre": "Rock",
+            "id": "628c2ed759b53468a454e622690948ab",
+            "title": "Gasoline",
+            "trackNo": 9,
+            "year": 1987
+        },
+        {
+            "album": "Big Bad Noise",
+            "albumType": "Studio Albums",
+            "artist": "Choirboys",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/939c1cd627594b3b813db6de7c8bee70.jpg",
+            "discNo": 1,
+            "duration": 208,
+            "filePath": "/home/dave/1111111111111111/C/Choirboys - 1987 - Big Bad Noise FLAC/10 One Hot Day.flac",
+            "genre": "Rock",
+            "id": "4ffc99199d261b516d92b43ffc6733a1",
+            "title": "One Hot Day",
+            "trackNo": 10,
+            "year": 1987
+        },
+        {
+            "album": "Big Bad Noise",
+            "albumType": "Studio Albums",
+            "artist": "Choirboys",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/939c1cd627594b3b813db6de7c8bee70.jpg",
+            "discNo": 1,
+            "duration": 229,
+            "filePath": "/home/dave/1111111111111111/C/Choirboys - 1987 - Big Bad Noise FLAC/11 Last Night Of My Life.flac",
+            "genre": "Rock",
+            "id": "75034344b322504c55675aaac257ec85",
+            "title": "Last Night Of My Life",
+            "trackNo": 11,
+            "year": 1987
+        },
+        {
+            "album": "Big Bad Noise",
+            "albumType": "Studio Albums",
+            "artist": "Choirboys",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/939c1cd627594b3b813db6de7c8bee70.jpg",
+            "discNo": 1,
+            "duration": 215,
+            "filePath": "/home/dave/1111111111111111/C/Choirboys - 1987 - Big Bad Noise FLAC/12 Struck By Lightning.flac",
+            "genre": "Rock",
+            "id": "55a96e9938159df982da462ac02871fb",
+            "title": "Struck By Lightning",
+            "trackNo": 12,
+            "year": 1987
+        },
+        {
+            "album": "Big Bad Noise",
+            "albumType": "Studio Albums",
+            "artist": "Choirboys",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/939c1cd627594b3b813db6de7c8bee70.jpg",
+            "discNo": 1,
+            "duration": 281,
+            "filePath": "/home/dave/1111111111111111/C/Choirboys - 1987 - Big Bad Noise FLAC/13 James Dale.flac",
+            "genre": "Rock",
+            "id": "05b00f6168d4a137527c0e04188ccd82",
+            "title": "James Dale",
+            "trackNo": 13,
+            "year": 1987
+        },
+        {
+            "album": "The Absolutely Essential 3 CD Collection",
+            "albumType": "Studio Albums",
+            "artist": "Cliff Richard",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/00f4f2e215cda2baae2c6d84e05bc38c.jpg",
+            "discNo": 2,
+            "duration": 109,
+            "filePath": "/home/dave/1111111111111111/C/Cliff Richard/2-10 - Lamp Of Love.flac",
+            "genre": "Rock",
+            "id": "b382cd059c3232ada5170a3013723288",
+            "title": "Lamp Of Love",
+            "trackNo": 10,
+            "year": 2015
         }
     ]
 }
