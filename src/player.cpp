@@ -12,6 +12,10 @@ Player::Player(QObject *parent) : QObject(parent) {
 
     m_audioOutput->setVolume(0.8); // Default volume
 
+    m_autoDJGenre = QString();
+    m_autoDJArtist = QString();
+    m_autoDJAlbumArtist = QString();
+
     connect(m_mediaPlayer, &QMediaPlayer::positionChanged, this, &Player::onPositionChanged);
     connect(m_mediaPlayer, &QMediaPlayer::durationChanged, this, &Player::onDurationChanged);
     connect(m_mediaPlayer, &QMediaPlayer::playbackStateChanged, this, &Player::onPlaybackStateChanged);
@@ -169,6 +173,17 @@ void Player::next() {
     if (m_queue.isEmpty()) return;
     if (m_queueIndex < m_queue.size() - 1) {
         playTrack(m_queueIndex + 1);
+    } else if (m_autoDJ) {
+        // HUMAN-READABLE COMMENT:
+        // If the user manually skips to the next track while at the end of the queue
+        // and Auto-DJ is enabled, automatically query matching tracks, append one, and play it.
+        QVariantList matchingTracks = getAutoDJMatchingTracks();
+        if (!matchingTracks.isEmpty()) {
+            int randIdx = QRandomGenerator::global()->bounded(matchingTracks.size());
+            m_queue.append(matchingTracks[randIdx]);
+            emit queueChanged();
+            playTrack(m_queueIndex + 1);
+        }
     } else if (m_loopStatus == QLatin1String("Playlist")) {
         playTrack(0);
     }
@@ -244,10 +259,12 @@ void Player::handleTrackEnded() {
         m_mediaPlayer->play();
     } else {
         if (m_autoDJ && m_queueIndex >= m_queue.size() - 1) {
-            QVariantList allTracks = Database::instance()->tracksVariant();
-            if (!allTracks.isEmpty()) {
-                int randIdx = QRandomGenerator::global()->bounded(allTracks.size());
-                m_queue.append(allTracks[randIdx]);
+            // HUMAN-READABLE COMMENT:
+            // Fetch next track that matches the currently configured Auto-DJ filters.
+            QVariantList matchingTracks = getAutoDJMatchingTracks();
+            if (!matchingTracks.isEmpty()) {
+                int randIdx = QRandomGenerator::global()->bounded(matchingTracks.size());
+                m_queue.append(matchingTracks[randIdx]);
                 emit queueChanged();
             }
         }
@@ -274,13 +291,13 @@ void Player::setAutoDJ(bool enabled) {
     // HUMAN-READABLE COMMENT:
     // When the Auto-DJ feature is toggled on, check if the play queue is currently empty
     // or if the player is currently in a stopped state. If so, automatically query the
-    // database for all scanned tracks, select a random track, populate the playback queue,
-    // and start playing immediately. This allows Auto-DJ to initiate playback automatically.
+    // database for tracks matching the configured filters, select a random track, populate
+    // the playback queue, and start playing immediately.
     if (m_autoDJ && (m_queue.isEmpty() || m_mediaPlayer->playbackState() == QMediaPlayer::StoppedState)) {
-        QVariantList allTracks = Database::instance()->tracksVariant();
-        if (!allTracks.isEmpty()) {
-            int randIdx = QRandomGenerator::global()->bounded(allTracks.size());
-            setQueue(QVariantList() << allTracks[randIdx], 0);
+        QVariantList matchingTracks = getAutoDJMatchingTracks();
+        if (!matchingTracks.isEmpty()) {
+            int randIdx = QRandomGenerator::global()->bounded(matchingTracks.size());
+            setQueue(QVariantList() << matchingTracks[randIdx], 0);
         }
     }
 }
@@ -304,4 +321,116 @@ void Player::onMediaStatusChanged(QMediaPlayer::MediaStatus status) {
     if (status == QMediaPlayer::EndOfMedia) {
         handleTrackEnded();
     }
+}
+
+QString Player::autoDJGenre() const {
+    return m_autoDJGenre;
+}
+
+void Player::setAutoDJGenre(const QString &genre) {
+    if (m_autoDJGenre == genre) return;
+    m_autoDJGenre = genre;
+    emit autoDJGenreChanged();
+}
+
+QString Player::autoDJArtist() const {
+    return m_autoDJArtist;
+}
+
+void Player::setAutoDJArtist(const QString &artist) {
+    if (m_autoDJArtist == artist) return;
+    m_autoDJArtist = artist;
+    emit autoDJArtistChanged();
+}
+
+QString Player::autoDJAlbumArtist() const {
+    return m_autoDJAlbumArtist;
+}
+
+void Player::setAutoDJAlbumArtist(const QString &albumArtist) {
+    if (m_autoDJAlbumArtist == albumArtist) return;
+    m_autoDJAlbumArtist = albumArtist;
+    emit autoDJAlbumArtistChanged();
+}
+
+void Player::clearQueue() {
+    // HUMAN-READABLE COMMENT:
+    // Stops current track playback and completely empties the queue list and indexes.
+    // Emits notify signals so that the QML queue view updates instantly.
+    stop();
+    m_queue.clear();
+    m_originalQueue.clear();
+    m_queueIndex = -1;
+    emit queueChanged();
+    emit queueIndexChanged();
+    emit currentTrackChanged();
+}
+
+void Player::removeQueueIndex(int index) {
+    // HUMAN-READABLE COMMENT:
+    // Removes a specific track index from the current queue.
+    // Handles active index re-adjustments and triggers correct track updates.
+    if (index < 0 || index >= m_queue.size()) return;
+    m_queue.removeAt(index);
+    emit queueChanged();
+
+    if (m_queueIndex == index) {
+        if (m_queue.isEmpty()) {
+            stop();
+        } else {
+            if (m_queueIndex >= m_queue.size()) {
+                m_queueIndex = m_queue.size() - 1;
+            }
+            emit queueIndexChanged();
+            playTrack(m_queueIndex);
+        }
+    } else if (m_queueIndex > index) {
+        m_queueIndex--;
+        emit queueIndexChanged();
+    }
+}
+
+QVariantList Player::getAutoDJMatchingTracks() {
+    // HUMAN-READABLE COMMENT:
+    // Performs database track filtering for Auto-DJ. If a Genre, Artist, or Album Artist
+    // filter is active, it runs case-insensitive matches against each database track.
+    // Falls back to all database tracks if no matches are found, so player never stalls.
+    QVariantList allTracks = Database::instance()->tracksVariant();
+    if (m_autoDJGenre.isEmpty() && m_autoDJArtist.isEmpty() && m_autoDJAlbumArtist.isEmpty()) {
+        return allTracks;
+    }
+
+    QVariantList matching;
+    for (const QVariant &trackVar : allTracks) {
+        QVariantMap t = trackVar.toMap();
+
+        if (!m_autoDJGenre.isEmpty()) {
+            QString g = t["genre"].toString().trimmed();
+            if (g.compare(m_autoDJGenre.trimmed(), Qt::CaseInsensitive) != 0) {
+                continue;
+            }
+        }
+
+        if (!m_autoDJArtist.isEmpty()) {
+            QString a = t["artist"].toString().trimmed();
+            if (a.compare(m_autoDJArtist.trimmed(), Qt::CaseInsensitive) != 0) {
+                continue;
+            }
+        }
+
+        if (!m_autoDJAlbumArtist.isEmpty()) {
+            QString aa = t["artist"].toString().trimmed(); // Various Artists matching
+            if (aa.compare(m_autoDJAlbumArtist.trimmed(), Qt::CaseInsensitive) != 0) {
+                continue;
+            }
+        }
+
+        matching.append(trackVar);
+    }
+
+    if (matching.isEmpty()) {
+        qDebug() << "Auto-DJ: No matching tracks found for specified filters. Falling back to all tracks.";
+        return allTracks;
+    }
+    return matching;
 }

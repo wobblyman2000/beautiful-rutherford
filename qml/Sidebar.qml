@@ -102,6 +102,12 @@ Rectangle {
             }
 
             NavButton {
+                text: qsTr("Auto-DJ")
+                pageKey: "autodj"
+                iconName: "media-playlist-shuffle"
+            }
+
+            NavButton {
                 text: qsTr("Settings")
                 pageKey: "settings"
                 iconName: "settings-configure"

@@ -22,6 +22,9 @@ class Player : public QObject {
     Q_PROPERTY(QString loopStatus READ loopStatus WRITE setLoopStatus NOTIFY loopStatusChanged)
     Q_PROPERTY(QVariantList queue READ queue NOTIFY queueChanged)
     Q_PROPERTY(bool autoDJ READ autoDJ WRITE setAutoDJ NOTIFY autoDJChanged)
+    Q_PROPERTY(QString autoDJGenre READ autoDJGenre WRITE setAutoDJGenre NOTIFY autoDJGenreChanged)
+    Q_PROPERTY(QString autoDJArtist READ autoDJArtist WRITE setAutoDJArtist NOTIFY autoDJArtistChanged)
+    Q_PROPERTY(QString autoDJAlbumArtist READ autoDJAlbumArtist WRITE setAutoDJAlbumArtist NOTIFY autoDJAlbumArtistChanged)
 
 public:
     explicit Player(QObject *parent = nullptr);
@@ -39,6 +42,13 @@ public:
     bool autoDJ() const;
     void setAutoDJ(bool enabled);
 
+    QString autoDJGenre() const;
+    void setAutoDJGenre(const QString &genre);
+    QString autoDJArtist() const;
+    void setAutoDJArtist(const QString &artist);
+    QString autoDJAlbumArtist() const;
+    void setAutoDJAlbumArtist(const QString &albumArtist);
+
     void setVolume(double volume);
     void setPosition(double positionSeconds);
     void setShuffle(bool enabled);
@@ -52,6 +62,10 @@ public:
     Q_INVOKABLE void previous();
     
     Q_INVOKABLE void setQueue(const QVariantList &tracks, int startIndex);
+    Q_INVOKABLE void clearQueue();
+    Q_INVOKABLE void removeQueueIndex(int index);
+
+    QVariantList getAutoDJMatchingTracks();
 
 signals:
     void currentTrackChanged();
@@ -64,6 +78,9 @@ signals:
     void loopStatusChanged();
     void queueChanged();
     void autoDJChanged();
+    void autoDJGenreChanged();
+    void autoDJArtistChanged();
+    void autoDJAlbumArtistChanged();
 
     // Signal emitted when seek completes
     void seeked(double positionSeconds);
@@ -87,6 +104,10 @@ private:
     bool m_shuffle = false;
     bool m_autoDJ = false;
     QString m_loopStatus = QStringLiteral("None"); // None, Track, Playlist
+
+    QString m_autoDJGenre;
+    QString m_autoDJArtist;
+    QString m_autoDJAlbumArtist;
 
     static Player* m_instance;
 };

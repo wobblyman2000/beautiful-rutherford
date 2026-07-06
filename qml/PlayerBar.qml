@@ -409,7 +409,7 @@ Rectangle {
 
     Popup {
         id: eqPopup
-        x: muteBtn.x - width/2
+        x: root.width - width - 20
         y: -height - 10
         width: 320
         height: 220

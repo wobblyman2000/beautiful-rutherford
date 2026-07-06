@@ -7,7 +7,7 @@ ApplicationWindow {
     width: 1100
     height: 720
     visible: true
-    visibility: isTheaterMode ? ApplicationWindow.FullScreen : ApplicationWindow.Windowed
+    visibility: window.isCompactMode ? ApplicationWindow.Windowed : ApplicationWindow.FullScreen
     title: qsTr("Aether Player")
     
     // Global properties
@@ -16,6 +16,14 @@ ApplicationWindow {
     property bool isCompactMode: false
     property bool isTheaterMode: false
     property bool autoTheaterEnabled: false
+
+    onAutoTheaterEnabledChanged: {
+        if (!autoTheaterEnabled) {
+            inactivityTimer.stop();
+        } else {
+            inactivityTimer.restart();
+        }
+    }
 
     onIsCompactModeChanged: {
         if (isCompactMode) {
@@ -189,6 +197,269 @@ ApplicationWindow {
                     CollectionGrid {
                         anchors.fill: parent
                         visible: window.activePage === "collections"
+                    }
+
+                    // Auto-DJ Dashboard Page
+                    RowLayout {
+                        anchors.fill: parent
+                        anchors.margins: 30
+                        spacing: 24
+                        visible: window.activePage === "autodj"
+
+                        // Left Pane: Filters & Configuration
+                        Rectangle {
+                            Layout.preferredWidth: 360
+                            Layout.fillHeight: true
+                            color: "#73191928"
+                            border.color: "#14ffffff"
+                            border.width: 1
+                            radius: 16
+
+                            ColumnLayout {
+                                anchors.fill: parent
+                                anchors.margins: 20
+                                spacing: 16
+
+                                Text {
+                                    text: qsTr("Auto-DJ Settings")
+                                    color: "#ffffff"
+                                    font.pixelSize: 20
+                                    font.weight: Font.Bold
+                                }
+
+                                RowLayout {
+                                    Layout.fillWidth: true
+                                    spacing: 12
+                                    Switch {
+                                        id: autoDJViewSwitch
+                                        checked: player.autoDJ
+                                        onCheckedChanged: player.autoDJ = checked
+                                    }
+                                    Text {
+                                        text: qsTr("Enable Auto-DJ")
+                                        color: "#ffffff"
+                                        font.pixelSize: 14
+                                        font.weight: Font.Medium
+                                    }
+                                }
+
+                                Rectangle {
+                                    Layout.fillWidth: true
+                                    height: 1
+                                    color: "#14ffffff"
+                                }
+
+                                Text {
+                                    text: qsTr("Queue Filter Rules")
+                                    color: "#00f2fe"
+                                    font.pixelSize: 15
+                                    font.weight: Font.Bold
+                                }
+
+                                // Genre Filter
+                                ColumnLayout {
+                                    Layout.fillWidth: true
+                                    spacing: 4
+                                    Text { text: qsTr("Filter by Genre"); color: "#9ea2c0"; font.pixelSize: 12 }
+                                    TextField {
+                                        id: filterGenre
+                                        Layout.fillWidth: true
+                                        placeholderText: qsTr("e.g. Christmas, Rock, Country")
+                                        text: player.autoDJGenre
+                                        color: "#ffffff"
+                                        background: Rectangle { color: "#33000000"; border.color: "#14ffffff"; radius: 6 }
+                                        onEditingFinished: player.autoDJGenre = text.trim()
+                                    }
+                                }
+
+                                // Artist Filter
+                                ColumnLayout {
+                                    Layout.fillWidth: true
+                                    spacing: 4
+                                    Text { text: qsTr("Filter by Artist"); color: "#9ea2c0"; font.pixelSize: 12 }
+                                    TextField {
+                                        id: filterArtist
+                                        Layout.fillWidth: true
+                                        placeholderText: qsTr("e.g. ABBA, Queen")
+                                        text: player.autoDJArtist
+                                        color: "#ffffff"
+                                        background: Rectangle { color: "#33000000"; border.color: "#14ffffff"; radius: 6 }
+                                        onEditingFinished: player.autoDJArtist = text.trim()
+                                    }
+                                }
+
+                                // Album Artist Filter
+                                ColumnLayout {
+                                    Layout.fillWidth: true
+                                    spacing: 4
+                                    Text { text: qsTr("Filter by Album Artist"); color: "#9ea2c0"; font.pixelSize: 12 }
+                                    TextField {
+                                        id: filterAlbumArtist
+                                        Layout.fillWidth: true
+                                        placeholderText: qsTr("e.g. Various Artists")
+                                        text: player.autoDJAlbumArtist
+                                        color: "#ffffff"
+                                        background: Rectangle { color: "#33000000"; border.color: "#14ffffff"; radius: 6 }
+                                        onEditingFinished: player.autoDJAlbumArtist = text.trim()
+                                    }
+                                }
+
+                                Button {
+                                    text: qsTr("Reset Filters")
+                                    Layout.fillWidth: true
+                                    onClicked: {
+                                        filterGenre.text = "";
+                                        filterArtist.text = "";
+                                        filterAlbumArtist.text = "";
+                                        player.autoDJGenre = "";
+                                        player.autoDJArtist = "";
+                                        player.autoDJAlbumArtist = "";
+                                    }
+                                }
+
+                                Item { Layout.fillHeight: true }
+                            }
+                        }
+
+                        // Right Pane: Minimal Queue Inspector
+                        Rectangle {
+                            Layout.fillWidth: true
+                            Layout.fillHeight: true
+                            color: "#73191928"
+                            border.color: "#14ffffff"
+                            border.width: 1
+                            radius: 16
+
+                            ColumnLayout {
+                                anchors.fill: parent
+                                anchors.margins: 20
+                                spacing: 14
+
+                                RowLayout {
+                                    Layout.fillWidth: true
+                                    Text {
+                                        text: qsTr("Current Queue List")
+                                        color: "#ffffff"
+                                        font.pixelSize: 20
+                                        font.weight: Font.Bold
+                                    }
+                                    Item { Layout.fillWidth: true }
+                                    Button {
+                                        text: qsTr("Clear Queue")
+                                        flat: true
+                                        contentItem: Text { text: qsTr("Clear Queue"); color: "#ff5555"; font.weight: Font.Bold }
+                                        onClicked: player.clearQueue()
+                                    }
+                                }
+
+                                ScrollView {
+                                    Layout.fillWidth: true
+                                    Layout.fillHeight: true
+                                    clip: true
+
+                                    ListView {
+                                        id: queueListView
+                                        model: player.queue
+                                        spacing: 4
+
+                                        delegate: Rectangle {
+                                            width: queueListView.width
+                                            height: 48
+                                            color: index === player.queueIndex ? "#1a00f2fe" : (queueMouse.containsMouse ? "#0dffffff" : "transparent")
+                                            border.color: index === player.queueIndex ? "#4000f2fe" : "transparent"
+                                            radius: 8
+
+                                            MouseArea {
+                                                id: queueMouse
+                                                anchors.fill: parent
+                                                hoverEnabled: true
+                                                onDoubleClicked: {
+                                                    player.setQueue(player.queue, index);
+                                                }
+                                            }
+
+                                            RowLayout {
+                                                anchors.fill: parent
+                                                anchors.leftMargin: 12
+                                                anchors.rightMargin: 12
+                                                spacing: 12
+
+                                                Text {
+                                                    text: (index + 1).toString()
+                                                    color: index === player.queueIndex ? "#00f2fe" : "#666a8a"
+                                                    font.pixelSize: 13
+                                                    font.weight: Font.DemiBold
+                                                    Layout.preferredWidth: 20
+                                                }
+
+                                                Rectangle {
+                                                    width: 32
+                                                    height: 32
+                                                    radius: 4
+                                                    color: "#111111"
+                                                    clip: true
+
+                                                    Image {
+                                                        source: modelData.coverPath || ""
+                                                        anchors.fill: parent
+                                                        fillMode: Image.PreserveAspectCrop
+                                                        visible: source !== ""
+                                                    }
+
+                                                    Image {
+                                                        anchors.centerIn: parent
+                                                        source: "image://theme/media-optical"
+                                                        width: 16
+                                                        height: 16
+                                                        visible: !modelData.coverPath
+                                                        opacity: 0.4
+                                                    }
+                                                }
+
+                                                ColumnLayout {
+                                                    Layout.fillWidth: true
+                                                    spacing: 2
+                                                    Text {
+                                                        text: modelData.title || qsTr("Unknown Track")
+                                                        color: index === player.queueIndex ? "#00f2fe" : "#ffffff"
+                                                        font.pixelSize: 13
+                                                        font.weight: Font.Medium
+                                                        elide: Text.ElideRight
+                                                    }
+                                                    Text {
+                                                        text: modelData.artist || qsTr("Unknown Artist")
+                                                        color: index === player.queueIndex ? "#7ae6ff" : "#9ea2c0"
+                                                        font.pixelSize: 11
+                                                        elide: Text.ElideRight
+                                                    }
+                                                }
+
+                                                Text {
+                                                    text: playerBar.formatTime(modelData.duration)
+                                                    color: index === player.queueIndex ? "#00f2fe" : "#666a8a"
+                                                    font.pixelSize: 12
+                                                }
+
+                                                Button {
+                                                    flat: true
+                                                    Layout.preferredWidth: 32
+                                                    Layout.preferredHeight: 32
+                                                    onClicked: player.removeQueueIndex(index)
+                                                    contentItem: Text {
+                                                        text: "✕"
+                                                        color: "#ff5555"
+                                                        font.bold: true
+                                                        font.pixelSize: 14
+                                                        horizontalAlignment: Text.AlignHCenter
+                                                        verticalAlignment: Text.AlignVCenter
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
 
                     // Settings View
