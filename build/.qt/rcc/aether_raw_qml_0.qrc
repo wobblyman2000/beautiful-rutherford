@@ -8,6 +8,8 @@
     <file alias="qml/GenreGrid.qml">/home/dave/Documents/antigravity/beautiful-rutherford/qml/GenreGrid.qml</file>
     <file alias="qml/CollectionGrid.qml">/home/dave/Documents/antigravity/beautiful-rutherford/qml/CollectionGrid.qml</file>
     <file alias="qml/AlbumModal.qml">/home/dave/Documents/antigravity/beautiful-rutherford/qml/AlbumModal.qml</file>
+    <file alias="qml/ArtistModal.qml">/home/dave/Documents/antigravity/beautiful-rutherford/qml/ArtistModal.qml</file>
+    <file alias="qml/LyricsVisualizer.qml">/home/dave/Documents/antigravity/beautiful-rutherford/qml/LyricsVisualizer.qml</file>
   </qresource>
 </RCC>
 

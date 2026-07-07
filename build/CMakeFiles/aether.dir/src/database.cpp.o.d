@@ -363,4 +363,70 @@ CMakeFiles/aether.dir/src/database.cpp.o: \
  /usr/include/qt6/QtCore/QDir /usr/include/qt6/QtCore/qdir.h \
  /usr/include/qt6/QtCore/qdirlisting.h \
  /usr/include/qt6/QtCore/qfileinfo.h /usr/include/qt6/QtCore/qtimezone.h \
- /usr/include/qt6/QtCore/QDebug
+ /usr/include/qt6/QtCore/QDebug \
+ /usr/include/qt6/QtCore/QFileSystemWatcher \
+ /usr/include/qt6/QtCore/qfilesystemwatcher.h \
+ /usr/include/qt6/QtCore/QTimer /usr/include/qt6/QtCore/qtimer.h \
+ /usr/include/qt6/QtCore/qbasictimer.h \
+ /usr/include/qt6/QtCore/qabstracteventdispatcher.h \
+ /usr/include/qt6/QtCore/qeventloop.h \
+ /usr/include/qt6/QtCore/qdeadlinetimer.h \
+ /home/dave/Documents/antigravity/beautiful-rutherford/src/scanner.h \
+ /usr/include/qt6/QtCore/QStringList /usr/include/qt6/QtCore/QThread \
+ /usr/include/qt6/QtCore/qthread.h /usr/include/c++/16/future \
+ /usr/include/c++/16/mutex /usr/include/c++/16/bits/std_mutex.h \
+ /usr/include/c++/16/bits/unique_lock.h \
+ /usr/include/c++/16/condition_variable /usr/include/c++/16/stop_token \
+ /usr/include/c++/16/bits/std_thread.h /usr/include/c++/16/semaphore \
+ /usr/include/c++/16/bits/semaphore_base.h \
+ /usr/include/c++/16/bits/atomic_timed_wait.h \
+ /usr/include/c++/16/bits/this_thread_sleep.h /usr/include/sys/time.h \
+ /usr/include/c++/16/bits/atomic_futex.h \
+ /usr/include/qt6/QtCore/QDirIterator \
+ /usr/include/qt6/QtCore/qdiriterator.h \
+ /usr/include/qt6/QtCore/QCryptographicHash \
+ /usr/include/qt6/QtCore/qcryptographichash.h \
+ /usr/include/qt6/QtCore/QDateTime /usr/include/taglib/fileref.h \
+ /usr/include/taglib/tfile.h /usr/include/taglib/tbytevector.h \
+ /usr/include/taglib/taglib_export.h /usr/include/taglib/tiostream.h \
+ /usr/include/taglib/taglib.h /usr/include/taglib/tag.h \
+ /usr/include/taglib/tstring.h /usr/include/taglib/tlist.h \
+ /usr/include/taglib/tlist.tcc /usr/include/taglib/tvariant.h \
+ /usr/include/taglib/tmap.h /usr/include/taglib/tmap.tcc \
+ /usr/include/taglib/tstringlist.h /usr/include/taglib/tbytevectorlist.h \
+ /usr/include/taglib/audioproperties.h /usr/include/taglib/tag.h \
+ /usr/include/taglib/tpropertymap.h /usr/include/taglib/mpegfile.h \
+ /usr/include/taglib/mpegproperties.h /usr/include/taglib/mpegheader.h \
+ /usr/include/taglib/id3v2.h /usr/include/taglib/id3v2tag.h \
+ /usr/include/taglib/id3v2framefactory.h /usr/include/taglib/id3v2frame.h \
+ /usr/include/taglib/id3v2header.h \
+ /usr/include/taglib/attachedpictureframe.h \
+ /usr/include/taglib/tpicturetype.h /usr/include/taglib/flacfile.h \
+ /usr/include/taglib/flacpicture.h \
+ /usr/include/taglib/flacmetadatablock.h \
+ /usr/include/taglib/flacproperties.h /usr/include/taglib/flacpicture.h \
+ /usr/include/taglib/mp4file.h /usr/include/taglib/mp4tag.h \
+ /usr/include/taglib/mp4atom.h /usr/include/taglib/mp4item.h \
+ /usr/include/taglib/mp4coverart.h /usr/include/taglib/mp4stem.h \
+ /usr/include/taglib/mp4properties.h /usr/include/taglib/mp4chapter.h \
+ /usr/include/taglib/mp4tag.h /usr/include/taglib/mp4coverart.h \
+ /home/dave/Documents/antigravity/beautiful-rutherford/src/player.h \
+ /usr/include/qt6/QtMultimedia/QMediaPlayer \
+ /usr/include/qt6/QtMultimedia/qmediaplayer.h \
+ /usr/include/qt6/QtMultimedia/qtmultimediaglobal.h \
+ /usr/include/qt6/QtGui/qtguiglobal.h \
+ /usr/include/qt6/QtGui/qtgui-config.h \
+ /usr/include/qt6/QtGui/qtguiexports.h \
+ /usr/include/qt6/QtMultimedia/qtmultimedia-config.h \
+ /usr/include/qt6/QtMultimedia/qtmultimediaexports.h \
+ /usr/include/qt6/QtMultimedia/qtaudio.h \
+ /usr/include/qt6/QtMultimedia/qaudio.h \
+ /usr/include/qt6/QtMultimedia/QAudioOutput \
+ /usr/include/qt6/QtMultimedia/qaudiooutput.h \
+ /usr/include/qt6/QtCore/QVariantList \
+ /usr/include/qt6/QtCore/qvariantlist.h /usr/include/qt6/QtCore/QList \
+ /usr/include/qt6/QtCore/QUrl /usr/include/qt6/QtCore/QRandomGenerator \
+ /usr/include/qt6/QtCore/qrandom.h /usr/include/c++/16/random \
+ /usr/include/c++/16/bits/random.h \
+ /usr/include/c++/16/x86_64-pc-linux-gnu/bits/opt_random.h \
+ /usr/include/c++/16/bits/random.tcc /usr/include/qt6/QtCore/QSet

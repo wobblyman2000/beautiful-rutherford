@@ -18,15 +18,31 @@
                             "column": 33,
                             "durationMicroseconds": 0,
                             "functionName": "groupedTracks",
-                            "line": 15,
+                            "line": 16,
                             "message": "Cannot generate efficient code for storing an array in a non-sequence type"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "uniqueAlbums",
+                            "line": 17,
+                            "message": "Cannot generate efficient code for storing an array in a non-sequence type"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "isAlbumView",
+                            "line": 18,
+                            "message": "Cannot load property displayMode from AlbumModal::activeAlbum with type QVariant."
                         },
                         {
                             "codegenResult": 2,
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "formatTime",
-                            "line": 18,
+                            "line": 21,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -34,7 +50,15 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "openAlbum",
-                            "line": 274,
+                            "line": 483,
+                            "message": "Functions without type annotations won't be compiled"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 5,
+                            "durationMicroseconds": 0,
+                            "functionName": "openTagEditor",
+                            "line": 716,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -42,7 +66,7 @@
                             "column": 17,
                             "durationMicroseconds": 0,
                             "functionName": "height",
-                            "line": 29,
+                            "line": 32,
                             "message": ""
                         },
                         {
@@ -50,7 +74,7 @@
                             "column": 12,
                             "durationMicroseconds": 0,
                             "functionName": "y",
-                            "line": 37,
+                            "line": 40,
                             "message": ""
                         },
                         {
@@ -58,7 +82,7 @@
                             "column": 27,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 30,
+                            "line": 33,
                             "message": ""
                         },
                         {
@@ -66,7 +90,7 @@
                             "column": 71,
                             "durationMicroseconds": 0,
                             "functionName": "type",
-                            "line": 38,
+                            "line": 41,
                             "message": ""
                         },
                         {
@@ -74,7 +98,7 @@
                             "column": 27,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 41,
+                            "line": 44,
                             "message": ""
                         },
                         {
@@ -82,15 +106,31 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 52,
+                            "line": 54,
                             "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 55,
+                            "durationMicroseconds": 0,
+                            "functionName": "centerIn",
+                            "line": 65,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 55,
+                            "durationMicroseconds": 0,
+                            "functionName": "centerIn",
+                            "line": 66,
+                            "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "alignment",
-                            "line": 67,
+                            "line": 82,
                             "message": ""
                         },
                         {
@@ -98,7 +138,7 @@
                             "column": 33,
                             "durationMicroseconds": 0,
                             "functionName": "source",
-                            "line": 71,
+                            "line": 86,
                             "message": "Cannot load property coverPath from AlbumModal::activeAlbum with type QVariant."
                         },
                         {
@@ -106,7 +146,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "fillMode",
-                            "line": 73,
+                            "line": 88,
                             "message": ""
                         },
                         {
@@ -114,7 +154,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 74,
+                            "line": 89,
                             "message": "Cannot generate efficient code for incomparable types QString and (component in /home/dave/Documents/antigravity/beautiful-rutherford/qml/AlbumModal.qml)::source with type QUrl"
                         },
                         {
@@ -122,7 +162,7 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 72,
+                            "line": 87,
                             "message": ""
                         },
                         {
@@ -130,7 +170,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 82,
+                            "line": 97,
                             "message": "Cannot generate efficient code for incomparable types QString and QQuickImageBase::source with type QUrl"
                         },
                         {
@@ -138,7 +178,7 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 78,
+                            "line": 93,
                             "message": ""
                         },
                         {
@@ -146,7 +186,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 107,
+                            "line": 135,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -154,7 +194,7 @@
                             "column": 41,
                             "durationMicroseconds": 0,
                             "functionName": "bottom",
-                            "line": 90,
+                            "line": 105,
                             "message": "Could not find property \"bottom\"."
                         },
                         {
@@ -162,7 +202,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "right",
-                            "line": 91,
+                            "line": 106,
                             "message": "Could not find property \"right\"."
                         },
                         {
@@ -170,15 +210,31 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "radius",
-                            "line": 97,
+                            "line": 112,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 47,
+                            "column": 43,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 116,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 42,
+                            "durationMicroseconds": 0,
+                            "functionName": "onPaint",
+                            "line": 121,
+                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 102,
+                            "line": 118,
                             "message": ""
                         },
                         {
@@ -186,7 +242,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 121,
+                            "line": 149,
                             "message": "Cannot load property artist from AlbumModal::activeAlbum with type QVariant."
                         },
                         {
@@ -194,7 +250,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "textFormat",
-                            "line": 126,
+                            "line": 154,
                             "message": ""
                         },
                         {
@@ -202,7 +258,7 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 124,
+                            "line": 152,
                             "message": ""
                         },
                         {
@@ -210,7 +266,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 130,
+                            "line": 158,
                             "message": "Cannot load property name from AlbumModal::activeAlbum with type QVariant."
                         },
                         {
@@ -218,7 +274,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "elide",
-                            "line": 134,
+                            "line": 162,
                             "message": ""
                         },
                         {
@@ -226,7 +282,7 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 133,
+                            "line": 161,
                             "message": ""
                         },
                         {
@@ -234,15 +290,23 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 139,
+                            "line": 168,
                             "message": "Cannot load property artist from AlbumModal::activeAlbum with type QVariant."
                         },
                         {
                             "codegenResult": 0,
                             "column": 32,
                             "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 169,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 32,
+                            "durationMicroseconds": 0,
                             "functionName": "elide",
-                            "line": 143,
+                            "line": 172,
                             "message": ""
                         },
                         {
@@ -250,7 +314,31 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 142,
+                            "line": 171,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 42,
+                            "durationMicroseconds": 0,
+                            "functionName": "cursorShape",
+                            "line": 179,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 40,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 180,
+                            "message": "Cannot load property artist from AlbumModal::activeAlbum with type QVariant."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 43,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 177,
                             "message": ""
                         },
                         {
@@ -258,7 +346,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 151,
+                            "line": 193,
                             "message": "Cannot load property year from AlbumModal::activeAlbum with type QVariant."
                         },
                         {
@@ -266,7 +354,7 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 154,
+                            "line": 196,
                             "message": ""
                         },
                         {
@@ -274,7 +362,7 @@
                             "column": 70,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 156,
+                            "line": 198,
                             "message": "Cannot generate efficient code for internal conversion into unsupported wrapper type."
                         },
                         {
@@ -282,7 +370,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 158,
+                            "line": 200,
                             "message": "Cannot load property genre from AlbumModal::activeAlbum with type QVariant."
                         },
                         {
@@ -290,7 +378,7 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 161,
+                            "line": 203,
                             "message": ""
                         },
                         {
@@ -298,7 +386,7 @@
                             "column": 70,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 163,
+                            "line": 205,
                             "message": "Cannot generate efficient code for internal conversion into unsupported wrapper type."
                         },
                         {
@@ -306,15 +394,23 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 165,
+                            "line": 207,
                             "message": "Cannot load property tracks from AlbumModal::activeAlbum with type QVariant."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 26,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 220,
+                            "message": "Could not find property \"visible\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 181,
+                            "line": 224,
                             "message": ""
                         },
                         {
@@ -322,7 +418,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 185,
+                            "line": 228,
                             "message": ""
                         },
                         {
@@ -330,7 +426,7 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 193,
+                            "line": 236,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -338,7 +434,7 @@
                             "column": 42,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 197,
+                            "line": 240,
                             "message": "Cannot access value for name root"
                         },
                         {
@@ -346,7 +442,7 @@
                             "column": 46,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 196,
+                            "line": 239,
                             "message": ""
                         },
                         {
@@ -354,7 +450,7 @@
                             "column": 42,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 205,
+                            "line": 248,
                             "message": "Cannot access value for name root"
                         },
                         {
@@ -362,7 +458,7 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 214,
+                            "line": 257,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -370,15 +466,23 @@
                             "column": 48,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 220,
+                            "line": 263,
                             "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 64,
+                            "durationMicroseconds": 0,
+                            "functionName": "trackObj",
+                            "line": 266,
+                            "message": "Cannot access value for name modelData"
                         },
                         {
                             "codegenResult": 2,
                             "column": 66,
                             "durationMicroseconds": 0,
                             "functionName": "isPlaying",
-                            "line": 223,
+                            "line": 267,
                             "message": "Cannot access value for name player"
                         },
                         {
@@ -386,7 +490,7 @@
                             "column": 59,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 226,
+                            "line": 270,
                             "message": ""
                         },
                         {
@@ -394,15 +498,15 @@
                             "column": 55,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 231,
-                            "message": "Cannot access value for name modelData"
+                            "line": 275,
+                            "message": "Cannot access value for name trackObj"
                         },
                         {
                             "codegenResult": 2,
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 232,
+                            "line": 276,
                             "message": "Cannot access value for name isPlaying"
                         },
                         {
@@ -410,72 +514,472 @@
                             "column": 62,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 234,
+                            "line": 278,
                             "message": ""
                         },
                         {
                             "codegenResult": 2,
-                            "column": 55,
+                            "column": 59,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 239,
-                            "message": "Cannot access value for name modelData"
+                            "line": 287,
+                            "message": "Cannot access value for name trackObj"
                         },
                         {
                             "codegenResult": 2,
-                            "column": 56,
+                            "column": 60,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 240,
+                            "line": 288,
                             "message": "Cannot access value for name isPlaying"
                         },
                         {
                             "codegenResult": 0,
-                            "column": 56,
+                            "column": 60,
                             "durationMicroseconds": 0,
                             "functionName": "elide",
-                            "line": 243,
+                            "line": 291,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 62,
+                            "column": 66,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 242,
+                            "line": 290,
                             "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 59,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 297,
+                            "message": "Cannot access value for name trackObj"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 60,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 298,
+                            "message": "Cannot access value for name isPlaying"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 60,
+                            "durationMicroseconds": 0,
+                            "functionName": "elide",
+                            "line": 300,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 62,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 302,
+                            "message": "Cannot access value for name root"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 70,
+                            "durationMicroseconds": 0,
+                            "functionName": "cursorShape",
+                            "line": 308,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 68,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 309,
+                            "message": "Cannot access value for name trackObj"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 71,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 306,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 58,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 323,
+                            "message": "Cannot access value for name trackObj"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 67,
+                            "durationMicroseconds": 0,
+                            "functionName": "alignment",
+                            "line": 321,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 70,
+                            "durationMicroseconds": 0,
+                            "functionName": "cursorShape",
+                            "line": 331,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 68,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 340,
+                            "message": "Cannot access value for name index"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 67,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 335,
+                            "message": "Cannot access value for name index"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 68,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 336,
+                            "message": "Cannot access value for name index"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 79,
+                            "durationMicroseconds": 0,
+                            "functionName": "centerIn",
+                            "line": 334,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 58,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 357,
+                            "message": "Could not find property \"visible\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 60,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 363,
+                            "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 59,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 359,
+                            "message": "Cannot access value for name editTagBtn"
                         },
                         {
                             "codegenResult": 2,
                             "column": 55,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 248,
-                            "message": "Cannot access value for name modelData"
+                            "line": 369,
+                            "message": "Cannot access value for name trackObj"
                         },
                         {
                             "codegenResult": 2,
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 249,
+                            "line": 370,
                             "message": "Cannot access value for name isPlaying"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 62,
+                            "durationMicroseconds": 0,
+                            "functionName": "acceptedButtons",
+                            "line": 379,
+                            "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 258,
-                            "message": "Cannot access value for name player"
+                            "line": 380,
+                            "message": "Cannot access value for name mouse"
                         },
                         {
                             "codegenResult": 0,
                             "column": 59,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 256,
+                            "line": 377,
                             "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 26,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 402,
+                            "message": "Could not find property \"visible\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 28,
+                            "durationMicroseconds": 0,
+                            "functionName": "width",
+                            "line": 406,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "model",
+                            "line": 410,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 47,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 417,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 49,
+                            "durationMicroseconds": 0,
+                            "functionName": "source",
+                            "line": 429,
+                            "message": "Cannot access value for name modelData"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 51,
+                            "durationMicroseconds": 0,
+                            "functionName": "fillMode",
+                            "line": 431,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 50,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 432,
+                            "message": "Cannot generate efficient code for incomparable types QString and (component in /home/dave/Documents/antigravity/beautiful-rutherford/qml/AlbumModal.qml)::source with type QUrl"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 55,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 430,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 50,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 440,
+                            "message": "Cannot access value for name modelData"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 59,
+                            "durationMicroseconds": 0,
+                            "functionName": "centerIn",
+                            "line": 436,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 43,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 447,
+                            "message": "Cannot access value for name modelData"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 44,
+                            "durationMicroseconds": 0,
+                            "functionName": "elide",
+                            "line": 451,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 58,
+                            "durationMicroseconds": 0,
+                            "functionName": "horizontalAlignment",
+                            "line": 453,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 50,
+                            "durationMicroseconds": 0,
+                            "functionName": "weight",
+                            "line": 450,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 43,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 458,
+                            "message": "Cannot access value for name modelData"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 44,
+                            "durationMicroseconds": 0,
+                            "functionName": "elide",
+                            "line": 461,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 58,
+                            "durationMicroseconds": 0,
+                            "functionName": "horizontalAlignment",
+                            "line": 463,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 46,
+                            "durationMicroseconds": 0,
+                            "functionName": "cursorShape",
+                            "line": 470,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 44,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 471,
+                            "message": "Cannot access value for name root"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 47,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 468,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 23,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 543,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "centerIn",
+                            "line": 553,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 560,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 34,
+                            "durationMicroseconds": 0,
+                            "functionName": "weight",
+                            "line": 568,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 578,
+                            "message": "Cannot load property filePath from (component in /home/dave/Documents/antigravity/beautiful-rutherford/qml/AlbumModal.qml)::activeTrack with type QVariant."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "elide",
+                            "line": 581,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "model",
+                            "line": 663,
+                            "message": "Could not find property \"model\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 677,
+                            "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 683,
+                            "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 26,
+                            "durationMicroseconds": 0,
+                            "functionName": "onTriggered",
+                            "line": 738,
+                            "message": "Could not find signal \"triggered\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 26,
+                            "durationMicroseconds": 0,
+                            "functionName": "onTriggered",
+                            "line": 746,
+                            "message": "Could not find signal \"triggered\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 26,
+                            "durationMicroseconds": 0,
+                            "functionName": "onTriggered",
+                            "line": 754,
+                            "message": "Could not find signal \"triggered\"."
                         }
                     ],
                     "filePath": "/home/dave/Documents/antigravity/beautiful-rutherford/qml/AlbumModal.qml"

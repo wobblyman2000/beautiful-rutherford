@@ -1,5 +1,14 @@
 #include "player.h"
 #include "database.h"
+#include <QFileInfo>
+#include <QFile>
+#include <taglib/tag.h>
+#include <taglib/fileref.h>
+#include <taglib/mpegfile.h>
+#include <taglib/id3v2tag.h>
+#include <taglib/unsynchronizedlyricsframe.h>
+#include <taglib/flacfile.h>
+#include <taglib/xiphcomment.h>
 
 Player* Player::m_instance = nullptr;
 
@@ -345,6 +354,7 @@ bool matchAutoDJRules(const QVariantMap &track, const QVariantList &rules) {
         else if (field == QStringLiteral("genre")) fieldKey = QStringLiteral("genre");
         else if (field == QStringLiteral("title")) fieldKey = QStringLiteral("title");
         else if (field == QStringLiteral("filepath")) fieldKey = QStringLiteral("filePath");
+        else if (field == QStringLiteral("rating")) fieldKey = QStringLiteral("rating");
 
         QString val = track[fieldKey].toString().trimmed().toLower();
         bool matched = false;
@@ -426,4 +436,127 @@ QVariantList Player::getAutoDJMatchingTracks() {
         return allTracks;
     }
     return matching;
+}
+
+void Player::playNext(const QVariantMap &track) {
+    if (m_queue.isEmpty()) {
+        setQueue(QVariantList() << track, 0);
+        return;
+    }
+    int insertPos = m_queueIndex + 1;
+    m_queue.insert(insertPos, track);
+    emit queueChanged();
+}
+
+void Player::queueLast(const QVariantMap &track) {
+    if (m_queue.isEmpty()) {
+        setQueue(QVariantList() << track, 0);
+        return;
+    }
+    m_queue.append(track);
+    emit queueChanged();
+}
+
+void Player::playNextAlbum(const QVariantList &tracks) {
+    if (tracks.isEmpty()) return;
+    if (m_queue.isEmpty()) {
+        setQueue(tracks, 0);
+        return;
+    }
+    int insertPos = m_queueIndex + 1;
+    for (int i = 0; i < tracks.size(); ++i) {
+        m_queue.insert(insertPos + i, tracks[i]);
+    }
+    emit queueChanged();
+}
+
+void Player::queueLastAlbum(const QVariantList &tracks) {
+    if (tracks.isEmpty()) return;
+    if (m_queue.isEmpty()) {
+        setQueue(tracks, 0);
+        return;
+    }
+    for (int i = 0; i < tracks.size(); ++i) {
+        m_queue.append(tracks[i]);
+    }
+    emit queueChanged();
+}
+
+QString Player::getLyricsForTrack(const QString &filePath) {
+    // 1. Check for local .lrc file in the same directory
+    QFileInfo fileInfo(filePath);
+    QString baseName = fileInfo.completeBaseName();
+    QString dirPath = fileInfo.absolutePath();
+    QString lrcPath = QStringLiteral("%1/%2.lrc").arg(dirPath, baseName);
+    QFile lrcFile(lrcPath);
+    if (lrcFile.exists() && lrcFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QString content = QString::fromUtf8(lrcFile.readAll());
+        lrcFile.close();
+        return content;
+    }
+
+    // 2. Fallback to TagLib embedded lyrics
+    QByteArray localPath = filePath.toLocal8Bit();
+    TagLib::FileRef fileRef(localPath.constData());
+    if (!fileRef.isNull() && fileRef.tag()) {
+        // A. MP3 / MPEG (ID3v2 USLT frame)
+        TagLib::MPEG::File mpegFile(localPath.constData());
+        if (mpegFile.isValid() && mpegFile.ID3v2Tag()) {
+            TagLib::ID3v2::Tag *id3v2 = mpegFile.ID3v2Tag();
+            TagLib::ID3v2::FrameList frames = id3v2->frameListMap()["USLT"];
+            if (!frames.isEmpty()) {
+                auto *lyricsFrame = dynamic_cast<TagLib::ID3v2::UnsynchronizedLyricsFrame*>(frames.front());
+                if (lyricsFrame) {
+                    return QString::fromUtf8(lyricsFrame->text().toCString(true));
+                }
+            }
+        }
+        
+        // B. FLAC (Vorbis Comments "LYRICS" or "UNSYNCEDLYRICS")
+        TagLib::FLAC::File flacFile(localPath.constData());
+        if (flacFile.isValid() && flacFile.xiphComment()) {
+            TagLib::Ogg::XiphComment *comment = flacFile.xiphComment();
+            if (comment->fieldListMap().contains("LYRICS")) {
+                TagLib::StringList list = comment->fieldListMap()["LYRICS"];
+                if (!list.isEmpty()) {
+                    return QString::fromUtf8(list.front().toCString(true));
+                }
+            }
+            if (comment->fieldListMap().contains("UNSYNCEDLYRICS")) {
+                TagLib::StringList list = comment->fieldListMap()["UNSYNCEDLYRICS"];
+                if (!list.isEmpty()) {
+                    return QString::fromUtf8(list.front().toCString(true));
+                }
+            }
+        }
+    }
+
+    return QString();
+}
+
+void Player::updateTrackRating(const QString &trackId, int rating) {
+    bool changed = false;
+    for (int i = 0; i < m_queue.size(); ++i) {
+        QVariantMap trackMap = m_queue[i].toMap();
+        if (trackMap["id"].toString() == trackId) {
+            trackMap["rating"] = rating;
+            m_queue[i] = trackMap;
+            changed = true;
+        }
+    }
+    for (int i = 0; i < m_originalQueue.size(); ++i) {
+        QVariantMap trackMap = m_originalQueue[i].toMap();
+        if (trackMap["id"].toString() == trackId) {
+            trackMap["rating"] = rating;
+            m_originalQueue[i] = trackMap;
+        }
+    }
+    if (changed) {
+        emit queueChanged();
+        
+        QVariantMap currentMap = currentTrack();
+        if (currentMap["id"].toString() == trackId) {
+            emit currentTrackChanged();
+        }
+    }
 }

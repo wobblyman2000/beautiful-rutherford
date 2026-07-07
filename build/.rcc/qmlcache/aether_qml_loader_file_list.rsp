@@ -10,3 +10,5 @@
 /Aether/qml/GenreGrid.qml
 /Aether/qml/CollectionGrid.qml
 /Aether/qml/AlbumModal.qml
+/Aether/qml/ArtistModal.qml
+/Aether/qml/LyricsVisualizer.qml

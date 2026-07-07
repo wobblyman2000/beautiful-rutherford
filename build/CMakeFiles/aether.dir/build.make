@@ -87,6 +87,7 @@ aether_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6opengl_metatypes.json
 aether_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6quickcontrols2_metatypes.json
 aether_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6multimedia_metatypes.json
 aether_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6dbus_metatypes.json
+aether_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6widgets_metatypes.json
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Automatic QML type registration for target aether"
 	/usr/lib/qt6/qmltyperegistrar --generate-qmltypes=/home/dave/Documents/antigravity/beautiful-rutherford/build/Aether/aether.qmltypes --import-name=Aether --major-version=1 --minor-version=0 @/home/dave/Documents/antigravity/beautiful-rutherford/build/qmltypes/aether_foreign_types.txt -o /home/dave/Documents/antigravity/beautiful-rutherford/build/aether_qmltyperegistrations.cpp /home/dave/Documents/antigravity/beautiful-rutherford/build/meta_types/qt6aether_metatypes.json
 	/usr/bin/cmake -E make_directory /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/qmltypes
@@ -212,6 +213,32 @@ Aether/aether.qmltypes: aether_qmltyperegistrations.cpp
 .rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.aotstats: .rcc/qmlcache/aether_qml/AlbumModal_qml.cpp
 	@$(CMAKE_COMMAND) -E touch_nocreate .rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.aotstats
 
+.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp: /usr/lib/qt6/qmlcachegen
+.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp: /home/dave/Documents/antigravity/beautiful-rutherford/qml/ArtistModal.qml
+.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp: .qt/rcc/qmake_Aether.qrc
+.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp: .qt/rcc/aether_raw_qml_0.qrc
+.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp: Aether/aether.qmltypes
+.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp: Aether/qmldir
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating .rcc/qmlcache/aether_qml/ArtistModal_qml.cpp, .rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.aotstats"
+	/usr/bin/cmake -E make_directory /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml
+	/usr/lib/qt6/qmlcachegen --bare --resource-path /Aether/qml/ArtistModal.qml -I /home/dave/Documents/antigravity/beautiful-rutherford/build -I /usr/lib/qt6/qml -i /home/dave/Documents/antigravity/beautiful-rutherford/build/Aether/qmldir --resource /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/qmake_Aether.qrc --resource /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/aether_raw_qml_0.qrc --dump-aot-stats "--module-id=Aether(aether)" -o /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp /home/dave/Documents/antigravity/beautiful-rutherford/qml/ArtistModal.qml
+
+.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.aotstats: .rcc/qmlcache/aether_qml/ArtistModal_qml.cpp
+	@$(CMAKE_COMMAND) -E touch_nocreate .rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.aotstats
+
+.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp: /usr/lib/qt6/qmlcachegen
+.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp: /home/dave/Documents/antigravity/beautiful-rutherford/qml/LyricsVisualizer.qml
+.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp: .qt/rcc/qmake_Aether.qrc
+.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp: .qt/rcc/aether_raw_qml_0.qrc
+.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp: Aether/aether.qmltypes
+.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp: Aether/qmldir
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Generating .rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp, .rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.aotstats"
+	/usr/bin/cmake -E make_directory /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml
+	/usr/lib/qt6/qmlcachegen --bare --resource-path /Aether/qml/LyricsVisualizer.qml -I /home/dave/Documents/antigravity/beautiful-rutherford/build -I /usr/lib/qt6/qml -i /home/dave/Documents/antigravity/beautiful-rutherford/build/Aether/qmldir --resource /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/qmake_Aether.qrc --resource /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/aether_raw_qml_0.qrc --dump-aot-stats "--module-id=Aether(aether)" -o /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp /home/dave/Documents/antigravity/beautiful-rutherford/qml/LyricsVisualizer.qml
+
+.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.aotstats: .rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp
+	@$(CMAKE_COMMAND) -E touch_nocreate .rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.aotstats
+
 .qt/rcc/qrc_aether_raw_qml_0.cpp: /home/dave/Documents/antigravity/beautiful-rutherford/qml/Main.qml
 .qt/rcc/qrc_aether_raw_qml_0.cpp: /home/dave/Documents/antigravity/beautiful-rutherford/qml/Sidebar.qml
 .qt/rcc/qrc_aether_raw_qml_0.cpp: /home/dave/Documents/antigravity/beautiful-rutherford/qml/PlayerBar.qml
@@ -220,24 +247,27 @@ Aether/aether.qmltypes: aether_qmltyperegistrations.cpp
 .qt/rcc/qrc_aether_raw_qml_0.cpp: /home/dave/Documents/antigravity/beautiful-rutherford/qml/GenreGrid.qml
 .qt/rcc/qrc_aether_raw_qml_0.cpp: /home/dave/Documents/antigravity/beautiful-rutherford/qml/CollectionGrid.qml
 .qt/rcc/qrc_aether_raw_qml_0.cpp: /home/dave/Documents/antigravity/beautiful-rutherford/qml/AlbumModal.qml
+.qt/rcc/qrc_aether_raw_qml_0.cpp: /home/dave/Documents/antigravity/beautiful-rutherford/qml/ArtistModal.qml
+.qt/rcc/qrc_aether_raw_qml_0.cpp: /home/dave/Documents/antigravity/beautiful-rutherford/qml/LyricsVisualizer.qml
 .qt/rcc/qrc_aether_raw_qml_0.cpp: .qt/rcc/aether_raw_qml_0.qrc
 .qt/rcc/qrc_aether_raw_qml_0.cpp: /usr/lib/qt6/rcc
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Running rcc for resource aether_raw_qml_0"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Running rcc for resource aether_raw_qml_0"
 	/usr/lib/qt6/rcc --output /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/qrc_aether_raw_qml_0.cpp --name aether_raw_qml_0 /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/aether_raw_qml_0.qrc
 
 aether_autogen/timestamp: /usr/lib/qt6/moc
+aether_autogen/timestamp: /usr/lib/qt6/uic
 aether_autogen/timestamp: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Automatic MOC and UIC for target aether"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Automatic MOC and UIC for target aether"
 	/usr/bin/cmake -E cmake_autogen /home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles/aether_autogen.dir/AutogenInfo.json ""
 	/usr/bin/cmake -E touch /home/dave/Documents/antigravity/beautiful-rutherford/build/aether_autogen/timestamp
 
 meta_types/aether_json_file_list.txt: /usr/lib/qt6/cmake_automoc_parser
 meta_types/aether_json_file_list.txt: aether_autogen/timestamp
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Running AUTOMOC file extraction for target aether"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Running AUTOMOC file extraction for target aether"
 	/usr/lib/qt6/cmake_automoc_parser --cmake-autogen-cache-file /home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles/aether_autogen.dir/ParseCache.txt --cmake-autogen-info-file /home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles/aether_autogen.dir/AutogenInfo.json --output-file-path /home/dave/Documents/antigravity/beautiful-rutherford/build/meta_types/aether_json_file_list.txt --timestamp-file-path /home/dave/Documents/antigravity/beautiful-rutherford/build/meta_types/aether_json_file_list.txt.timestamp --cmake-autogen-include-dir-path /home/dave/Documents/antigravity/beautiful-rutherford/build/aether_autogen/include
 
 meta_types/qt6aether_metatypes.json: meta_types/qt6aether_metatypes.json.gen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Generating meta_types/qt6aether_metatypes.json"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Generating meta_types/qt6aether_metatypes.json"
 	/usr/bin/cmake -E true
 
 CMakeFiles/aether.dir/codegen:
@@ -246,7 +276,7 @@ CMakeFiles/aether.dir/codegen:
 CMakeFiles/aether.dir/aether_autogen/mocs_compilation.cpp.o: CMakeFiles/aether.dir/flags.make
 CMakeFiles/aether.dir/aether_autogen/mocs_compilation.cpp.o: aether_autogen/mocs_compilation.cpp
 CMakeFiles/aether.dir/aether_autogen/mocs_compilation.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/aether.dir/aether_autogen/mocs_compilation.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/aether.dir/aether_autogen/mocs_compilation.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/aether_autogen/mocs_compilation.cpp.o -MF CMakeFiles/aether.dir/aether_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/aether.dir/aether_autogen/mocs_compilation.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/build/aether_autogen/mocs_compilation.cpp
 
 CMakeFiles/aether.dir/aether_autogen/mocs_compilation.cpp.i: cmake_force
@@ -260,7 +290,7 @@ CMakeFiles/aether.dir/aether_autogen/mocs_compilation.cpp.s: cmake_force
 CMakeFiles/aether.dir/src/main.cpp.o: CMakeFiles/aether.dir/flags.make
 CMakeFiles/aether.dir/src/main.cpp.o: /home/dave/Documents/antigravity/beautiful-rutherford/src/main.cpp
 CMakeFiles/aether.dir/src/main.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/aether.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/aether.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/src/main.cpp.o -MF CMakeFiles/aether.dir/src/main.cpp.o.d -o CMakeFiles/aether.dir/src/main.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/src/main.cpp
 
 CMakeFiles/aether.dir/src/main.cpp.i: cmake_force
@@ -274,7 +304,7 @@ CMakeFiles/aether.dir/src/main.cpp.s: cmake_force
 CMakeFiles/aether.dir/src/database.cpp.o: CMakeFiles/aether.dir/flags.make
 CMakeFiles/aether.dir/src/database.cpp.o: /home/dave/Documents/antigravity/beautiful-rutherford/src/database.cpp
 CMakeFiles/aether.dir/src/database.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/aether.dir/src/database.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/aether.dir/src/database.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/src/database.cpp.o -MF CMakeFiles/aether.dir/src/database.cpp.o.d -o CMakeFiles/aether.dir/src/database.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/src/database.cpp
 
 CMakeFiles/aether.dir/src/database.cpp.i: cmake_force
@@ -288,7 +318,7 @@ CMakeFiles/aether.dir/src/database.cpp.s: cmake_force
 CMakeFiles/aether.dir/src/scanner.cpp.o: CMakeFiles/aether.dir/flags.make
 CMakeFiles/aether.dir/src/scanner.cpp.o: /home/dave/Documents/antigravity/beautiful-rutherford/src/scanner.cpp
 CMakeFiles/aether.dir/src/scanner.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/aether.dir/src/scanner.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/aether.dir/src/scanner.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/src/scanner.cpp.o -MF CMakeFiles/aether.dir/src/scanner.cpp.o.d -o CMakeFiles/aether.dir/src/scanner.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/src/scanner.cpp
 
 CMakeFiles/aether.dir/src/scanner.cpp.i: cmake_force
@@ -302,7 +332,7 @@ CMakeFiles/aether.dir/src/scanner.cpp.s: cmake_force
 CMakeFiles/aether.dir/src/player.cpp.o: CMakeFiles/aether.dir/flags.make
 CMakeFiles/aether.dir/src/player.cpp.o: /home/dave/Documents/antigravity/beautiful-rutherford/src/player.cpp
 CMakeFiles/aether.dir/src/player.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/aether.dir/src/player.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/aether.dir/src/player.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/src/player.cpp.o -MF CMakeFiles/aether.dir/src/player.cpp.o.d -o CMakeFiles/aether.dir/src/player.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/src/player.cpp
 
 CMakeFiles/aether.dir/src/player.cpp.i: cmake_force
@@ -316,7 +346,7 @@ CMakeFiles/aether.dir/src/player.cpp.s: cmake_force
 CMakeFiles/aether.dir/src/mpris.cpp.o: CMakeFiles/aether.dir/flags.make
 CMakeFiles/aether.dir/src/mpris.cpp.o: /home/dave/Documents/antigravity/beautiful-rutherford/src/mpris.cpp
 CMakeFiles/aether.dir/src/mpris.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/aether.dir/src/mpris.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/aether.dir/src/mpris.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/src/mpris.cpp.o -MF CMakeFiles/aether.dir/src/mpris.cpp.o.d -o CMakeFiles/aether.dir/src/mpris.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/src/mpris.cpp
 
 CMakeFiles/aether.dir/src/mpris.cpp.i: cmake_force
@@ -330,7 +360,7 @@ CMakeFiles/aether.dir/src/mpris.cpp.s: cmake_force
 CMakeFiles/aether.dir/aether_qmltyperegistrations.cpp.o: CMakeFiles/aether.dir/flags.make
 CMakeFiles/aether.dir/aether_qmltyperegistrations.cpp.o: aether_qmltyperegistrations.cpp
 CMakeFiles/aether.dir/aether_qmltyperegistrations.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/aether.dir/aether_qmltyperegistrations.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/aether.dir/aether_qmltyperegistrations.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/aether_qmltyperegistrations.cpp.o -MF CMakeFiles/aether.dir/aether_qmltyperegistrations.cpp.o.d -o CMakeFiles/aether.dir/aether_qmltyperegistrations.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/build/aether_qmltyperegistrations.cpp
 
 CMakeFiles/aether.dir/aether_qmltyperegistrations.cpp.i: cmake_force
@@ -344,7 +374,7 @@ CMakeFiles/aether.dir/aether_qmltyperegistrations.cpp.s: cmake_force
 CMakeFiles/aether.dir/build/.qt/rcc/qrc_qmake_Aether.cpp.o: CMakeFiles/aether.dir/flags.make
 CMakeFiles/aether.dir/build/.qt/rcc/qrc_qmake_Aether.cpp.o: .qt/rcc/qrc_qmake_Aether.cpp
 CMakeFiles/aether.dir/build/.qt/rcc/qrc_qmake_Aether.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/aether.dir/build/.qt/rcc/qrc_qmake_Aether.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/aether.dir/build/.qt/rcc/qrc_qmake_Aether.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/build/.qt/rcc/qrc_qmake_Aether.cpp.o -MF CMakeFiles/aether.dir/build/.qt/rcc/qrc_qmake_Aether.cpp.o.d -o CMakeFiles/aether.dir/build/.qt/rcc/qrc_qmake_Aether.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/qrc_qmake_Aether.cpp
 
 CMakeFiles/aether.dir/build/.qt/rcc/qrc_qmake_Aether.cpp.i: cmake_force
@@ -358,7 +388,7 @@ CMakeFiles/aether.dir/build/.qt/rcc/qrc_qmake_Aether.cpp.s: cmake_force
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qmlcache_loader.cpp.o: CMakeFiles/aether.dir/flags.make
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qmlcache_loader.cpp.o: .rcc/qmlcache/aether_qmlcache_loader.cpp
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qmlcache_loader.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qmlcache_loader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qmlcache_loader.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qmlcache_loader.cpp.o -MF CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qmlcache_loader.cpp.o.d -o CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qmlcache_loader.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qmlcache_loader.cpp
 
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qmlcache_loader.cpp.i: cmake_force
@@ -372,7 +402,7 @@ CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qmlcache_loader.cpp.s: cmake_fo
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Main_qml.cpp.o: CMakeFiles/aether.dir/flags.make
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Main_qml.cpp.o: .rcc/qmlcache/aether_qml/Main_qml.cpp
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Main_qml.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Main_qml.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Main_qml.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Main_qml.cpp.o -MF CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Main_qml.cpp.o.d -o CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Main_qml.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/Main_qml.cpp
 
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Main_qml.cpp.i: cmake_force
@@ -386,7 +416,7 @@ CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Main_qml.cpp.s: cmake_force
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Sidebar_qml.cpp.o: CMakeFiles/aether.dir/flags.make
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Sidebar_qml.cpp.o: .rcc/qmlcache/aether_qml/Sidebar_qml.cpp
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Sidebar_qml.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Sidebar_qml.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Sidebar_qml.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Sidebar_qml.cpp.o -MF CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Sidebar_qml.cpp.o.d -o CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Sidebar_qml.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/Sidebar_qml.cpp
 
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Sidebar_qml.cpp.i: cmake_force
@@ -400,7 +430,7 @@ CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/Sidebar_qml.cpp.s: cmake_fo
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/PlayerBar_qml.cpp.o: CMakeFiles/aether.dir/flags.make
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/PlayerBar_qml.cpp.o: .rcc/qmlcache/aether_qml/PlayerBar_qml.cpp
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/PlayerBar_qml.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/PlayerBar_qml.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/PlayerBar_qml.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/PlayerBar_qml.cpp.o -MF CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/PlayerBar_qml.cpp.o.d -o CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/PlayerBar_qml.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/PlayerBar_qml.cpp
 
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/PlayerBar_qml.cpp.i: cmake_force
@@ -414,7 +444,7 @@ CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/PlayerBar_qml.cpp.s: cmake_
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumGrid_qml.cpp.o: CMakeFiles/aether.dir/flags.make
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumGrid_qml.cpp.o: .rcc/qmlcache/aether_qml/AlbumGrid_qml.cpp
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumGrid_qml.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumGrid_qml.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumGrid_qml.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumGrid_qml.cpp.o -MF CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumGrid_qml.cpp.o.d -o CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumGrid_qml.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/AlbumGrid_qml.cpp
 
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumGrid_qml.cpp.i: cmake_force
@@ -428,7 +458,7 @@ CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumGrid_qml.cpp.s: cmake_
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistList_qml.cpp.o: CMakeFiles/aether.dir/flags.make
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistList_qml.cpp.o: .rcc/qmlcache/aether_qml/ArtistList_qml.cpp
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistList_qml.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistList_qml.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistList_qml.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistList_qml.cpp.o -MF CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistList_qml.cpp.o.d -o CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistList_qml.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/ArtistList_qml.cpp
 
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistList_qml.cpp.i: cmake_force
@@ -442,7 +472,7 @@ CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistList_qml.cpp.s: cmake
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.o: CMakeFiles/aether.dir/flags.make
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.o: .rcc/qmlcache/aether_qml/GenreGrid_qml.cpp
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.o -MF CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.o.d -o CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/GenreGrid_qml.cpp
 
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.i: cmake_force
@@ -456,7 +486,7 @@ CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.s: cmake_
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.o: CMakeFiles/aether.dir/flags.make
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.o: .rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.o -MF CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.o.d -o CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp
 
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.i: cmake_force
@@ -470,7 +500,7 @@ CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.s: c
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.o: CMakeFiles/aether.dir/flags.make
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.o: .rcc/qmlcache/aether_qml/AlbumModal_qml.cpp
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.o -MF CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.o.d -o CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/AlbumModal_qml.cpp
 
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.i: cmake_force
@@ -481,10 +511,38 @@ CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.s: cmake
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/AlbumModal_qml.cpp -o CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.s
 
+CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.o: CMakeFiles/aether.dir/flags.make
+CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.o: .rcc/qmlcache/aether_qml/ArtistModal_qml.cpp
+CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.o -MF CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.o.d -o CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp
+
+CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp > CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.i
+
+CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp -o CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.s
+
+CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.o: CMakeFiles/aether.dir/flags.make
+CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.o: .rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp
+CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.o -MF CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.o.d -o CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp
+
+CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp > CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.i
+
+CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp -o CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.s
+
 CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o: CMakeFiles/aether.dir/flags.make
 CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o: .qt/rcc/qrc_aether_raw_qml_0.cpp
 CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o: CMakeFiles/aether.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o -MF CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o.d -o CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o -c /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/qrc_aether_raw_qml_0.cpp
 
 CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.i: cmake_force
@@ -514,6 +572,8 @@ aether_OBJECTS = \
 "CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.o" \
 "CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.o" \
 "CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.o" \
+"CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.o" \
+"CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.o" \
 "CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o"
 
 # External object files for target aether
@@ -536,24 +596,27 @@ aether: CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistList_qml.cpp.
 aether: CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.o
 aether: CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.o
 aether: CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.o
+aether: CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.o
+aether: CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.o
 aether: CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o
 aether: CMakeFiles/aether.dir/build.make
 aether: CMakeFiles/aether.dir/compiler_depend.ts
 aether: /usr/lib/libQt6QuickControls2.so.6.11.1
 aether: /usr/lib/libQt6Multimedia.so.6.11.1
+aether: /usr/lib/libQt6Widgets.so.6.11.1
 aether: /usr/lib/libQt6Quick.so.6.11.1
 aether: /usr/lib/libQt6OpenGL.so.6.11.1
 aether: /usr/lib/libQt6Qml.so.6.11.1
+aether: /usr/lib/libQt6Network.so.6.11.1
 aether: /usr/lib/libQt6Gui.so.6.11.1
+aether: /usr/lib/libQt6DBus.so.6.11.1
+aether: /usr/lib/libQt6Core.so.6.11.1
 aether: /usr/lib/libGLX.so
 aether: /usr/lib/libOpenGL.so
-aether: /usr/lib/libQt6DBus.so.6.11.1
-aether: /usr/lib/libQt6Network.so.6.11.1
-aether: /usr/lib/libQt6Core.so.6.11.1
 aether: /usr/lib/libtag.so
 aether: /usr/lib/libz.so
 aether: CMakeFiles/aether.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Linking CXX executable aether"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Linking CXX executable aether"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/aether.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -572,10 +635,14 @@ CMakeFiles/aether.dir/depend: .rcc/qmlcache/aether_qml/AlbumModal_qml.cpp
 CMakeFiles/aether.dir/depend: .rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.aotstats
 CMakeFiles/aether.dir/depend: .rcc/qmlcache/aether_qml/ArtistList_qml.cpp
 CMakeFiles/aether.dir/depend: .rcc/qmlcache/aether_qml/ArtistList_qml.cpp.aotstats
+CMakeFiles/aether.dir/depend: .rcc/qmlcache/aether_qml/ArtistModal_qml.cpp
+CMakeFiles/aether.dir/depend: .rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.aotstats
 CMakeFiles/aether.dir/depend: .rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp
 CMakeFiles/aether.dir/depend: .rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.aotstats
 CMakeFiles/aether.dir/depend: .rcc/qmlcache/aether_qml/GenreGrid_qml.cpp
 CMakeFiles/aether.dir/depend: .rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.aotstats
+CMakeFiles/aether.dir/depend: .rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp
+CMakeFiles/aether.dir/depend: .rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.aotstats
 CMakeFiles/aether.dir/depend: .rcc/qmlcache/aether_qml/Main_qml.cpp
 CMakeFiles/aether.dir/depend: .rcc/qmlcache/aether_qml/Main_qml.cpp.aotstats
 CMakeFiles/aether.dir/depend: .rcc/qmlcache/aether_qml/PlayerBar_qml.cpp

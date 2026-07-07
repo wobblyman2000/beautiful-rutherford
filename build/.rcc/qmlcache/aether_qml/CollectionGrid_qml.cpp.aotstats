@@ -26,7 +26,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "editCollection",
-                            "line": 440,
+                            "line": 540,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -34,7 +34,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "confirm",
-                            "line": 465,
+                            "line": 567,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -71,10 +71,18 @@
                         },
                         {
                             "codegenResult": 2,
+                            "column": 25,
+                            "durationMicroseconds": 0,
+                            "functionName": "policy",
+                            "line": 85,
+                            "message": "Could not find property \"policy\"."
+                        },
+                        {
+                            "codegenResult": 2,
                             "column": 45,
                             "durationMicroseconds": 0,
                             "functionName": "matchedTracks",
-                            "line": 92,
+                            "line": 96,
                             "message": "Cannot access value for name root"
                         },
                         {
@@ -82,7 +90,39 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 88,
+                            "line": 92,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 38,
+                            "durationMicroseconds": 0,
+                            "functionName": "acceptedButtons",
+                            "line": 102,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 103,
+                            "message": "Cannot access value for name mouse"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 38,
+                            "durationMicroseconds": 0,
+                            "functionName": "onDoubleClicked",
+                            "line": 130,
+                            "message": "Cannot access value for name matchedTracks"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 35,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 100,
                             "message": ""
                         },
                         {
@@ -90,7 +130,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 95,
+                            "line": 138,
                             "message": ""
                         },
                         {
@@ -98,7 +138,7 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "alignment",
-                            "line": 106,
+                            "line": 149,
                             "message": ""
                         },
                         {
@@ -106,7 +146,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "source",
-                            "line": 110,
+                            "line": 153,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -114,7 +154,7 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "fillMode",
-                            "line": 112,
+                            "line": 155,
                             "message": ""
                         },
                         {
@@ -122,7 +162,7 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 113,
+                            "line": 156,
                             "message": "Cannot generate efficient code for incomparable types QString and (component in /home/dave/Documents/antigravity/beautiful-rutherford/qml/CollectionGrid.qml)::source with type QUrl"
                         },
                         {
@@ -130,7 +170,7 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 111,
+                            "line": 154,
                             "message": ""
                         },
                         {
@@ -138,7 +178,7 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 121,
+                            "line": 164,
                             "message": "Cannot generate efficient code for incomparable types QString and QQuickImageBase::source with type QUrl"
                         },
                         {
@@ -146,7 +186,7 @@
                             "column": 47,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 117,
+                            "line": 160,
                             "message": ""
                         },
                         {
@@ -154,7 +194,7 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "opacity",
-                            "line": 129,
+                            "line": 172,
                             "message": ""
                         },
                         {
@@ -162,86 +202,6 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 130,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 43,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 127,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 44,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 151,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 51,
-                            "durationMicroseconds": 0,
-                            "functionName": "centerIn",
-                            "line": 136,
-                            "message": "Could not find property \"centerIn\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 45,
-                            "durationMicroseconds": 0,
-                            "functionName": "radius",
-                            "line": 141,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 55,
-                            "durationMicroseconds": 0,
-                            "functionName": "centerIn",
-                            "line": 146,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 31,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 161,
-                            "message": "Cannot access value for name modelData"
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 32,
-                            "durationMicroseconds": 0,
-                            "functionName": "elide",
-                            "line": 165,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 38,
-                            "durationMicroseconds": 0,
-                            "functionName": "weight",
-                            "line": 164,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 31,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 170,
-                            "message": "Cannot access value for name matchedTracks"
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 32,
-                            "durationMicroseconds": 0,
-                            "functionName": "elide",
                             "line": 173,
                             "message": ""
                         },
@@ -249,8 +209,96 @@
                             "codegenResult": 0,
                             "column": 43,
                             "durationMicroseconds": 0,
-                            "functionName": "alignment",
-                            "line": 180,
+                            "functionName": "fill",
+                            "line": 170,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 44,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 207,
+                            "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 51,
+                            "durationMicroseconds": 0,
+                            "functionName": "centerIn",
+                            "line": 179,
+                            "message": "Could not find property \"centerIn\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 45,
+                            "durationMicroseconds": 0,
+                            "functionName": "radius",
+                            "line": 184,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 51,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 188,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 50,
+                            "durationMicroseconds": 0,
+                            "functionName": "onPaint",
+                            "line": 193,
+                            "message": "Cannot generate efficient code for call to untyped JavaScript function"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 59,
+                            "durationMicroseconds": 0,
+                            "functionName": "centerIn",
+                            "line": 190,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 217,
+                            "message": "Cannot access value for name modelData"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "elide",
+                            "line": 221,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 38,
+                            "durationMicroseconds": 0,
+                            "functionName": "weight",
+                            "line": 220,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 31,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 226,
+                            "message": "Cannot access value for name matchedTracks"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "elide",
+                            "line": 229,
                             "message": ""
                         },
                         {
@@ -258,39 +306,47 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 188,
+                            "line": 240,
                             "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 54,
+                            "durationMicroseconds": 0,
+                            "functionName": "horizontalAlignment",
+                            "line": 246,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 46,
+                            "durationMicroseconds": 0,
+                            "functionName": "weight",
+                            "line": 245,
+                            "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 196,
+                            "line": 254,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
-                            "codegenResult": 2,
-                            "column": 32,
+                            "codegenResult": 0,
+                            "column": 54,
                             "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 209,
-                            "message": "Cannot retrieve a non-object type by ID: colPlayBtn"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 38,
-                            "durationMicroseconds": 0,
-                            "functionName": "onDoubleClicked",
-                            "line": 229,
-                            "message": "Cannot access value for name matchedTracks"
+                            "functionName": "horizontalAlignment",
+                            "line": 260,
+                            "message": ""
                         },
                         {
                             "codegenResult": 0,
-                            "column": 35,
+                            "column": 46,
                             "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 207,
+                            "functionName": "weight",
+                            "line": 259,
                             "message": ""
                         },
                         {
@@ -298,7 +354,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "rulesModel",
-                            "line": 247,
+                            "line": 277,
                             "message": "Cannot generate efficient code for storing an array in a non-sequence type"
                         },
                         {
@@ -306,7 +362,7 @@
                             "column": 23,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 242,
+                            "line": 272,
                             "message": ""
                         },
                         {
@@ -314,7 +370,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 252,
+                            "line": 282,
                             "message": ""
                         },
                         {
@@ -322,7 +378,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 259,
+                            "line": 289,
                             "message": ""
                         },
                         {
@@ -330,7 +386,7 @@
                             "column": 27,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 264,
+                            "line": 294,
                             "message": ""
                         },
                         {
@@ -338,15 +394,31 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 267,
+                            "line": 297,
                             "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 32,
+                            "durationMicroseconds": 0,
+                            "functionName": "model",
+                            "line": 334,
+                            "message": "Could not find property \"model\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 50,
+                            "durationMicroseconds": 0,
+                            "functionName": "policy",
+                            "line": 345,
+                            "message": "Could not find property \"policy\"."
                         },
                         {
                             "codegenResult": 0,
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 306,
+                            "line": 349,
                             "message": ""
                         },
                         {
@@ -354,15 +426,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 311,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 40,
-                            "durationMicroseconds": 0,
-                            "functionName": "width",
-                            "line": 314,
+                            "line": 354,
                             "message": ""
                         },
                         {
@@ -370,7 +434,7 @@
                             "column": 59,
                             "durationMicroseconds": 0,
                             "functionName": "fieldVal",
-                            "line": 317,
+                            "line": 360,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -378,7 +442,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "opVal",
-                            "line": 318,
+                            "line": 361,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -386,7 +450,7 @@
                             "column": 58,
                             "durationMicroseconds": 0,
                             "functionName": "textVal",
-                            "line": 319,
+                            "line": 362,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -394,7 +458,7 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 323,
+                            "line": 366,
                             "message": "Could not find property \"model\"."
                         },
                         {
@@ -402,7 +466,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "currentIndex",
-                            "line": 324,
+                            "line": 367,
                             "message": "Could not find property \"currentIndex\"."
                         },
                         {
@@ -410,7 +474,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "getIndex",
-                            "line": 327,
+                            "line": 370,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -418,7 +482,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "getFieldKey",
-                            "line": 335,
+                            "line": 379,
                             "message": "Cannot access value for name currentIndex"
                         },
                         {
@@ -426,7 +490,7 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 347,
+                            "line": 392,
                             "message": "Could not find property \"model\"."
                         },
                         {
@@ -434,7 +498,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "currentIndex",
-                            "line": 348,
+                            "line": 393,
                             "message": "Could not find property \"currentIndex\"."
                         },
                         {
@@ -442,7 +506,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "getIndex",
-                            "line": 351,
+                            "line": 396,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -450,7 +514,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "getOpKey",
-                            "line": 359,
+                            "line": 404,
                             "message": "Cannot access value for name currentIndex"
                         },
                         {
@@ -458,15 +522,71 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 371,
+                            "line": 416,
                             "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 52,
+                            "durationMicroseconds": 0,
+                            "functionName": "onTextChanged",
+                            "line": 426,
+                            "message": "Could not find signal \"textChanged\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 46,
+                            "durationMicroseconds": 0,
+                            "functionName": "visible",
+                            "line": 439,
+                            "message": "Could not find property \"visible\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 48,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 381,
+                            "line": 440,
+                            "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 44,
+                            "durationMicroseconds": 0,
+                            "functionName": "y",
+                            "line": 444,
+                            "message": "Could not find property \"y\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 52,
+                            "durationMicroseconds": 1000,
+                            "functionName": "model",
+                            "line": 448,
+                            "message": "Cannot retrieve a non-object type by ID: fieldCombo"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 55,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 467,
+                            "message": "Could not find property \"text\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 62,
+                            "durationMicroseconds": 0,
+                            "functionName": "onTriggered",
+                            "line": 468,
+                            "message": "Could not find signal \"triggered\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 48,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 480,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -474,7 +594,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 401,
+                            "line": 500,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -482,7 +602,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 413,
+                            "line": 512,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -490,8 +610,32 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 418,
+                            "line": 517,
                             "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 26,
+                            "durationMicroseconds": 0,
+                            "functionName": "onTriggered",
+                            "line": 579,
+                            "message": "Could not find signal \"triggered\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 26,
+                            "durationMicroseconds": 0,
+                            "functionName": "onTriggered",
+                            "line": 587,
+                            "message": "Could not find signal \"triggered\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 26,
+                            "durationMicroseconds": 0,
+                            "functionName": "onTriggered",
+                            "line": 595,
+                            "message": "Could not find signal \"triggered\"."
                         }
                     ],
                     "filePath": "/home/dave/Documents/antigravity/beautiful-rutherford/qml/CollectionGrid.qml"

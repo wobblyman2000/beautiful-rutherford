@@ -54,6 +54,7 @@ class LibraryScanner : public QObject {
 public:
     explicit LibraryScanner(QObject *parent = nullptr);
 
+    static LibraryScanner* instance();
     bool scanning() const;
 
     Q_INVOKABLE void startScan();
@@ -67,6 +68,7 @@ private slots:
     void onScanFinished(const QList<Track> &tracks);
 
 private:
+    static LibraryScanner *m_instance;
     bool m_scanning = false;
     QThread *m_thread = nullptr;
 };

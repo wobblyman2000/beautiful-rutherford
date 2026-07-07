@@ -376,26 +376,64 @@ Item {
                                 }
                             }
 
-                            MouseArea {
-                                id: cardMouseArea
-                                anchors.fill: parent
-                                hoverEnabled: true
-                                
-                                onClicked: {
-                                    // Make sure we didn't click the quick play overlay button
-                                    var relativePos = mapToItem(quickPlayBtn, mouse.x, mouse.y);
-                                    if (quickPlayBtn.contains(relativePos)) {
-                                        return;
-                                    }
-                                    window.openAlbum(modelData);
-                                }
+                             MouseArea {
+                                 id: cardMouseArea
+                                 anchors.fill: parent
+                                 hoverEnabled: true
+                                 acceptedButtons: Qt.LeftButton | Qt.RightButton
+                                 
+                                 onClicked: {
+                                     if (mouse.button === Qt.RightButton) {
+                                         albumContextMenu.targetTracks = modelData.tracks;
+                                         albumContextMenu.popup();
+                                         return;
+                                     }
 
-                                onDoubleClicked: {
-                                    player.setQueue(modelData.tracks, 0);
-                                }
-                            }
+                                     // Make sure we didn't click the quick play overlay button
+                                     var relativePos = mapToItem(quickPlayBtn, mouse.x, mouse.y);
+                                     if (quickPlayBtn.contains(relativePos)) {
+                                         return;
+                                     }
+                                     window.openAlbum(modelData);
+                                 }
+
+                                 onDoubleClicked: {
+                                     player.setQueue(modelData.tracks, 0);
+                                 }
+                             }
                         }
                     }
+                }
+            }
+        }
+    }
+
+    Menu {
+        id: albumContextMenu
+        
+        property var targetTracks: null
+        
+        MenuItem {
+            text: qsTr("Play Album Now")
+            onTriggered: {
+                if (albumContextMenu.targetTracks && albumContextMenu.targetTracks.length > 0) {
+                    player.setQueue(albumContextMenu.targetTracks, 0);
+                }
+            }
+        }
+        MenuItem {
+            text: qsTr("Play Album Next")
+            onTriggered: {
+                if (albumContextMenu.targetTracks && albumContextMenu.targetTracks.length > 0) {
+                    player.playNextAlbum(albumContextMenu.targetTracks);
+                }
+            }
+        }
+        MenuItem {
+            text: qsTr("Queue Album Last")
+            onTriggered: {
+                if (albumContextMenu.targetTracks && albumContextMenu.targetTracks.length > 0) {
+                    player.queueLastAlbum(albumContextMenu.targetTracks);
                 }
             }
         }

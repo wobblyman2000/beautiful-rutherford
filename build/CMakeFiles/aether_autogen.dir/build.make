@@ -69,6 +69,7 @@ include CMakeFiles/aether_autogen.dir/progress.make
 CMakeFiles/aether_autogen: aether_autogen/timestamp
 
 aether_autogen/timestamp: /usr/lib/qt6/moc
+aether_autogen/timestamp: /usr/lib/qt6/uic
 aether_autogen/timestamp: CMakeFiles/aether_autogen.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target aether"
 	/usr/bin/cmake -E cmake_autogen /home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles/aether_autogen.dir/AutogenInfo.json ""

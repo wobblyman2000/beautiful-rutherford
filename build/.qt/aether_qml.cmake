@@ -18,6 +18,10 @@ set(src_and_dest_list
     "/home/dave/Documents/antigravity/beautiful-rutherford/build/Aether/qml/CollectionGrid.qml"
     "/home/dave/Documents/antigravity/beautiful-rutherford/qml/AlbumModal.qml"
     "/home/dave/Documents/antigravity/beautiful-rutherford/build/Aether/qml/AlbumModal.qml"
+    "/home/dave/Documents/antigravity/beautiful-rutherford/qml/ArtistModal.qml"
+    "/home/dave/Documents/antigravity/beautiful-rutherford/build/Aether/qml/ArtistModal.qml"
+    "/home/dave/Documents/antigravity/beautiful-rutherford/qml/LyricsVisualizer.qml"
+    "/home/dave/Documents/antigravity/beautiful-rutherford/build/Aether/qml/LyricsVisualizer.qml"
 
 )
 set(timestamp_file "/home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/aether_qml.txt")

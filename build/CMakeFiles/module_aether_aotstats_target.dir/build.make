@@ -76,6 +76,8 @@ CMakeFiles/module_aether_aotstats_target: .rcc/qmlcache/module_aether.aotstats
 .rcc/qmlcache/module_aether.aotstats: .rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.aotstats
 .rcc/qmlcache/module_aether.aotstats: .rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.aotstats
 .rcc/qmlcache/module_aether.aotstats: .rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.aotstats
+.rcc/qmlcache/module_aether.aotstats: .rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.aotstats
+.rcc/qmlcache/module_aether.aotstats: .rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.aotstats
 .rcc/qmlcache/module_aether.aotstats: .rcc/qmlcache/module_aether.aotstatslist
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating .rcc/qmlcache/module_aether.aotstats"
 	/usr/lib/qt6/qmlaotstats aggregate /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/module_aether.aotstatslist /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/module_aether.aotstats
@@ -119,13 +121,26 @@ CMakeFiles/module_aether_aotstats_target: .rcc/qmlcache/module_aether.aotstats
 .rcc/qmlcache/aether_qml/ArtistList_qml.cpp.aotstats: .rcc/qmlcache/aether_qml/ArtistList_qml.cpp
 	@$(CMAKE_COMMAND) -E touch_nocreate .rcc/qmlcache/aether_qml/ArtistList_qml.cpp.aotstats
 
+.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp: /usr/lib/qt6/qmlcachegen
+.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp: /home/dave/Documents/antigravity/beautiful-rutherford/qml/ArtistModal.qml
+.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp: .qt/rcc/qmake_Aether.qrc
+.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp: .qt/rcc/aether_raw_qml_0.qrc
+.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp: Aether/aether.qmltypes
+.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp: Aether/qmldir
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating .rcc/qmlcache/aether_qml/ArtistModal_qml.cpp, .rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.aotstats"
+	/usr/bin/cmake -E make_directory /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml
+	/usr/lib/qt6/qmlcachegen --bare --resource-path /Aether/qml/ArtistModal.qml -I /home/dave/Documents/antigravity/beautiful-rutherford/build -I /usr/lib/qt6/qml -i /home/dave/Documents/antigravity/beautiful-rutherford/build/Aether/qmldir --resource /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/qmake_Aether.qrc --resource /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/aether_raw_qml_0.qrc --dump-aot-stats "--module-id=Aether(aether)" -o /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp /home/dave/Documents/antigravity/beautiful-rutherford/qml/ArtistModal.qml
+
+.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.aotstats: .rcc/qmlcache/aether_qml/ArtistModal_qml.cpp
+	@$(CMAKE_COMMAND) -E touch_nocreate .rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.aotstats
+
 .rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp: /usr/lib/qt6/qmlcachegen
 .rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp: /home/dave/Documents/antigravity/beautiful-rutherford/qml/CollectionGrid.qml
 .rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp: .qt/rcc/qmake_Aether.qrc
 .rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp: .qt/rcc/aether_raw_qml_0.qrc
 .rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp: Aether/aether.qmltypes
 .rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp: Aether/qmldir
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating .rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp, .rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.aotstats"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating .rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp, .rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.aotstats"
 	/usr/bin/cmake -E make_directory /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml
 	/usr/lib/qt6/qmlcachegen --bare --resource-path /Aether/qml/CollectionGrid.qml -I /home/dave/Documents/antigravity/beautiful-rutherford/build -I /usr/lib/qt6/qml -i /home/dave/Documents/antigravity/beautiful-rutherford/build/Aether/qmldir --resource /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/qmake_Aether.qrc --resource /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/aether_raw_qml_0.qrc --dump-aot-stats "--module-id=Aether(aether)" -o /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp /home/dave/Documents/antigravity/beautiful-rutherford/qml/CollectionGrid.qml
 
@@ -138,12 +153,25 @@ CMakeFiles/module_aether_aotstats_target: .rcc/qmlcache/module_aether.aotstats
 .rcc/qmlcache/aether_qml/GenreGrid_qml.cpp: .qt/rcc/aether_raw_qml_0.qrc
 .rcc/qmlcache/aether_qml/GenreGrid_qml.cpp: Aether/aether.qmltypes
 .rcc/qmlcache/aether_qml/GenreGrid_qml.cpp: Aether/qmldir
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating .rcc/qmlcache/aether_qml/GenreGrid_qml.cpp, .rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.aotstats"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating .rcc/qmlcache/aether_qml/GenreGrid_qml.cpp, .rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.aotstats"
 	/usr/bin/cmake -E make_directory /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml
 	/usr/lib/qt6/qmlcachegen --bare --resource-path /Aether/qml/GenreGrid.qml -I /home/dave/Documents/antigravity/beautiful-rutherford/build -I /usr/lib/qt6/qml -i /home/dave/Documents/antigravity/beautiful-rutherford/build/Aether/qmldir --resource /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/qmake_Aether.qrc --resource /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/aether_raw_qml_0.qrc --dump-aot-stats "--module-id=Aether(aether)" -o /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/GenreGrid_qml.cpp /home/dave/Documents/antigravity/beautiful-rutherford/qml/GenreGrid.qml
 
 .rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.aotstats: .rcc/qmlcache/aether_qml/GenreGrid_qml.cpp
 	@$(CMAKE_COMMAND) -E touch_nocreate .rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.aotstats
+
+.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp: /usr/lib/qt6/qmlcachegen
+.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp: /home/dave/Documents/antigravity/beautiful-rutherford/qml/LyricsVisualizer.qml
+.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp: .qt/rcc/qmake_Aether.qrc
+.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp: .qt/rcc/aether_raw_qml_0.qrc
+.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp: Aether/aether.qmltypes
+.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp: Aether/qmldir
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating .rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp, .rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.aotstats"
+	/usr/bin/cmake -E make_directory /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml
+	/usr/lib/qt6/qmlcachegen --bare --resource-path /Aether/qml/LyricsVisualizer.qml -I /home/dave/Documents/antigravity/beautiful-rutherford/build -I /usr/lib/qt6/qml -i /home/dave/Documents/antigravity/beautiful-rutherford/build/Aether/qmldir --resource /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/qmake_Aether.qrc --resource /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/aether_raw_qml_0.qrc --dump-aot-stats "--module-id=Aether(aether)" -o /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp /home/dave/Documents/antigravity/beautiful-rutherford/qml/LyricsVisualizer.qml
+
+.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.aotstats: .rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp
+	@$(CMAKE_COMMAND) -E touch_nocreate .rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.aotstats
 
 .rcc/qmlcache/aether_qml/Main_qml.cpp: /usr/lib/qt6/qmlcachegen
 .rcc/qmlcache/aether_qml/Main_qml.cpp: /home/dave/Documents/antigravity/beautiful-rutherford/qml/Main.qml
@@ -151,7 +179,7 @@ CMakeFiles/module_aether_aotstats_target: .rcc/qmlcache/module_aether.aotstats
 .rcc/qmlcache/aether_qml/Main_qml.cpp: .qt/rcc/aether_raw_qml_0.qrc
 .rcc/qmlcache/aether_qml/Main_qml.cpp: Aether/aether.qmltypes
 .rcc/qmlcache/aether_qml/Main_qml.cpp: Aether/qmldir
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating .rcc/qmlcache/aether_qml/Main_qml.cpp, .rcc/qmlcache/aether_qml/Main_qml.cpp.aotstats"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating .rcc/qmlcache/aether_qml/Main_qml.cpp, .rcc/qmlcache/aether_qml/Main_qml.cpp.aotstats"
 	/usr/bin/cmake -E make_directory /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml
 	/usr/lib/qt6/qmlcachegen --bare --resource-path /Aether/qml/Main.qml -I /home/dave/Documents/antigravity/beautiful-rutherford/build -I /usr/lib/qt6/qml -i /home/dave/Documents/antigravity/beautiful-rutherford/build/Aether/qmldir --resource /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/qmake_Aether.qrc --resource /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/aether_raw_qml_0.qrc --dump-aot-stats "--module-id=Aether(aether)" -o /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/Main_qml.cpp /home/dave/Documents/antigravity/beautiful-rutherford/qml/Main.qml
 
@@ -164,7 +192,7 @@ CMakeFiles/module_aether_aotstats_target: .rcc/qmlcache/module_aether.aotstats
 .rcc/qmlcache/aether_qml/PlayerBar_qml.cpp: .qt/rcc/aether_raw_qml_0.qrc
 .rcc/qmlcache/aether_qml/PlayerBar_qml.cpp: Aether/aether.qmltypes
 .rcc/qmlcache/aether_qml/PlayerBar_qml.cpp: Aether/qmldir
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating .rcc/qmlcache/aether_qml/PlayerBar_qml.cpp, .rcc/qmlcache/aether_qml/PlayerBar_qml.cpp.aotstats"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating .rcc/qmlcache/aether_qml/PlayerBar_qml.cpp, .rcc/qmlcache/aether_qml/PlayerBar_qml.cpp.aotstats"
 	/usr/bin/cmake -E make_directory /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml
 	/usr/lib/qt6/qmlcachegen --bare --resource-path /Aether/qml/PlayerBar.qml -I /home/dave/Documents/antigravity/beautiful-rutherford/build -I /usr/lib/qt6/qml -i /home/dave/Documents/antigravity/beautiful-rutherford/build/Aether/qmldir --resource /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/qmake_Aether.qrc --resource /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/aether_raw_qml_0.qrc --dump-aot-stats "--module-id=Aether(aether)" -o /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/PlayerBar_qml.cpp /home/dave/Documents/antigravity/beautiful-rutherford/qml/PlayerBar.qml
 
@@ -177,7 +205,7 @@ CMakeFiles/module_aether_aotstats_target: .rcc/qmlcache/module_aether.aotstats
 .rcc/qmlcache/aether_qml/Sidebar_qml.cpp: .qt/rcc/aether_raw_qml_0.qrc
 .rcc/qmlcache/aether_qml/Sidebar_qml.cpp: Aether/aether.qmltypes
 .rcc/qmlcache/aether_qml/Sidebar_qml.cpp: Aether/qmldir
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating .rcc/qmlcache/aether_qml/Sidebar_qml.cpp, .rcc/qmlcache/aether_qml/Sidebar_qml.cpp.aotstats"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating .rcc/qmlcache/aether_qml/Sidebar_qml.cpp, .rcc/qmlcache/aether_qml/Sidebar_qml.cpp.aotstats"
 	/usr/bin/cmake -E make_directory /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml
 	/usr/lib/qt6/qmlcachegen --bare --resource-path /Aether/qml/Sidebar.qml -I /home/dave/Documents/antigravity/beautiful-rutherford/build -I /usr/lib/qt6/qml -i /home/dave/Documents/antigravity/beautiful-rutherford/build/Aether/qmldir --resource /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/qmake_Aether.qrc --resource /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/rcc/aether_raw_qml_0.qrc --dump-aot-stats "--module-id=Aether(aether)" -o /home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmlcache/aether_qml/Sidebar_qml.cpp /home/dave/Documents/antigravity/beautiful-rutherford/qml/Sidebar.qml
 
@@ -193,10 +221,14 @@ module_aether_aotstats_target: .rcc/qmlcache/aether_qml/AlbumModal_qml.cpp
 module_aether_aotstats_target: .rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.aotstats
 module_aether_aotstats_target: .rcc/qmlcache/aether_qml/ArtistList_qml.cpp
 module_aether_aotstats_target: .rcc/qmlcache/aether_qml/ArtistList_qml.cpp.aotstats
+module_aether_aotstats_target: .rcc/qmlcache/aether_qml/ArtistModal_qml.cpp
+module_aether_aotstats_target: .rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.aotstats
 module_aether_aotstats_target: .rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp
 module_aether_aotstats_target: .rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.aotstats
 module_aether_aotstats_target: .rcc/qmlcache/aether_qml/GenreGrid_qml.cpp
 module_aether_aotstats_target: .rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.aotstats
+module_aether_aotstats_target: .rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp
+module_aether_aotstats_target: .rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.aotstats
 module_aether_aotstats_target: .rcc/qmlcache/aether_qml/Main_qml.cpp
 module_aether_aotstats_target: .rcc/qmlcache/aether_qml/Main_qml.cpp.aotstats
 module_aether_aotstats_target: .rcc/qmlcache/aether_qml/PlayerBar_qml.cpp

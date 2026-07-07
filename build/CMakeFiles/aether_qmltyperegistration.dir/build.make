@@ -81,6 +81,7 @@ aether_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6opengl_metatypes.json
 aether_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6quickcontrols2_metatypes.json
 aether_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6multimedia_metatypes.json
 aether_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6dbus_metatypes.json
+aether_qmltyperegistrations.cpp: /usr/lib/qt6/metatypes/qt6widgets_metatypes.json
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic QML type registration for target aether"
 	/usr/lib/qt6/qmltyperegistrar --generate-qmltypes=/home/dave/Documents/antigravity/beautiful-rutherford/build/Aether/aether.qmltypes --import-name=Aether --major-version=1 --minor-version=0 @/home/dave/Documents/antigravity/beautiful-rutherford/build/qmltypes/aether_foreign_types.txt -o /home/dave/Documents/antigravity/beautiful-rutherford/build/aether_qmltyperegistrations.cpp /home/dave/Documents/antigravity/beautiful-rutherford/build/meta_types/qt6aether_metatypes.json
 	/usr/bin/cmake -E make_directory /home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/qmltypes
@@ -105,6 +106,7 @@ meta_types/aether_json_file_list.txt: aether_autogen/timestamp
 	/usr/lib/qt6/cmake_automoc_parser --cmake-autogen-cache-file /home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles/aether_autogen.dir/ParseCache.txt --cmake-autogen-info-file /home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles/aether_autogen.dir/AutogenInfo.json --output-file-path /home/dave/Documents/antigravity/beautiful-rutherford/build/meta_types/aether_json_file_list.txt --timestamp-file-path /home/dave/Documents/antigravity/beautiful-rutherford/build/meta_types/aether_json_file_list.txt.timestamp --cmake-autogen-include-dir-path /home/dave/Documents/antigravity/beautiful-rutherford/build/aether_autogen/include
 
 aether_autogen/timestamp: /usr/lib/qt6/moc
+aether_autogen/timestamp: /usr/lib/qt6/uic
 aether_autogen/timestamp: CMakeFiles/aether_qmltyperegistration.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Automatic MOC and UIC for target aether"
 	/usr/bin/cmake -E cmake_autogen /home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles/aether_autogen.dir/AutogenInfo.json ""

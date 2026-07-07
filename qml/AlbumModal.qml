@@ -316,6 +316,39 @@ Rectangle {
                                                 }
                                             }
 
+                                            Row {
+                                                spacing: 2
+                                                Layout.alignment: Qt.AlignVCenter
+                                                Layout.preferredWidth: 80
+                                                visible: (trackObj.rating > 0) || trackMouse.containsMouse
+
+                                                Repeater {
+                                                    model: 5
+                                                    delegate: MouseArea {
+                                                        width: 14
+                                                        height: 14
+                                                        hoverEnabled: true
+                                                        cursorShape: Qt.PointingHandCursor
+
+                                                        Text {
+                                                            anchors.centerIn: parent
+                                                            text: index < trackObj.rating ? "★" : "☆"
+                                                            color: index < trackObj.rating ? "#ffd700" : (trackMouse.containsMouse ? "#33ffffff" : "transparent")
+                                                            font.pixelSize: 13
+                                                        }
+
+                                                        onClicked: {
+                                                            var nextRating = index + 1;
+                                                            if (trackObj.rating === nextRating) {
+                                                                database.setTrackRating(trackObj.id, 0);
+                                                            } else {
+                                                                database.setTrackRating(trackObj.id, nextRating);
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+
                                             Button {
                                                 id: editTagBtn
                                                 text: qsTr("Edit")
@@ -343,9 +376,14 @@ Rectangle {
                                             id: trackMouse
                                             anchors.fill: parent
                                             hoverEnabled: true
+                                            acceptedButtons: Qt.LeftButton | Qt.RightButton
                                             onClicked: {
-                                                // Play album tracks starting from this specific track filepath
-                                                player.setQueue(root.activeAlbum.tracks, root.activeAlbum.tracks.indexOf(trackObj));
+                                                if (mouse.button === Qt.RightButton) {
+                                                    tracksContextMenu.targetTrack = trackObj;
+                                                    tracksContextMenu.popup();
+                                                } else {
+                                                    player.setQueue(root.activeAlbum.tracks, root.activeAlbum.tracks.indexOf(trackObj));
+                                                }
                                             }
                                         }
                                     }
@@ -688,5 +726,36 @@ Rectangle {
         albumTypeCombo.currentIndex = idx >= 0 ? idx : 0;
 
         tagEditorDialog.visible = true;
+    }
+
+    Menu {
+        id: tracksContextMenu
+        
+        property var targetTrack: null
+        
+        MenuItem {
+            text: qsTr("Play Now")
+            onTriggered: {
+                if (tracksContextMenu.targetTrack) {
+                    player.setQueue([tracksContextMenu.targetTrack], 0);
+                }
+            }
+        }
+        MenuItem {
+            text: qsTr("Play Next")
+            onTriggered: {
+                if (tracksContextMenu.targetTrack) {
+                    player.playNext(tracksContextMenu.targetTrack);
+                }
+            }
+        }
+        MenuItem {
+            text: qsTr("Queue Last")
+            onTriggered: {
+                if (tracksContextMenu.targetTrack) {
+                    player.queueLast(tracksContextMenu.targetTrack);
+                }
+            }
+        }
     }
 }

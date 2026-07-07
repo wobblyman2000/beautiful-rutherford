@@ -60,7 +60,7 @@
                 {
                     "access": "public",
                     "index": 4,
-                    "lineNumber": 59,
+                    "lineNumber": 60,
                     "name": "startScan",
                     "returnType": "void"
                 }
@@ -90,7 +90,7 @@
                 {
                     "access": "public",
                     "index": 0,
-                    "lineNumber": 62,
+                    "lineNumber": 63,
                     "name": "scanningChanged",
                     "returnType": "void"
                 },
@@ -103,7 +103,7 @@
                         }
                     ],
                     "index": 1,
-                    "lineNumber": 63,
+                    "lineNumber": 64,
                     "name": "scanFinished",
                     "returnType": "void"
                 },
@@ -120,7 +120,7 @@
                         }
                     ],
                     "index": 2,
-                    "lineNumber": 64,
+                    "lineNumber": 65,
                     "name": "scanProgress",
                     "returnType": "void"
                 }
@@ -135,7 +135,7 @@
                         }
                     ],
                     "index": 3,
-                    "lineNumber": 67,
+                    "lineNumber": 68,
                     "name": "onScanFinished",
                     "returnType": "void"
                 }

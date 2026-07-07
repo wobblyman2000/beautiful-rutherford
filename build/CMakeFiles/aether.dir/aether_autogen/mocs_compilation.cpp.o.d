@@ -364,7 +364,15 @@ CMakeFiles/aether.dir/aether_autogen/mocs_compilation.cpp.o: \
  /usr/include/qt6/QtCore/QDir /usr/include/qt6/QtCore/qdir.h \
  /usr/include/qt6/QtCore/qdirlisting.h \
  /usr/include/qt6/QtCore/qfileinfo.h /usr/include/qt6/QtCore/qtimezone.h \
- /usr/include/qt6/QtCore/QDebug /usr/include/qt6/QtCore/qtmochelpers.h \
+ /usr/include/qt6/QtCore/QDebug \
+ /usr/include/qt6/QtCore/QFileSystemWatcher \
+ /usr/include/qt6/QtCore/qfilesystemwatcher.h \
+ /usr/include/qt6/QtCore/QTimer /usr/include/qt6/QtCore/qtimer.h \
+ /usr/include/qt6/QtCore/qbasictimer.h \
+ /usr/include/qt6/QtCore/qabstracteventdispatcher.h \
+ /usr/include/qt6/QtCore/qeventloop.h \
+ /usr/include/qt6/QtCore/qdeadlinetimer.h \
+ /usr/include/qt6/QtCore/qtmochelpers.h \
  /usr/include/qt6/QtCore/qtmocconstants.h \
  /usr/include/qt6/QtCore/q20algorithm.h \
  /home/dave/Documents/antigravity/beautiful-rutherford/build/aether_autogen/UVLADIE3JM/moc_mpris.cpp \
@@ -406,8 +414,8 @@ CMakeFiles/aether.dir/aether_autogen/mocs_compilation.cpp.o: \
  /home/dave/Documents/antigravity/beautiful-rutherford/build/aether_autogen/UVLADIE3JM/moc_scanner.cpp \
  /home/dave/Documents/antigravity/beautiful-rutherford/build/aether_autogen/UVLADIE3JM/../../../src/scanner.h \
  /usr/include/qt6/QtCore/QThread /usr/include/qt6/QtCore/qthread.h \
- /usr/include/qt6/QtCore/qdeadlinetimer.h /usr/include/c++/16/future \
- /usr/include/c++/16/mutex /usr/include/c++/16/bits/std_mutex.h \
+ /usr/include/c++/16/future /usr/include/c++/16/mutex \
+ /usr/include/c++/16/bits/std_mutex.h \
  /usr/include/c++/16/bits/unique_lock.h \
  /usr/include/c++/16/condition_variable /usr/include/c++/16/stop_token \
  /usr/include/c++/16/bits/std_thread.h /usr/include/c++/16/semaphore \

@@ -223,7 +223,15 @@ void ScanWorker::process() {
 
 // LibraryScanner Implementation
 
-LibraryScanner::LibraryScanner(QObject *parent) : QObject(parent) {}
+LibraryScanner* LibraryScanner::m_instance = nullptr;
+
+LibraryScanner::LibraryScanner(QObject *parent) : QObject(parent) {
+    m_instance = this;
+}
+
+LibraryScanner* LibraryScanner::instance() {
+    return m_instance;
+}
 
 bool LibraryScanner::scanning() const {
     return m_scanning;

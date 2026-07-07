@@ -57,6 +57,12 @@ public:
     Q_INVOKABLE void setQueue(const QVariantList &tracks, int startIndex);
     Q_INVOKABLE void clearQueue();
     Q_INVOKABLE void removeQueueIndex(int index);
+    Q_INVOKABLE void playNext(const QVariantMap &track);
+    Q_INVOKABLE void queueLast(const QVariantMap &track);
+    Q_INVOKABLE void playNextAlbum(const QVariantList &tracks);
+    Q_INVOKABLE void queueLastAlbum(const QVariantList &tracks);
+    Q_INVOKABLE QString getLyricsForTrack(const QString &filePath);
+    void updateTrackRating(const QString &trackId, int rating);
 
     QVariantList getAutoDJMatchingTracks();
 

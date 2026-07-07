@@ -379,14 +379,19 @@ CMakeFiles/aether.dir/src/scanner.cpp.o: \
  /usr/include/qt6/QtCore/qjsonparseerror.h \
  /usr/include/qt6/QtCore/QJsonArray /usr/include/qt6/QtCore/qjsonarray.h \
  /usr/include/qt6/QtCore/QJsonDocument /usr/include/qt6/QtCore/QFile \
- /usr/include/taglib/fileref.h /usr/include/taglib/tfile.h \
- /usr/include/taglib/tbytevector.h /usr/include/taglib/taglib_export.h \
- /usr/include/taglib/tiostream.h /usr/include/taglib/taglib.h \
- /usr/include/taglib/tag.h /usr/include/taglib/tstring.h \
- /usr/include/taglib/tlist.h /usr/include/taglib/tlist.tcc \
- /usr/include/taglib/tvariant.h /usr/include/taglib/tmap.h \
- /usr/include/taglib/tmap.tcc /usr/include/taglib/tstringlist.h \
- /usr/include/taglib/tbytevectorlist.h \
+ /usr/include/qt6/QtCore/QFileSystemWatcher \
+ /usr/include/qt6/QtCore/qfilesystemwatcher.h \
+ /usr/include/qt6/QtCore/QTimer /usr/include/qt6/QtCore/qtimer.h \
+ /usr/include/qt6/QtCore/qbasictimer.h \
+ /usr/include/qt6/QtCore/qabstracteventdispatcher.h \
+ /usr/include/qt6/QtCore/qeventloop.h /usr/include/taglib/fileref.h \
+ /usr/include/taglib/tfile.h /usr/include/taglib/tbytevector.h \
+ /usr/include/taglib/taglib_export.h /usr/include/taglib/tiostream.h \
+ /usr/include/taglib/taglib.h /usr/include/taglib/tag.h \
+ /usr/include/taglib/tstring.h /usr/include/taglib/tlist.h \
+ /usr/include/taglib/tlist.tcc /usr/include/taglib/tvariant.h \
+ /usr/include/taglib/tmap.h /usr/include/taglib/tmap.tcc \
+ /usr/include/taglib/tstringlist.h /usr/include/taglib/tbytevectorlist.h \
  /usr/include/taglib/audioproperties.h /usr/include/taglib/tag.h \
  /usr/include/taglib/tpropertymap.h /usr/include/taglib/mpegfile.h \
  /usr/include/taglib/mpegproperties.h /usr/include/taglib/mpegheader.h \

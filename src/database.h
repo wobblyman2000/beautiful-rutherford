@@ -13,6 +13,8 @@
 #include <QFile>
 #include <QDir>
 #include <QDebug>
+#include <QFileSystemWatcher>
+#include <QTimer>
 
 struct Track {
     QString id;
@@ -27,6 +29,7 @@ struct Track {
     double duration = 0.0;
     QString coverPath;
     QString albumType;
+    int rating = 0;
 
     QJsonObject toJsonObject() const {
         QJsonObject obj;
@@ -42,6 +45,7 @@ struct Track {
         obj["duration"] = duration;
         obj["coverPath"] = coverPath;
         obj["albumType"] = albumType;
+        obj["rating"] = rating;
         return obj;
     }
 
@@ -59,6 +63,7 @@ struct Track {
         t.duration = obj["duration"].toDouble();
         t.coverPath = obj["coverPath"].toString();
         t.albumType = obj["albumType"].toString(QStringLiteral("Studio Albums"));
+        t.rating = obj["rating"].toInt(0);
         return t;
     }
 };
@@ -96,6 +101,7 @@ public:
     // Smart Collections CRUD
     Q_INVOKABLE void saveCollection(const QString &id, const QString &name, const QString &coverPath, const QString &displayMode, const QVariantList &rules);
     Q_INVOKABLE void deleteCollection(const QString &id);
+    Q_INVOKABLE void setTrackRating(const QString &trackId, int rating);
     Q_INVOKABLE bool writeTrackTags(const QString &filePath, const QString &title, const QString &artist, const QString &album, const QString &genre, int year, const QString &albumType);
 
 signals:
@@ -103,15 +109,23 @@ signals:
     void tracksChanged();
     void collectionsChanged();
 
+private slots:
+    void onDirectoryChanged(const QString &path);
+    void onDebounceTimeout();
+
 private:
     void load();
     void save();
     QString getDbFilePath() const;
+    void setupDirectoryWatcher();
 
     QStringList m_musicDirs;
     QList<Track> m_tracks;
     QJsonArray m_collections;
     
+    QFileSystemWatcher *m_watcher = nullptr;
+    QTimer *m_watchDebounceTimer = nullptr;
+
     static Database* m_instance;
 };
 

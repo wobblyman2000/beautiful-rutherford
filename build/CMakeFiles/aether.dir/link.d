@@ -19,18 +19,21 @@ aether: \
   CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.o \
   CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.o \
   CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.o \
+  CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.o \
+  CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.o \
   CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o \
   /usr/lib/libQt6QuickControls2.so.6.11.1 \
   /usr/lib/libQt6Multimedia.so.6.11.1 \
+  /usr/lib/libQt6Widgets.so.6.11.1 \
   /usr/lib/libQt6Quick.so.6.11.1 \
   /usr/lib/libQt6OpenGL.so.6.11.1 \
   /usr/lib/libQt6Qml.so.6.11.1 \
+  /usr/lib/libQt6Network.so.6.11.1 \
   /usr/lib/libQt6Gui.so.6.11.1 \
+  /usr/lib/libQt6DBus.so.6.11.1 \
+  /usr/lib/libQt6Core.so.6.11.1 \
   /usr/lib/libGLX.so \
   /usr/lib/libOpenGL.so \
-  /usr/lib/libQt6DBus.so.6.11.1 \
-  /usr/lib/libQt6Network.so.6.11.1 \
-  /usr/lib/libQt6Core.so.6.11.1 \
   /usr/lib/libtag.so \
   /usr/lib/libz.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/../../../../lib/libstdc++.so \
@@ -68,6 +71,14 @@ aether: \
   /usr/lib/ld-linux-x86-64.so.2 \
   /usr/lib/libQt6QmlMeta.so.6 \
   /usr/lib/libQt6QmlModels.so.6 \
+  /usr/lib/libgssapi_krb5.so.2 \
+  /usr/lib/libbrotlidec.so.1 \
+  /usr/lib/libzstd.so.1 \
+  /usr/lib/libproxy.so.1 \
+  /usr/lib32/libproxy.so.1 \
+  /usr/lib/libproxy.so.1 \
+  /usr/lib/libproxy.so.1 \
+  /usr/lib/libcrypto.so.3 \
   /usr/lib/libEGL.so.1 \
   /usr/lib/libfontconfig.so.1 \
   /usr/lib/libX11.so.6 \
@@ -77,17 +88,7 @@ aether: \
   /usr/lib/libharfbuzz.so.0 \
   /usr/lib/libmd4c.so.0 \
   /usr/lib/libfreetype.so.6 \
-  /usr/lib32/libGLdispatch.so.0 \
-  /usr/lib/libGLdispatch.so.0 \
   /usr/lib/libdbus-1.so.3 \
-  /usr/lib/libgssapi_krb5.so.2 \
-  /usr/lib/libbrotlidec.so.1 \
-  /usr/lib/libzstd.so.1 \
-  /usr/lib/libproxy.so.1 \
-  /usr/lib32/libproxy.so.1 \
-  /usr/lib/libproxy.so.1 \
-  /usr/lib/libproxy.so.1 \
-  /usr/lib/libcrypto.so.3 \
   /usr/lib/liburing.so.2 \
   /usr/lib/libicui18n.so.78 \
   /usr/lib/libicuuc.so.78 \
@@ -95,17 +96,10 @@ aether: \
   /usr/lib/libdouble-conversion.so.3 \
   /usr/lib/libb2.so.1 \
   /usr/lib/libpcre2-16.so.0 \
+  /usr/lib32/libGLdispatch.so.0 \
+  /usr/lib/libGLdispatch.so.0 \
   /usr/lib/pulseaudio/libpulsecommon-17.0.so \
   /usr/lib/libQt6QmlWorkerScript.so.6 \
-  /usr/lib32/libexpat.so.1 \
-  /usr/lib/libexpat.so.1 \
-  /usr/lib32/libxcb.so.1 \
-  /usr/lib/libxcb.so.1 \
-  /usr/lib32/libpcre2-8.so.0 \
-  /usr/lib/libpcre2-8.so.0 \
-  /usr/lib/libgraphite2.so.3 \
-  /usr/lib32/libbz2.so.1.0 \
-  /usr/lib/libbz2.so.1.0 \
   /usr/lib32/libkrb5.so.3 \
   /usr/lib/libkrb5.so.3 \
   /usr/lib32/libk5crypto.so.3 \
@@ -125,6 +119,15 @@ aether: \
   /usr/lib/libgobject-2.0.so.0 \
   /usr/lib32/libbrotlienc.so.1 \
   /usr/lib/libbrotlienc.so.1 \
+  /usr/lib32/libexpat.so.1 \
+  /usr/lib/libexpat.so.1 \
+  /usr/lib32/libxcb.so.1 \
+  /usr/lib/libxcb.so.1 \
+  /usr/lib32/libpcre2-8.so.0 \
+  /usr/lib/libpcre2-8.so.0 \
+  /usr/lib/libgraphite2.so.3 \
+  /usr/lib32/libbz2.so.1.0 \
+  /usr/lib/libbz2.so.1.0 \
   /usr/lib32/libicudata.so.78 \
   /usr/lib/libicudata.so.78 \
   /usr/lib32/libgomp.so.1 \
@@ -133,10 +136,6 @@ aether: \
   /usr/lib/libsndfile.so.1 \
   /usr/lib32/libasyncns.so.0 \
   /usr/lib/libasyncns.so.0 \
-  /usr/lib32/libXau.so.6 \
-  /usr/lib/libXau.so.6 \
-  /usr/lib32/libXdmcp.so.6 \
-  /usr/lib/libXdmcp.so.6 \
   /usr/lib32/libcurl.so.4 \
   /usr/lib/libcurl.so.4 \
   /usr/lib32/libgio-2.0.so.0 \
@@ -145,6 +144,10 @@ aether: \
   /usr/lib/libduktape.so.207 \
   /usr/lib32/libffi.so.8 \
   /usr/lib/libffi.so.8 \
+  /usr/lib32/libXau.so.6 \
+  /usr/lib/libXau.so.6 \
+  /usr/lib32/libXdmcp.so.6 \
+  /usr/lib/libXdmcp.so.6 \
   /usr/lib32/libogg.so.0 \
   /usr/lib/libogg.so.0 \
   /usr/lib32/libvorbisenc.so.2 \
@@ -224,11 +227,17 @@ CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.o:
 
 CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/AlbumModal_qml.cpp.o:
 
+CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.o:
+
+CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.o:
+
 CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o:
 
 /usr/lib/libQt6QuickControls2.so.6.11.1:
 
 /usr/lib/libQt6Multimedia.so.6.11.1:
+
+/usr/lib/libQt6Widgets.so.6.11.1:
 
 /usr/lib/libQt6Quick.so.6.11.1:
 
@@ -236,17 +245,17 @@ CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o:
 
 /usr/lib/libQt6Qml.so.6.11.1:
 
+/usr/lib/libQt6Network.so.6.11.1:
+
 /usr/lib/libQt6Gui.so.6.11.1:
+
+/usr/lib/libQt6DBus.so.6.11.1:
+
+/usr/lib/libQt6Core.so.6.11.1:
 
 /usr/lib/libGLX.so:
 
 /usr/lib/libOpenGL.so:
-
-/usr/lib/libQt6DBus.so.6.11.1:
-
-/usr/lib/libQt6Network.so.6.11.1:
-
-/usr/lib/libQt6Core.so.6.11.1:
 
 /usr/lib/libtag.so:
 
@@ -322,6 +331,22 @@ CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o:
 
 /usr/lib/libQt6QmlModels.so.6:
 
+/usr/lib/libgssapi_krb5.so.2:
+
+/usr/lib/libbrotlidec.so.1:
+
+/usr/lib/libzstd.so.1:
+
+/usr/lib/libproxy.so.1:
+
+/usr/lib32/libproxy.so.1:
+
+/usr/lib/libproxy.so.1:
+
+/usr/lib/libproxy.so.1:
+
+/usr/lib/libcrypto.so.3:
+
 /usr/lib/libEGL.so.1:
 
 /usr/lib/libfontconfig.so.1:
@@ -340,27 +365,7 @@ CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o:
 
 /usr/lib/libfreetype.so.6:
 
-/usr/lib32/libGLdispatch.so.0:
-
-/usr/lib/libGLdispatch.so.0:
-
 /usr/lib/libdbus-1.so.3:
-
-/usr/lib/libgssapi_krb5.so.2:
-
-/usr/lib/libbrotlidec.so.1:
-
-/usr/lib/libzstd.so.1:
-
-/usr/lib/libproxy.so.1:
-
-/usr/lib32/libproxy.so.1:
-
-/usr/lib/libproxy.so.1:
-
-/usr/lib/libproxy.so.1:
-
-/usr/lib/libcrypto.so.3:
 
 /usr/lib/liburing.so.2:
 
@@ -376,27 +381,13 @@ CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o:
 
 /usr/lib/libpcre2-16.so.0:
 
+/usr/lib32/libGLdispatch.so.0:
+
+/usr/lib/libGLdispatch.so.0:
+
 /usr/lib/pulseaudio/libpulsecommon-17.0.so:
 
 /usr/lib/libQt6QmlWorkerScript.so.6:
-
-/usr/lib32/libexpat.so.1:
-
-/usr/lib/libexpat.so.1:
-
-/usr/lib32/libxcb.so.1:
-
-/usr/lib/libxcb.so.1:
-
-/usr/lib32/libpcre2-8.so.0:
-
-/usr/lib/libpcre2-8.so.0:
-
-/usr/lib/libgraphite2.so.3:
-
-/usr/lib32/libbz2.so.1.0:
-
-/usr/lib/libbz2.so.1.0:
 
 /usr/lib32/libkrb5.so.3:
 
@@ -436,6 +427,24 @@ CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o:
 
 /usr/lib/libbrotlienc.so.1:
 
+/usr/lib32/libexpat.so.1:
+
+/usr/lib/libexpat.so.1:
+
+/usr/lib32/libxcb.so.1:
+
+/usr/lib/libxcb.so.1:
+
+/usr/lib32/libpcre2-8.so.0:
+
+/usr/lib/libpcre2-8.so.0:
+
+/usr/lib/libgraphite2.so.3:
+
+/usr/lib32/libbz2.so.1.0:
+
+/usr/lib/libbz2.so.1.0:
+
 /usr/lib32/libicudata.so.78:
 
 /usr/lib/libicudata.so.78:
@@ -452,14 +461,6 @@ CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o:
 
 /usr/lib/libasyncns.so.0:
 
-/usr/lib32/libXau.so.6:
-
-/usr/lib/libXau.so.6:
-
-/usr/lib32/libXdmcp.so.6:
-
-/usr/lib/libXdmcp.so.6:
-
 /usr/lib32/libcurl.so.4:
 
 /usr/lib/libcurl.so.4:
@@ -475,6 +476,14 @@ CMakeFiles/aether.dir/build/.qt/rcc/qrc_aether_raw_qml_0.cpp.o:
 /usr/lib32/libffi.so.8:
 
 /usr/lib/libffi.so.8:
+
+/usr/lib32/libXau.so.6:
+
+/usr/lib/libXau.so.6:
+
+/usr/lib32/libXdmcp.so.6:
+
+/usr/lib/libXdmcp.so.6:
 
 /usr/lib32/libogg.so.0:
 

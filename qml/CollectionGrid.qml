@@ -99,7 +99,14 @@ Item {
                     id: colMouse
                     anchors.fill: parent
                     hoverEnabled: true
+                    acceptedButtons: Qt.LeftButton | Qt.RightButton
                     onClicked: {
+                        if (mouse.button === Qt.RightButton) {
+                            collectionContextMenu.targetTracks = matchedTracks;
+                            collectionContextMenu.popup();
+                            return;
+                        }
+
                         var relativePos = mapToItem(colPlayBtn, mouse.x, mouse.y);
                         if (colPlayBtn.contains(relativePos)) {
                             return;
@@ -356,7 +363,7 @@ Item {
 
                                 ComboBox {
                                     id: fieldCombo
-                                    model: ["Album", "Artist", "Genre", "Title", "FilePath"]
+                                    model: ["Album", "Artist", "Genre", "Title", "FilePath", "Rating"]
                                     currentIndex: getIndex(modelData.field)
                                     Layout.preferredWidth: 100
                                     
@@ -365,6 +372,7 @@ Item {
                                         if (f === "genre") return 2;
                                         if (f === "title") return 3;
                                         if (f === "filePath") return 4;
+                                        if (f === "rating") return 5;
                                         return 0; // album
                                     }
                                     
@@ -374,6 +382,7 @@ Item {
                                         if (idx === 2) return "genre";
                                         if (idx === 3) return "title";
                                         if (idx === 4) return "filePath";
+                                        if (idx === 5) return "rating";
                                         return "album";
                                     }
                                 }
@@ -558,5 +567,36 @@ Item {
     function confirm(text) {
         // Simple mock confirmation since standard dialogs are heavier
         return true; // Auto confirmed for now to simplify
+    }
+
+    Menu {
+        id: collectionContextMenu
+        
+        property var targetTracks: null
+        
+        MenuItem {
+            text: qsTr("Play Collection Now")
+            onTriggered: {
+                if (collectionContextMenu.targetTracks && collectionContextMenu.targetTracks.length > 0) {
+                    player.setQueue(collectionContextMenu.targetTracks, 0);
+                }
+            }
+        }
+        MenuItem {
+            text: qsTr("Play Collection Next")
+            onTriggered: {
+                if (collectionContextMenu.targetTracks && collectionContextMenu.targetTracks.length > 0) {
+                    player.playNextAlbum(collectionContextMenu.targetTracks);
+                }
+            }
+        }
+        MenuItem {
+            text: qsTr("Queue Collection Last")
+            onTriggered: {
+                if (collectionContextMenu.targetTracks && collectionContextMenu.targetTracks.length > 0) {
+                    player.queueLastAlbum(collectionContextMenu.targetTracks);
+                }
+            }
+        }
     }
 }

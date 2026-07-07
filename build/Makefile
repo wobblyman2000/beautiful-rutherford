@@ -531,6 +531,30 @@ build/.rcc/qmlcache/aether_qml/ArtistList_qml.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aether.dir/build.make CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistList_qml.cpp.s
 .PHONY : build/.rcc/qmlcache/aether_qml/ArtistList_qml.cpp.s
 
+build/.rcc/qmlcache/aether_qml/ArtistModal_qml.o: build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.o
+.PHONY : build/.rcc/qmlcache/aether_qml/ArtistModal_qml.o
+
+# target to build an object file
+build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aether.dir/build.make CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.o
+.PHONY : build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.o
+
+build/.rcc/qmlcache/aether_qml/ArtistModal_qml.i: build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.i
+.PHONY : build/.rcc/qmlcache/aether_qml/ArtistModal_qml.i
+
+# target to preprocess a source file
+build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aether.dir/build.make CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.i
+.PHONY : build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.i
+
+build/.rcc/qmlcache/aether_qml/ArtistModal_qml.s: build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.s
+.PHONY : build/.rcc/qmlcache/aether_qml/ArtistModal_qml.s
+
+# target to generate assembly for a file
+build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aether.dir/build.make CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.s
+.PHONY : build/.rcc/qmlcache/aether_qml/ArtistModal_qml.cpp.s
+
 build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.o: build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp.o
 .PHONY : build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.o
 
@@ -578,6 +602,30 @@ build/.rcc/qmlcache/aether_qml/GenreGrid_qml.s: build/.rcc/qmlcache/aether_qml/G
 build/.rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aether.dir/build.make CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.s
 .PHONY : build/.rcc/qmlcache/aether_qml/GenreGrid_qml.cpp.s
+
+build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.o: build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.o
+.PHONY : build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.o
+
+# target to build an object file
+build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aether.dir/build.make CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.o
+.PHONY : build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.o
+
+build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.i: build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.i
+.PHONY : build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.i
+
+# target to preprocess a source file
+build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aether.dir/build.make CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.i
+.PHONY : build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.i
+
+build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.s: build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.s
+.PHONY : build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.s
+
+# target to generate assembly for a file
+build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aether.dir/build.make CMakeFiles/aether.dir/build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.s
+.PHONY : build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp.s
 
 build/.rcc/qmlcache/aether_qml/Main_qml.o: build/.rcc/qmlcache/aether_qml/Main_qml.cpp.o
 .PHONY : build/.rcc/qmlcache/aether_qml/Main_qml.o
@@ -843,12 +891,18 @@ help:
 	@echo "... build/.rcc/qmlcache/aether_qml/ArtistList_qml.o"
 	@echo "... build/.rcc/qmlcache/aether_qml/ArtistList_qml.i"
 	@echo "... build/.rcc/qmlcache/aether_qml/ArtistList_qml.s"
+	@echo "... build/.rcc/qmlcache/aether_qml/ArtistModal_qml.o"
+	@echo "... build/.rcc/qmlcache/aether_qml/ArtistModal_qml.i"
+	@echo "... build/.rcc/qmlcache/aether_qml/ArtistModal_qml.s"
 	@echo "... build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.o"
 	@echo "... build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.i"
 	@echo "... build/.rcc/qmlcache/aether_qml/CollectionGrid_qml.s"
 	@echo "... build/.rcc/qmlcache/aether_qml/GenreGrid_qml.o"
 	@echo "... build/.rcc/qmlcache/aether_qml/GenreGrid_qml.i"
 	@echo "... build/.rcc/qmlcache/aether_qml/GenreGrid_qml.s"
+	@echo "... build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.o"
+	@echo "... build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.i"
+	@echo "... build/.rcc/qmlcache/aether_qml/LyricsVisualizer_qml.s"
 	@echo "... build/.rcc/qmlcache/aether_qml/Main_qml.o"
 	@echo "... build/.rcc/qmlcache/aether_qml/Main_qml.i"
 	@echo "... build/.rcc/qmlcache/aether_qml/Main_qml.s"

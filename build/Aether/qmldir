@@ -9,5 +9,7 @@ ArtistList 1.0 qml/ArtistList.qml
 GenreGrid 1.0 qml/GenreGrid.qml
 CollectionGrid 1.0 qml/CollectionGrid.qml
 AlbumModal 1.0 qml/AlbumModal.qml
+ArtistModal 1.0 qml/ArtistModal.qml
+LyricsVisualizer 1.0 qml/LyricsVisualizer.qml
 depends QtQuick
 

@@ -76,6 +76,40 @@ Rectangle {
                     elide: Text.ElideRight
                     Layout.fillWidth: true
                 }
+
+                Row {
+                    id: ratingStarsRow
+                    spacing: 4
+                    visible: !!player.currentTrack.id
+
+                    Repeater {
+                        model: 5
+                        delegate: MouseArea {
+                            width: 16
+                            height: 16
+                            hoverEnabled: true
+                            cursorShape: Qt.PointingHandCursor
+
+                            property int ratingValue: player.currentTrack.rating || 0
+
+                            Text {
+                                anchors.centerIn: parent
+                                text: index < parent.ratingValue ? "★" : "☆"
+                                color: index < parent.ratingValue ? "#ffd700" : "#666a8a"
+                                font.pixelSize: 15
+                            }
+
+                            onClicked: {
+                                var nextRating = index + 1;
+                                if (ratingValue === nextRating) {
+                                    database.setTrackRating(player.currentTrack.id, 0);
+                                } else {
+                                    database.setTrackRating(player.currentTrack.id, nextRating);
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -338,6 +372,20 @@ Rectangle {
                     verticalAlignment: Text.AlignVCenter
                 }
                 onClicked: window.isTheaterMode = !window.isTheaterMode
+            }
+
+            Button {
+                id: lyricsToggleBtn
+                flat: true
+                contentItem: Text {
+                    text: qsTr("Lyrics")
+                    font.pixelSize: 10
+                    font.weight: Font.Bold
+                    color: window.showLyricsPanel ? "#00f2fe" : "#ffffff"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+                onClicked: window.showLyricsPanel = !window.showLyricsPanel
             }
 
             Button {

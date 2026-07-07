@@ -75,6 +75,8 @@ CMakeFiles/aether_qmllint: /home/dave/Documents/antigravity/beautiful-rutherford
 CMakeFiles/aether_qmllint: /home/dave/Documents/antigravity/beautiful-rutherford/qml/GenreGrid.qml
 CMakeFiles/aether_qmllint: /home/dave/Documents/antigravity/beautiful-rutherford/qml/CollectionGrid.qml
 CMakeFiles/aether_qmllint: /home/dave/Documents/antigravity/beautiful-rutherford/qml/AlbumModal.qml
+CMakeFiles/aether_qmllint: /home/dave/Documents/antigravity/beautiful-rutherford/qml/ArtistModal.qml
+CMakeFiles/aether_qmllint: /home/dave/Documents/antigravity/beautiful-rutherford/qml/LyricsVisualizer.qml
 CMakeFiles/aether_qmllint: .rcc/qmllint/aether.rsp
 	cd /home/dave/Documents/antigravity/beautiful-rutherford && /usr/lib/qt6/bin/qmllint @/home/dave/Documents/antigravity/beautiful-rutherford/build/.rcc/qmllint/aether.rsp
 

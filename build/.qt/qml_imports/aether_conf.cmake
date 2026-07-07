@@ -1,4 +1,4 @@
-set(qml_import_scanner_imports_count 24)
+set(qml_import_scanner_imports_count 25)
 set(qml_import_scanner_import_0 "CLASSNAME;QtQuick2Plugin;LINKTARGET;Qt6::qtquick2plugin;NAME;QtQuick;PATH;/usr/lib/qt6/qml/QtQuick;PLUGIN;qtquick2plugin;PLUGINISOPTIONAL;;PREFER;:/qt-project.org/imports/QtQuick/;RELATIVEPATH;QtQuick;TYPE;module;")
 set(qml_import_scanner_import_1 "CLASSNAME;QtQmlPlugin;LINKTARGET;Qt6::qmlplugin;NAME;QtQml;PATH;/usr/lib/qt6/qml/QtQml;PLUGIN;qmlplugin;PLUGINISOPTIONAL;;PREFER;:/qt-project.org/imports/QtQml/;RELATIVEPATH;QtQml;TYPE;module;")
 set(qml_import_scanner_import_2 "NAME;QML;PATH;/usr/lib/qt6/qml/QML;PREFER;:/qt-project.org/imports/QML/;RELATIVEPATH;QML;TYPE;module;")
@@ -23,4 +23,5 @@ set(qml_import_scanner_import_20 "CLASSNAME;QtQuickEffectsPlugin;LINKTARGET;Qt6:
 set(qml_import_scanner_import_21 "CLASSNAME;QtQuickLayoutsPlugin;LINKTARGET;Qt6::qquicklayoutsplugin;NAME;QtQuick.Layouts;PATH;/usr/lib/qt6/qml/QtQuick/Layouts;PLUGIN;qquicklayoutsplugin;PLUGINISOPTIONAL;;PREFER;:/qt-project.org/imports/QtQuick/Layouts/;RELATIVEPATH;QtQuick/Layouts;TYPE;module;")
 set(qml_import_scanner_import_22 "CLASSNAME;QmlShapesPlugin;LINKTARGET;Qt6::qmlshapesplugin;NAME;QtQuick.Shapes;PATH;/usr/lib/qt6/qml/QtQuick/Shapes;PLUGIN;qmlshapesplugin;PREFER;:/qt-project.org/imports/QtQuick/Shapes/;RELATIVEPATH;QtQuick/Shapes;TYPE;module;")
 set(qml_import_scanner_import_23 "CLASSNAME;QtQuickControls2BasicStyleImplPlugin;COMPONENTS;/usr/lib/qt6/qml/QtQuick/Controls/Basic/impl/TextEditingContextMenu.qml;LINKTARGET;Qt6::qtquickcontrols2basicstyleimplplugin;NAME;QtQuick.Controls.Basic.impl;PATH;/usr/lib/qt6/qml/QtQuick/Controls/Basic/impl;PLUGIN;qtquickcontrols2basicstyleimplplugin;PLUGINISOPTIONAL;;PREFER;:/qt-project.org/imports/QtQuick/Controls/Basic/impl/;RELATIVEPATH;QtQuick/Controls/Basic/impl;TYPE;module;")
+set(qml_import_scanner_import_24 "CLASSNAME;QtLabsPlatformPlugin;LINKTARGET;Qt6::LabsPlatformplugin;NAME;Qt.labs.platform;PATH;/usr/lib/qt6/qml/Qt/labs/platform;PLUGIN;labsplatformplugin;PLUGINISOPTIONAL;;PREFER;:/qt-project.org/imports/Qt/labs/platform/;RELATIVEPATH;Qt/labs/platform;TYPE;module;")
 

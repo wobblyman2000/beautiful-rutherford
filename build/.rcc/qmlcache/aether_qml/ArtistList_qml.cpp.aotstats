@@ -26,7 +26,7 @@
                             "column": 23,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 121,
+                            "line": 123,
                             "message": ""
                         },
                         {
@@ -34,7 +34,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 129,
+                            "line": 131,
                             "message": ""
                         },
                         {
@@ -42,7 +42,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 142,
+                            "line": 144,
                             "message": ""
                         },
                         {
@@ -50,7 +50,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 168,
+                            "line": 170,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -58,7 +58,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 154,
+                            "line": 156,
                             "message": "Cannot load property text from (component in /home/dave/Documents/antigravity/beautiful-rutherford/qml/ArtistList.qml)::parent with type QQuickItem."
                         },
                         {
@@ -66,7 +66,7 @@
                             "column": 46,
                             "durationMicroseconds": 0,
                             "functionName": "horizontalAlignment",
-                            "line": 158,
+                            "line": 160,
                             "message": ""
                         },
                         {
@@ -74,7 +74,7 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "verticalAlignment",
-                            "line": 159,
+                            "line": 161,
                             "message": ""
                         },
                         {
@@ -82,7 +82,7 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 157,
+                            "line": 159,
                             "message": ""
                         },
                         {
@@ -90,7 +90,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 172,
+                            "line": 174,
                             "message": ""
                         },
                         {
@@ -98,7 +98,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 175,
+                            "line": 177,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -106,7 +106,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "enabled",
-                            "line": 179,
+                            "line": 181,
                             "message": "Could not find property \"enabled\"."
                         },
                         {
@@ -114,7 +114,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 195,
+                            "line": 197,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -122,7 +122,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 182,
+                            "line": 184,
                             "message": "Cannot load property text from (component in /home/dave/Documents/antigravity/beautiful-rutherford/qml/ArtistList.qml)::parent with type QQuickItem."
                         },
                         {
@@ -130,7 +130,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 183,
+                            "line": 185,
                             "message": ""
                         },
                         {
@@ -138,7 +138,7 @@
                             "column": 50,
                             "durationMicroseconds": 0,
                             "functionName": "horizontalAlignment",
-                            "line": 186,
+                            "line": 188,
                             "message": ""
                         },
                         {
@@ -146,7 +146,7 @@
                             "column": 48,
                             "durationMicroseconds": 0,
                             "functionName": "verticalAlignment",
-                            "line": 187,
+                            "line": 189,
                             "message": ""
                         },
                         {
@@ -154,7 +154,7 @@
                             "column": 42,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 185,
+                            "line": 187,
                             "message": ""
                         },
                         {
@@ -162,7 +162,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 191,
+                            "line": 193,
                             "message": "Cannot load property hovered from (component in /home/dave/Documents/antigravity/beautiful-rutherford/qml/ArtistList.qml)::parent with type QQuickItem."
                         },
                         {
@@ -170,15 +170,23 @@
                             "column": 20,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 215,
+                            "line": 217,
                             "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 25,
+                            "durationMicroseconds": 0,
+                            "functionName": "policy",
+                            "line": 220,
+                            "message": "Could not find property \"policy\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 24,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 218,
+                            "line": 224,
                             "message": "Cannot access value for name artistsListView"
                         },
                         {
@@ -186,7 +194,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 220,
+                            "line": 226,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -194,7 +202,7 @@
                             "column": 25,
                             "durationMicroseconds": 0,
                             "functionName": "height",
-                            "line": 221,
+                            "line": 227,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -202,7 +210,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 229,
+                            "line": 235,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -210,7 +218,7 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 232,
+                            "line": 238,
                             "message": ""
                         },
                         {
@@ -218,7 +226,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 248,
+                            "line": 254,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -226,7 +234,7 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 267,
+                            "line": 273,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -234,7 +242,7 @@
                             "column": 50,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 270,
+                            "line": 276,
                             "message": ""
                         },
                         {
@@ -242,7 +250,7 @@
                             "column": 58,
                             "durationMicroseconds": 0,
                             "functionName": "onDoubleClicked",
-                            "line": 275,
+                            "line": 281,
                             "message": "Cannot access value for name player"
                         },
                         {
@@ -250,7 +258,7 @@
                             "column": 55,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 274,
+                            "line": 280,
                             "message": ""
                         },
                         {
@@ -258,7 +266,7 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 289,
+                            "line": 295,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -266,7 +274,7 @@
                             "column": 55,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 295,
+                            "line": 301,
                             "message": ""
                         },
                         {
@@ -274,7 +282,7 @@
                             "column": 59,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 300,
+                            "line": 306,
                             "message": ""
                         },
                         {
@@ -282,7 +290,7 @@
                             "column": 67,
                             "durationMicroseconds": 0,
                             "functionName": "alignment",
-                            "line": 310,
+                            "line": 316,
                             "message": ""
                         },
                         {
@@ -290,7 +298,7 @@
                             "column": 61,
                             "durationMicroseconds": 0,
                             "functionName": "source",
-                            "line": 314,
+                            "line": 320,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -298,7 +306,7 @@
                             "column": 63,
                             "durationMicroseconds": 0,
                             "functionName": "fillMode",
-                            "line": 316,
+                            "line": 322,
                             "message": ""
                         },
                         {
@@ -306,7 +314,7 @@
                             "column": 62,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 317,
+                            "line": 323,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -314,7 +322,7 @@
                             "column": 67,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 315,
+                            "line": 321,
                             "message": ""
                         },
                         {
@@ -322,7 +330,7 @@
                             "column": 62,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 325,
+                            "line": 331,
                             "message": "Cannot generate efficient code for incomparable types QString and QQuickImageBase::source with type QUrl"
                         },
                         {
@@ -330,7 +338,7 @@
                             "column": 71,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 321,
+                            "line": 327,
                             "message": ""
                         },
                         {
@@ -338,7 +346,7 @@
                             "column": 62,
                             "durationMicroseconds": 0,
                             "functionName": "opacity",
-                            "line": 332,
+                            "line": 338,
                             "message": ""
                         },
                         {
@@ -346,7 +354,7 @@
                             "column": 62,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 333,
+                            "line": 339,
                             "message": ""
                         },
                         {
@@ -354,7 +362,7 @@
                             "column": 67,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 330,
+                            "line": 336,
                             "message": ""
                         },
                         {
@@ -362,7 +370,7 @@
                             "column": 68,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 354,
+                            "line": 360,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -370,7 +378,7 @@
                             "column": 75,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 339,
+                            "line": 345,
                             "message": "Could not find property \"centerIn\"."
                         },
                         {
@@ -378,7 +386,7 @@
                             "column": 69,
                             "durationMicroseconds": 0,
                             "functionName": "radius",
-                            "line": 344,
+                            "line": 350,
                             "message": ""
                         },
                         {
@@ -386,7 +394,7 @@
                             "column": 79,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 349,
+                            "line": 355,
                             "message": ""
                         },
                         {
@@ -394,7 +402,7 @@
                             "column": 55,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 360,
+                            "line": 366,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -402,7 +410,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "elide",
-                            "line": 364,
+                            "line": 370,
                             "message": ""
                         },
                         {
@@ -410,7 +418,7 @@
                             "column": 62,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 363,
+                            "line": 369,
                             "message": ""
                         },
                         {
@@ -418,7 +426,7 @@
                             "column": 55,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 369,
+                            "line": 375,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -426,7 +434,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "elide",
-                            "line": 372,
+                            "line": 378,
                             "message": ""
                         },
                         {
@@ -434,7 +442,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 381,
+                            "line": 387,
                             "message": "Cannot retrieve a non-object type by ID: artistPlayBtn"
                         },
                         {
@@ -442,7 +450,7 @@
                             "column": 62,
                             "durationMicroseconds": 0,
                             "functionName": "onDoubleClicked",
-                            "line": 388,
+                            "line": 394,
                             "message": "Cannot access value for name player"
                         },
                         {
@@ -450,7 +458,7 @@
                             "column": 59,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 379,
+                            "line": 385,
                             "message": ""
                         }
                     ],

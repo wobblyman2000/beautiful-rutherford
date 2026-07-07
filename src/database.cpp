@@ -1,13 +1,25 @@
 #include "database.h"
+#include "scanner.h"
+#include "player.h"
 #include <taglib/fileref.h>
 #include <taglib/tag.h>
 #include <taglib/tpropertymap.h>
+#include <QDirIterator>
 
 Database* Database::m_instance = nullptr;
 
 Database::Database(QObject *parent) : QObject(parent) {
     m_instance = this;
+    
+    m_watcher = new QFileSystemWatcher(this);
+    m_watchDebounceTimer = new QTimer(this);
+    m_watchDebounceTimer->setSingleShot(true);
+
+    connect(m_watcher, &QFileSystemWatcher::directoryChanged, this, &Database::onDirectoryChanged);
+    connect(m_watchDebounceTimer, &QTimer::timeout, this, &Database::onDebounceTimeout);
+
     load();
+    setupDirectoryWatcher();
 }
 
 Database* Database::instance() {
@@ -105,6 +117,7 @@ void Database::setMusicDirs(const QStringList &dirs) {
     if (m_musicDirs != dirs) {
         m_musicDirs = dirs;
         save();
+        setupDirectoryWatcher();
         emit musicDirsChanged();
     }
 }
@@ -137,6 +150,7 @@ QVariantList Database::tracksVariant() const {
         map["duration"] = track.duration;
         map["coverPath"] = track.coverPath;
         map["albumType"] = track.albumType;
+        map["rating"] = track.rating;
         list.append(map);
     }
     return list;
@@ -191,6 +205,7 @@ void Database::addMusicDir(const QString &dir) {
     if (!m_musicDirs.contains(dir)) {
         m_musicDirs.append(dir);
         save();
+        setupDirectoryWatcher();
         emit musicDirsChanged();
     }
 }
@@ -198,6 +213,7 @@ void Database::addMusicDir(const QString &dir) {
 void Database::removeMusicDir(const QString &dir) {
     if (m_musicDirs.removeOne(dir)) {
         save();
+        setupDirectoryWatcher();
         emit musicDirsChanged();
     }
 }
@@ -242,6 +258,24 @@ void Database::deleteCollection(const QString &id) {
             save();
             emit collectionsChanged();
             return;
+        }
+    }
+}
+
+void Database::setTrackRating(const QString &trackId, int rating) {
+    bool updated = false;
+    for (auto &track : m_tracks) {
+        if (track.id == trackId) {
+            track.rating = qBound(0, rating, 5);
+            updated = true;
+            break;
+        }
+    }
+    if (updated) {
+        save();
+        emit tracksChanged();
+        if (Player::instance()) {
+            Player::instance()->updateTrackRating(trackId, rating);
         }
     }
 }
@@ -291,4 +325,50 @@ bool Database::writeTrackTags(const QString &filePath, const QString &title, con
         emit tracksChanged();
     }
     return true;
+}
+
+void Database::onDirectoryChanged(const QString &path) {
+    Q_UNUSED(path);
+    qDebug() << "Library Watcher: Directory modification detected at:" << path;
+    // Reset debounce timer to fire in 1.5 seconds
+    if (m_watchDebounceTimer) {
+        m_watchDebounceTimer->start(1500);
+    }
+}
+
+void Database::onDebounceTimeout() {
+    qDebug() << "Library Watcher: Debounce timer expired. Triggering library rescan.";
+    if (LibraryScanner::instance()) {
+        LibraryScanner::instance()->startScan();
+    }
+    setupDirectoryWatcher();
+}
+
+void Database::setupDirectoryWatcher() {
+    if (!m_watcher) return;
+    
+    // Unwatch old directories
+    QStringList watched = m_watcher->directories();
+    if (!watched.isEmpty()) {
+        m_watcher->removePaths(watched);
+    }
+    
+    QStringList toWatch;
+    for (const QString &musicDir : m_musicDirs) {
+        QDir rootDir(musicDir);
+        if (rootDir.exists()) {
+            toWatch.append(musicDir);
+            
+            // Find all subdirectories recursively
+            QDirIterator it(musicDir, QDir::Dirs | QDir::NoDotAndDotDot, QDirIterator::Subdirectories);
+            while (it.hasNext()) {
+                toWatch.append(it.next());
+            }
+        }
+    }
+    
+    if (!toWatch.isEmpty()) {
+        m_watcher->addPaths(toWatch);
+        qDebug() << "Library Watcher: Watching" << toWatch.size() << "directories recursively.";
+    }
 }

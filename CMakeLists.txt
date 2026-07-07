@@ -48,6 +48,7 @@ qt_add_qml_module(aether
         qml/CollectionGrid.qml
         qml/AlbumModal.qml
         qml/ArtistModal.qml
+        qml/LyricsVisualizer.qml
 )
 
 # Link libraries

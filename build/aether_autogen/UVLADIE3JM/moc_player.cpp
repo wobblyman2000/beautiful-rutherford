@@ -49,6 +49,8 @@ template <> constexpr inline auto Player::qt_create_metaobjectdata<qt_meta_tag_Z
         "shuffleChanged",
         "loopStatusChanged",
         "queueChanged",
+        "autoDJChanged",
+        "autoDJRulesChanged",
         "seeked",
         "positionSeconds",
         "onPositionChanged",
@@ -70,8 +72,18 @@ template <> constexpr inline auto Player::qt_create_metaobjectdata<qt_meta_tag_Z
         "QVariantList",
         "tracks",
         "startIndex",
-        "currentTrack",
+        "clearQueue",
+        "removeQueueIndex",
+        "index",
+        "playNext",
         "QVariantMap",
+        "track",
+        "queueLast",
+        "playNextAlbum",
+        "queueLastAlbum",
+        "getLyricsForTrack",
+        "filePath",
+        "currentTrack",
         "playbackStatus",
         "queueIndex",
         "volume",
@@ -79,7 +91,8 @@ template <> constexpr inline auto Player::qt_create_metaobjectdata<qt_meta_tag_Z
         "duration",
         "shuffle",
         "loopStatus",
-        "queue"
+        "queue",
+        "autoDJRules"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -101,62 +114,94 @@ template <> constexpr inline auto Player::qt_create_metaobjectdata<qt_meta_tag_Z
         QtMocHelpers::SignalData<void()>(9, 2, QMC::AccessPublic, QMetaType::Void),
         // Signal 'queueChanged'
         QtMocHelpers::SignalData<void()>(10, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'autoDJChanged'
+        QtMocHelpers::SignalData<void()>(11, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'autoDJRulesChanged'
+        QtMocHelpers::SignalData<void()>(12, 2, QMC::AccessPublic, QMetaType::Void),
         // Signal 'seeked'
-        QtMocHelpers::SignalData<void(double)>(11, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { QMetaType::Double, 12 },
+        QtMocHelpers::SignalData<void(double)>(13, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Double, 14 },
         }}),
         // Slot 'onPositionChanged'
-        QtMocHelpers::SlotData<void(qint64)>(13, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::LongLong, 14 },
+        QtMocHelpers::SlotData<void(qint64)>(15, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::LongLong, 16 },
         }}),
         // Slot 'onDurationChanged'
-        QtMocHelpers::SlotData<void(qint64)>(15, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::LongLong, 14 },
+        QtMocHelpers::SlotData<void(qint64)>(17, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::LongLong, 16 },
         }}),
         // Slot 'onPlaybackStateChanged'
-        QtMocHelpers::SlotData<void(QMediaPlayer::PlaybackState)>(16, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 17, 18 },
+        QtMocHelpers::SlotData<void(QMediaPlayer::PlaybackState)>(18, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 19, 20 },
         }}),
         // Slot 'onMediaStatusChanged'
-        QtMocHelpers::SlotData<void(QMediaPlayer::MediaStatus)>(19, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 20, 21 },
+        QtMocHelpers::SlotData<void(QMediaPlayer::MediaStatus)>(21, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 22, 23 },
         }}),
         // Method 'play'
-        QtMocHelpers::MethodData<void()>(22, 2, QMC::AccessPublic, QMetaType::Void),
-        // Method 'pause'
-        QtMocHelpers::MethodData<void()>(23, 2, QMC::AccessPublic, QMetaType::Void),
-        // Method 'stop'
         QtMocHelpers::MethodData<void()>(24, 2, QMC::AccessPublic, QMetaType::Void),
-        // Method 'togglePlay'
+        // Method 'pause'
         QtMocHelpers::MethodData<void()>(25, 2, QMC::AccessPublic, QMetaType::Void),
-        // Method 'next'
+        // Method 'stop'
         QtMocHelpers::MethodData<void()>(26, 2, QMC::AccessPublic, QMetaType::Void),
-        // Method 'previous'
+        // Method 'togglePlay'
         QtMocHelpers::MethodData<void()>(27, 2, QMC::AccessPublic, QMetaType::Void),
+        // Method 'next'
+        QtMocHelpers::MethodData<void()>(28, 2, QMC::AccessPublic, QMetaType::Void),
+        // Method 'previous'
+        QtMocHelpers::MethodData<void()>(29, 2, QMC::AccessPublic, QMetaType::Void),
         // Method 'setQueue'
-        QtMocHelpers::MethodData<void(const QVariantList &, int)>(28, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 29, 30 }, { QMetaType::Int, 31 },
+        QtMocHelpers::MethodData<void(const QVariantList &, int)>(30, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 31, 32 }, { QMetaType::Int, 33 },
+        }}),
+        // Method 'clearQueue'
+        QtMocHelpers::MethodData<void()>(34, 2, QMC::AccessPublic, QMetaType::Void),
+        // Method 'removeQueueIndex'
+        QtMocHelpers::MethodData<void(int)>(35, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 36 },
+        }}),
+        // Method 'playNext'
+        QtMocHelpers::MethodData<void(const QVariantMap &)>(37, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 38, 39 },
+        }}),
+        // Method 'queueLast'
+        QtMocHelpers::MethodData<void(const QVariantMap &)>(40, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 38, 39 },
+        }}),
+        // Method 'playNextAlbum'
+        QtMocHelpers::MethodData<void(const QVariantList &)>(41, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 31, 32 },
+        }}),
+        // Method 'queueLastAlbum'
+        QtMocHelpers::MethodData<void(const QVariantList &)>(42, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 31, 32 },
+        }}),
+        // Method 'getLyricsForTrack'
+        QtMocHelpers::MethodData<QString(const QString &)>(43, 2, QMC::AccessPublic, QMetaType::QString, {{
+            { QMetaType::QString, 44 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'currentTrack'
-        QtMocHelpers::PropertyData<QVariantMap>(32, 0x80000000 | 33, QMC::DefaultPropertyFlags | QMC::EnumOrFlag, 0),
+        QtMocHelpers::PropertyData<QVariantMap>(45, 0x80000000 | 38, QMC::DefaultPropertyFlags | QMC::EnumOrFlag, 0),
         // property 'playbackStatus'
-        QtMocHelpers::PropertyData<QString>(34, QMetaType::QString, QMC::DefaultPropertyFlags, 1),
+        QtMocHelpers::PropertyData<QString>(46, QMetaType::QString, QMC::DefaultPropertyFlags, 1),
         // property 'queueIndex'
-        QtMocHelpers::PropertyData<int>(35, QMetaType::Int, QMC::DefaultPropertyFlags, 2),
+        QtMocHelpers::PropertyData<int>(47, QMetaType::Int, QMC::DefaultPropertyFlags, 2),
         // property 'volume'
-        QtMocHelpers::PropertyData<double>(36, QMetaType::Double, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 3),
+        QtMocHelpers::PropertyData<double>(48, QMetaType::Double, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 3),
         // property 'position'
-        QtMocHelpers::PropertyData<double>(37, QMetaType::Double, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 4),
+        QtMocHelpers::PropertyData<double>(49, QMetaType::Double, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 4),
         // property 'duration'
-        QtMocHelpers::PropertyData<double>(38, QMetaType::Double, QMC::DefaultPropertyFlags, 5),
+        QtMocHelpers::PropertyData<double>(50, QMetaType::Double, QMC::DefaultPropertyFlags, 5),
         // property 'shuffle'
-        QtMocHelpers::PropertyData<bool>(39, QMetaType::Bool, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 6),
+        QtMocHelpers::PropertyData<bool>(51, QMetaType::Bool, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 6),
         // property 'loopStatus'
-        QtMocHelpers::PropertyData<QString>(40, QMetaType::QString, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 7),
+        QtMocHelpers::PropertyData<QString>(52, QMetaType::QString, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 7),
         // property 'queue'
-        QtMocHelpers::PropertyData<QVariantList>(41, 0x80000000 | 29, QMC::DefaultPropertyFlags | QMC::EnumOrFlag, 8),
+        QtMocHelpers::PropertyData<QVariantList>(53, 0x80000000 | 31, QMC::DefaultPropertyFlags | QMC::EnumOrFlag, 8),
+        // property 'autoDJRules'
+        QtMocHelpers::PropertyData<QVariantList>(54, 0x80000000 | 31, QMC::DefaultPropertyFlags | QMC::Writable | QMC::EnumOrFlag | QMC::StdCppSet, 10),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -187,18 +232,28 @@ void Player::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 6: _t->shuffleChanged(); break;
         case 7: _t->loopStatusChanged(); break;
         case 8: _t->queueChanged(); break;
-        case 9: _t->seeked((*reinterpret_cast<std::add_pointer_t<double>>(_a[1]))); break;
-        case 10: _t->onPositionChanged((*reinterpret_cast<std::add_pointer_t<qint64>>(_a[1]))); break;
-        case 11: _t->onDurationChanged((*reinterpret_cast<std::add_pointer_t<qint64>>(_a[1]))); break;
-        case 12: _t->onPlaybackStateChanged((*reinterpret_cast<std::add_pointer_t<QMediaPlayer::PlaybackState>>(_a[1]))); break;
-        case 13: _t->onMediaStatusChanged((*reinterpret_cast<std::add_pointer_t<QMediaPlayer::MediaStatus>>(_a[1]))); break;
-        case 14: _t->play(); break;
-        case 15: _t->pause(); break;
-        case 16: _t->stop(); break;
-        case 17: _t->togglePlay(); break;
-        case 18: _t->next(); break;
-        case 19: _t->previous(); break;
-        case 20: _t->setQueue((*reinterpret_cast<std::add_pointer_t<QVariantList>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<int>>(_a[2]))); break;
+        case 9: _t->autoDJChanged(); break;
+        case 10: _t->autoDJRulesChanged(); break;
+        case 11: _t->seeked((*reinterpret_cast<std::add_pointer_t<double>>(_a[1]))); break;
+        case 12: _t->onPositionChanged((*reinterpret_cast<std::add_pointer_t<qint64>>(_a[1]))); break;
+        case 13: _t->onDurationChanged((*reinterpret_cast<std::add_pointer_t<qint64>>(_a[1]))); break;
+        case 14: _t->onPlaybackStateChanged((*reinterpret_cast<std::add_pointer_t<QMediaPlayer::PlaybackState>>(_a[1]))); break;
+        case 15: _t->onMediaStatusChanged((*reinterpret_cast<std::add_pointer_t<QMediaPlayer::MediaStatus>>(_a[1]))); break;
+        case 16: _t->play(); break;
+        case 17: _t->pause(); break;
+        case 18: _t->stop(); break;
+        case 19: _t->togglePlay(); break;
+        case 20: _t->next(); break;
+        case 21: _t->previous(); break;
+        case 22: _t->setQueue((*reinterpret_cast<std::add_pointer_t<QVariantList>>(_a[1])),(*reinterpret_cast<std::add_pointer_t<int>>(_a[2]))); break;
+        case 23: _t->clearQueue(); break;
+        case 24: _t->removeQueueIndex((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 25: _t->playNext((*reinterpret_cast<std::add_pointer_t<QVariantMap>>(_a[1]))); break;
+        case 26: _t->queueLast((*reinterpret_cast<std::add_pointer_t<QVariantMap>>(_a[1]))); break;
+        case 27: _t->playNextAlbum((*reinterpret_cast<std::add_pointer_t<QVariantList>>(_a[1]))); break;
+        case 28: _t->queueLastAlbum((*reinterpret_cast<std::add_pointer_t<QVariantList>>(_a[1]))); break;
+        case 29: { QString _r = _t->getLyricsForTrack((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
+            if (_a[0]) *reinterpret_cast<QString*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     }
@@ -221,7 +276,11 @@ void Player::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
             return;
         if (QtMocHelpers::indexOfMethod<void (Player::*)()>(_a, &Player::queueChanged, 8))
             return;
-        if (QtMocHelpers::indexOfMethod<void (Player::*)(double )>(_a, &Player::seeked, 9))
+        if (QtMocHelpers::indexOfMethod<void (Player::*)()>(_a, &Player::autoDJChanged, 9))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (Player::*)()>(_a, &Player::autoDJRulesChanged, 10))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (Player::*)(double )>(_a, &Player::seeked, 11))
             return;
     }
     if (_c == QMetaObject::ReadProperty) {
@@ -236,6 +295,7 @@ void Player::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 6: *reinterpret_cast<bool*>(_v) = _t->shuffle(); break;
         case 7: *reinterpret_cast<QString*>(_v) = _t->loopStatus(); break;
         case 8: *reinterpret_cast<QVariantList*>(_v) = _t->queue(); break;
+        case 9: *reinterpret_cast<QVariantList*>(_v) = _t->autoDJRules(); break;
         default: break;
         }
     }
@@ -246,6 +306,7 @@ void Player::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 4: _t->setPosition(*reinterpret_cast<double*>(_v)); break;
         case 6: _t->setShuffle(*reinterpret_cast<bool*>(_v)); break;
         case 7: _t->setLoopStatus(*reinterpret_cast<QString*>(_v)); break;
+        case 9: _t->setAutoDJRules(*reinterpret_cast<QVariantList*>(_v)); break;
         default: break;
         }
     }
@@ -270,20 +331,20 @@ int Player::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 21)
+        if (_id < 30)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 21;
+        _id -= 30;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 21)
+        if (_id < 30)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 21;
+        _id -= 30;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty
             || _c == QMetaObject::RegisterPropertyMetaType) {
         qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }
@@ -343,8 +404,20 @@ void Player::queueChanged()
 }
 
 // SIGNAL 9
+void Player::autoDJChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 9, nullptr);
+}
+
+// SIGNAL 10
+void Player::autoDJRulesChanged()
+{
+    QMetaObject::activate(this, &staticMetaObject, 10, nullptr);
+}
+
+// SIGNAL 11
 void Player::seeked(double _t1)
 {
-    QMetaObject::activate<void>(this, &staticMetaObject, 9, nullptr, _t1);
+    QMetaObject::activate<void>(this, &staticMetaObject, 11, nullptr, _t1);
 }
 QT_WARNING_POP

@@ -359,4 +359,53 @@ CMakeFiles/aether.dir/src/player.cpp.o: \
  /usr/include/qt6/QtCore/qrandom.h /usr/include/c++/16/random \
  /usr/include/c++/16/bits/random.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/opt_random.h \
- /usr/include/c++/16/bits/random.tcc /usr/include/qt6/QtCore/QDebug
+ /usr/include/c++/16/bits/random.tcc /usr/include/qt6/QtCore/QDebug \
+ /home/dave/Documents/antigravity/beautiful-rutherford/src/database.h \
+ /usr/include/qt6/QtCore/QString /usr/include/qt6/QtCore/QList \
+ /usr/include/qt6/QtCore/QJsonObject \
+ /usr/include/qt6/QtCore/qjsonobject.h \
+ /usr/include/qt6/QtCore/qjsonvalue.h \
+ /usr/include/qt6/QtCore/qcborvalue.h \
+ /usr/include/qt6/QtCore/qcborcommon.h \
+ /usr/include/qt6/QtCore/qdatetime.h /usr/include/qt6/QtCore/qcalendar.h \
+ /usr/include/qt6/QtCore/qlocale.h \
+ /usr/include/qt6/QtCore/qregularexpression.h \
+ /usr/include/qt6/QtCore/quuid.h /usr/include/qt6/QtCore/qendian.h \
+ /usr/include/qt6/QtCore/qjsondocument.h \
+ /usr/include/qt6/QtCore/qjsonparseerror.h \
+ /usr/include/qt6/QtCore/QJsonArray /usr/include/qt6/QtCore/qjsonarray.h \
+ /usr/include/qt6/QtCore/QJsonDocument /usr/include/qt6/QtCore/QFile \
+ /usr/include/qt6/QtCore/qfile.h /usr/include/qt6/QtCore/qfiledevice.h \
+ /usr/include/qt6/QtCore/qiodevice.h /usr/include/c++/16/filesystem \
+ /usr/include/c++/16/bits/fs_fwd.h /usr/include/c++/16/bits/fs_path.h \
+ /usr/include/c++/16/iomanip /usr/include/c++/16/bits/quoted_string.h \
+ /usr/include/c++/16/codecvt /usr/include/c++/16/bits/fs_dir.h \
+ /usr/include/c++/16/bits/fs_ops.h /usr/include/qt6/QtCore/QDir \
+ /usr/include/qt6/QtCore/qdir.h /usr/include/qt6/QtCore/qdirlisting.h \
+ /usr/include/qt6/QtCore/qfileinfo.h /usr/include/qt6/QtCore/qtimezone.h \
+ /usr/include/qt6/QtCore/QFileSystemWatcher \
+ /usr/include/qt6/QtCore/qfilesystemwatcher.h \
+ /usr/include/qt6/QtCore/QTimer /usr/include/qt6/QtCore/qtimer.h \
+ /usr/include/qt6/QtCore/qbasictimer.h \
+ /usr/include/qt6/QtCore/qabstracteventdispatcher.h \
+ /usr/include/qt6/QtCore/qeventloop.h \
+ /usr/include/qt6/QtCore/qdeadlinetimer.h \
+ /usr/include/qt6/QtCore/QFileInfo /usr/include/taglib/tag.h \
+ /usr/include/taglib/taglib_export.h /usr/include/taglib/tstring.h \
+ /usr/include/taglib/tbytevector.h /usr/include/taglib/tlist.h \
+ /usr/include/taglib/tlist.tcc /usr/include/taglib/tvariant.h \
+ /usr/include/taglib/tmap.h /usr/include/taglib/tmap.tcc \
+ /usr/include/taglib/fileref.h /usr/include/taglib/tfile.h \
+ /usr/include/taglib/tiostream.h /usr/include/taglib/taglib.h \
+ /usr/include/taglib/tag.h /usr/include/taglib/tstringlist.h \
+ /usr/include/taglib/tbytevectorlist.h \
+ /usr/include/taglib/audioproperties.h /usr/include/taglib/mpegfile.h \
+ /usr/include/taglib/mpegproperties.h /usr/include/taglib/mpegheader.h \
+ /usr/include/taglib/id3v2.h /usr/include/taglib/id3v2tag.h \
+ /usr/include/taglib/id3v2framefactory.h /usr/include/taglib/id3v2frame.h \
+ /usr/include/taglib/id3v2header.h \
+ /usr/include/taglib/unsynchronizedlyricsframe.h \
+ /usr/include/taglib/flacfile.h /usr/include/taglib/flacpicture.h \
+ /usr/include/taglib/tpicturetype.h \
+ /usr/include/taglib/flacmetadatablock.h \
+ /usr/include/taglib/flacproperties.h /usr/include/taglib/xiphcomment.h

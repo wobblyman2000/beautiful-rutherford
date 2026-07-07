@@ -3,8 +3,32 @@
         "classes": [
             {
                 "className": "Database",
-                "lineNumber": 63,
+                "lineNumber": 71,
                 "methods": [
+                    {
+                        "access": "public",
+                        "index": 5,
+                        "isConst": true,
+                        "lineNumber": 94,
+                        "name": "allGenres",
+                        "returnType": "QStringList"
+                    },
+                    {
+                        "access": "public",
+                        "index": 6,
+                        "isConst": true,
+                        "lineNumber": 95,
+                        "name": "allArtists",
+                        "returnType": "QStringList"
+                    },
+                    {
+                        "access": "public",
+                        "index": 7,
+                        "isConst": true,
+                        "lineNumber": 96,
+                        "name": "allAlbums",
+                        "returnType": "QStringList"
+                    },
                     {
                         "access": "public",
                         "arguments": [
@@ -13,8 +37,8 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 3,
-                        "lineNumber": 83,
+                        "index": 8,
+                        "lineNumber": 98,
                         "name": "addMusicDir",
                         "returnType": "void"
                     },
@@ -26,8 +50,8 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 4,
-                        "lineNumber": 84,
+                        "index": 9,
+                        "lineNumber": 99,
                         "name": "removeMusicDir",
                         "returnType": "void"
                     },
@@ -47,12 +71,16 @@
                                 "type": "QString"
                             },
                             {
+                                "name": "displayMode",
+                                "type": "QString"
+                            },
+                            {
                                 "name": "rules",
                                 "type": "QVariantList"
                             }
                         ],
-                        "index": 5,
-                        "lineNumber": 87,
+                        "index": 10,
+                        "lineNumber": 102,
                         "name": "saveCollection",
                         "returnType": "void"
                     },
@@ -64,10 +92,64 @@
                                 "type": "QString"
                             }
                         ],
-                        "index": 6,
-                        "lineNumber": 88,
+                        "index": 11,
+                        "lineNumber": 103,
                         "name": "deleteCollection",
                         "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "trackId",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "rating",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 12,
+                        "lineNumber": 104,
+                        "name": "setTrackRating",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "filePath",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "title",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "artist",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "album",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "genre",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "year",
+                                "type": "int"
+                            },
+                            {
+                                "name": "albumType",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 13,
+                        "lineNumber": 105,
+                        "name": "writeTrackTags",
+                        "returnType": "bool"
                     }
                 ],
                 "object": true,
@@ -77,7 +159,7 @@
                         "designable": true,
                         "final": false,
                         "index": 0,
-                        "lineNumber": 65,
+                        "lineNumber": 73,
                         "name": "musicDirs",
                         "notify": "musicDirsChanged",
                         "override": false,
@@ -95,7 +177,7 @@
                         "designable": true,
                         "final": false,
                         "index": 1,
-                        "lineNumber": 66,
+                        "lineNumber": 74,
                         "name": "tracks",
                         "notify": "tracksChanged",
                         "override": false,
@@ -112,7 +194,7 @@
                         "designable": true,
                         "final": false,
                         "index": 2,
-                        "lineNumber": 67,
+                        "lineNumber": 75,
                         "name": "collections",
                         "notify": "collectionsChanged",
                         "override": false,
@@ -123,6 +205,57 @@
                         "type": "QVariantList",
                         "user": false,
                         "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 3,
+                        "lineNumber": 76,
+                        "name": "allGenres",
+                        "notify": "tracksChanged",
+                        "override": false,
+                        "read": "allGenres",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QStringList",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 4,
+                        "lineNumber": 77,
+                        "name": "allArtists",
+                        "notify": "tracksChanged",
+                        "override": false,
+                        "read": "allArtists",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QStringList",
+                        "user": false,
+                        "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 5,
+                        "lineNumber": 78,
+                        "name": "allAlbums",
+                        "notify": "tracksChanged",
+                        "override": false,
+                        "read": "allAlbums",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QStringList",
+                        "user": false,
+                        "virtual": false
                     }
                 ],
                 "qualifiedClassName": "Database",
@@ -130,22 +263,44 @@
                     {
                         "access": "public",
                         "index": 0,
-                        "lineNumber": 91,
+                        "lineNumber": 108,
                         "name": "musicDirsChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 1,
-                        "lineNumber": 92,
+                        "lineNumber": 109,
                         "name": "tracksChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 2,
-                        "lineNumber": 93,
+                        "lineNumber": 110,
                         "name": "collectionsChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "private",
+                        "arguments": [
+                            {
+                                "name": "path",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 3,
+                        "lineNumber": 113,
+                        "name": "onDirectoryChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "private",
+                        "index": 4,
+                        "lineNumber": 114,
+                        "name": "onDebounceTimeout",
                         "returnType": "void"
                     }
                 ],
@@ -753,43 +908,43 @@
                 "methods": [
                     {
                         "access": "public",
-                        "index": 14,
-                        "lineNumber": 44,
+                        "index": 16,
+                        "lineNumber": 50,
                         "name": "play",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
-                        "index": 15,
-                        "lineNumber": 45,
+                        "index": 17,
+                        "lineNumber": 51,
                         "name": "pause",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
-                        "index": 16,
-                        "lineNumber": 46,
+                        "index": 18,
+                        "lineNumber": 52,
                         "name": "stop",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
-                        "index": 17,
-                        "lineNumber": 47,
+                        "index": 19,
+                        "lineNumber": 53,
                         "name": "togglePlay",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
-                        "index": 18,
-                        "lineNumber": 48,
+                        "index": 20,
+                        "lineNumber": 54,
                         "name": "next",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
-                        "index": 19,
-                        "lineNumber": 49,
+                        "index": 21,
+                        "lineNumber": 55,
                         "name": "previous",
                         "returnType": "void"
                     },
@@ -805,10 +960,95 @@
                                 "type": "int"
                             }
                         ],
-                        "index": 20,
-                        "lineNumber": 51,
+                        "index": 22,
+                        "lineNumber": 57,
                         "name": "setQueue",
                         "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 23,
+                        "lineNumber": 58,
+                        "name": "clearQueue",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "index",
+                                "type": "int"
+                            }
+                        ],
+                        "index": 24,
+                        "lineNumber": 59,
+                        "name": "removeQueueIndex",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "track",
+                                "type": "QVariantMap"
+                            }
+                        ],
+                        "index": 25,
+                        "lineNumber": 60,
+                        "name": "playNext",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "track",
+                                "type": "QVariantMap"
+                            }
+                        ],
+                        "index": 26,
+                        "lineNumber": 61,
+                        "name": "queueLast",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "tracks",
+                                "type": "QVariantList"
+                            }
+                        ],
+                        "index": 27,
+                        "lineNumber": 62,
+                        "name": "playNextAlbum",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "tracks",
+                                "type": "QVariantList"
+                            }
+                        ],
+                        "index": 28,
+                        "lineNumber": 63,
+                        "name": "queueLastAlbum",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "filePath",
+                                "type": "QString"
+                            }
+                        ],
+                        "index": 29,
+                        "lineNumber": 64,
+                        "name": "getLyricsForTrack",
+                        "returnType": "QString"
                     }
                 ],
                 "object": true,
@@ -969,6 +1209,24 @@
                         "type": "QVariantList",
                         "user": false,
                         "virtual": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "index": 9,
+                        "lineNumber": 24,
+                        "name": "autoDJRules",
+                        "notify": "autoDJRulesChanged",
+                        "override": false,
+                        "read": "autoDJRules",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "QVariantList",
+                        "user": false,
+                        "virtual": false,
+                        "write": "setAutoDJRules"
                     }
                 ],
                 "qualifiedClassName": "Player",
@@ -976,64 +1234,78 @@
                     {
                         "access": "public",
                         "index": 0,
-                        "lineNumber": 54,
+                        "lineNumber": 70,
                         "name": "currentTrackChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 1,
-                        "lineNumber": 55,
+                        "lineNumber": 71,
                         "name": "playbackStatusChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 2,
-                        "lineNumber": 56,
+                        "lineNumber": 72,
                         "name": "queueIndexChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 3,
-                        "lineNumber": 57,
+                        "lineNumber": 73,
                         "name": "volumeChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 4,
-                        "lineNumber": 58,
+                        "lineNumber": 74,
                         "name": "positionChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 5,
-                        "lineNumber": 59,
+                        "lineNumber": 75,
                         "name": "durationChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 6,
-                        "lineNumber": 60,
+                        "lineNumber": 76,
                         "name": "shuffleChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 7,
-                        "lineNumber": 61,
+                        "lineNumber": 77,
                         "name": "loopStatusChanged",
                         "returnType": "void"
                     },
                     {
                         "access": "public",
                         "index": 8,
-                        "lineNumber": 62,
+                        "lineNumber": 78,
                         "name": "queueChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 9,
+                        "lineNumber": 79,
+                        "name": "autoDJChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 10,
+                        "lineNumber": 80,
+                        "name": "autoDJRulesChanged",
                         "returnType": "void"
                     },
                     {
@@ -1044,8 +1316,8 @@
                                 "type": "double"
                             }
                         ],
-                        "index": 9,
-                        "lineNumber": 65,
+                        "index": 11,
+                        "lineNumber": 83,
                         "name": "seeked",
                         "returnType": "void"
                     }
@@ -1059,8 +1331,8 @@
                                 "type": "qint64"
                             }
                         ],
-                        "index": 10,
-                        "lineNumber": 68,
+                        "index": 12,
+                        "lineNumber": 86,
                         "name": "onPositionChanged",
                         "returnType": "void"
                     },
@@ -1072,8 +1344,8 @@
                                 "type": "qint64"
                             }
                         ],
-                        "index": 11,
-                        "lineNumber": 69,
+                        "index": 13,
+                        "lineNumber": 87,
                         "name": "onDurationChanged",
                         "returnType": "void"
                     },
@@ -1085,8 +1357,8 @@
                                 "type": "QMediaPlayer::PlaybackState"
                             }
                         ],
-                        "index": 12,
-                        "lineNumber": 70,
+                        "index": 14,
+                        "lineNumber": 88,
                         "name": "onPlaybackStateChanged",
                         "returnType": "void"
                     },
@@ -1098,8 +1370,8 @@
                                 "type": "QMediaPlayer::MediaStatus"
                             }
                         ],
-                        "index": 13,
-                        "lineNumber": 71,
+                        "index": 15,
+                        "lineNumber": 89,
                         "name": "onMediaStatusChanged",
                         "returnType": "void"
                     }
@@ -1177,7 +1449,7 @@
                     {
                         "access": "public",
                         "index": 4,
-                        "lineNumber": 59,
+                        "lineNumber": 60,
                         "name": "startScan",
                         "returnType": "void"
                     }
@@ -1207,7 +1479,7 @@
                     {
                         "access": "public",
                         "index": 0,
-                        "lineNumber": 62,
+                        "lineNumber": 63,
                         "name": "scanningChanged",
                         "returnType": "void"
                     },
@@ -1220,7 +1492,7 @@
                             }
                         ],
                         "index": 1,
-                        "lineNumber": 63,
+                        "lineNumber": 64,
                         "name": "scanFinished",
                         "returnType": "void"
                     },
@@ -1237,7 +1509,7 @@
                             }
                         ],
                         "index": 2,
-                        "lineNumber": 64,
+                        "lineNumber": 65,
                         "name": "scanProgress",
                         "returnType": "void"
                     }
@@ -1252,7 +1524,7 @@
                             }
                         ],
                         "index": 3,
-                        "lineNumber": 67,
+                        "lineNumber": 68,
                         "name": "onScanFinished",
                         "returnType": "void"
                     }

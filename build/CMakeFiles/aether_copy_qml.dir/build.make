@@ -77,6 +77,8 @@ CMakeFiles/aether_copy_qml: .qt/aether_qml.txt
 .qt/aether_qml.txt: /home/dave/Documents/antigravity/beautiful-rutherford/qml/GenreGrid.qml
 .qt/aether_qml.txt: /home/dave/Documents/antigravity/beautiful-rutherford/qml/CollectionGrid.qml
 .qt/aether_qml.txt: /home/dave/Documents/antigravity/beautiful-rutherford/qml/AlbumModal.qml
+.qt/aether_qml.txt: /home/dave/Documents/antigravity/beautiful-rutherford/qml/ArtistModal.qml
+.qt/aether_qml.txt: /home/dave/Documents/antigravity/beautiful-rutherford/qml/LyricsVisualizer.qml
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Copying aether qml sources into build dir"
 	/usr/bin/cmake -DFILES_INFO_PATH=/home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/aether_qml.cmake -P /usr/lib/cmake/Qt6Qml/Qt6QmlCopyFiles.cmake
 

@@ -18,6 +18,7 @@ ApplicationWindow {
     property bool isTheaterMode: false
     property bool autoTheaterEnabled: false
     property bool autoTheaterOnlyWhenPlaying: false
+    property bool showLyricsPanel: false
     property var djRulesModel: [{ field: "album", operator: "contains", value: "" }]
 
     onAutoTheaterEnabledChanged: {
@@ -419,13 +420,14 @@ ApplicationWindow {
 
                                                 ComboBox {
                                                     id: fieldCombo
-                                                    model: ["Album", "Artist", "Genre", "Title", "FilePath"]
+                                                    model: ["Album", "Artist", "Genre", "Title", "FilePath", "Rating"]
                                                     currentIndex: {
                                                         var f = modelData.field || "album";
                                                         if (f === "artist") return 1;
                                                         if (f === "genre") return 2;
                                                         if (f === "title") return 3;
                                                         if (f === "filePath") return 4;
+                                                        if (f === "rating") return 5;
                                                         return 0;
                                                     }
                                                     Layout.preferredWidth: 85
@@ -436,6 +438,7 @@ ApplicationWindow {
                                                         if (idx === 2) return "genre";
                                                         if (idx === 3) return "title";
                                                         if (idx === 4) return "filePath";
+                                                        if (idx === 5) return "rating";
                                                         return "album";
                                                     }
                                                 }
@@ -980,6 +983,27 @@ ApplicationWindow {
                     }
                 }
             }
+
+            // Collapsible Synced Lyrics Panel
+            Rectangle {
+                id: lyricsSidePanel
+                Layout.fillHeight: true
+                Layout.preferredWidth: window.showLyricsPanel ? 300 : 0
+                visible: Layout.preferredWidth > 0
+                clip: true
+                color: "#73191928"
+                border.color: "#14ffffff"
+                border.width: 1
+
+                Behavior on Layout.preferredWidth {
+                    NumberAnimation { duration: 250; easing.type: Easing.OutQuad }
+                }
+
+                LyricsVisualizer {
+                    anchors.fill: parent
+                    anchors.margins: 20
+                }
+            }
         }
 
         // Bottom Player Controller
@@ -1088,179 +1112,199 @@ ApplicationWindow {
             }
         }
 
-        ColumnLayout {
+        RowLayout {
             anchors.centerIn: parent
-            width: Math.min(parent.width - 80, 500)
-            spacing: 24
-            Layout.alignment: Qt.AlignCenter
+            width: Math.min(parent.width - 120, 1000)
+            height: Math.min(parent.height - 120, 600)
+            spacing: 80
 
-            // Album Art
+            // Left Pane (Visuals & Info)
+            ColumnLayout {
+                Layout.preferredWidth: 380
+                Layout.fillHeight: true
+                spacing: 20
+                Layout.alignment: Qt.AlignVCenter
+
+                // Album Art
+                Rectangle {
+                    Layout.preferredWidth: 260
+                    Layout.preferredHeight: 260
+                    color: "#111111"
+                    radius: 16
+                    Layout.alignment: Qt.AlignHCenter
+                    clip: true
+
+                    Image {
+                        source: player.currentTrack.coverPath || ""
+                        anchors.fill: parent
+                        fillMode: Image.PreserveAspectCrop
+                        visible: source !== ""
+                    }
+
+                    Image {
+                        anchors.centerIn: parent
+                        source: "image://theme/media-optical"
+                        width: 80
+                        height: 80
+                        visible: !player.currentTrack.coverPath
+                        opacity: 0.4
+                    }
+                }
+
+                // Track details
+                ColumnLayout {
+                    Layout.fillWidth: true
+                    spacing: 4
+                    Layout.alignment: Qt.AlignHCenter
+
+                    Text {
+                        text: player.currentTrack.title || qsTr("Not Playing")
+                        color: "#ffffff"
+                        font.pixelSize: 26
+                        font.weight: Font.Bold
+                        elide: Text.ElideRight
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
+                    }
+
+                    Text {
+                        text: (player.currentTrack.artist || "") + ((player.currentTrack.album) ? " — " + player.currentTrack.album : "")
+                        color: "#a0a4c5"
+                        font.pixelSize: 16
+                        elide: Text.ElideRight
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
+                    }
+                }
+
+                // Scrubber
+                ColumnLayout {
+                    Layout.fillWidth: true
+                    spacing: 4
+
+                    Slider {
+                        id: theaterScrubber
+                        Layout.fillWidth: true
+                        from: 0
+                        to: player.duration > 0 ? player.duration : 1
+                        value: player.position
+                        onMoved: player.setPosition(value)
+                    }
+
+                    RowLayout {
+                        Layout.fillWidth: true
+                        Text {
+                            text: playerBar.formatTime(player.position)
+                            color: "#9ea2c0"
+                            font.pixelSize: 12
+                        }
+                        Item { Layout.fillWidth: true }
+                        Text {
+                            text: playerBar.formatTime(player.duration)
+                            color: "#9ea2c0"
+                            font.pixelSize: 12
+                        }
+                    }
+                }
+
+                // Playback buttons
+                RowLayout {
+                    spacing: 24
+                    Layout.alignment: Qt.AlignHCenter
+
+                    Button {
+                        flat: true
+                        onClicked: player.previous()
+                        contentItem: Item {
+                            width: 24
+                            height: 24
+                            Row {
+                                anchors.centerIn: parent
+                                spacing: 2
+                                Rectangle { width: 3; height: 12; color: "#ffffff"; radius: 1 }
+                                Canvas {
+                                    width: 9; height: 12
+                                    onPaint: {
+                                        var ctx = getContext("2d");
+                                        ctx.reset(); ctx.fillStyle = "#ffffff";
+                                        ctx.beginPath(); ctx.moveTo(width, 0); ctx.lineTo(0, height/2); ctx.lineTo(width, height); ctx.closePath(); ctx.fill();
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    Button {
+                        width: 54
+                        height: 54
+                        flat: true
+                        background: Rectangle {
+                            color: "#ffffff"
+                            radius: width / 2
+                        }
+                        contentItem: Item {
+                            anchors.fill: parent
+                            Row {
+                                anchors.centerIn: parent
+                                spacing: 4
+                                visible: player.playbackStatus === "Playing"
+                                Rectangle { width: 5; height: 20; color: "#1a1a2a"; radius: 1 }
+                                Rectangle { width: 5; height: 20; color: "#1a1a2a"; radius: 1 }
+                            }
+                            Canvas {
+                                anchors.centerIn: parent
+                                width: 16
+                                height: 18
+                                visible: player.playbackStatus !== "Playing"
+                                onPaint: {
+                                    var ctx = getContext("2d");
+                                    ctx.reset();
+                                    ctx.fillStyle = "#1a1a2a";
+                                    ctx.beginPath();
+                                    ctx.moveTo(0, 0);
+                                    ctx.lineTo(width, height / 2);
+                                    ctx.lineTo(0, height);
+                                    ctx.closePath();
+                                    ctx.fill();
+                                }
+                            }
+                        }
+                        onClicked: player.togglePlay()
+                    }
+
+                    Button {
+                        flat: true
+                        onClicked: player.next()
+                        contentItem: Item {
+                            width: 24
+                            height: 24
+                            Row {
+                                anchors.centerIn: parent
+                                spacing: 2
+                                Canvas {
+                                    width: 9; height: 12
+                                    onPaint: {
+                                        var ctx = getContext("2d");
+                                        ctx.reset(); ctx.fillStyle = "#ffffff";
+                                        ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(width, height/2); ctx.lineTo(0, height); ctx.closePath(); ctx.fill();
+                                    }
+                                }
+                                Rectangle { width: 3; height: 12; color: "#ffffff"; radius: 1 }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Right Pane: Synced Scrolling Lyrics visualizer (takes half of display in theater mode)
             Rectangle {
-                Layout.preferredWidth: 260
-                Layout.preferredHeight: 260
-                color: "#111111"
-                radius: 16
-                Layout.alignment: Qt.AlignHCenter
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                color: "transparent"
                 clip: true
 
-                Image {
-                    source: player.currentTrack.coverPath || ""
+                LyricsVisualizer {
                     anchors.fill: parent
-                    fillMode: Image.PreserveAspectCrop
-                    visible: source !== ""
-                }
-
-                Image {
-                    anchors.centerIn: parent
-                    source: "image://theme/media-optical"
-                    width: 80
-                    height: 80
-                    visible: !player.currentTrack.coverPath
-                    opacity: 0.4
-                }
-            }
-
-            // Track details
-            ColumnLayout {
-                Layout.fillWidth: true
-                spacing: 4
-                Layout.alignment: Qt.AlignHCenter
-
-                Text {
-                    text: player.currentTrack.title || qsTr("Not Playing")
-                    color: "#ffffff"
-                    font.pixelSize: 26
-                    font.weight: Font.Bold
-                    elide: Text.ElideRight
-                    Layout.fillWidth: true
-                    horizontalAlignment: Text.AlignHCenter
-                }
-
-                Text {
-                    text: (player.currentTrack.artist || "") + ((player.currentTrack.album) ? " — " + player.currentTrack.album : "")
-                    color: "#a0a4c5"
-                    font.pixelSize: 16
-                    elide: Text.ElideRight
-                    Layout.fillWidth: true
-                    horizontalAlignment: Text.AlignHCenter
-                }
-            }
-
-            // Scrubber
-            ColumnLayout {
-                Layout.fillWidth: true
-                spacing: 4
-
-                Slider {
-                    id: theaterScrubber
-                    Layout.fillWidth: true
-                    from: 0
-                    to: player.duration > 0 ? player.duration : 1
-                    value: player.position
-                    onMoved: player.setPosition(value)
-                }
-
-                RowLayout {
-                    Layout.fillWidth: true
-                    Text {
-                        text: playerBar.formatTime(player.position)
-                        color: "#9ea2c0"
-                        font.pixelSize: 12
-                    }
-                    Item { Layout.fillWidth: true }
-                    Text {
-                        text: playerBar.formatTime(player.duration)
-                        color: "#9ea2c0"
-                        font.pixelSize: 12
-                    }
-                }
-            }
-
-            // Playback buttons
-            RowLayout {
-                spacing: 24
-                Layout.alignment: Qt.AlignHCenter
-
-                Button {
-                    flat: true
-                    onClicked: player.previous()
-                    contentItem: Item {
-                        width: 24
-                        height: 24
-                        Row {
-                            anchors.centerIn: parent
-                            spacing: 2
-                            Rectangle { width: 3; height: 12; color: "#ffffff"; radius: 1 }
-                            Canvas {
-                                width: 9; height: 12
-                                onPaint: {
-                                    var ctx = getContext("2d");
-                                    ctx.reset(); ctx.fillStyle = "#ffffff";
-                                    ctx.beginPath(); ctx.moveTo(width, 0); ctx.lineTo(0, height/2); ctx.lineTo(width, height); ctx.closePath(); ctx.fill();
-                                }
-                            }
-                        }
-                    }
-                }
-
-                Button {
-                    width: 54
-                    height: 54
-                    flat: true
-                    background: Rectangle {
-                        color: "#ffffff"
-                        radius: width / 2
-                    }
-                    contentItem: Item {
-                        anchors.fill: parent
-                        Row {
-                            anchors.centerIn: parent
-                            spacing: 4
-                            visible: player.playbackStatus === "Playing"
-                            Rectangle { width: 5; height: 20; color: "#1a1a2a"; radius: 1 }
-                            Rectangle { width: 5; height: 20; color: "#1a1a2a"; radius: 1 }
-                        }
-                        Canvas {
-                            anchors.centerIn: parent
-                            width: 16
-                            height: 18
-                            visible: player.playbackStatus !== "Playing"
-                            onPaint: {
-                                var ctx = getContext("2d");
-                                ctx.reset();
-                                ctx.fillStyle = "#1a1a2a";
-                                ctx.beginPath();
-                                ctx.moveTo(0, 0);
-                                ctx.lineTo(width, height / 2);
-                                ctx.lineTo(0, height);
-                                ctx.closePath();
-                                ctx.fill();
-                            }
-                        }
-                    }
-                    onClicked: player.togglePlay()
-                }
-
-                Button {
-                    flat: true
-                    onClicked: player.next()
-                    contentItem: Item {
-                        width: 24
-                        height: 24
-                        Row {
-                            anchors.centerIn: parent
-                            spacing: 2
-                            Canvas {
-                                width: 9; height: 12
-                                onPaint: {
-                                    var ctx = getContext("2d");
-                                    ctx.reset(); ctx.fillStyle = "#ffffff";
-                                    ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(width, height/2); ctx.lineTo(0, height); ctx.closePath(); ctx.fill();
-                                }
-                            }
-                            Rectangle { width: 3; height: 12; color: "#ffffff"; radius: 1 }
-                        }
-                    }
                 }
             }
         }

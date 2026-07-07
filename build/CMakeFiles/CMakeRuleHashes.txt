@@ -9,12 +9,13 @@ f96a1b57ab3a9c9857f263bace44cab2 .qt/qml_imports/aether_build.cmake
 ba330ada2fe1cfc3eaefa39dbe0ae401 .rcc/qmlcache/aether_qml/AlbumGrid_qml.cpp
 f79290c71c5b9af268056c6a70ed2c0b .rcc/qmlcache/aether_qml/AlbumModal_qml.cpp
 ab5bce1b033f18aedff90c9f1381845a .rcc/qmlcache/aether_qml/ArtistList_qml.cpp
+ac08a62d86f9e65c78eaede1a9ddc06f .rcc/qmlcache/aether_qml/ArtistModal_qml.cpp
 3c6e3ccbabb49ab00f73df6ec2457931 .rcc/qmlcache/aether_qml/CollectionGrid_qml.cpp
 33985c3eecc32ce4482c9eac2d3a9747 .rcc/qmlcache/aether_qml/GenreGrid_qml.cpp
+b49ce3ecf48a13860933b764100494c4 .rcc/qmlcache/aether_qml/LyricsVisualizer_qml.cpp
 3bda0c751500ae25616eeb475c7ba11a .rcc/qmlcache/aether_qml/Main_qml.cpp
 d2952f1033b02700925019fae62e46a6 .rcc/qmlcache/aether_qml/PlayerBar_qml.cpp
 00300c2edbd6b9ef37ae55f723c4864b .rcc/qmlcache/aether_qml/Sidebar_qml.cpp
-19e774a478859b5cf5bbf96cc09e8a09 .rcc/qmlcache/aether_qml/main_qml.cpp
 6b3b8d4099a5466d14238a8c2ededb42 .rcc/qmlcache/aether_qmlcache_loader.cpp
 7107e233969dc4a7bc640085e4f5c42d .rcc/qmlcache/all_aotstats.aotstats
 3aaeb3c6f350e7198c476931d3550a3c .rcc/qmlcache/module_aether.aotstats

@@ -79,6 +79,8 @@ CMakeFiles/aether_qmlimportscan: .qt/qml_imports/aether_build.cmake
 .qt/qml_imports/aether_build.cmake: /home/dave/Documents/antigravity/beautiful-rutherford/qml/GenreGrid.qml
 .qt/qml_imports/aether_build.cmake: /home/dave/Documents/antigravity/beautiful-rutherford/qml/CollectionGrid.qml
 .qt/qml_imports/aether_build.cmake: /home/dave/Documents/antigravity/beautiful-rutherford/qml/AlbumModal.qml
+.qt/qml_imports/aether_build.cmake: /home/dave/Documents/antigravity/beautiful-rutherford/qml/ArtistModal.qml
+.qt/qml_imports/aether_build.cmake: /home/dave/Documents/antigravity/beautiful-rutherford/qml/LyricsVisualizer.qml
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/dave/Documents/antigravity/beautiful-rutherford/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running qmlimportscanner for aether"
 	cd /home/dave/Documents/antigravity/beautiful-rutherford && /usr/lib/qt6/qmlimportscanner @/home/dave/Documents/antigravity/beautiful-rutherford/build/.qt/qml_imports/aether_build.rsp
 

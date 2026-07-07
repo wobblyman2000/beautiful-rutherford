@@ -61,6 +61,20 @@ namespace _0x5f_Aether_qml_AlbumModal_qml {
         reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
     };
 }
+namespace _0x5f_Aether_qml_ArtistModal_qml { 
+    extern const unsigned char qmlData[];
+    extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
+    };
+}
+namespace _0x5f_Aether_qml_LyricsVisualizer_qml { 
+    extern const unsigned char qmlData[];
+    extern const QQmlPrivate::AOTCompiledFunction aotBuiltFunctions[];
+    const QQmlPrivate::CachedQmlUnit unit = {
+        reinterpret_cast<const QV4::CompiledData::Unit*>(&qmlData), &aotBuiltFunctions[0], nullptr
+    };
+}
 
 }
 namespace {
@@ -83,6 +97,8 @@ Registry::Registry() {
     resourcePathToCachedUnit.insert(QStringLiteral("/Aether/qml/GenreGrid.qml"), &QmlCacheGeneratedCode::_0x5f_Aether_qml_GenreGrid_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/Aether/qml/CollectionGrid.qml"), &QmlCacheGeneratedCode::_0x5f_Aether_qml_CollectionGrid_qml::unit);
     resourcePathToCachedUnit.insert(QStringLiteral("/Aether/qml/AlbumModal.qml"), &QmlCacheGeneratedCode::_0x5f_Aether_qml_AlbumModal_qml::unit);
+    resourcePathToCachedUnit.insert(QStringLiteral("/Aether/qml/ArtistModal.qml"), &QmlCacheGeneratedCode::_0x5f_Aether_qml_ArtistModal_qml::unit);
+    resourcePathToCachedUnit.insert(QStringLiteral("/Aether/qml/LyricsVisualizer.qml"), &QmlCacheGeneratedCode::_0x5f_Aether_qml_LyricsVisualizer_qml::unit);
     QQmlPrivate::RegisterQmlUnitCacheHook registration;
     registration.structVersion = 0;
     registration.lookupCachedQmlUnit = &lookupCachedUnit;

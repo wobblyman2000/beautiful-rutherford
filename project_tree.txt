@@ -1,0 +1,93 @@
+.
+├── aether.desktop
+├── archive-web-version
+│   ├── aether.desktop
+│   ├── backend
+│   │   ├── cache
+│   │   ├── db.js
+│   │   ├── generate_mock.js
+│   │   ├── mpris.js
+│   │   ├── package.json
+│   │   ├── package-lock.json
+│   │   ├── run_scan.js
+│   │   ├── scanner.js
+│   │   └── server.js
+│   ├── frontend
+│   │   ├── app.js
+│   │   ├── index.html
+│   │   ├── package.json
+│   │   ├── package-lock.json
+│   │   ├── style.css
+│   │   └── vite.config.js
+│   ├── package.json
+│   └── package-lock.json
+├── cache
+│   └── covers
+│       ├── 00f4f2e215cda2baae2c6d84e05bc38c.jpg
+│       ├── 05cbeca38ca1e761db51fe31ba32d0e6.jpg
+│       ├── 1d4a634611a098f0bae029a8de799e6f.jpg
+│       ├── 37c2a75cc2a1b033e8169c0a9068e340.jpg
+│       ├── 4e4af10ce189ec6e5c4ab79703f84d95.jpg
+│       ├── 5167e79c227da8ec6b2bef58e5d0f2ce.jpg
+│       ├── 614ac6e5f884e7df9e8999eb01d9a948.jpg
+│       ├── 904351b1f49923a40101f6a6dca6939e.jpg
+│       ├── 939c1cd627594b3b813db6de7c8bee70.jpg
+│       ├── ed4194792422645ba8f021fb885155da.jpg
+│       └── ff99e818f7d2da852b800c84f83fbd02.jpg
+├── CMakeLists.txt
+├── db.json
+├── mock_music_library
+│   ├── ABBA - Arrival
+│   │   ├── 01 - Dancing Queen.mp3
+│   │   └── 02 - Knowing Me, Knowing You.mp3
+│   ├── ABBA - Greatest Hits
+│   │   ├── 01 - SOS.mp3
+│   │   └── 02 - Mamma Mia.mp3
+│   ├── ABBA - Live in Wembley
+│   │   └── 01 - Take a Chance on Me (Live).mp3
+│   ├── ABBA - Waterloo
+│   │   └── 01 - Waterloo (Single).mp3
+│   ├── Fleetwood Mac - Rumours
+│   │   ├── 01 - Second Hand News.mp3
+│   │   ├── 02 - Dreams.mp3
+│   │   └── cover.jpg
+│   ├── John Williams - Home Alone OST
+│   │   ├── CD 1
+│   │   └── CD 2
+│   ├── The Beatles - Abbey Road
+│   │   ├── 01 - Come Together.mp3
+│   │   └── 02 - Something.mp3
+│   ├── The Beatles - Help!
+│   │   ├── 01 - Help!.mp3
+│   │   ├── 02 - The Night Before.mp3
+│   │   └── folder.jpg
+│   └── Various Artists - 70s Hits
+│       ├── 01 - Stayin' Alive.mp3
+│       └── 02 - Gimme! Gimme! Gimme!.mp3
+├── project_tree.txt
+├── qml
+│   ├── AlbumGrid.qml
+│   ├── AlbumModal.qml
+│   ├── ArtistList.qml
+│   ├── ArtistModal.qml
+│   ├── CollectionGrid.qml
+│   ├── GenreGrid.qml
+│   ├── Main.qml
+│   ├── PlayerBar.qml
+│   └── Sidebar.qml
+├── README.md
+├── scratch
+│   ├── tagger
+│   └── tagger.cpp
+└── src
+    ├── database.cpp
+    ├── database.h
+    ├── main.cpp
+    ├── mpris.cpp
+    ├── mpris.h
+    ├── player.cpp
+    ├── player.h
+    ├── scanner.cpp
+    └── scanner.h
+
+22 directories, 69 files
