@@ -288,6 +288,7 @@ ApplicationWindow {
                     }
 
                     CollectionGrid {
+                        id: collectionGrid
                         anchors.fill: parent
                         visible: window.activePage === "collections"
                     }

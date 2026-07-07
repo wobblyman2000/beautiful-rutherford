@@ -263,7 +263,8 @@ Rectangle {
                                         color: isPlaying ? "#0d00f2fe" : (trackMouse.containsMouse ? "#08ffffff" : "transparent")
                                         radius: 6
 
-                                        property bool isPlaying: player.currentTrack.id === modelData.id
+                                        property var trackObj: modelData
+                                        property bool isPlaying: player.currentTrack.id === trackObj.id
 
                                         RowLayout {
                                             anchors.fill: parent
@@ -271,7 +272,7 @@ Rectangle {
                                             anchors.rightMargin: 12
 
                                             Text {
-                                                text: modelData.trackNo > 0 ? modelData.trackNo : (index + 1)
+                                                text: trackObj.trackNo > 0 ? trackObj.trackNo : (index + 1)
                                                 color: isPlaying ? "#00f2fe" : "#666a8a"
                                                 font.pixelSize: 13
                                                 font.weight: Font.DemiBold
@@ -283,7 +284,7 @@ Rectangle {
                                                 spacing: 2
 
                                                 Text {
-                                                    text: modelData.title
+                                                    text: trackObj.title
                                                     color: isPlaying ? "#00f2fe" : "#ffffff"
                                                     font.pixelSize: 14
                                                     font.weight: Font.Medium
@@ -293,7 +294,7 @@ Rectangle {
 
                                                 Text {
                                                     id: trackArtistLabel
-                                                    text: modelData.artist || ""
+                                                    text: trackObj.artist || ""
                                                     color: trackArtistMouse.containsMouse ? "#00f2fe" : (isPlaying ? "#7ae6ff" : "#9ea2c0")
                                                     font.pixelSize: 11
                                                     elide: Text.ElideRight
@@ -306,9 +307,9 @@ Rectangle {
                                                         hoverEnabled: true
                                                         cursorShape: Qt.PointingHandCursor
                                                         onClicked: {
-                                                            if (modelData.artist) {
+                                                            if (trackObj.artist) {
                                                                 root.visible = false;
-                                                                window.openArtist(modelData.artist);
+                                                                window.openArtist(trackObj.artist);
                                                             }
                                                         }
                                                     }
@@ -327,12 +328,12 @@ Rectangle {
                                                     color: "#00f2fe"
                                                 }
                                                 onClicked: {
-                                                    root.openTagEditor(modelData);
+                                                    root.openTagEditor(trackObj);
                                                 }
                                             }
 
                                             Text {
-                                                text: formatTime(modelData.duration)
+                                                text: formatTime(trackObj.duration)
                                                 color: isPlaying ? "#00f2fe" : "#666a8a"
                                                 font.pixelSize: 13
                                             }
@@ -344,7 +345,7 @@ Rectangle {
                                             hoverEnabled: true
                                             onClicked: {
                                                 // Play album tracks starting from this specific track filepath
-                                                player.setQueue(root.activeAlbum.tracks, root.activeAlbum.tracks.indexOf(modelData));
+                                                player.setQueue(root.activeAlbum.tracks, root.activeAlbum.tracks.indexOf(trackObj));
                                             }
                                         }
                                     }
