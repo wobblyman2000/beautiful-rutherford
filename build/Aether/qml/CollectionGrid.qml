@@ -340,6 +340,7 @@ Item {
                 Text { text: qsTr("Rules (AND conditions)"); color: "#ffffff"; font.pixelSize: 13 }
 
                 ScrollView {
+                    id: colRulesScrollView
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     clip: true
@@ -347,7 +348,7 @@ Item {
 
                     ColumnLayout {
                         id: rulesListContainer
-                        width: parent.width - 24
+                        width: colRulesScrollView.width - 24
                         spacing: 10
 
                         Repeater {

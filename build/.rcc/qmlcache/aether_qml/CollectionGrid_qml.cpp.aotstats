@@ -26,7 +26,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "editCollection",
-                            "line": 562,
+                            "line": 563,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -34,7 +34,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "confirm",
-                            "line": 589,
+                            "line": 590,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -410,23 +410,23 @@
                             "column": 50,
                             "durationMicroseconds": 0,
                             "functionName": "policy",
-                            "line": 346,
+                            "line": 347,
                             "message": "Could not find property \"policy\"."
                         },
                         {
-                            "codegenResult": 0,
+                            "codegenResult": 2,
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 350,
-                            "message": ""
+                            "line": 351,
+                            "message": "Cannot retrieve a non-object type by ID: colRulesScrollView"
                         },
                         {
                             "codegenResult": 0,
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 355,
+                            "line": 356,
                             "message": ""
                         },
                         {
@@ -434,7 +434,7 @@
                             "column": 33,
                             "durationMicroseconds": 0,
                             "functionName": "getFieldKey",
-                            "line": 362,
+                            "line": 363,
                             "message": "Cannot retrieve a non-object type by ID: fieldCombo"
                         },
                         {
@@ -442,7 +442,7 @@
                             "column": 33,
                             "durationMicroseconds": 0,
                             "functionName": "getOpKey",
-                            "line": 363,
+                            "line": 364,
                             "message": "Cannot retrieve a non-object type by ID: opCombo"
                         },
                         {
@@ -450,7 +450,7 @@
                             "column": 33,
                             "durationMicroseconds": 0,
                             "functionName": "getValue",
-                            "line": 364,
+                            "line": 365,
                             "message": "Cannot retrieve a non-object type by ID: ruleValueInput"
                         },
                         {
@@ -458,7 +458,7 @@
                             "column": 33,
                             "durationMicroseconds": 0,
                             "functionName": "getAllYears",
-                            "line": 366,
+                            "line": 367,
                             "message": "Cannot access value for name database"
                         },
                         {
@@ -466,7 +466,7 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 381,
+                            "line": 382,
                             "message": "Could not find property \"model\"."
                         },
                         {
@@ -474,7 +474,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "currentIndex",
-                            "line": 382,
+                            "line": 383,
                             "message": "Could not find property \"currentIndex\"."
                         },
                         {
@@ -482,7 +482,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "getIndex",
-                            "line": 385,
+                            "line": 386,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -490,7 +490,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "getFieldKey",
-                            "line": 395,
+                            "line": 396,
                             "message": "Cannot access value for name currentIndex"
                         },
                         {
@@ -498,7 +498,7 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 409,
+                            "line": 410,
                             "message": "Could not find property \"model\"."
                         },
                         {
@@ -506,7 +506,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "currentIndex",
-                            "line": 410,
+                            "line": 411,
                             "message": "Could not find property \"currentIndex\"."
                         },
                         {
@@ -514,7 +514,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "getIndex",
-                            "line": 413,
+                            "line": 414,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -522,7 +522,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "getOpKey",
-                            "line": 421,
+                            "line": 422,
                             "message": "Cannot access value for name currentIndex"
                         },
                         {
@@ -530,7 +530,7 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 433,
+                            "line": 434,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -538,7 +538,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "onTextChanged",
-                            "line": 443,
+                            "line": 444,
                             "message": "Could not find signal \"textChanged\"."
                         },
                         {
@@ -546,7 +546,7 @@
                             "column": 46,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 459,
+                            "line": 460,
                             "message": "Could not find property \"visible\"."
                         },
                         {
@@ -554,7 +554,7 @@
                             "column": 48,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 460,
+                            "line": 461,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -562,7 +562,7 @@
                             "column": 144,
                             "durationMicroseconds": 0,
                             "functionName": "horizontalAlignment",
-                            "line": 458,
+                            "line": 459,
                             "message": ""
                         },
                         {
@@ -570,7 +570,7 @@
                             "column": 182,
                             "durationMicroseconds": 0,
                             "functionName": "verticalAlignment",
-                            "line": 458,
+                            "line": 459,
                             "message": ""
                         },
                         {
@@ -578,7 +578,7 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "y",
-                            "line": 464,
+                            "line": 465,
                             "message": "Could not find property \"y\"."
                         },
                         {
@@ -586,7 +586,7 @@
                             "column": 52,
                             "durationMicroseconds": 2000,
                             "functionName": "model",
-                            "line": 468,
+                            "line": 469,
                             "message": "Cannot retrieve a non-object type by ID: fieldCombo"
                         },
                         {
@@ -594,7 +594,7 @@
                             "column": 55,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 488,
+                            "line": 489,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -602,7 +602,7 @@
                             "column": 62,
                             "durationMicroseconds": 0,
                             "functionName": "onTriggered",
-                            "line": 489,
+                            "line": 490,
                             "message": "Could not find signal \"triggered\"."
                         },
                         {
@@ -610,7 +610,7 @@
                             "column": 48,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 503,
+                            "line": 504,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -618,7 +618,7 @@
                             "column": 144,
                             "durationMicroseconds": 0,
                             "functionName": "horizontalAlignment",
-                            "line": 502,
+                            "line": 503,
                             "message": ""
                         },
                         {
@@ -626,7 +626,7 @@
                             "column": 182,
                             "durationMicroseconds": 0,
                             "functionName": "verticalAlignment",
-                            "line": 502,
+                            "line": 503,
                             "message": ""
                         },
                         {
@@ -634,7 +634,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 522,
+                            "line": 523,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -642,7 +642,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 534,
+                            "line": 535,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -650,7 +650,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 539,
+                            "line": 540,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -658,7 +658,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "onTriggered",
-                            "line": 601,
+                            "line": 602,
                             "message": "Could not find signal \"triggered\"."
                         },
                         {
@@ -666,7 +666,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "onTriggered",
-                            "line": 609,
+                            "line": 610,
                             "message": "Could not find signal \"triggered\"."
                         },
                         {
@@ -674,7 +674,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "onTriggered",
-                            "line": 617,
+                            "line": 618,
                             "message": "Could not find signal \"triggered\"."
                         }
                     ],

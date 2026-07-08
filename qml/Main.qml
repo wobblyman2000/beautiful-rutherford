@@ -8,7 +8,7 @@ ApplicationWindow {
     width: 1100
     height: 720
     visible: true
-    visibility: isTheaterMode ? ApplicationWindow.FullScreen : (window.isCompactMode ? ApplicationWindow.Windowed : ApplicationWindow.Maximized)
+    visibility: ApplicationWindow.Maximized
     title: qsTr("Aether Player")
     
     // Global properties
@@ -34,7 +34,9 @@ ApplicationWindow {
     }
 
     onIsTheaterModeChanged: {
-        if (!isTheaterMode) {
+        if (isTheaterMode) {
+            window.visibility = ApplicationWindow.FullScreen;
+        } else {
             window.visibility = window.isCompactMode ? ApplicationWindow.Windowed : ApplicationWindow.Maximized;
             window.raise();
             window.requestActivate();
@@ -98,9 +100,11 @@ ApplicationWindow {
     onIsCompactModeChanged: {
         if (isCompactMode) {
             window.isTheaterMode = false;
+            window.visibility = ApplicationWindow.Windowed;
             window.width = 360;
             window.height = 130;
         } else {
+            window.visibility = ApplicationWindow.Maximized;
             window.width = 1100;
             window.height = 720;
         }
@@ -321,7 +325,7 @@ ApplicationWindow {
                         // Left Pane: Filters & Configuration
                         Rectangle {
                             id: rulesCardLeftDJ
-                            Layout.preferredWidth: 460
+                            Layout.preferredWidth: 500
                             Layout.fillHeight: true
                             color: "#73191928"
                             border.color: "#14ffffff"
@@ -412,6 +416,7 @@ ApplicationWindow {
                                 }
 
                                 ScrollView {
+                                    id: djRulesScrollView
                                     Layout.fillWidth: true
                                     Layout.fillHeight: true
                                     clip: true
@@ -419,7 +424,7 @@ ApplicationWindow {
 
                                     ColumnLayout {
                                         id: djRulesListContainer
-                                        width: parent.width - 24
+                                        width: djRulesScrollView.width - 24
                                         spacing: 10
 
                                         Repeater {

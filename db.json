@@ -1,5 +1,18 @@
 {
     "collections": [
+        {
+            "coverPath": "",
+            "displayMode": "albums",
+            "id": "col-1783488739122",
+            "name": "233",
+            "rules": [
+                {
+                    "field": "year",
+                    "operator": "is",
+                    "value": "1987"
+                }
+            ]
+        }
     ],
     "settings": {
         "musicDirs": [
