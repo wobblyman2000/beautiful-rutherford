@@ -151,6 +151,8 @@ QVariantList Database::tracksVariant() const {
         map["coverPath"] = track.coverPath;
         map["albumType"] = track.albumType;
         map["rating"] = track.rating;
+        map["albumArtist"] = track.albumArtist;
+        map["compilation"] = track.compilation;
         list.append(map);
     }
     return list;

@@ -25,6 +25,20 @@ Rectangle {
         return mins + ":" + (secs < 10 ? "0" : "") + secs;
     }
 
+    // Helper to determine if track artists should be displayed
+    function shouldShowArtist(album) {
+        if (!album) return false;
+        if (album.artist === "Various Artists" || album.artist === "Smart Collection") return true;
+        if (album.tracks) {
+            for (var i = 0; i < album.tracks.length; ++i) {
+                if (album.tracks[i].artist !== album.artist) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     // Modal Content Panel
     Rectangle {
         id: modalContent
@@ -299,7 +313,7 @@ Rectangle {
                                                     font.pixelSize: 11
                                                     elide: Text.ElideRight
                                                     Layout.fillWidth: true
-                                                    visible: root.activeAlbum && (root.activeAlbum.artist === "Various Artists" || root.activeAlbum.artist === "Smart Collection")
+                                                    visible: root.shouldShowArtist(root.activeAlbum)
 
                                                     MouseArea {
                                                         id: trackArtistMouse

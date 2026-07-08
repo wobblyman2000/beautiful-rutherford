@@ -30,6 +30,8 @@ struct Track {
     QString coverPath;
     QString albumType;
     int rating = 0;
+    QString albumArtist;
+    bool compilation = false;
 
     QJsonObject toJsonObject() const {
         QJsonObject obj;
@@ -46,6 +48,8 @@ struct Track {
         obj["coverPath"] = coverPath;
         obj["albumType"] = albumType;
         obj["rating"] = rating;
+        obj["albumArtist"] = albumArtist;
+        obj["compilation"] = compilation;
         return obj;
     }
 
@@ -64,6 +68,8 @@ struct Track {
         t.coverPath = obj["coverPath"].toString();
         t.albumType = obj["albumType"].toString(QStringLiteral("Studio Albums"));
         t.rating = obj["rating"].toInt(0);
+        t.albumArtist = obj["albumArtist"].toString();
+        t.compilation = obj["compilation"].toBool(false);
         return t;
     }
 };
@@ -81,6 +87,7 @@ public:
     explicit Database(QObject *parent = nullptr);
 
     static Database* instance();
+    QString getDbFilePath() const;
 
     QStringList musicDirs() const;
     void setMusicDirs(const QStringList &dirs);
@@ -116,7 +123,6 @@ private slots:
 private:
     void load();
     void save();
-    QString getDbFilePath() const;
     void setupDirectoryWatcher();
 
     QStringList m_musicDirs;

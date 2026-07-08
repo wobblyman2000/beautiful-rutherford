@@ -1,4 +1,8 @@
 #include "scanner.h"
+#include <QTimer>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
 
 // ScanWorker Implementation
 
@@ -102,7 +106,28 @@ Track ScanWorker::parseTrack(const QString &filePath, const QString &coversCache
             rawType = QString::fromStdString(properties["ALBUM_TYPE"].front().to8Bit(true)).trimmed();
         }
         
-        if (!rawType.isEmpty()) {
+        QString rawAlbumArtist;
+        if (properties.contains("ALBUMARTIST")) {
+            rawAlbumArtist = QString::fromStdString(properties["ALBUMARTIST"].front().to8Bit(true)).trimmed();
+        } else if (properties.contains("ALBUM_ARTIST")) {
+            rawAlbumArtist = QString::fromStdString(properties["ALBUM_ARTIST"].front().to8Bit(true)).trimmed();
+        } else if (properties.contains("BAND")) {
+            rawAlbumArtist = QString::fromStdString(properties["BAND"].front().to8Bit(true)).trimmed();
+        }
+        t.albumArtist = rawAlbumArtist;
+
+        bool isComp = false;
+        if (properties.contains("COMPILATION")) {
+            QString compStr = QString::fromStdString(properties["COMPILATION"].front().to8Bit(true)).trimmed();
+            if (compStr == QLatin1String("1") || compStr.toLower() == QLatin1String("true") || compStr.toLower() == QLatin1String("yes")) {
+                isComp = true;
+            }
+        }
+        t.compilation = isComp;
+
+        if (isComp) {
+            albumTypeVal = QStringLiteral("Compilations");
+        } else if (!rawType.isEmpty()) {
             QString typeLower = rawType.toLower();
             if (typeLower.contains(QLatin1String("single"))) {
                 albumTypeVal = QStringLiteral("Singles");
@@ -122,8 +147,14 @@ Track ScanWorker::parseTrack(const QString &filePath, const QString &coversCache
     t.album = albumNorm.first;
     t.discNo = albumNorm.second;
 
-    // Generate unique ID for the album cover (artist::album hash)
-    QByteArray albumHash = QCryptographicHash::hash(QStringLiteral("%1::%2").arg(t.album, t.artist).toUtf8(), QCryptographicHash::Md5);
+    // Generate unique ID for the album cover (using album artist / Various Artists for compilations to consolidate)
+    QString coverArtist = t.artist;
+    if (!t.albumArtist.isEmpty()) {
+        coverArtist = t.albumArtist;
+    } else if (t.compilation) {
+        coverArtist = QStringLiteral("Various Artists");
+    }
+    QByteArray albumHash = QCryptographicHash::hash(QStringLiteral("%1::%2").arg(t.album, coverArtist).toUtf8(), QCryptographicHash::Md5);
     QString coverFilename = QStringLiteral("%1.jpg").arg(QString::fromUtf8(albumHash.toHex()));
     QString cachedCoverPath = QStringLiteral("%1/%2").arg(coversCacheDir, coverFilename);
 
@@ -227,6 +258,32 @@ LibraryScanner* LibraryScanner::m_instance = nullptr;
 
 LibraryScanner::LibraryScanner(QObject *parent) : QObject(parent) {
     m_instance = this;
+    // Check if the database was loaded but lacks compilation/various artist tags, and if so, trigger startScan() asynchronously
+    QTimer::singleShot(1000, this, [this]() {
+        auto dbInstance = Database::instance();
+        if (dbInstance) {
+            auto tracks = dbInstance->getTracks();
+            if (!tracks.isEmpty()) {
+                bool needsRescan = false;
+                QFile file(dbInstance->getDbFilePath());
+                if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+                    QJsonObject root = QJsonDocument::fromJson(file.readAll()).object();
+                    QJsonArray tracksArr = root["tracks"].toArray();
+                    if (!tracksArr.isEmpty()) {
+                        QJsonObject tObj = tracksArr.at(0).toObject();
+                        if (!tObj.contains("compilation")) {
+                            needsRescan = true;
+                        }
+                    }
+                    file.close();
+                }
+                if (needsRescan) {
+                    qDebug() << "Migration: Database requires rescan to index AlbumArtist and Compilation tags. Starting...";
+                    startScan();
+                }
+            }
+        }
+    });
 }
 
 LibraryScanner* LibraryScanner::instance() {

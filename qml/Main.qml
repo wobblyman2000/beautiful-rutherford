@@ -8,7 +8,7 @@ ApplicationWindow {
     width: 1100
     height: 720
     visible: true
-    visibility: ApplicationWindow.Maximized
+    visibility: ApplicationWindow.FullScreen
     title: qsTr("Aether Player")
     
     // Global properties
@@ -20,6 +20,7 @@ ApplicationWindow {
     property bool autoTheaterOnlyWhenPlaying: false
     property bool showLyricsPanel: false
     property var djRulesModel: [{ field: "album", operator: "contains", value: "" }]
+    property int preTheaterVisibility: ApplicationWindow.FullScreen
 
     onAutoTheaterEnabledChanged: {
         if (!autoTheaterEnabled) {
@@ -35,9 +36,12 @@ ApplicationWindow {
 
     onIsTheaterModeChanged: {
         if (isTheaterMode) {
+            if (window.visibility !== ApplicationWindow.FullScreen) {
+                window.preTheaterVisibility = window.visibility;
+            }
             window.visibility = ApplicationWindow.FullScreen;
         } else {
-            window.visibility = window.isCompactMode ? ApplicationWindow.Windowed : ApplicationWindow.Maximized;
+            window.visibility = window.isCompactMode ? ApplicationWindow.Windowed : window.preTheaterVisibility;
             window.raise();
             window.requestActivate();
         }

@@ -13,17 +13,28 @@ Item {
         var queryLower = query.toLowerCase().trim();
         var albumsMap = {};
 
-        // 1. Group tracks by Album + Artist
+        // 1. Group tracks by Album + Artist / Album Artist
         for (var i = 0; i < tracks.length; ++i) {
             var track = tracks[i];
             var albumName = track.album || "Unknown Album";
             var artist = track.artist || "Unknown Artist";
-            var key = (albumName + "::" + artist).toLowerCase();
+            var albumArtist = track.albumArtist || "";
+            var isCompilation = track.compilation || false;
+
+            var displayArtist = artist;
+            if (albumArtist !== "") {
+                displayArtist = albumArtist;
+            } else if (isCompilation) {
+                displayArtist = "Various Artists";
+            }
+
+            var key = (albumName + "::" + displayArtist).toLowerCase();
 
             // Search filter
             var matchesSearch = queryLower === "" ||
                                 albumName.toLowerCase().indexOf(queryLower) !== -1 ||
                                 artist.toLowerCase().indexOf(queryLower) !== -1 ||
+                                displayArtist.toLowerCase().indexOf(queryLower) !== -1 ||
                                 (track.title && track.title.toLowerCase().indexOf(queryLower) !== -1);
 
             if (!matchesSearch) continue;
@@ -31,7 +42,7 @@ Item {
             if (!albumsMap[key]) {
                 albumsMap[key] = {
                     name: albumName,
-                    artist: artist,
+                    artist: displayArtist,
                     year: track.year,
                     genre: track.genre,
                     coverPath: track.coverPath || "",
