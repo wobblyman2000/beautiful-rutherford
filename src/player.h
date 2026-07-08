@@ -64,7 +64,7 @@ public:
     Q_INVOKABLE QString getLyricsForTrack(const QString &filePath);
     void updateTrackRating(const QString &trackId, int rating);
 
-    QVariantList getAutoDJMatchingTracks();
+    Q_INVOKABLE QVariantList getAutoDJMatchingTracks();
 
 signals:
     void currentTrackChanged();

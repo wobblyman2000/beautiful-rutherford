@@ -363,6 +363,19 @@ Item {
                                 function getOpKey() { return opCombo.getOpKey(); }
                                 function getValue() { return ruleValueInput.text.trim(); }
 
+                                function getAllYears() {
+                                    var years = {};
+                                    var tracks = database.tracks;
+                                    for (var i = 0; i < tracks.length; ++i) {
+                                        if (tracks[i].year > 0) {
+                                            years[tracks[i].year] = true;
+                                        }
+                                    }
+                                    var list = Object.keys(years);
+                                    list.sort(function(a, b) { return b - a; });
+                                    return list;
+                                }
+
                                 ComboBox {
                                     id: fieldCombo
                                     model: ["Album", "Artist", "Genre", "Title", "FilePath", "Rating", "Year"]
@@ -428,10 +441,13 @@ Item {
                                         radius: 6
                                     }
                                     onTextChanged: {
-                                        if (activeFocus && text.trim() !== "") {
-                                            suggestionsMenu.open();
-                                        }
-                                    }
+                                         if (activeFocus && text.trim() !== "") {
+                                             var f = fieldCombo.currentIndex;
+                                             if (f === 0 || f === 1 || f === 2 || f === 6) {
+                                                 suggestionsMenu.open();
+                                             }
+                                         }
+                                     }
                                 }
 
                                 Button {
@@ -440,7 +456,7 @@ Item {
                                     Layout.preferredWidth: 20
                                     Layout.preferredHeight: 28
                                     contentItem: Text { text: "▾"; color: "#9ea2c0"; font.bold: true; font.pixelSize: 14; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter }
-                                    visible: fieldCombo.currentIndex === 0 || fieldCombo.currentIndex === 1 || fieldCombo.currentIndex === 2
+                                    visible: fieldCombo.currentIndex === 0 || fieldCombo.currentIndex === 1 || fieldCombo.currentIndex === 2 || fieldCombo.currentIndex === 6
                                     onClicked: suggestionsMenu.open()
 
                                     Menu {
@@ -455,17 +471,18 @@ Item {
                                                 if (f === 1) rawList = database.allArtists;
                                                 else if (f === 2) rawList = database.allGenres;
                                                 else if (f === 0) rawList = database.allAlbums;
+                                                else if (f === 6) rawList = ruleRow.getAllYears();
                                                 
                                                 var typed = ruleValueInput.text.toLowerCase().trim();
                                                 if (typed === "") return rawList;
                                                 
                                                 var filtered = [];
                                                 for (var i = 0; i < rawList.length; ++i) {
-                                                    if (rawList[i].toLowerCase().indexOf(typed) !== -1) {
-                                                        filtered.push(rawList[i]);
+                                                    var strVal = rawList[i].toString();
+                                                    if (strVal.toLowerCase().indexOf(typed) !== -1) {
+                                                        filtered.push(strVal);
                                                     }
-                                                }
-                                                return filtered;
+                                                }  return filtered;
                                             }
                                             delegate: MenuItem {
                                                 text: modelData

@@ -147,6 +147,13 @@
                     "lineNumber": 64,
                     "name": "getLyricsForTrack",
                     "returnType": "QString"
+                },
+                {
+                    "access": "public",
+                    "index": 30,
+                    "lineNumber": 67,
+                    "name": "getAutoDJMatchingTracks",
+                    "returnType": "QVariantList"
                 }
             ],
             "object": true,

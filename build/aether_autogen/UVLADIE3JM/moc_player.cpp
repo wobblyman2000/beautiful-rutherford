@@ -83,6 +83,7 @@ template <> constexpr inline auto Player::qt_create_metaobjectdata<qt_meta_tag_Z
         "queueLastAlbum",
         "getLyricsForTrack",
         "filePath",
+        "getAutoDJMatchingTracks",
         "currentTrack",
         "playbackStatus",
         "queueIndex",
@@ -180,28 +181,30 @@ template <> constexpr inline auto Player::qt_create_metaobjectdata<qt_meta_tag_Z
         QtMocHelpers::MethodData<QString(const QString &)>(43, 2, QMC::AccessPublic, QMetaType::QString, {{
             { QMetaType::QString, 44 },
         }}),
+        // Method 'getAutoDJMatchingTracks'
+        QtMocHelpers::MethodData<QVariantList()>(45, 2, QMC::AccessPublic, 0x80000000 | 31),
     };
     QtMocHelpers::UintData qt_properties {
         // property 'currentTrack'
-        QtMocHelpers::PropertyData<QVariantMap>(45, 0x80000000 | 38, QMC::DefaultPropertyFlags | QMC::EnumOrFlag, 0),
+        QtMocHelpers::PropertyData<QVariantMap>(46, 0x80000000 | 38, QMC::DefaultPropertyFlags | QMC::EnumOrFlag, 0),
         // property 'playbackStatus'
-        QtMocHelpers::PropertyData<QString>(46, QMetaType::QString, QMC::DefaultPropertyFlags, 1),
+        QtMocHelpers::PropertyData<QString>(47, QMetaType::QString, QMC::DefaultPropertyFlags, 1),
         // property 'queueIndex'
-        QtMocHelpers::PropertyData<int>(47, QMetaType::Int, QMC::DefaultPropertyFlags, 2),
+        QtMocHelpers::PropertyData<int>(48, QMetaType::Int, QMC::DefaultPropertyFlags, 2),
         // property 'volume'
-        QtMocHelpers::PropertyData<double>(48, QMetaType::Double, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 3),
+        QtMocHelpers::PropertyData<double>(49, QMetaType::Double, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 3),
         // property 'position'
-        QtMocHelpers::PropertyData<double>(49, QMetaType::Double, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 4),
+        QtMocHelpers::PropertyData<double>(50, QMetaType::Double, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 4),
         // property 'duration'
-        QtMocHelpers::PropertyData<double>(50, QMetaType::Double, QMC::DefaultPropertyFlags, 5),
+        QtMocHelpers::PropertyData<double>(51, QMetaType::Double, QMC::DefaultPropertyFlags, 5),
         // property 'shuffle'
-        QtMocHelpers::PropertyData<bool>(51, QMetaType::Bool, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 6),
+        QtMocHelpers::PropertyData<bool>(52, QMetaType::Bool, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 6),
         // property 'loopStatus'
-        QtMocHelpers::PropertyData<QString>(52, QMetaType::QString, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 7),
+        QtMocHelpers::PropertyData<QString>(53, QMetaType::QString, QMC::DefaultPropertyFlags | QMC::Writable | QMC::StdCppSet, 7),
         // property 'queue'
-        QtMocHelpers::PropertyData<QVariantList>(53, 0x80000000 | 31, QMC::DefaultPropertyFlags | QMC::EnumOrFlag, 8),
+        QtMocHelpers::PropertyData<QVariantList>(54, 0x80000000 | 31, QMC::DefaultPropertyFlags | QMC::EnumOrFlag, 8),
         // property 'autoDJRules'
-        QtMocHelpers::PropertyData<QVariantList>(54, 0x80000000 | 31, QMC::DefaultPropertyFlags | QMC::Writable | QMC::EnumOrFlag | QMC::StdCppSet, 10),
+        QtMocHelpers::PropertyData<QVariantList>(55, 0x80000000 | 31, QMC::DefaultPropertyFlags | QMC::Writable | QMC::EnumOrFlag | QMC::StdCppSet, 10),
     };
     QtMocHelpers::UintData qt_enums {
     };
@@ -254,6 +257,8 @@ void Player::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 28: _t->queueLastAlbum((*reinterpret_cast<std::add_pointer_t<QVariantList>>(_a[1]))); break;
         case 29: { QString _r = _t->getLyricsForTrack((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1])));
             if (_a[0]) *reinterpret_cast<QString*>(_a[0]) = std::move(_r); }  break;
+        case 30: { QVariantList _r = _t->getAutoDJMatchingTracks();
+            if (_a[0]) *reinterpret_cast<QVariantList*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     }
@@ -331,14 +336,14 @@ int Player::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 30)
+        if (_id < 31)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 30;
+        _id -= 31;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 30)
+        if (_id < 31)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 30;
+        _id -= 31;
     }
     if (_c == QMetaObject::ReadProperty || _c == QMetaObject::WriteProperty
             || _c == QMetaObject::ResetProperty || _c == QMetaObject::BindableProperty

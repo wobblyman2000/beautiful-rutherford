@@ -1,44 +1,5 @@
 {
     "collections": [
-        {
-            "coverPath": "",
-            "displayMode": "Track List View",
-            "id": "col_1783487000527",
-            "name": "abba",
-            "rules": [
-                {
-                    "field": "album",
-                    "operator": "contains",
-                    "value": ""
-                }
-            ]
-        },
-        {
-            "coverPath": "",
-            "displayMode": "Track List View",
-            "id": "col_1783487053107",
-            "name": "ww",
-            "rules": [
-                {
-                    "field": "album",
-                    "operator": "contains",
-                    "value": ""
-                }
-            ]
-        },
-        {
-            "coverPath": "",
-            "displayMode": "tracks",
-            "id": "col-1783487116791",
-            "name": "w3ww",
-            "rules": [
-                {
-                    "field": "artist",
-                    "operator": "is",
-                    "value": "Anne Murray"
-                }
-            ]
-        }
     ],
     "settings": {
         "musicDirs": [

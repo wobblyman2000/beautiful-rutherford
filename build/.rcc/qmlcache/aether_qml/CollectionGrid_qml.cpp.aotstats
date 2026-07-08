@@ -26,7 +26,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "editCollection",
-                            "line": 545,
+                            "line": 562,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -34,7 +34,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "confirm",
-                            "line": 572,
+                            "line": 589,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -455,10 +455,18 @@
                         },
                         {
                             "codegenResult": 2,
+                            "column": 33,
+                            "durationMicroseconds": 0,
+                            "functionName": "getAllYears",
+                            "line": 366,
+                            "message": "Cannot access value for name database"
+                        },
+                        {
+                            "codegenResult": 2,
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 368,
+                            "line": 381,
                             "message": "Could not find property \"model\"."
                         },
                         {
@@ -466,7 +474,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "currentIndex",
-                            "line": 369,
+                            "line": 382,
                             "message": "Could not find property \"currentIndex\"."
                         },
                         {
@@ -474,7 +482,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "getIndex",
-                            "line": 372,
+                            "line": 385,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -482,7 +490,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "getFieldKey",
-                            "line": 382,
+                            "line": 395,
                             "message": "Cannot access value for name currentIndex"
                         },
                         {
@@ -490,7 +498,7 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 396,
+                            "line": 409,
                             "message": "Could not find property \"model\"."
                         },
                         {
@@ -498,7 +506,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "currentIndex",
-                            "line": 397,
+                            "line": 410,
                             "message": "Could not find property \"currentIndex\"."
                         },
                         {
@@ -506,7 +514,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "getIndex",
-                            "line": 400,
+                            "line": 413,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -514,7 +522,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "getOpKey",
-                            "line": 408,
+                            "line": 421,
                             "message": "Cannot access value for name currentIndex"
                         },
                         {
@@ -522,7 +530,7 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 420,
+                            "line": 433,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -530,7 +538,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "onTextChanged",
-                            "line": 430,
+                            "line": 443,
                             "message": "Could not find signal \"textChanged\"."
                         },
                         {
@@ -538,7 +546,7 @@
                             "column": 46,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 443,
+                            "line": 459,
                             "message": "Could not find property \"visible\"."
                         },
                         {
@@ -546,7 +554,7 @@
                             "column": 48,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 444,
+                            "line": 460,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -554,7 +562,7 @@
                             "column": 144,
                             "durationMicroseconds": 0,
                             "functionName": "horizontalAlignment",
-                            "line": 442,
+                            "line": 458,
                             "message": ""
                         },
                         {
@@ -562,7 +570,7 @@
                             "column": 182,
                             "durationMicroseconds": 0,
                             "functionName": "verticalAlignment",
-                            "line": 442,
+                            "line": 458,
                             "message": ""
                         },
                         {
@@ -570,15 +578,15 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "y",
-                            "line": 448,
+                            "line": 464,
                             "message": "Could not find property \"y\"."
                         },
                         {
                             "codegenResult": 2,
                             "column": 52,
-                            "durationMicroseconds": 1000,
+                            "durationMicroseconds": 2000,
                             "functionName": "model",
-                            "line": 452,
+                            "line": 468,
                             "message": "Cannot retrieve a non-object type by ID: fieldCombo"
                         },
                         {
@@ -586,7 +594,7 @@
                             "column": 55,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 471,
+                            "line": 488,
                             "message": "Could not find property \"text\"."
                         },
                         {
@@ -594,7 +602,7 @@
                             "column": 62,
                             "durationMicroseconds": 0,
                             "functionName": "onTriggered",
-                            "line": 472,
+                            "line": 489,
                             "message": "Could not find signal \"triggered\"."
                         },
                         {
@@ -602,7 +610,7 @@
                             "column": 48,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 486,
+                            "line": 503,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -610,7 +618,7 @@
                             "column": 144,
                             "durationMicroseconds": 0,
                             "functionName": "horizontalAlignment",
-                            "line": 485,
+                            "line": 502,
                             "message": ""
                         },
                         {
@@ -618,24 +626,8 @@
                             "column": 182,
                             "durationMicroseconds": 0,
                             "functionName": "verticalAlignment",
-                            "line": 485,
+                            "line": 502,
                             "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 505,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 36,
-                            "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 517,
-                            "message": "Could not find signal \"clicked\"."
                         },
                         {
                             "codegenResult": 2,
@@ -647,10 +639,26 @@
                         },
                         {
                             "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 534,
+                            "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 36,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 539,
+                            "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 2,
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "onTriggered",
-                            "line": 584,
+                            "line": 601,
                             "message": "Could not find signal \"triggered\"."
                         },
                         {
@@ -658,7 +666,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "onTriggered",
-                            "line": 592,
+                            "line": 609,
                             "message": "Could not find signal \"triggered\"."
                         },
                         {
@@ -666,7 +674,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "onTriggered",
-                            "line": 600,
+                            "line": 617,
                             "message": "Could not find signal \"triggered\"."
                         }
                     ],
