@@ -141,6 +141,7 @@ ApplicationWindow {
                 });
             }
         }
+        window.djRulesModel = list;
         player.autoDJRules = list;
     }
 
@@ -402,7 +403,7 @@ ApplicationWindow {
 
                                     ColumnLayout {
                                         id: djRulesListContainer
-                                        width: parent.width - 12
+                                        width: parent.width - 24
                                         spacing: 10
 
                                         Repeater {
@@ -420,7 +421,7 @@ ApplicationWindow {
 
                                                 ComboBox {
                                                     id: fieldCombo
-                                                    model: ["Album", "Artist", "Genre", "Title", "FilePath", "Rating"]
+                                                    model: ["Album", "Artist", "Genre", "Title", "FilePath", "Rating", "Year"]
                                                     currentIndex: {
                                                         var f = modelData.field || "album";
                                                         if (f === "artist") return 1;
@@ -428,6 +429,7 @@ ApplicationWindow {
                                                         if (f === "title") return 3;
                                                         if (f === "filePath") return 4;
                                                         if (f === "rating") return 5;
+                                                        if (f === "year") return 6;
                                                         return 0;
                                                     }
                                                     Layout.preferredWidth: 105
@@ -439,6 +441,7 @@ ApplicationWindow {
                                                         if (idx === 3) return "title";
                                                         if (idx === 4) return "filePath";
                                                         if (idx === 5) return "rating";
+                                                        if (idx === 6) return "year";
                                                         return "album";
                                                     }
                                                 }
@@ -1276,6 +1279,7 @@ ApplicationWindow {
                             }
                             Canvas {
                                 anchors.centerIn: parent
+                                anchors.horizontalCenterOffset: 1.5
                                 width: 16
                                 height: 18
                                 visible: player.playbackStatus !== "Playing"

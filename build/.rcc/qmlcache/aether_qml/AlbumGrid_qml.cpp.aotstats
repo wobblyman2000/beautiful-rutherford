@@ -350,12 +350,12 @@
                             "message": ""
                         },
                         {
-                            "codegenResult": 0,
+                            "codegenResult": 2,
                             "column": 50,
                             "durationMicroseconds": 0,
                             "functionName": "opacity",
                             "line": 315,
-                            "message": ""
+                            "message": "Cannot access value for name albumModal"
                         },
                         {
                             "codegenResult": 0,
@@ -378,7 +378,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 352,
+                            "line": 353,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -410,7 +410,7 @@
                             "column": 62,
                             "durationMicroseconds": 0,
                             "functionName": "onPaint",
-                            "line": 338,
+                            "line": 339,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
                         },
                         {
@@ -426,7 +426,7 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 362,
+                            "line": 363,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -434,7 +434,7 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "elide",
-                            "line": 366,
+                            "line": 367,
                             "message": ""
                         },
                         {
@@ -442,7 +442,7 @@
                             "column": 50,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 365,
+                            "line": 366,
                             "message": ""
                         },
                         {
@@ -450,7 +450,7 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 371,
+                            "line": 372,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -458,7 +458,7 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "elide",
-                            "line": 374,
+                            "line": 375,
                             "message": ""
                         },
                         {
@@ -466,7 +466,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "acceptedButtons",
-                            "line": 383,
+                            "line": 384,
                             "message": ""
                         },
                         {
@@ -474,7 +474,7 @@
                             "column": 45,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 385,
+                            "line": 386,
                             "message": "Cannot access value for name mouse"
                         },
                         {
@@ -482,7 +482,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "onDoubleClicked",
-                            "line": 400,
+                            "line": 401,
                             "message": "Cannot access value for name player"
                         },
                         {
@@ -490,7 +490,7 @@
                             "column": 48,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 381,
+                            "line": 382,
                             "message": ""
                         },
                         {
@@ -498,7 +498,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "onTriggered",
-                            "line": 418,
+                            "line": 419,
                             "message": "Could not find signal \"triggered\"."
                         },
                         {
@@ -506,7 +506,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "onTriggered",
-                            "line": 426,
+                            "line": 427,
                             "message": "Could not find signal \"triggered\"."
                         },
                         {
@@ -514,7 +514,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "onTriggered",
-                            "line": 434,
+                            "line": 435,
                             "message": "Could not find signal \"triggered\"."
                         }
                     ],

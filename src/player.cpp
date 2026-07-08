@@ -355,6 +355,7 @@ bool matchAutoDJRules(const QVariantMap &track, const QVariantList &rules) {
         else if (field == QStringLiteral("title")) fieldKey = QStringLiteral("title");
         else if (field == QStringLiteral("filepath")) fieldKey = QStringLiteral("filePath");
         else if (field == QStringLiteral("rating")) fieldKey = QStringLiteral("rating");
+        else if (field == QStringLiteral("year")) fieldKey = QStringLiteral("year");
 
         QString val = track[fieldKey].toString().trimmed().toLower();
         bool matched = false;

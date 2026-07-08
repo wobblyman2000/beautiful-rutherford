@@ -180,6 +180,7 @@ Rectangle {
                         }
                         Canvas {
                             anchors.centerIn: parent
+                            anchors.horizontalCenterOffset: 1.5
                             width: 14
                             height: 16
                             visible: player.playbackStatus !== "Playing"

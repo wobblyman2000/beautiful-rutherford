@@ -302,16 +302,16 @@
                             "message": ""
                         },
                         {
-                            "codegenResult": 0,
-                            "column": 50,
+                            "codegenResult": 2,
+                            "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "opacity",
                             "line": 272,
-                            "message": ""
+                            "message": "Cannot access value for name albumModal"
                         },
                         {
                             "codegenResult": 0,
-                            "column": 50,
+                            "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
                             "line": 273,
@@ -319,7 +319,7 @@
                         },
                         {
                             "codegenResult": 0,
-                            "column": 55,
+                            "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
                             "line": 270,

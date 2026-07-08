@@ -267,10 +267,10 @@ Item {
 
                                     // Quick play overlay
                                     Rectangle {
-                                        anchors.fill: parent
-                                        color: "#80000000"
-                                        opacity: genreMouse.containsMouse ? 1.0 : 0.0
-                                        visible: opacity > 0.0
+                                         anchors.fill: parent
+                                         color: "#80000000"
+                                         opacity: (genreMouse.containsMouse && !albumModal.visible) ? 1.0 : 0.0
+                                         visible: opacity > 0.0
 
                                         Button {
                                             id: genrePlayBtn

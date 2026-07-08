@@ -169,7 +169,7 @@ Item {
                         Rectangle {
                             anchors.fill: parent
                             color: "#80000000"
-                            opacity: colMouse.containsMouse ? 1.0 : 0.0
+                            opacity: (colMouse.containsMouse && !albumModal.visible) ? 1.0 : 0.0
                             visible: opacity > 0.0
 
                             Button {
@@ -188,6 +188,7 @@ Item {
                                     anchors.fill: parent
                                     Canvas {
                                         anchors.centerIn: parent
+                                        anchors.horizontalCenterOffset: 1.5
                                         width: 11
                                         height: 13
                                         onPaint: {
@@ -346,7 +347,7 @@ Item {
 
                     ColumnLayout {
                         id: rulesListContainer
-                        width: parent.width - 12
+                        width: parent.width - 24
                         spacing: 10
 
                         Repeater {
@@ -354,16 +355,17 @@ Item {
                             model: editDialog.rulesModel
 
                             delegate: RowLayout {
+                                id: ruleRow
                                 Layout.fillWidth: true
                                 spacing: 8
 
-                                property string fieldVal: modelData.field || "album"
-                                property string opVal: modelData.operator || "contains"
-                                property string textVal: modelData.value || ""
+                                function getFieldKey() { return fieldCombo.getFieldKey(); }
+                                function getOpKey() { return opCombo.getOpKey(); }
+                                function getValue() { return ruleValueInput.text.trim(); }
 
                                 ComboBox {
                                     id: fieldCombo
-                                    model: ["Album", "Artist", "Genre", "Title", "FilePath", "Rating"]
+                                    model: ["Album", "Artist", "Genre", "Title", "FilePath", "Rating", "Year"]
                                     currentIndex: getIndex(modelData.field)
                                     Layout.preferredWidth: 110
                                     
@@ -373,6 +375,7 @@ Item {
                                         if (f === "title") return 3;
                                         if (f === "filePath") return 4;
                                         if (f === "rating") return 5;
+                                        if (f === "year") return 6;
                                         return 0; // album
                                     }
                                     
@@ -383,6 +386,7 @@ Item {
                                         if (idx === 3) return "title";
                                         if (idx === 4) return "filePath";
                                         if (idx === 5) return "rating";
+                                        if (idx === 6) return "year";
                                         return "album";
                                     }
                                 }
@@ -432,10 +436,10 @@ Item {
 
                                 Button {
                                     id: suggestBtn
-                                    icon.name: "arrow-down"
                                     flat: true
-                                    icon.width: 14
-                                    icon.height: 14
+                                    Layout.preferredWidth: 20
+                                    Layout.preferredHeight: 28
+                                    contentItem: Text { text: "▾"; color: "#9ea2c0"; font.bold: true; font.pixelSize: 14; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter }
                                     visible: fieldCombo.currentIndex === 0 || fieldCombo.currentIndex === 1 || fieldCombo.currentIndex === 2
                                     onClicked: suggestionsMenu.open()
 
@@ -475,13 +479,14 @@ Item {
                                 }
 
                                 Button {
-                                    icon.name: "list-remove"
                                     flat: true
+                                    Layout.preferredWidth: 20
+                                    Layout.preferredHeight: 28
+                                    contentItem: Text { text: "✕"; color: "#ff5555"; font.bold: true; font.pixelSize: 12; horizontalAlignment: Text.AlignHCenter; verticalAlignment: Text.AlignVCenter }
                                     onClicked: {
-                                        // Update local model by removing this index
                                         var current = editDialog.rulesModel;
                                         current.splice(index, 1);
-                                        editDialog.rulesModel = []; // trigger re-eval
+                                        editDialog.rulesModel = [];
                                         editDialog.rulesModel = current;
                                     }
                                 }
@@ -520,9 +525,9 @@ Item {
                             for (var i = 0; i < rulesRepeater.count; ++i) {
                                 var item = rulesRepeater.itemAt(i);
                                 if (item) {
-                                    var f = item.children[0].getFieldKey();
-                                    var o = item.children[1].getOpKey();
-                                    var v = item.children[2].text;
+                                    var f = item.getFieldKey();
+                                    var o = item.getOpKey();
+                                    var v = item.getValue();
                                     updatedRules.push({ field: f, operator: o, value: v });
                                 }
                             }

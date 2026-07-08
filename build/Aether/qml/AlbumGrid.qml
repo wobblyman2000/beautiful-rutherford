@@ -312,7 +312,7 @@ Item {
                                     Rectangle {
                                         anchors.fill: parent
                                         color: "#80000000"
-                                        opacity: cardMouseArea.containsMouse ? 1.0 : 0.0
+                                        opacity: (cardMouseArea.containsMouse && !albumModal.visible) ? 1.0 : 0.0
                                         visible: opacity > 0.0
                                         
                                         Behavior on opacity { NumberAnimation { duration: 200 } }
@@ -333,6 +333,7 @@ Item {
                                                 anchors.fill: parent
                                                 Canvas {
                                                     anchors.centerIn: parent
+                                                    anchors.horizontalCenterOffset: 1.5
                                                     width: 11
                                                     height: 13
                                                     onPaint: {
