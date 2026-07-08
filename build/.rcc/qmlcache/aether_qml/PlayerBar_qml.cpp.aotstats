@@ -554,7 +554,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 346,
+                            "line": 349,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -562,7 +562,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 342,
+                            "line": 345,
                             "message": "Cannot access value for name eqPopup"
                         },
                         {
@@ -570,7 +570,7 @@
                             "column": 42,
                             "durationMicroseconds": 0,
                             "functionName": "horizontalAlignment",
-                            "line": 343,
+                            "line": 346,
                             "message": ""
                         },
                         {
@@ -578,23 +578,23 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "verticalAlignment",
+                            "line": 347,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 34,
+                            "durationMicroseconds": 0,
+                            "functionName": "weight",
                             "line": 344,
                             "message": ""
                         },
                         {
-                            "codegenResult": 0,
-                            "column": 34,
-                            "durationMicroseconds": 0,
-                            "functionName": "weight",
-                            "line": 341,
-                            "message": ""
-                        },
-                        {
                             "codegenResult": 2,
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 360,
+                            "line": 363,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -602,7 +602,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 356,
+                            "line": 359,
                             "message": "Cannot access value for name window"
                         },
                         {
@@ -610,7 +610,7 @@
                             "column": 42,
                             "durationMicroseconds": 0,
                             "functionName": "horizontalAlignment",
-                            "line": 357,
+                            "line": 360,
                             "message": ""
                         },
                         {
@@ -618,23 +618,23 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "verticalAlignment",
+                            "line": 361,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 34,
+                            "durationMicroseconds": 0,
+                            "functionName": "weight",
                             "line": 358,
                             "message": ""
                         },
                         {
-                            "codegenResult": 0,
-                            "column": 34,
-                            "durationMicroseconds": 0,
-                            "functionName": "weight",
-                            "line": 355,
-                            "message": ""
-                        },
-                        {
                             "codegenResult": 2,
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 374,
+                            "line": 377,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -642,7 +642,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 370,
+                            "line": 373,
                             "message": "Cannot access value for name window"
                         },
                         {
@@ -650,7 +650,7 @@
                             "column": 42,
                             "durationMicroseconds": 0,
                             "functionName": "horizontalAlignment",
-                            "line": 371,
+                            "line": 374,
                             "message": ""
                         },
                         {
@@ -658,23 +658,23 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "verticalAlignment",
+                            "line": 375,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 34,
+                            "durationMicroseconds": 0,
+                            "functionName": "weight",
                             "line": 372,
                             "message": ""
                         },
                         {
-                            "codegenResult": 0,
-                            "column": 34,
-                            "durationMicroseconds": 0,
-                            "functionName": "weight",
-                            "line": 369,
-                            "message": ""
-                        },
-                        {
                             "codegenResult": 2,
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 388,
+                            "line": 391,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -682,7 +682,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 384,
+                            "line": 387,
                             "message": "Cannot access value for name window"
                         },
                         {
@@ -690,7 +690,7 @@
                             "column": 42,
                             "durationMicroseconds": 0,
                             "functionName": "horizontalAlignment",
-                            "line": 385,
+                            "line": 388,
                             "message": ""
                         },
                         {
@@ -698,7 +698,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "verticalAlignment",
-                            "line": 386,
+                            "line": 389,
                             "message": ""
                         },
                         {
@@ -706,7 +706,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 383,
+                            "line": 386,
                             "message": ""
                         },
                         {
@@ -714,7 +714,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 395,
+                            "line": 398,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -722,7 +722,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "name",
-                            "line": 393,
+                            "line": 396,
                             "message": "Could not find property \"name\"."
                         },
                         {
@@ -730,7 +730,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "onMoved",
-                            "line": 436,
+                            "line": 439,
                             "message": "Could not find signal \"moved\"."
                         },
                         {
@@ -738,7 +738,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 413,
+                            "line": 416,
                             "message": ""
                         },
                         {
@@ -746,7 +746,7 @@
                             "column": 45,
                             "durationMicroseconds": 0,
                             "functionName": "verticalCenter",
-                            "line": 415,
+                            "line": 418,
                             "message": ""
                         },
                         {
@@ -754,7 +754,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 420,
+                            "line": 423,
                             "message": "Cannot access value for name volumeSlider"
                         },
                         {
@@ -762,7 +762,7 @@
                             "column": 33,
                             "durationMicroseconds": 0,
                             "functionName": "height",
-                            "line": 421,
+                            "line": 424,
                             "message": ""
                         },
                         {
@@ -770,7 +770,7 @@
                             "column": 24,
                             "durationMicroseconds": 0,
                             "functionName": "x",
-                            "line": 428,
+                            "line": 431,
                             "message": "Cannot access value for name volumeSlider"
                         },
                         {
@@ -778,7 +778,7 @@
                             "column": 45,
                             "durationMicroseconds": 0,
                             "functionName": "verticalCenter",
-                            "line": 429,
+                            "line": 432,
                             "message": ""
                         },
                         {
@@ -786,7 +786,7 @@
                             "column": 29,
                             "durationMicroseconds": 0,
                             "functionName": "target",
-                            "line": 439,
+                            "line": 442,
                             "message": "Cannot access value for name player"
                         },
                         {
@@ -794,7 +794,7 @@
                             "column": 21,
                             "durationMicroseconds": 0,
                             "functionName": "onVolumeChanged",
-                            "line": 440,
+                            "line": 443,
                             "message": "Cannot retrieve a non-object type by ID: volumeSlider"
                         },
                         {
@@ -802,7 +802,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "onCompleted",
-                            "line": 447,
+                            "line": 450,
                             "message": "Cannot access value for name player"
                         },
                         {
@@ -810,7 +810,7 @@
                             "column": 12,
                             "durationMicroseconds": 0,
                             "functionName": "x",
-                            "line": 457,
+                            "line": 460,
                             "message": "Could not find property \"x\"."
                         },
                         {
@@ -818,7 +818,7 @@
                             "column": 12,
                             "durationMicroseconds": 0,
                             "functionName": "y",
-                            "line": 458,
+                            "line": 461,
                             "message": "Could not find property \"y\"."
                         },
                         {
@@ -826,7 +826,7 @@
                             "column": 22,
                             "durationMicroseconds": 0,
                             "functionName": "closePolicy",
-                            "line": 463,
+                            "line": 466,
                             "message": "Could not find property \"closePolicy\"."
                         },
                         {
@@ -834,7 +834,7 @@
                             "column": 27,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 472,
+                            "line": 475,
                             "message": ""
                         },
                         {
@@ -842,7 +842,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 482,
+                            "line": 485,
                             "message": ""
                         },
                         {
@@ -850,7 +850,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 487,
+                            "line": 490,
                             "message": "Could not find property \"model\"."
                         },
                         {
@@ -858,7 +858,7 @@
                             "column": 44,
                             "durationMicroseconds": 0,
                             "functionName": "onCurrentIndexChanged",
-                            "line": 489,
+                            "line": 492,
                             "message": "Could not find signal \"currentIndexChanged\"."
                         },
                         {
@@ -866,7 +866,7 @@
                             "column": 42,
                             "durationMicroseconds": 0,
                             "functionName": "orientation",
-                            "line": 526,
+                            "line": 529,
                             "message": "Could not find property \"orientation\"."
                         },
                         {
@@ -874,7 +874,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 533,
+                            "line": 536,
                             "message": "Cannot access value for name index"
                         },
                         {
@@ -882,7 +882,7 @@
                             "column": 47,
                             "durationMicroseconds": 0,
                             "functionName": "alignment",
-                            "line": 539,
+                            "line": 542,
                             "message": ""
                         }
                     ],

@@ -329,7 +329,10 @@ Rectangle {
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                 }
-                onClicked: player.autoDJ = !player.autoDJ
+                onClicked: {
+                    player.autoDJ = !player.autoDJ;
+                    window.activePage = "autodj";
+                }
             }
 
             Button {

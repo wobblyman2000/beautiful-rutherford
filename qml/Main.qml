@@ -430,7 +430,7 @@ ApplicationWindow {
                                                         if (f === "rating") return 5;
                                                         return 0;
                                                     }
-                                                    Layout.preferredWidth: 85
+                                                    Layout.preferredWidth: 105
                                                     
                                                     function getFieldKey() {
                                                         var idx = currentIndex;
@@ -454,7 +454,7 @@ ApplicationWindow {
                                                         if (o === "not_contains") return 4;
                                                         return 0;
                                                     }
-                                                    Layout.preferredWidth: 85
+                                                    Layout.preferredWidth: 105
 
                                                     function getOpKey() {
                                                         var idx = currentIndex;
@@ -497,7 +497,7 @@ ApplicationWindow {
                                                     Menu {
                                                         id: suggestionsMenu
                                                         y: parent.height
-                                                        width: 200
+                                                        width: Math.max(200, ruleValueInput.width)
 
                                                         Repeater {
                                                             model: {
@@ -553,8 +553,19 @@ ApplicationWindow {
                                     Button {
                                         id: applyDjRulesBtn
                                         Layout.fillWidth: true
-                                        highlighted: true
-                                        contentItem: Text { text: qsTr("Apply Filters"); color: "#1a1a2a"; font.bold: true }
+                                        contentItem: Text {
+                                            text: qsTr("Apply Filters")
+                                            color: "#00f2fe"
+                                            font.bold: true
+                                            horizontalAlignment: Text.AlignHCenter
+                                            verticalAlignment: Text.AlignVCenter
+                                        }
+                                        background: Rectangle {
+                                            color: applyDjRulesBtn.pressed ? "#2200f2fe" : (applyDjRulesBtn.hovered ? "#1100f2fe" : "#14ffffff")
+                                            border.color: "#00f2fe"
+                                            border.width: 1
+                                            radius: 6
+                                        }
                                         onClicked: applyDJRules()
                                     }
 
@@ -678,23 +689,35 @@ ApplicationWindow {
                                                     }
                                                 }
 
-                                                ColumnLayout {
+                                                Text {
+                                                    text: modelData.title || qsTr("Unknown Track")
+                                                    color: index === player.queueIndex ? "#00f2fe" : "#ffffff"
+                                                    font.pixelSize: 13
+                                                    font.weight: Font.Medium
+                                                    elide: Text.ElideRight
                                                     Layout.fillWidth: true
-                                                    spacing: 2
+                                                    Layout.preferredWidth: 150
                                                     Layout.alignment: Qt.AlignVCenter
-                                                    Text {
-                                                        text: modelData.title || qsTr("Unknown Track")
-                                                        color: index === player.queueIndex ? "#00f2fe" : "#ffffff"
-                                                        font.pixelSize: 13
-                                                        font.weight: Font.Medium
-                                                        elide: Text.ElideRight
-                                                    }
-                                                    Text {
-                                                        text: modelData.artist || qsTr("Unknown Artist")
-                                                        color: index === player.queueIndex ? "#7ae6ff" : "#9ea2c0"
-                                                        font.pixelSize: 11
-                                                        elide: Text.ElideRight
-                                                    }
+                                                }
+
+                                                Text {
+                                                    text: modelData.artist || qsTr("Unknown Artist")
+                                                    color: index === player.queueIndex ? "#7ae6ff" : "#9ea2c0"
+                                                    font.pixelSize: 11
+                                                    elide: Text.ElideRight
+                                                    Layout.fillWidth: true
+                                                    Layout.preferredWidth: 100
+                                                    Layout.alignment: Qt.AlignVCenter
+                                                }
+
+                                                Text {
+                                                    text: modelData.album || qsTr("Unknown Album")
+                                                    color: index === player.queueIndex ? "#7ae6ff" : "#9ea2c0"
+                                                    font.pixelSize: 11
+                                                    elide: Text.ElideRight
+                                                    Layout.fillWidth: true
+                                                    Layout.preferredWidth: 100
+                                                    Layout.alignment: Qt.AlignVCenter
                                                 }
 
                                                 Text {

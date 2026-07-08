@@ -3,13 +3,13 @@
         {
             "coverPath": "",
             "displayMode": "albums",
-            "id": "col-1783416395681",
-            "name": "33",
+            "id": "col-1783485269041",
+            "name": "dave",
             "rules": [
                 {
-                    "field": "artist",
+                    "field": "genre",
                     "operator": "is",
-                    "value": "ABBA"
+                    "value": "Rock"
                 }
             ]
         }
@@ -30,6 +30,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD1/01.All Of Me.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "b586cbc3260aff0a170e8e2c10ba2b9d",
+            "rating": 0,
             "title": "All Of Me",
             "trackNo": 1,
             "year": 2004
@@ -44,6 +45,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD1/02.As Time Goes By.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "6ec249dd74704d84e881369a821608fa",
+            "rating": 0,
             "title": "As Time Goes By",
             "trackNo": 2,
             "year": 2004
@@ -58,6 +60,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD1/03.Dream A Little Dream Of Me.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "9a3c17b83b3512ee0bb4f33cde6f9859",
+            "rating": 0,
             "title": "Dream A Little Dream Of Me",
             "trackNo": 3,
             "year": 2004
@@ -72,6 +75,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD1/04.I Wonder Who's Kissing Him Now.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "c587017b1db264650b222b6b32cc38fa",
+            "rating": 0,
             "title": "I Wonder Who's Kissing Him Now",
             "trackNo": 4,
             "year": 2004
@@ -86,6 +90,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD1/05.I'm Gonna Sit Right Down And Write Myself A Letter.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "f3664ef183ea0f7bdaeeae4c20a81859",
+            "rating": 0,
             "title": "I'm Gonna Sit Right Down And Write Myself A Letter",
             "trackNo": 5,
             "year": 2004
@@ -100,6 +105,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD1/06.Over The Rainbow.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "fdecbaf2c395cca892cf3196a8ad3eaf",
+            "rating": 0,
             "title": "Over The Rainbow",
             "trackNo": 6,
             "year": 2004
@@ -114,6 +120,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD1/07.Twilight Time.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "23097dc6e41bb91ae7ce24bb57dcf287",
+            "rating": 0,
             "title": "Twilight Time",
             "trackNo": 7,
             "year": 2004
@@ -128,6 +135,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD1/08.My Buddy.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "b428051c7e1263493a2b3d655916200e",
+            "rating": 0,
             "title": "My Buddy",
             "trackNo": 8,
             "year": 2004
@@ -142,6 +150,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD1/09.After You've Gone.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "ebfda555470aa2ffe76b13d7358d3be0",
+            "rating": 0,
             "title": "After You've Gone",
             "trackNo": 9,
             "year": 2004
@@ -156,6 +165,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD1/10.What'll I Do.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "e14e369fef1c59cf4d0cef54c7070c3b",
+            "rating": 0,
             "title": "What'll I Do",
             "trackNo": 10,
             "year": 2004
@@ -170,6 +180,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD1/11.Don't Get Around Much Anymore.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "67dd9c97fab230d0a83b4cd70c629e7a",
+            "rating": 0,
             "title": "Don't Get Around Much Anymore",
             "trackNo": 11,
             "year": 2004
@@ -184,6 +195,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD1/12.Smile.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "647977ebe96557cc6d914118bbef535e",
+            "rating": 0,
             "title": "Smile",
             "trackNo": 12,
             "year": 2004
@@ -198,6 +210,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD1/13.You Made Me Love You.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "5883026b8d3045e369ecbd3bc6440c0f",
+            "rating": 0,
             "title": "You Made Me Love You",
             "trackNo": 13,
             "year": 2004
@@ -212,6 +225,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD1/14.I'll Be Seeing You.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "107b13810e0d3b0748ebeea80cf02e97",
+            "rating": 0,
             "title": "I'll Be Seeing You",
             "trackNo": 14,
             "year": 2004
@@ -226,6 +240,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD1/15.We'll Meet Again.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "a6ee1fda90923037c89ccaac4c88cd15",
+            "rating": 0,
             "title": "We'll Meet Again",
             "trackNo": 15,
             "year": 2004
@@ -240,6 +255,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD2/01.Snowbird.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "c3275aa4e5dab62e77748c35ebb04f41",
+            "rating": 0,
             "title": "Snowbird",
             "trackNo": 1,
             "year": 2004
@@ -254,6 +270,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD2/02.Danny's Song.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "598085687c5cf2f341566f0560fed398",
+            "rating": 0,
             "title": "Danny's Song",
             "trackNo": 2,
             "year": 2004
@@ -268,6 +285,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD2/03.A Love Song.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "9ac1af687fb864c925319f275829962b",
+            "rating": 0,
             "title": "A Love Song",
             "trackNo": 3,
             "year": 2004
@@ -282,6 +300,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD2/04.You Won't See Me.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "b5833ba60040550e445d26e709aab428",
+            "rating": 0,
             "title": "You Won't See Me",
             "trackNo": 4,
             "year": 2004
@@ -296,6 +315,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD2/05.You Needed Me.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "7197470f5ac5463ced57b1ec80db9a52",
+            "rating": 0,
             "title": "You Needed Me",
             "trackNo": 5,
             "year": 2004
@@ -310,6 +330,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD2/06.I Just Fall In Love Again.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "b78d28292ed9685680eeaf6cf4d45b99",
+            "rating": 0,
             "title": "I Just Fall In Love Again",
             "trackNo": 6,
             "year": 2004
@@ -324,6 +345,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD2/07.Daydream Believer.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "bc55cacbb375c1f97c30607684526fe2",
+            "rating": 0,
             "title": "Daydream Believer",
             "trackNo": 7,
             "year": 2004
@@ -338,6 +360,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD2/08.Broken Hearted Me.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "b1ad4cf4a08dfac685cc08c31101a025",
+            "rating": 0,
             "title": "Broken Hearted Me",
             "trackNo": 8,
             "year": 2004
@@ -352,6 +375,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD2/09.Could I Have This Dance.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "3bdb6281cf7fe990377951d7186306fe",
+            "rating": 0,
             "title": "Could I Have This Dance",
             "trackNo": 9,
             "year": 2004
@@ -366,6 +390,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD2/10.Shadows In The Moonlight.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "0b73d0cda09abaef03c2f885a4970856",
+            "rating": 0,
             "title": "Shadows In The Moonlight",
             "trackNo": 10,
             "year": 2004
@@ -380,6 +405,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD2/11.A Little Good News.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "ed8dbba362af7b0d26b112a166e87e1f",
+            "rating": 0,
             "title": "A Little Good News",
             "trackNo": 11,
             "year": 2004
@@ -394,6 +420,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD2/12.Just Another Woman In Love.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "6def115410b88ff5fd5c1f5285e5946c",
+            "rating": 0,
             "title": "Just Another Woman In Love",
             "trackNo": 12,
             "year": 2004
@@ -408,6 +435,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD2/13.Another Sleepless Night.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "816070bc4813275ee340e15fb249fbc9",
+            "rating": 0,
             "title": "Another Sleepless Night",
             "trackNo": 13,
             "year": 2004
@@ -422,6 +450,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD2/14.Time Don't Run Out On Me.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "e3acee8601b835d39cab5162d54d0e1f",
+            "rating": 0,
             "title": "Time Don't Run Out On Me",
             "trackNo": 14,
             "year": 2004
@@ -436,6 +465,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD2/15.Now And Forever (You And Me).mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "61c8e758c023ed735fc28b97eec19c4e",
+            "rating": 0,
             "title": "Now And Forever (You And Me)",
             "trackNo": 15,
             "year": 2004
@@ -450,6 +480,7 @@
             "filePath": "/home/dave/11111/A/Anne Murray/Anne Murray - All Of Me CD2/16.Nobody Loves Me Like You Do.mp3",
             "genre": "Soft Rock/Country/Vocal",
             "id": "bf6f9af4a8cbcf7820f73755aa778b0e",
+            "rating": 0,
             "title": "Nobody Loves Me Like You Do",
             "trackNo": 16,
             "year": 2004
@@ -464,6 +495,7 @@
             "filePath": "/home/dave/11111/A/abba.greatest.hits.vol.2.1979.vinyl.flac.HMV/a1.gimme.gimme.gimme.(a.man.after.midnight).flac",
             "genre": "Pop",
             "id": "4dbfd0769fec08765a164c6cbaac4eb2",
+            "rating": 0,
             "title": "Gimmie! Gimmie! Gimmie! (A Man After Midnight)",
             "trackNo": 1,
             "year": 1979
@@ -478,6 +510,7 @@
             "filePath": "/home/dave/11111/A/abba.greatest.hits.vol.2.1979.vinyl.flac.HMV/a2.knowing.me,.knowing.you.flac",
             "genre": "Pop",
             "id": "6eaf1db40c338c82250a07cef519c700",
+            "rating": 0,
             "title": "Knowing Me Knowing You",
             "trackNo": 2,
             "year": 1979
@@ -492,6 +525,7 @@
             "filePath": "/home/dave/11111/A/abba.greatest.hits.vol.2.1979.vinyl.flac.HMV/a3.take.a.chance.on.me.flac",
             "genre": "Pop",
             "id": "8ef294db91f88ee727fa130ef3f1f903",
+            "rating": 0,
             "title": "Take A Chance On Me",
             "trackNo": 3,
             "year": 1979
@@ -506,6 +540,7 @@
             "filePath": "/home/dave/11111/A/abba.greatest.hits.vol.2.1979.vinyl.flac.HMV/a4.money,.money,.money.flac",
             "genre": "Pop",
             "id": "f69589629118d37273455fad664854f5",
+            "rating": 0,
             "title": "Money Money Money",
             "trackNo": 4,
             "year": 1979
@@ -520,6 +555,7 @@
             "filePath": "/home/dave/11111/A/abba.greatest.hits.vol.2.1979.vinyl.flac.HMV/a5.rock.me.flac",
             "genre": "Pop",
             "id": "d8bd1a91fd732ea8d22bc9afabc6727c",
+            "rating": 0,
             "title": "Rock Me",
             "trackNo": 5,
             "year": 1979
@@ -534,6 +570,7 @@
             "filePath": "/home/dave/11111/A/abba.greatest.hits.vol.2.1979.vinyl.flac.HMV/a6.eagle.flac",
             "genre": "Pop",
             "id": "716a740604fecaf3bbed57c55f5d3bc4",
+            "rating": 0,
             "title": "Eagle",
             "trackNo": 6,
             "year": 1979
@@ -548,6 +585,7 @@
             "filePath": "/home/dave/11111/A/abba.greatest.hits.vol.2.1979.vinyl.flac.HMV/a7.angeleyes.flac",
             "genre": "Pop",
             "id": "3f2c9f76fd52bb463bcc962ca9d1132c",
+            "rating": 0,
             "title": "Angeleyes",
             "trackNo": 7,
             "year": 1979
@@ -562,6 +600,7 @@
             "filePath": "/home/dave/11111/A/abba.greatest.hits.vol.2.1979.vinyl.flac.HMV/b1.dancing.queen.flac",
             "genre": "Pop",
             "id": "9975e31398253491eb417ca9adc671f2",
+            "rating": 0,
             "title": "Dancing Queen",
             "trackNo": 8,
             "year": 1979
@@ -576,6 +615,7 @@
             "filePath": "/home/dave/11111/A/abba.greatest.hits.vol.2.1979.vinyl.flac.HMV/b2.does.your.mother.know.flac",
             "genre": "Pop",
             "id": "7b760041632ea747a957ddb22d185150",
+            "rating": 0,
             "title": "Does Your Mother Know",
             "trackNo": 9,
             "year": 1979
@@ -590,6 +630,7 @@
             "filePath": "/home/dave/11111/A/abba.greatest.hits.vol.2.1979.vinyl.flac.HMV/b3.chiquitita.flac",
             "genre": "Pop",
             "id": "c8204c3fd7e95c19afd1533d7541c6e1",
+            "rating": 0,
             "title": "Chiquita",
             "trackNo": 10,
             "year": 1979
@@ -604,6 +645,7 @@
             "filePath": "/home/dave/11111/A/abba.greatest.hits.vol.2.1979.vinyl.flac.HMV/b4.summer.night.city.flac",
             "genre": "Pop",
             "id": "674fcce75005cb87c2349b2352509743",
+            "rating": 0,
             "title": "Summer Night City",
             "trackNo": 11,
             "year": 1979
@@ -618,6 +660,7 @@
             "filePath": "/home/dave/11111/A/abba.greatest.hits.vol.2.1979.vinyl.flac.HMV/b5.i.wonder.(departure).flac",
             "genre": "Pop",
             "id": "32edda72172a2d1a0163b70c111a2385",
+            "rating": 0,
             "title": "I Wonder",
             "trackNo": 12,
             "year": 1979
@@ -632,6 +675,7 @@
             "filePath": "/home/dave/11111/A/abba.greatest.hits.vol.2.1979.vinyl.flac.HMV/b6.the.name.of.the.game.flac",
             "genre": "Pop",
             "id": "9cbb5debfe5b016316336ff96fd5b10a",
+            "rating": 0,
             "title": "The Name Of The Game",
             "trackNo": 13,
             "year": 1979
@@ -646,6 +690,7 @@
             "filePath": "/home/dave/11111/A/abba.greatest.hits.vol.2.1979.vinyl.flac.HMV/b7.thank.you.for.the.music.flac",
             "genre": "Pop",
             "id": "4a60de4ba1a890c69014f773e6fd9513",
+            "rating": 0,
             "title": "Thank You For The Music",
             "trackNo": 14,
             "year": 1979
@@ -660,6 +705,7 @@
             "filePath": "/home/dave/11111/C/Choirboys - 1987 - Big Bad Noise FLAC/01 Run To Paradise.flac",
             "genre": "Rock",
             "id": "86e20e3fe5e4a4790b8b0bf1efb86bf8",
+            "rating": 1,
             "title": "Run To Paradise",
             "trackNo": 1,
             "year": 1987
@@ -674,6 +720,7 @@
             "filePath": "/home/dave/11111/C/Choirboys - 1987 - Big Bad Noise FLAC/02 Struggle Town.flac",
             "genre": "Rock",
             "id": "9b067898302f40f7f2f56177eaa213a2",
+            "rating": 0,
             "title": "Struggle Town",
             "trackNo": 2,
             "year": 1987
@@ -688,6 +735,7 @@
             "filePath": "/home/dave/11111/C/Choirboys - 1987 - Big Bad Noise FLAC/03 Boys Will Be Boys.flac",
             "genre": "Rock",
             "id": "63d5bda0f25a9445f6c9de58a2a46742",
+            "rating": 0,
             "title": "Boys Will Be Boys",
             "trackNo": 3,
             "year": 1987
@@ -702,6 +750,7 @@
             "filePath": "/home/dave/11111/C/Choirboys - 1987 - Big Bad Noise FLAC/04 Brave New World.flac",
             "genre": "Rock",
             "id": "4a97d589efb44497a769e7a02bfb5258",
+            "rating": 0,
             "title": "Brave New World",
             "trackNo": 4,
             "year": 1987
@@ -716,6 +765,7 @@
             "filePath": "/home/dave/11111/C/Choirboys - 1987 - Big Bad Noise FLAC/05 Guilty.flac",
             "genre": "Rock",
             "id": "694f4f6abec0d34a2ef73bc661a4f6d0",
+            "rating": 0,
             "title": "Guilty",
             "trackNo": 5,
             "year": 1987
@@ -730,6 +780,7 @@
             "filePath": "/home/dave/11111/C/Choirboys - 1987 - Big Bad Noise FLAC/06 Like Fire.flac",
             "genre": "Rock",
             "id": "dc09274260b4daae7f73a63eb41f2737",
+            "rating": 0,
             "title": "Like Fire",
             "trackNo": 6,
             "year": 1987
@@ -744,6 +795,7 @@
             "filePath": "/home/dave/11111/C/Choirboys - 1987 - Big Bad Noise FLAC/07 Big Bad Noise.flac",
             "genre": "Rock",
             "id": "ba44276a6ed41d4770bc3576123d366b",
+            "rating": 0,
             "title": "Big Bad Noise",
             "trackNo": 7,
             "year": 1987
@@ -758,6 +810,7 @@
             "filePath": "/home/dave/11111/C/Choirboys - 1987 - Big Bad Noise FLAC/08 Fireworks.flac",
             "genre": "Rock",
             "id": "20c5a34573ca773d21c82d0f0acd720c",
+            "rating": 0,
             "title": "Fireworks",
             "trackNo": 8,
             "year": 1987
@@ -772,6 +825,7 @@
             "filePath": "/home/dave/11111/C/Choirboys - 1987 - Big Bad Noise FLAC/09 Gasoline.flac",
             "genre": "Rock",
             "id": "918ae7cb24d005008378c41cc5f51895",
+            "rating": 0,
             "title": "Gasoline",
             "trackNo": 9,
             "year": 1987
@@ -786,6 +840,7 @@
             "filePath": "/home/dave/11111/C/Choirboys - 1987 - Big Bad Noise FLAC/10 One Hot Day.flac",
             "genre": "Rock",
             "id": "d2b6d63c30a318055cffbe8896c66752",
+            "rating": 0,
             "title": "One Hot Day",
             "trackNo": 10,
             "year": 1987
@@ -800,6 +855,7 @@
             "filePath": "/home/dave/11111/C/Choirboys - 1987 - Big Bad Noise FLAC/11 Last Night Of My Life.flac",
             "genre": "Rock",
             "id": "2ebb0a822af9f1b48f0abf080650e278",
+            "rating": 0,
             "title": "Last Night Of My Life",
             "trackNo": 11,
             "year": 1987
@@ -814,6 +870,7 @@
             "filePath": "/home/dave/11111/C/Choirboys - 1987 - Big Bad Noise FLAC/12 Struck By Lightning.flac",
             "genre": "Rock",
             "id": "be3104804dcbab141f0f02480599f0fb",
+            "rating": 0,
             "title": "Struck By Lightning",
             "trackNo": 12,
             "year": 1987
@@ -828,6 +885,7 @@
             "filePath": "/home/dave/11111/C/Choirboys - 1987 - Big Bad Noise FLAC/13 James Dale.flac",
             "genre": "Rock",
             "id": "8c9ea602f1c3101a17d718a8a3860cb5",
+            "rating": 0,
             "title": "James Dale",
             "trackNo": 13,
             "year": 1987
@@ -842,6 +900,7 @@
             "filePath": "/home/dave/11111/C/Cliff Richard/2-10 - Lamp Of Love.flac",
             "genre": "Rock",
             "id": "d29840134487374b0cef488589edc109",
+            "rating": 0,
             "title": "Lamp Of Love",
             "trackNo": 10,
             "year": 2015
@@ -856,6 +915,7 @@
             "filePath": "/home/dave/11111/C/Choirboys - 1986 - Fireworks (12'' Single) FLAC/01 Fireworks.flac",
             "genre": "Unknown",
             "id": "f044ce3a98cb3e6deaca6817bcb7392e",
+            "rating": 0,
             "title": "Fireworks",
             "trackNo": 1,
             "year": 1986
@@ -870,6 +930,7 @@
             "filePath": "/home/dave/11111/C/Choirboys - 1986 - Fireworks (12'' Single) FLAC/02 We Can Dance.flac",
             "genre": "Unknown",
             "id": "9b3abb196988b046d2cf16ec57f4e494",
+            "rating": 0,
             "title": " We Can Dance",
             "trackNo": 2,
             "year": 1986
@@ -884,9 +945,160 @@
             "filePath": "/home/dave/11111/C/Choirboys - 1986 - Fireworks (12'' Single) FLAC/03 When You're Young.flac",
             "genre": "Unknown",
             "id": "7b2caed488fbb53b136d9a0bd17f5872",
+            "rating": 0,
             "title": "When You're Young",
             "trackNo": 3,
             "year": 1986
+        },
+        {
+            "album": "Surfing With The Alien",
+            "albumType": "Studio Albums",
+            "artist": "Joe Satriani",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/fa8a1a9e2fda203cf6234bd0dee5eca9.jpg",
+            "discNo": 1,
+            "duration": 265,
+            "filePath": "/home/dave/11111/1987 - Surfing With The Alien/01 - Surfing With The Alien.flac",
+            "genre": "Rock",
+            "id": "f081680d87dc7c148eff700ee5510116",
+            "rating": 0,
+            "title": "Surfing With The Alien",
+            "trackNo": 1,
+            "year": 1987
+        },
+        {
+            "album": "Surfing With The Alien",
+            "albumType": "Studio Albums",
+            "artist": "Joe Satriani",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/fa8a1a9e2fda203cf6234bd0dee5eca9.jpg",
+            "discNo": 1,
+            "duration": 239,
+            "filePath": "/home/dave/11111/1987 - Surfing With The Alien/02 - Ice 9.flac",
+            "genre": "Rock",
+            "id": "05d7f0d4f283710080a2e3572be8c3dd",
+            "rating": 0,
+            "title": "Ice 9",
+            "trackNo": 2,
+            "year": 1987
+        },
+        {
+            "album": "Surfing With The Alien",
+            "albumType": "Studio Albums",
+            "artist": "Joe Satriani",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/fa8a1a9e2fda203cf6234bd0dee5eca9.jpg",
+            "discNo": 1,
+            "duration": 314,
+            "filePath": "/home/dave/11111/1987 - Surfing With The Alien/03 - Crushing Day.flac",
+            "genre": "Rock",
+            "id": "10eeb7efcae1f93cbf5a747a54b9ad35",
+            "rating": 0,
+            "title": "Crushing Day",
+            "trackNo": 3,
+            "year": 1987
+        },
+        {
+            "album": "Surfing With The Alien",
+            "albumType": "Studio Albums",
+            "artist": "Joe Satriani",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/fa8a1a9e2fda203cf6234bd0dee5eca9.jpg",
+            "discNo": 1,
+            "duration": 202,
+            "filePath": "/home/dave/11111/1987 - Surfing With The Alien/04 - Always With Me, Always With You.flac",
+            "genre": "Rock",
+            "id": "cde75cdc3e62f8219a4ebc0c346a7541",
+            "rating": 0,
+            "title": "Always With Me, Always With You",
+            "trackNo": 4,
+            "year": 1987
+        },
+        {
+            "album": "Surfing With The Alien",
+            "albumType": "Studio Albums",
+            "artist": "Joe Satriani",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/fa8a1a9e2fda203cf6234bd0dee5eca9.jpg",
+            "discNo": 1,
+            "duration": 108,
+            "filePath": "/home/dave/11111/1987 - Surfing With The Alien/06 - Hill Of The Skull.flac",
+            "genre": "Rock",
+            "id": "280c7260264157004fe8c4d5a791bd99",
+            "rating": 0,
+            "title": "Hill Of The Skull",
+            "trackNo": 6,
+            "year": 1987
+        },
+        {
+            "album": "Surfing With The Alien",
+            "albumType": "Studio Albums",
+            "artist": "Joe Satriani",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/fa8a1a9e2fda203cf6234bd0dee5eca9.jpg",
+            "discNo": 1,
+            "duration": 193,
+            "filePath": "/home/dave/11111/1987 - Surfing With The Alien/05 - Satch Boogie.flac",
+            "genre": "Rock",
+            "id": "6e5b3cf859dfd51a80fee3126eba37e0",
+            "rating": 0,
+            "title": "Satch Boogie",
+            "trackNo": 5,
+            "year": 1987
+        },
+        {
+            "album": "Surfing With The Alien",
+            "albumType": "Studio Albums",
+            "artist": "Joe Satriani",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/fa8a1a9e2fda203cf6234bd0dee5eca9.jpg",
+            "discNo": 1,
+            "duration": 102,
+            "filePath": "/home/dave/11111/1987 - Surfing With The Alien/09 - Midnight.flac",
+            "genre": "Rock",
+            "id": "32dd7419b87f4525bc3baa2f01c5840c",
+            "rating": 0,
+            "title": "Midnight",
+            "trackNo": 9,
+            "year": 1987
+        },
+        {
+            "album": "Surfing With The Alien",
+            "albumType": "Studio Albums",
+            "artist": "Joe Satriani",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/fa8a1a9e2fda203cf6234bd0dee5eca9.jpg",
+            "discNo": 1,
+            "duration": 208,
+            "filePath": "/home/dave/11111/1987 - Surfing With The Alien/07 - Circles.flac",
+            "genre": "Rock",
+            "id": "b83e49d78649f83def7008c0bea40fe5",
+            "rating": 0,
+            "title": "Circles",
+            "trackNo": 7,
+            "year": 1987
+        },
+        {
+            "album": "Surfing With The Alien",
+            "albumType": "Studio Albums",
+            "artist": "Joe Satriani",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/fa8a1a9e2fda203cf6234bd0dee5eca9.jpg",
+            "discNo": 1,
+            "duration": 288,
+            "filePath": "/home/dave/11111/1987 - Surfing With The Alien/08 - Lords Of Karma.flac",
+            "genre": "Rock",
+            "id": "dbb34e05ca5071a431a97d25adf9c029",
+            "rating": 0,
+            "title": "Lords Of Karma",
+            "trackNo": 8,
+            "year": 1987
+        },
+        {
+            "album": "Surfing With The Alien",
+            "albumType": "Studio Albums",
+            "artist": "Joe Satriani",
+            "coverPath": "file:///home/dave/Documents/antigravity/beautiful-rutherford/cache/covers/fa8a1a9e2fda203cf6234bd0dee5eca9.jpg",
+            "discNo": 1,
+            "duration": 337,
+            "filePath": "/home/dave/11111/1987 - Surfing With The Alien/10 - Echo.flac",
+            "genre": "Rock",
+            "id": "a301263e31ce8cbb95094c6afab8dff7",
+            "rating": 0,
+            "title": "Echo",
+            "trackNo": 10,
+            "year": 1987
         }
     ]
 }

@@ -72,7 +72,7 @@
                         {
                             "codegenResult": 2,
                             "column": 5,
-                            "durationMicroseconds": 0,
+                            "durationMicroseconds": 1000,
                             "functionName": "applyDJRules",
                             "line": 129,
                             "message": "Type call to method itemAt, returning QQuickItem does not have a property getFieldKey for calling"
@@ -82,7 +82,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "openAlbum",
-                            "line": 1030,
+                            "line": 1053,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -90,7 +90,7 @@
                             "column": 5,
                             "durationMicroseconds": 0,
                             "functionName": "openArtist",
-                            "line": 1035,
+                            "line": 1058,
                             "message": "Functions without type annotations won't be compiled"
                         },
                         {
@@ -567,6 +567,14 @@
                         },
                         {
                             "codegenResult": 2,
+                            "column": 64,
+                            "durationMicroseconds": 0,
+                            "functionName": "width",
+                            "line": 500,
+                            "message": "Could not find property \"width\"."
+                        },
+                        {
+                            "codegenResult": 2,
                             "column": 68,
                             "durationMicroseconds": 1000,
                             "functionName": "model",
@@ -618,28 +626,36 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 558,
+                            "line": 569,
                             "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 66,
+                            "durationMicroseconds": 0,
+                            "functionName": "horizontalAlignment",
+                            "line": 560,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 64,
+                            "durationMicroseconds": 0,
+                            "functionName": "verticalAlignment",
+                            "line": 561,
+                            "message": ""
                         },
                         {
                             "codegenResult": 2,
                             "column": 52,
                             "durationMicroseconds": 0,
-                            "functionName": "onClicked",
-                            "line": 565,
-                            "message": "Could not find signal \"clicked\"."
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 121,
-                            "durationMicroseconds": 0,
-                            "functionName": "horizontalAlignment",
+                            "functionName": "color",
                             "line": 564,
-                            "message": ""
+                            "message": "Cannot access value for name applyDjRulesBtn"
                         },
                         {
                             "codegenResult": 2,
-                            "column": 48,
+                            "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
                             "line": 576,
@@ -647,10 +663,26 @@
                         },
                         {
                             "codegenResult": 0,
-                            "column": 158,
+                            "column": 121,
                             "durationMicroseconds": 0,
                             "functionName": "horizontalAlignment",
                             "line": 575,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 48,
+                            "durationMicroseconds": 0,
+                            "functionName": "onClicked",
+                            "line": 587,
+                            "message": "Could not find signal \"clicked\"."
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 158,
+                            "durationMicroseconds": 0,
+                            "functionName": "horizontalAlignment",
+                            "line": 586,
                             "message": ""
                         },
                         {
@@ -658,7 +690,7 @@
                             "column": 47,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 593,
+                            "line": 604,
                             "message": ""
                         },
                         {
@@ -666,7 +698,7 @@
                             "column": 54,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 603,
+                            "line": 614,
                             "message": ""
                         },
                         {
@@ -674,7 +706,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 610,
+                            "line": 621,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -682,7 +714,7 @@
                             "column": 119,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 609,
+                            "line": 620,
                             "message": ""
                         },
                         {
@@ -690,7 +722,7 @@
                             "column": 48,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 621,
+                            "line": 632,
                             "message": "Cannot access value for name player"
                         },
                         {
@@ -698,7 +730,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 625,
+                            "line": 636,
                             "message": "Cannot access value for name queueListView"
                         },
                         {
@@ -706,7 +738,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 627,
+                            "line": 638,
                             "message": "Cannot access value for name index"
                         },
                         {
@@ -714,7 +746,7 @@
                             "column": 59,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 628,
+                            "line": 639,
                             "message": "Cannot access value for name index"
                         },
                         {
@@ -722,7 +754,7 @@
                             "column": 66,
                             "durationMicroseconds": 0,
                             "functionName": "onDoubleClicked",
-                            "line": 635,
+                            "line": 646,
                             "message": "Cannot access value for name player"
                         },
                         {
@@ -730,7 +762,7 @@
                             "column": 63,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 633,
+                            "line": 644,
                             "message": ""
                         },
                         {
@@ -738,7 +770,7 @@
                             "column": 63,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 641,
+                            "line": 652,
                             "message": ""
                         },
                         {
@@ -746,7 +778,7 @@
                             "column": 59,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 647,
+                            "line": 658,
                             "message": "Cannot access value for name index"
                         },
                         {
@@ -754,7 +786,7 @@
                             "column": 60,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 648,
+                            "line": 659,
                             "message": "Cannot access value for name index"
                         },
                         {
@@ -762,7 +794,7 @@
                             "column": 74,
                             "durationMicroseconds": 0,
                             "functionName": "horizontalAlignment",
-                            "line": 652,
+                            "line": 663,
                             "message": ""
                         },
                         {
@@ -770,7 +802,7 @@
                             "column": 66,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 650,
+                            "line": 661,
                             "message": ""
                         },
                         {
@@ -778,7 +810,7 @@
                             "column": 71,
                             "durationMicroseconds": 0,
                             "functionName": "alignment",
-                            "line": 653,
+                            "line": 664,
                             "message": ""
                         },
                         {
@@ -786,7 +818,7 @@
                             "column": 71,
                             "durationMicroseconds": 0,
                             "functionName": "alignment",
-                            "line": 662,
+                            "line": 673,
                             "message": ""
                         },
                         {
@@ -794,7 +826,7 @@
                             "column": 65,
                             "durationMicroseconds": 0,
                             "functionName": "source",
-                            "line": 665,
+                            "line": 676,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -802,7 +834,7 @@
                             "column": 67,
                             "durationMicroseconds": 0,
                             "functionName": "fillMode",
-                            "line": 667,
+                            "line": 678,
                             "message": ""
                         },
                         {
@@ -810,7 +842,7 @@
                             "column": 66,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 668,
+                            "line": 679,
                             "message": "Cannot generate efficient code for incomparable types QString and (component in /home/dave/Documents/antigravity/beautiful-rutherford/qml/Main.qml)::source with type QUrl"
                         },
                         {
@@ -818,7 +850,7 @@
                             "column": 71,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 666,
+                            "line": 677,
                             "message": ""
                         },
                         {
@@ -826,7 +858,7 @@
                             "column": 66,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 676,
+                            "line": 687,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -834,71 +866,7 @@
                             "column": 75,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 672,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 71,
-                            "durationMicroseconds": 0,
-                            "functionName": "alignment",
-                            "line": 684,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 63,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 686,
-                            "message": "Cannot access value for name modelData"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 64,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 687,
-                            "message": "Cannot access value for name index"
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 64,
-                            "durationMicroseconds": 0,
-                            "functionName": "elide",
-                            "line": 690,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 70,
-                            "durationMicroseconds": 0,
-                            "functionName": "weight",
-                            "line": 689,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 63,
-                            "durationMicroseconds": 0,
-                            "functionName": "text",
-                            "line": 693,
-                            "message": "Cannot access value for name modelData"
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 64,
-                            "durationMicroseconds": 0,
-                            "functionName": "color",
-                            "line": 694,
-                            "message": "Cannot access value for name index"
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 64,
-                            "durationMicroseconds": 0,
-                            "functionName": "elide",
-                            "line": 696,
+                            "line": 683,
                             "message": ""
                         },
                         {
@@ -906,7 +874,111 @@
                             "column": 59,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 701,
+                            "line": 693,
+                            "message": "Cannot access value for name modelData"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 60,
+                            "durationMicroseconds": 1000,
+                            "functionName": "color",
+                            "line": 694,
+                            "message": "Cannot access value for name index"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 60,
+                            "durationMicroseconds": 0,
+                            "functionName": "elide",
+                            "line": 697,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 66,
+                            "durationMicroseconds": 0,
+                            "functionName": "weight",
+                            "line": 696,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 71,
+                            "durationMicroseconds": 0,
+                            "functionName": "alignment",
+                            "line": 700,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 59,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 704,
+                            "message": "Cannot access value for name modelData"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 60,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 705,
+                            "message": "Cannot access value for name index"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 60,
+                            "durationMicroseconds": 0,
+                            "functionName": "elide",
+                            "line": 707,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 71,
+                            "durationMicroseconds": 0,
+                            "functionName": "alignment",
+                            "line": 710,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 59,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 714,
+                            "message": "Cannot access value for name modelData"
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 60,
+                            "durationMicroseconds": 0,
+                            "functionName": "color",
+                            "line": 715,
+                            "message": "Cannot access value for name index"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 60,
+                            "durationMicroseconds": 0,
+                            "functionName": "elide",
+                            "line": 717,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 71,
+                            "durationMicroseconds": 0,
+                            "functionName": "alignment",
+                            "line": 720,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
+                            "column": 59,
+                            "durationMicroseconds": 0,
+                            "functionName": "text",
+                            "line": 724,
                             "message": "Cannot access value for name playerBar"
                         },
                         {
@@ -914,7 +986,7 @@
                             "column": 60,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 702,
+                            "line": 725,
                             "message": "Cannot access value for name index"
                         },
                         {
@@ -922,7 +994,7 @@
                             "column": 71,
                             "durationMicroseconds": 0,
                             "functionName": "alignment",
-                            "line": 704,
+                            "line": 727,
                             "message": ""
                         },
                         {
@@ -930,7 +1002,7 @@
                             "column": 64,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 713,
+                            "line": 736,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -938,7 +1010,7 @@
                             "column": 71,
                             "durationMicroseconds": 0,
                             "functionName": "alignment",
-                            "line": 712,
+                            "line": 735,
                             "message": ""
                         },
                         {
@@ -946,7 +1018,7 @@
                             "column": 78,
                             "durationMicroseconds": 0,
                             "functionName": "horizontalAlignment",
-                            "line": 719,
+                            "line": 742,
                             "message": ""
                         },
                         {
@@ -954,7 +1026,7 @@
                             "column": 76,
                             "durationMicroseconds": 0,
                             "functionName": "verticalAlignment",
-                            "line": 720,
+                            "line": 743,
                             "message": ""
                         },
                         {
@@ -962,7 +1034,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 736,
+                            "line": 759,
                             "message": "Could not find property \"visible\"."
                         },
                         {
@@ -970,7 +1042,7 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 734,
+                            "line": 757,
                             "message": "Could not find property \"fill\"."
                         },
                         {
@@ -978,7 +1050,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 740,
+                            "line": 763,
                             "message": "Cannot retrieve a non-object type by ID: settingsScrollView"
                         },
                         {
@@ -986,7 +1058,7 @@
                             "column": 46,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 747,
+                            "line": 770,
                             "message": ""
                         },
                         {
@@ -994,7 +1066,7 @@
                             "column": 49,
                             "durationMicroseconds": 0,
                             "functionName": "implicitHeight",
-                            "line": 753,
+                            "line": 776,
                             "message": ""
                         },
                         {
@@ -1002,7 +1074,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 761,
+                            "line": 784,
                             "message": ""
                         },
                         {
@@ -1010,7 +1082,7 @@
                             "column": 54,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 769,
+                            "line": 792,
                             "message": ""
                         },
                         {
@@ -1018,7 +1090,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 798,
+                            "line": 821,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1026,7 +1098,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 813,
+                            "line": 836,
                             "message": "Cannot access value for name database"
                         },
                         {
@@ -1034,7 +1106,7 @@
                             "column": 67,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 823,
+                            "line": 846,
                             "message": ""
                         },
                         {
@@ -1042,7 +1114,7 @@
                             "column": 63,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 828,
+                            "line": 851,
                             "message": "Cannot access value for name modelData"
                         },
                         {
@@ -1050,7 +1122,7 @@
                             "column": 64,
                             "durationMicroseconds": 0,
                             "functionName": "elide",
-                            "line": 833,
+                            "line": 856,
                             "message": ""
                         },
                         {
@@ -1058,7 +1130,7 @@
                             "column": 68,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 840,
+                            "line": 863,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1066,7 +1138,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 860,
+                            "line": 883,
                             "message": "Cannot access value for name scanner"
                         },
                         {
@@ -1074,7 +1146,7 @@
                             "column": 52,
                             "durationMicroseconds": 0,
                             "functionName": "color",
-                            "line": 861,
+                            "line": 884,
                             "message": "Cannot access value for name scanner"
                         },
                         {
@@ -1082,7 +1154,7 @@
                             "column": 58,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 863,
+                            "line": 886,
                             "message": ""
                         },
                         {
@@ -1090,7 +1162,7 @@
                             "column": 56,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 869,
+                            "line": 892,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1098,7 +1170,7 @@
                             "column": 49,
                             "durationMicroseconds": 0,
                             "functionName": "implicitHeight",
-                            "line": 878,
+                            "line": 901,
                             "message": ""
                         },
                         {
@@ -1106,7 +1178,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 886,
+                            "line": 909,
                             "message": ""
                         },
                         {
@@ -1114,7 +1186,7 @@
                             "column": 54,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 894,
+                            "line": 917,
                             "message": ""
                         },
                         {
@@ -1122,7 +1194,7 @@
                             "column": 54,
                             "durationMicroseconds": 0,
                             "functionName": "checked",
-                            "line": 904,
+                            "line": 927,
                             "message": "Could not find property \"checked\"."
                         },
                         {
@@ -1130,7 +1202,7 @@
                             "column": 63,
                             "durationMicroseconds": 0,
                             "functionName": "onCheckedChanged",
-                            "line": 905,
+                            "line": 928,
                             "message": "Could not find signal \"checkedChanged\"."
                         },
                         {
@@ -1138,7 +1210,7 @@
                             "column": 62,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 914,
+                            "line": 937,
                             "message": ""
                         },
                         {
@@ -1146,7 +1218,7 @@
                             "column": 50,
                             "durationMicroseconds": 0,
                             "functionName": "opacity",
-                            "line": 928,
+                            "line": 951,
                             "message": "Cannot retrieve a non-object type by ID: window"
                         },
                         {
@@ -1154,7 +1226,7 @@
                             "column": 50,
                             "durationMicroseconds": 0,
                             "functionName": "enabled",
-                            "line": 929,
+                            "line": 952,
                             "message": "Cannot retrieve a non-object type by ID: window"
                         },
                         {
@@ -1162,7 +1234,7 @@
                             "column": 54,
                             "durationMicroseconds": 0,
                             "functionName": "checked",
-                            "line": 933,
+                            "line": 956,
                             "message": "Could not find property \"checked\"."
                         },
                         {
@@ -1170,7 +1242,7 @@
                             "column": 63,
                             "durationMicroseconds": 0,
                             "functionName": "onCheckedChanged",
-                            "line": 934,
+                            "line": 957,
                             "message": "Could not find signal \"checkedChanged\"."
                         },
                         {
@@ -1178,7 +1250,7 @@
                             "column": 62,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 943,
+                            "line": 966,
                             "message": ""
                         },
                         {
@@ -1186,7 +1258,7 @@
                             "column": 62,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 971,
+                            "line": 994,
                             "message": ""
                         },
                         {
@@ -1194,7 +1266,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 992,
+                            "line": 1015,
                             "message": ""
                         },
                         {
@@ -1202,7 +1274,7 @@
                             "column": 40,
                             "durationMicroseconds": 0,
                             "functionName": "preferredWidth",
-                            "line": 991,
+                            "line": 1014,
                             "message": "Cannot retrieve a non-object type by ID: window"
                         },
                         {
@@ -1210,36 +1282,12 @@
                             "column": 67,
                             "durationMicroseconds": 0,
                             "functionName": "type",
-                            "line": 999,
+                            "line": 1022,
                             "message": ""
                         },
                         {
                             "codegenResult": 0,
                             "column": 35,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 1003,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 2,
-                            "column": 37,
-                            "durationMicroseconds": 0,
-                            "functionName": "preferredHeight",
-                            "line": 1013,
-                            "message": "Cannot retrieve a non-object type by ID: window"
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 23,
-                            "durationMicroseconds": 0,
-                            "functionName": "fill",
-                            "line": 1020,
-                            "message": ""
-                        },
-                        {
-                            "codegenResult": 0,
-                            "column": 23,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
                             "line": 1026,
@@ -1247,10 +1295,34 @@
                         },
                         {
                             "codegenResult": 2,
+                            "column": 37,
+                            "durationMicroseconds": 0,
+                            "functionName": "preferredHeight",
+                            "line": 1036,
+                            "message": "Cannot retrieve a non-object type by ID: window"
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 23,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 1043,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 0,
+                            "column": 23,
+                            "durationMicroseconds": 0,
+                            "functionName": "fill",
+                            "line": 1049,
+                            "message": ""
+                        },
+                        {
+                            "codegenResult": 2,
                             "column": 22,
                             "durationMicroseconds": 0,
                             "functionName": "onActivated",
-                            "line": 1043,
+                            "line": 1066,
                             "message": "Cannot retrieve a non-object type by ID: window"
                         },
                         {
@@ -1258,7 +1330,7 @@
                             "column": 18,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 1054,
+                            "line": 1077,
                             "message": "Cannot retrieve a non-object type by ID: window"
                         },
                         {
@@ -1266,7 +1338,7 @@
                             "column": 23,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 1052,
+                            "line": 1075,
                             "message": ""
                         },
                         {
@@ -1274,7 +1346,7 @@
                             "column": 22,
                             "durationMicroseconds": 0,
                             "functionName": "running",
-                            "line": 1062,
+                            "line": 1085,
                             "message": "Cannot retrieve a non-object type by ID: window"
                         },
                         {
@@ -1282,7 +1354,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "onTriggered",
-                            "line": 1064,
+                            "line": 1087,
                             "message": ""
                         },
                         {
@@ -1290,7 +1362,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "cursorShape",
-                            "line": 1070,
+                            "line": 1093,
                             "message": ""
                         },
                         {
@@ -1298,7 +1370,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "onPositionChanged",
-                            "line": 1071,
+                            "line": 1094,
                             "message": ""
                         },
                         {
@@ -1306,7 +1378,7 @@
                             "column": 24,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 1075,
+                            "line": 1098,
                             "message": ""
                         },
                         {
@@ -1314,7 +1386,7 @@
                             "column": 27,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 1068,
+                            "line": 1091,
                             "message": ""
                         },
                         {
@@ -1322,7 +1394,7 @@
                             "column": 21,
                             "durationMicroseconds": 0,
                             "functionName": "source",
-                            "line": 1084,
+                            "line": 1107,
                             "message": "Cannot access value for name player"
                         },
                         {
@@ -1330,7 +1402,7 @@
                             "column": 23,
                             "durationMicroseconds": 0,
                             "functionName": "fillMode",
-                            "line": 1086,
+                            "line": 1109,
                             "message": ""
                         },
                         {
@@ -1338,7 +1410,7 @@
                             "column": 22,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 1088,
+                            "line": 1111,
                             "message": "Cannot generate efficient code for incomparable types QString and (component in /home/dave/Documents/antigravity/beautiful-rutherford/qml/Main.qml)::source with type QUrl"
                         },
                         {
@@ -1346,7 +1418,7 @@
                             "column": 27,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 1085,
+                            "line": 1108,
                             "message": ""
                         },
                         {
@@ -1354,7 +1426,7 @@
                             "column": 27,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 1092,
+                            "line": 1115,
                             "message": ""
                         },
                         {
@@ -1362,7 +1434,7 @@
                             "column": 22,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 1101,
+                            "line": 1124,
                             "message": "Could not find property \"visible\"."
                         },
                         {
@@ -1370,7 +1442,7 @@
                             "column": 24,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 1106,
+                            "line": 1129,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1378,7 +1450,7 @@
                             "column": 26,
                             "durationMicroseconds": 0,
                             "functionName": "top",
-                            "line": 1102,
+                            "line": 1125,
                             "message": "Could not find property \"top\"."
                         },
                         {
@@ -1386,7 +1458,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "right",
-                            "line": 1103,
+                            "line": 1126,
                             "message": "Could not find property \"right\"."
                         },
                         {
@@ -1394,7 +1466,7 @@
                             "column": 47,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 1110,
+                            "line": 1133,
                             "message": ""
                         },
                         {
@@ -1402,7 +1474,7 @@
                             "column": 47,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 1111,
+                            "line": 1134,
                             "message": ""
                         },
                         {
@@ -1410,7 +1482,7 @@
                             "column": 20,
                             "durationMicroseconds": 0,
                             "functionName": "width",
-                            "line": 1117,
+                            "line": 1140,
                             "message": ""
                         },
                         {
@@ -1418,7 +1490,7 @@
                             "column": 21,
                             "durationMicroseconds": 0,
                             "functionName": "height",
-                            "line": 1118,
+                            "line": 1141,
                             "message": ""
                         },
                         {
@@ -1426,7 +1498,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 1116,
+                            "line": 1139,
                             "message": ""
                         },
                         {
@@ -1434,7 +1506,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "alignment",
-                            "line": 1126,
+                            "line": 1149,
                             "message": ""
                         },
                         {
@@ -1442,7 +1514,7 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "alignment",
-                            "line": 1134,
+                            "line": 1157,
                             "message": ""
                         },
                         {
@@ -1450,7 +1522,7 @@
                             "column": 33,
                             "durationMicroseconds": 0,
                             "functionName": "source",
-                            "line": 1138,
+                            "line": 1161,
                             "message": "Cannot access value for name player"
                         },
                         {
@@ -1458,7 +1530,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "fillMode",
-                            "line": 1140,
+                            "line": 1163,
                             "message": ""
                         },
                         {
@@ -1466,7 +1538,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 1141,
+                            "line": 1164,
                             "message": "Cannot generate efficient code for incomparable types QString and (component in /home/dave/Documents/antigravity/beautiful-rutherford/qml/Main.qml)::source with type QUrl"
                         },
                         {
@@ -1474,7 +1546,7 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 1139,
+                            "line": 1162,
                             "message": ""
                         },
                         {
@@ -1482,7 +1554,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 1149,
+                            "line": 1172,
                             "message": "Cannot access value for name player"
                         },
                         {
@@ -1490,7 +1562,7 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 1145,
+                            "line": 1168,
                             "message": ""
                         },
                         {
@@ -1498,7 +1570,7 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "alignment",
-                            "line": 1158,
+                            "line": 1181,
                             "message": ""
                         },
                         {
@@ -1506,7 +1578,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 1161,
+                            "line": 1184,
                             "message": "Cannot access value for name player"
                         },
                         {
@@ -1514,7 +1586,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "elide",
-                            "line": 1165,
+                            "line": 1188,
                             "message": ""
                         },
                         {
@@ -1522,7 +1594,7 @@
                             "column": 46,
                             "durationMicroseconds": 0,
                             "functionName": "horizontalAlignment",
-                            "line": 1167,
+                            "line": 1190,
                             "message": ""
                         },
                         {
@@ -1530,7 +1602,7 @@
                             "column": 38,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 1164,
+                            "line": 1187,
                             "message": ""
                         },
                         {
@@ -1538,7 +1610,7 @@
                             "column": 31,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 1171,
+                            "line": 1194,
                             "message": "Cannot access value for name player"
                         },
                         {
@@ -1546,7 +1618,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "elide",
-                            "line": 1174,
+                            "line": 1197,
                             "message": ""
                         },
                         {
@@ -1554,7 +1626,7 @@
                             "column": 46,
                             "durationMicroseconds": 0,
                             "functionName": "horizontalAlignment",
-                            "line": 1176,
+                            "line": 1199,
                             "message": ""
                         },
                         {
@@ -1562,7 +1634,7 @@
                             "column": 29,
                             "durationMicroseconds": 0,
                             "functionName": "to",
-                            "line": 1189,
+                            "line": 1212,
                             "message": "Could not find property \"to\"."
                         },
                         {
@@ -1570,7 +1642,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "value",
-                            "line": 1190,
+                            "line": 1213,
                             "message": "Could not find property \"value\"."
                         },
                         {
@@ -1578,7 +1650,7 @@
                             "column": 34,
                             "durationMicroseconds": 0,
                             "functionName": "onMoved",
-                            "line": 1191,
+                            "line": 1214,
                             "message": "Could not find signal \"moved\"."
                         },
                         {
@@ -1586,7 +1658,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 1197,
+                            "line": 1220,
                             "message": "Cannot access value for name player"
                         },
                         {
@@ -1594,7 +1666,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "text",
-                            "line": 1203,
+                            "line": 1226,
                             "message": "Cannot access value for name player"
                         },
                         {
@@ -1602,7 +1674,7 @@
                             "column": 39,
                             "durationMicroseconds": 0,
                             "functionName": "alignment",
-                            "line": 1213,
+                            "line": 1236,
                             "message": ""
                         },
                         {
@@ -1610,7 +1682,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 1217,
+                            "line": 1240,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1618,7 +1690,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 1222,
+                            "line": 1245,
                             "message": ""
                         },
                         {
@@ -1626,7 +1698,7 @@
                             "column": 46,
                             "durationMicroseconds": 0,
                             "functionName": "onPaint",
-                            "line": 1227,
+                            "line": 1250,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
                         },
                         {
@@ -1634,7 +1706,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 1272,
+                            "line": 1295,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1642,7 +1714,7 @@
                             "column": 37,
                             "durationMicroseconds": 0,
                             "functionName": "radius",
-                            "line": 1243,
+                            "line": 1266,
                             "message": ""
                         },
                         {
@@ -1650,7 +1722,7 @@
                             "column": 43,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 1246,
+                            "line": 1269,
                             "message": ""
                         },
                         {
@@ -1658,7 +1730,7 @@
                             "column": 42,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 1250,
+                            "line": 1273,
                             "message": "Cannot access value for name player"
                         },
                         {
@@ -1666,7 +1738,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 1248,
+                            "line": 1271,
                             "message": ""
                         },
                         {
@@ -1674,7 +1746,7 @@
                             "column": 42,
                             "durationMicroseconds": 0,
                             "functionName": "visible",
-                            "line": 1258,
+                            "line": 1281,
                             "message": "Cannot access value for name player"
                         },
                         {
@@ -1682,7 +1754,7 @@
                             "column": 42,
                             "durationMicroseconds": 0,
                             "functionName": "onPaint",
-                            "line": 1259,
+                            "line": 1282,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
                         },
                         {
@@ -1690,7 +1762,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 1255,
+                            "line": 1278,
                             "message": ""
                         },
                         {
@@ -1698,7 +1770,7 @@
                             "column": 36,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 1277,
+                            "line": 1300,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1706,7 +1778,7 @@
                             "column": 51,
                             "durationMicroseconds": 0,
                             "functionName": "centerIn",
-                            "line": 1282,
+                            "line": 1305,
                             "message": ""
                         },
                         {
@@ -1714,7 +1786,7 @@
                             "column": 46,
                             "durationMicroseconds": 0,
                             "functionName": "onPaint",
-                            "line": 1286,
+                            "line": 1309,
                             "message": "Cannot generate efficient code for call to untyped JavaScript function"
                         },
                         {
@@ -1722,7 +1794,7 @@
                             "column": 35,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 1307,
+                            "line": 1330,
                             "message": ""
                         },
                         {
@@ -1730,7 +1802,7 @@
                             "column": 12,
                             "durationMicroseconds": 0,
                             "functionName": "x",
-                            "line": 1315,
+                            "line": 1338,
                             "message": "Could not find property \"x\"."
                         },
                         {
@@ -1738,7 +1810,7 @@
                             "column": 12,
                             "durationMicroseconds": 0,
                             "functionName": "y",
-                            "line": 1316,
+                            "line": 1339,
                             "message": "Could not find property \"y\"."
                         },
                         {
@@ -1746,7 +1818,7 @@
                             "column": 22,
                             "durationMicroseconds": 0,
                             "functionName": "closePolicy",
-                            "line": 1321,
+                            "line": 1344,
                             "message": "Could not find property \"closePolicy\"."
                         },
                         {
@@ -1754,7 +1826,7 @@
                             "column": 27,
                             "durationMicroseconds": 0,
                             "functionName": "fill",
-                            "line": 1330,
+                            "line": 1353,
                             "message": ""
                         },
                         {
@@ -1762,7 +1834,7 @@
                             "column": 30,
                             "durationMicroseconds": 0,
                             "functionName": "weight",
-                            "line": 1338,
+                            "line": 1361,
                             "message": ""
                         },
                         {
@@ -1770,7 +1842,7 @@
                             "column": 28,
                             "durationMicroseconds": 0,
                             "functionName": "model",
-                            "line": 1360,
+                            "line": 1383,
                             "message": "Could not find property \"model\"."
                         },
                         {
@@ -1778,7 +1850,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 1372,
+                            "line": 1395,
                             "message": "Could not find signal \"clicked\"."
                         },
                         {
@@ -1786,7 +1858,7 @@
                             "column": 32,
                             "durationMicroseconds": 0,
                             "functionName": "onClicked",
-                            "line": 1377,
+                            "line": 1400,
                             "message": "Could not find signal \"clicked\"."
                         }
                     ],

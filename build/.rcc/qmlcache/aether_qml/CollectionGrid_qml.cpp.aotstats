@@ -104,7 +104,7 @@
                         {
                             "codegenResult": 2,
                             "column": 32,
-                            "durationMicroseconds": 0,
+                            "durationMicroseconds": 1000,
                             "functionName": "onClicked",
                             "line": 103,
                             "message": "Cannot access value for name mouse"

@@ -365,7 +365,7 @@ Item {
                                     id: fieldCombo
                                     model: ["Album", "Artist", "Genre", "Title", "FilePath", "Rating"]
                                     currentIndex: getIndex(modelData.field)
-                                    Layout.preferredWidth: 100
+                                    Layout.preferredWidth: 110
                                     
                                     function getIndex(f) {
                                         if (f === "artist") return 1;
