@@ -99,6 +99,15 @@ Track ScanWorker::parseTrack(const QString &filePath, const QString &coversCache
             if (ok) tagDiscNo = d;
         }
         
+        double trkGain = 0.0;
+        if (properties.contains("REPLAYGAIN_TRACK_GAIN")) {
+            QString gainStr = QString::fromStdString(properties["REPLAYGAIN_TRACK_GAIN"].front().to8Bit(true)).remove(QLatin1String("dB")).trimmed();
+            bool ok;
+            double g = gainStr.toDouble(&ok);
+            if (ok) trkGain = g;
+        }
+        t.trackGain = trkGain;
+        
         QString rawType;
         if (properties.contains("ALBUMTYPE")) {
             rawType = QString::fromStdString(properties["ALBUMTYPE"].front().to8Bit(true)).trimmed();

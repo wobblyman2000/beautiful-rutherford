@@ -32,6 +32,7 @@ struct Track {
     int rating = 0;
     QString albumArtist;
     bool compilation = false;
+    double trackGain = 0.0;
 
     QJsonObject toJsonObject() const {
         QJsonObject obj;
@@ -50,6 +51,7 @@ struct Track {
         obj["rating"] = rating;
         obj["albumArtist"] = albumArtist;
         obj["compilation"] = compilation;
+        obj["trackGain"] = trackGain;
         return obj;
     }
 
@@ -70,6 +72,7 @@ struct Track {
         t.rating = obj["rating"].toInt(0);
         t.albumArtist = obj["albumArtist"].toString();
         t.compilation = obj["compilation"].toBool(false);
+        t.trackGain = obj["trackGain"].toDouble(0.0);
         return t;
     }
 };
@@ -109,7 +112,8 @@ public:
     Q_INVOKABLE void saveCollection(const QString &id, const QString &name, const QString &coverPath, const QString &displayMode, const QVariantList &rules, const QString &folder = QString());
     Q_INVOKABLE void deleteCollection(const QString &id);
     Q_INVOKABLE void setTrackRating(const QString &trackId, int rating);
-    Q_INVOKABLE bool writeTrackTags(const QString &filePath, const QString &title, const QString &artist, const QString &album, const QString &genre, int year, const QString &albumType);
+    Q_INVOKABLE bool writeTrackTags(const QString &filePath, const QString &title, const QString &artist, const QString &album, const QString &genre, int year, const QString &albumType, const QString &albumArtist, bool compilation);
+    Q_INVOKABLE bool saveLrcFile(const QString &trackFilePath, const QString &lrcContent);
 
 signals:
     void musicDirsChanged();

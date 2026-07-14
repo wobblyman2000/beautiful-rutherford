@@ -283,7 +283,7 @@ void Database::setTrackRating(const QString &trackId, int rating) {
     }
 }
 
-bool Database::writeTrackTags(const QString &filePath, const QString &title, const QString &artist, const QString &album, const QString &genre, int year, const QString &albumType) {
+bool Database::writeTrackTags(const QString &filePath, const QString &title, const QString &artist, const QString &album, const QString &genre, int year, const QString &albumType, const QString &albumArtist, bool compilation) {
     TagLib::FileRef fileRef(filePath.toLocal8Bit().constData());
     if (fileRef.isNull() || !fileRef.tag()) {
         qWarning() << "Failed to open audio file with TagLib for writing:" << filePath;
@@ -300,6 +300,9 @@ bool Database::writeTrackTags(const QString &filePath, const QString &title, con
     if (fileRef.file()) {
         TagLib::PropertyMap properties = fileRef.file()->properties();
         properties["ALBUMTYPE"] = TagLib::StringList(TagLib::String(albumType.toUtf8().constData(), TagLib::String::UTF8));
+        properties["ALBUMARTIST"] = TagLib::StringList(TagLib::String(albumArtist.toUtf8().constData(), TagLib::String::UTF8));
+        properties["ALBUM_ARTIST"] = TagLib::StringList(TagLib::String(albumArtist.toUtf8().constData(), TagLib::String::UTF8));
+        properties["COMPILATION"] = TagLib::StringList(compilation ? "1" : "0");
         fileRef.file()->setProperties(properties);
     }
 
@@ -318,6 +321,8 @@ bool Database::writeTrackTags(const QString &filePath, const QString &title, con
             m_tracks[i].genre = genre;
             m_tracks[i].year = year;
             m_tracks[i].albumType = albumType;
+            m_tracks[i].albumArtist = albumArtist;
+            m_tracks[i].compilation = compilation;
             found = true;
             break;
         }
@@ -327,6 +332,25 @@ bool Database::writeTrackTags(const QString &filePath, const QString &title, con
         save();
         emit tracksChanged();
     }
+    return true;
+}
+
+bool Database::saveLrcFile(const QString &trackFilePath, const QString &lrcContent) {
+    QFileInfo trackInfo(trackFilePath);
+    QString dirPath = trackInfo.absolutePath();
+    QString baseName = trackInfo.completeBaseName();
+    QString lrcPath = dirPath + "/" + baseName + ".lrc";
+
+    QFile file(lrcPath);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qWarning() << "Failed to write LRC file:" << lrcPath;
+        return false;
+    }
+
+    QTextStream out(&file);
+    out << lrcContent;
+    file.close();
+    qDebug() << "Successfully saved lyrics to LRC file:" << lrcPath;
     return true;
 }
 

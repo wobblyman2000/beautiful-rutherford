@@ -563,7 +563,7 @@ Rectangle {
 
         Rectangle {
             width: 440
-            height: 490
+            height: 600
             anchors.centerIn: parent
             color: "#1e1e30"
             border.color: "#14ffffff"
@@ -617,6 +617,19 @@ Rectangle {
                     Text { text: qsTr("Artist"); color: "#ffffff"; font.pixelSize: 12 }
                     TextField {
                         id: artistInput
+                        Layout.fillWidth: true
+                        color: "#ffffff"
+                        background: Rectangle { color: "#33000000"; border.color: "#14ffffff"; radius: 6 }
+                    }
+                }
+
+                // Album Artist
+                ColumnLayout {
+                    Layout.fillWidth: true
+                    spacing: 2
+                    Text { text: qsTr("Album Artist"); color: "#ffffff"; font.pixelSize: 12 }
+                    TextField {
+                        id: albumArtistInput
                         Layout.fillWidth: true
                         color: "#ffffff"
                         background: Rectangle { color: "#33000000"; border.color: "#14ffffff"; radius: 6 }
@@ -678,6 +691,20 @@ Rectangle {
                     }
                 }
 
+                // Compilation CheckBox
+                CheckBox {
+                    id: compilationCheck
+                    text: qsTr("Part of a Compilation")
+                    checked: false
+                    contentItem: Text {
+                        text: compilationCheck.text
+                        color: "#ffffff"
+                        font.pixelSize: 12
+                        verticalAlignment: Text.AlignVCenter
+                        leftPadding: compilationCheck.indicator.width + compilationCheck.spacing
+                    }
+                }
+
                 Item { Layout.fillHeight: true }
 
                 RowLayout {
@@ -703,7 +730,9 @@ Rectangle {
                                 albumInput.text.trim(),
                                 genreInput.text.trim(),
                                 yearVal,
-                                albumTypeCombo.currentText
+                                albumTypeCombo.currentText,
+                                albumArtistInput.text.trim(),
+                                compilationCheck.checked
                             );
                             if (ok) {
                                 for (var i = 0; i < root.activeAlbum.tracks.length; ++i) {
@@ -714,6 +743,8 @@ Rectangle {
                                         root.activeAlbum.tracks[i].genre = genreInput.text.trim();
                                         root.activeAlbum.tracks[i].year = yearVal;
                                         root.activeAlbum.tracks[i].albumType = albumTypeCombo.currentText;
+                                        root.activeAlbum.tracks[i].albumArtist = albumArtistInput.text.trim();
+                                        root.activeAlbum.tracks[i].compilation = compilationCheck.checked;
                                         break;
                                     }
                                 }
@@ -731,6 +762,8 @@ Rectangle {
         tagEditorDialog.activeTrack = trackObj;
         titleInput.text = trackObj.title || "";
         artistInput.text = trackObj.artist || "";
+        albumArtistInput.text = trackObj.albumArtist || "";
+        compilationCheck.checked = trackObj.compilation || false;
         albumInput.text = trackObj.album || "";
         genreInput.text = trackObj.genre || "";
         yearInput.text = trackObj.year ? trackObj.year.toString() : "0";
@@ -768,6 +801,14 @@ Rectangle {
             onTriggered: {
                 if (tracksContextMenu.targetTrack) {
                     player.queueLast(tracksContextMenu.targetTrack);
+                }
+            }
+        }
+        MenuItem {
+            text: qsTr("Edit Tags...")
+            onTriggered: {
+                if (tracksContextMenu.targetTrack) {
+                    root.openTagEditor(tracksContextMenu.targetTrack);
                 }
             }
         }

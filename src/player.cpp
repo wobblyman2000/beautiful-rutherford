@@ -19,6 +19,8 @@ Player::Player(QObject *parent) : QObject(parent) {
     m_audioOutput = new QAudioOutput(this);
     m_mediaPlayer->setAudioOutput(m_audioOutput);
 
+    m_baseVolume = 0.8;
+    m_replayGainEnabled = true;
     m_audioOutput->setVolume(0.8); // Default volume
 
     m_autoDJRules = QVariantList();
@@ -27,6 +29,7 @@ Player::Player(QObject *parent) : QObject(parent) {
     connect(m_mediaPlayer, &QMediaPlayer::durationChanged, this, &Player::onDurationChanged);
     connect(m_mediaPlayer, &QMediaPlayer::playbackStateChanged, this, &Player::onPlaybackStateChanged);
     connect(m_mediaPlayer, &QMediaPlayer::mediaStatusChanged, this, &Player::onMediaStatusChanged);
+    connect(this, &Player::currentTrackChanged, this, &Player::updateAudioOutputVolume);
 }
 
 Player* Player::instance() {
@@ -57,15 +60,42 @@ int Player::queueIndex() const {
 }
 
 double Player::volume() const {
-    return m_audioOutput->volume();
+    return m_baseVolume;
 }
 
 void Player::setVolume(double volume) {
     double vol = qMax(0.0, qMin(1.0, volume));
-    if (qFuzzyCompare(static_cast<float>(m_audioOutput->volume()), static_cast<float>(vol))) return;
-    
-    m_audioOutput->setVolume(vol);
+    if (qFuzzyCompare(static_cast<float>(m_baseVolume), static_cast<float>(vol))) return;
+    m_baseVolume = vol;
+    updateAudioOutputVolume();
     emit volumeChanged();
+}
+
+bool Player::replayGainEnabled() const {
+    return m_replayGainEnabled;
+}
+
+void Player::setReplayGainEnabled(bool enabled) {
+    if (m_replayGainEnabled == enabled) return;
+    m_replayGainEnabled = enabled;
+    updateAudioOutputVolume();
+    emit replayGainEnabledChanged();
+}
+
+void Player::updateAudioOutputVolume() {
+    double multiplier = 1.0;
+    if (m_replayGainEnabled) {
+        QVariantMap track = currentTrack();
+        if (track.contains(QStringLiteral("trackGain"))) {
+            double trackGain = track[QStringLiteral("trackGain")].toDouble();
+            if (trackGain != 0.0) {
+                multiplier = qMin(1.0, qMax(0.01, pow(10.0, trackGain / 20.0)));
+                qDebug() << "ReplayGain: Applied gain" << trackGain << "dB, target volume multiplier =" << multiplier;
+            }
+        }
+    }
+    double targetVol = qMax(0.0, qMin(1.0, m_baseVolume * multiplier));
+    m_audioOutput->setVolume(targetVol);
 }
 
 double Player::position() const {

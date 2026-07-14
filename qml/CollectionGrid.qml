@@ -192,7 +192,7 @@ Item {
             cellWidth: 194
             cellHeight: 265
             clip: true
-            model: root.getVisibleItems(database.collections, root.currentFolderPath)
+            model: (database.tracks.length >= 0) ? root.getVisibleItems(database.collections, root.currentFolderPath) : []
 
             ScrollBar.vertical: ScrollBar {
                 policy: ScrollBar.AsNeeded

@@ -22,6 +22,7 @@ class Player : public QObject {
     Q_PROPERTY(QString loopStatus READ loopStatus WRITE setLoopStatus NOTIFY loopStatusChanged)
     Q_PROPERTY(QVariantList queue READ queue NOTIFY queueChanged)
     Q_PROPERTY(QVariantList autoDJRules READ autoDJRules WRITE setAutoDJRules NOTIFY autoDJRulesChanged)
+    Q_PROPERTY(bool replayGainEnabled READ replayGainEnabled WRITE setReplayGainEnabled NOTIFY replayGainEnabledChanged)
 
 public:
     explicit Player(QObject *parent = nullptr);
@@ -41,6 +42,9 @@ public:
 
     QVariantList autoDJRules() const;
     void setAutoDJRules(const QVariantList &rules);
+
+    bool replayGainEnabled() const;
+    void setReplayGainEnabled(bool enabled);
 
     void setVolume(double volume);
     void setPosition(double positionSeconds);
@@ -78,15 +82,18 @@ signals:
     void queueChanged();
     void autoDJChanged();
     void autoDJRulesChanged();
-
-    // Signal emitted when seek completes
+    void replayGainEnabledChanged();
     void seeked(double positionSeconds);
+    
+    // rating update signal
+    void trackRatingUpdated(const QString &trackId, int rating);
 
 private slots:
     void onPositionChanged(qint64 ms);
     void onDurationChanged(qint64 ms);
     void onPlaybackStateChanged(QMediaPlayer::PlaybackState state);
     void onMediaStatusChanged(QMediaPlayer::MediaStatus status);
+    void updateAudioOutputVolume();
 
 private:
     void playTrack(int index);
@@ -101,6 +108,8 @@ private:
     bool m_shuffle = false;
     bool m_autoDJ = false;
     QString m_loopStatus = QStringLiteral("None"); // None, Track, Playlist
+    double m_baseVolume = 0.8;
+    bool m_replayGainEnabled = true;
 
     QVariantList m_autoDJRules;
 

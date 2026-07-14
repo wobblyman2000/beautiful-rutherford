@@ -1,12 +1,44 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
+import Qt.labs.settings 1.0
 
 Rectangle {
     id: root
     color: "#bf0f0f19"
     border.color: "#0dffffff"
     border.width: 1
+
+    Settings {
+        id: eqSettings
+        category: "Equalizer"
+        property string customPresetsJson: "{}"
+    }
+
+    property var defaultPresets: {
+        return {
+            "Flat": [50, 50, 50, 50, 50, 50, 50, 50, 50, 50],
+            "Rock": [75, 68, 55, 45, 42, 45, 52, 60, 68, 75],
+            "Pop": [42, 48, 55, 65, 70, 68, 60, 52, 48, 42],
+            "Classical": [70, 60, 55, 52, 45, 48, 52, 58, 62, 68],
+            "Bass Boost": [85, 80, 70, 55, 50, 48, 48, 48, 48, 48]
+        };
+    }
+
+    property var allPresets: {
+        var presets = Object.assign({}, defaultPresets);
+        try {
+            var custom = JSON.parse(eqSettings.customPresetsJson || "{}");
+            for (var name in custom) {
+                presets[name] = custom[name];
+            }
+        } catch(e) {
+            console.log("Error loading custom EQ presets:", e);
+        }
+        return presets;
+    }
+
+    property var presetNamesList: Object.keys(allPresets)
 
     // Helper to format position/duration (e.g. 240 -> "4:00")
     function formatTime(seconds) {
@@ -461,7 +493,7 @@ Rectangle {
         x: root.width - width - 20
         y: -height - 10
         width: 320
-        height: 220
+        height: 270
         modal: true
         focus: true
         closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
@@ -488,22 +520,17 @@ Rectangle {
                 Item { Layout.fillWidth: true }
                 ComboBox {
                     id: eqPresetCombo
-                    model: ["Flat", "Rock", "Pop", "Classical", "Bass Boost"]
+                    model: root.presetNamesList
                     Layout.preferredWidth: 120
                     onCurrentIndexChanged: {
-                        var flat = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50];
-                        var rock = [75, 68, 55, 45, 42, 45, 52, 60, 68, 75];
-                        var pop = [42, 48, 55, 65, 70, 68, 60, 52, 48, 42];
-                        var classical = [70, 60, 55, 52, 45, 48, 52, 58, 62, 68];
-                        var bass = [85, 80, 70, 55, 50, 48, 48, 48, 48, 48];
-                        var current = flat;
-                        if (currentIndex === 1) current = rock;
-                        else if (currentIndex === 2) current = pop;
-                        else if (currentIndex === 3) current = classical;
-                        else if (currentIndex === 4) current = bass;
-
-                        for (var i = 0; i < current.length; ++i) {
-                            eqSlidersRepeater.itemAt(i).sliderValue = current[i];
+                        if (currentIndex < 0 || currentIndex >= root.presetNamesList.length) return;
+                        var name = root.presetNamesList[currentIndex];
+                        var current = root.allPresets[name];
+                        if (current) {
+                            for (var i = 0; i < current.length; ++i) {
+                                var sliderItem = eqSlidersRepeater.itemAt(i);
+                                if (sliderItem) sliderItem.sliderValue = current[i];
+                            }
                         }
                     }
                 }
@@ -542,6 +569,70 @@ Rectangle {
                             font.pixelSize: 8
                             Layout.alignment: Qt.AlignHCenter
                         }
+                    }
+                }
+            }
+
+            // Custom EQ Presets Manager Row
+            RowLayout {
+                Layout.fillWidth: true
+                spacing: 8
+
+                TextField {
+                    id: customPresetNameInput
+                    placeholderText: qsTr("Preset Name...")
+                    Layout.fillWidth: true
+                    color: "#ffffff"
+                    font.pixelSize: 12
+                    background: Rectangle { color: "#2b2b3d"; border.color: "#14ffffff"; radius: 6 }
+                }
+
+                Button {
+                    text: qsTr("Save")
+                    onClicked: {
+                        var name = customPresetNameInput.text.trim();
+                        if (name === "") return;
+                        
+                        var vals = [];
+                        for (var i = 0; i < 10; ++i) {
+                            var sliderItem = eqSlidersRepeater.itemAt(i);
+                            vals.push(sliderItem ? Math.round(sliderItem.sliderValue) : 50);
+                        }
+
+                        var custom = JSON.parse(eqSettings.customPresetsJson || "{}");
+                        custom[name] = vals;
+                        eqSettings.customPresetsJson = JSON.stringify(custom);
+                        
+                        // Force refresh combo model
+                        var oldJson = eqSettings.customPresetsJson;
+                        eqSettings.customPresetsJson = "";
+                        eqSettings.customPresetsJson = oldJson;
+
+                        var idx = root.presetNamesList.indexOf(name);
+                        if (idx >= 0) eqPresetCombo.currentIndex = idx;
+                        customPresetNameInput.text = "";
+                    }
+                }
+
+                Button {
+                    text: qsTr("Delete")
+                    enabled: {
+                        var name = eqPresetCombo.currentText;
+                        return name !== "" && !root.defaultPresets.hasOwnProperty(name);
+                    }
+                    onClicked: {
+                        var name = eqPresetCombo.currentText;
+                        if (name === "" || root.defaultPresets.hasOwnProperty(name)) return;
+
+                        var custom = JSON.parse(eqSettings.customPresetsJson || "{}");
+                        delete custom[name];
+                        eqSettings.customPresetsJson = JSON.stringify(custom);
+
+                        var oldJson = eqSettings.customPresetsJson;
+                        eqSettings.customPresetsJson = "";
+                        eqSettings.customPresetsJson = oldJson;
+
+                        eqPresetCombo.currentIndex = 0;
                     }
                 }
             }

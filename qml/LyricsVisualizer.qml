@@ -11,9 +11,64 @@ Item {
     property bool isSynced: false
     property int currentLineIndex: -1
 
+    property bool isDownloading: false
+
+    function downloadLrc(track) {
+        if (!track || !track.title || !track.artist) {
+            rawLyrics = qsTr("No lyrics available.");
+            return;
+        }
+        isDownloading = true;
+        
+        var xhr = new XMLHttpRequest();
+        var url = "https://lrclib.net/api/get?" + 
+            "artist=" + encodeURIComponent(track.artist) + 
+            "&track_name=" + encodeURIComponent(track.title);
+            
+        if (track.album) {
+            url += "&album_name=" + encodeURIComponent(track.album);
+        }
+        if (track.duration) {
+            url += "&duration=" + Math.round(track.duration);
+        }
+        
+        xhr.open("GET", url);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                isDownloading = false;
+                if (xhr.status === 200) {
+                    try {
+                        var res = JSON.parse(xhr.responseText);
+                        var lyrics = res.syncedLyrics || res.plainLyrics || "";
+                        if (lyrics !== "") {
+                            var saved = database.saveLrcFile(track.filePath, lyrics);
+                            if (saved) {
+                                console.log("LRC lyrics saved next to track:", track.filePath);
+                                rawLyrics = lyrics;
+                            }
+                        } else {
+                            rawLyrics = qsTr("Lyrics not found.");
+                        }
+                    } catch (e) {
+                        rawLyrics = qsTr("Lyrics not found.");
+                    }
+                } else {
+                    rawLyrics = qsTr("Lyrics not found.");
+                }
+            }
+        }
+        xhr.send();
+    }
+
     onFilePathChanged: {
         if (filePath !== "") {
-            rawLyrics = player.getLyricsForTrack(filePath);
+            var loaded = player.getLyricsForTrack(filePath);
+            if (loaded && loaded.trim() !== "") {
+                rawLyrics = loaded;
+            } else {
+                rawLyrics = qsTr("Searching online for lyrics...");
+                downloadLrc(player.currentTrack);
+            }
         } else {
             rawLyrics = "";
         }
