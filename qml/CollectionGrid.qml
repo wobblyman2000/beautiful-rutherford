@@ -5,6 +5,64 @@ import QtQuick.Layouts 1.15
 Item {
     id: root
 
+    property string currentFolderPath: ""
+
+    // JS helper to group collections by their folder path dynamically
+    function getVisibleItems(collections, activeFolder) {
+        var list = [];
+        var seenFolders = {};
+        
+        var folderPrefix = activeFolder;
+        if (folderPrefix !== "" && !folderPrefix.endsWith("/")) {
+            folderPrefix += "/";
+        }
+        
+        for (var i = 0; i < collections.length; ++i) {
+            var col = collections[i];
+            var folder = col.folder || "";
+            
+            if (activeFolder === "") {
+                // We are in the root
+                if (folder === "") {
+                    list.push({ type: "collection", id: col.id, name: col.name, data: col });
+                } else {
+                    // This collection is in a subfolder
+                    var firstSlash = folder.indexOf("/");
+                    var subName = firstSlash === -1 ? folder : folder.substring(0, firstSlash);
+                    if (!seenFolders[subName]) {
+                        seenFolders[subName] = true;
+                        list.push({ type: "folder", name: subName, path: subName });
+                    }
+                }
+            } else {
+                // We are in some subfolder, e.g. "60s Compilations"
+                if (folder === activeFolder) {
+                    list.push({ type: "collection", id: col.id, name: col.name, data: col });
+                } else if (folder.startsWith(folderPrefix)) {
+                    // This is a sub-subfolder
+                    var relativePath = folder.substring(folderPrefix.length);
+                    var nextSlash = relativePath.indexOf("/");
+                    var subName = nextSlash === -1 ? relativePath : relativePath.substring(0, nextSlash);
+                    var fullPath = folderPrefix + subName;
+                    if (!seenFolders[subName]) {
+                        seenFolders[subName] = true;
+                        list.push({ type: "folder", name: subName, path: fullPath });
+                    }
+                }
+            }
+        }
+        
+        // Sort: Folders first alphabetically, then Collections alphabetically
+        list.sort(function(a, b) {
+            if (a.type !== b.type) {
+                return a.type === "folder" ? -1 : 1;
+            }
+            return a.name.localeCompare(b.name);
+        });
+        
+        return list;
+    }
+
     // Rules matching function (AND logic)
     function matchRules(track, rules) {
         if (!rules || rules.length === 0) return false;
@@ -71,6 +129,61 @@ Item {
             }
         }
 
+        // Breadcrumb Navigation Row
+        RowLayout {
+            Layout.fillWidth: true
+            spacing: 8
+
+            Text {
+                text: "📁"
+                font.pixelSize: 15
+                color: "#666a8a"
+            }
+
+            Text {
+                text: qsTr("Smart Collections")
+                font.pixelSize: 14
+                font.weight: root.currentFolderPath === "" ? Font.Bold : Font.Normal
+                color: root.currentFolderPath === "" ? "#ffffff" : "#666a8a"
+                
+                MouseArea {
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: root.currentFolderPath !== "" ? Qt.PointingHandCursor : Qt.ArrowCursor
+                    onClicked: {
+                        if (root.currentFolderPath !== "") {
+                            root.currentFolderPath = "";
+                        }
+                    }
+                }
+            }
+
+            Repeater {
+                model: root.currentFolderPath === "" ? [] : root.currentFolderPath.split("/")
+                delegate: RowLayout {
+                    spacing: 8
+                    Text { text: " > "; color: "#444866"; font.pixelSize: 12 }
+                    Text {
+                        text: modelData
+                        font.pixelSize: 14
+                        font.weight: index === (root.currentFolderPath.split("/").length - 1) ? Font.Bold : Font.Normal
+                        color: index === (root.currentFolderPath.split("/").length - 1) ? "#00f2fe" : "#666a8a"
+                        
+                        MouseArea {
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            cursorShape: index !== (root.currentFolderPath.split("/").length - 1) ? Qt.PointingHandCursor : Qt.ArrowCursor
+                            onClicked: {
+                                var parts = root.currentFolderPath.split("/");
+                                var newPath = parts.slice(0, index + 1).join("/");
+                                root.currentFolderPath = newPath;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         // Collections Grid
         GridView {
             id: colGrid
@@ -79,7 +192,7 @@ Item {
             cellWidth: 194
             cellHeight: 265
             clip: true
-            model: database.collections
+            model: root.getVisibleItems(database.collections, root.currentFolderPath)
 
             ScrollBar.vertical: ScrollBar {
                 policy: ScrollBar.AsNeeded
@@ -93,14 +206,20 @@ Item {
                 radius: 16
                 clip: true
 
-                property var matchedTracks: root.getCollectionTracks(modelData.rules)
+                property bool isFolder: modelData.type === "folder"
+                property var colData: isFolder ? null : modelData.data
+                property var matchedTracks: isFolder ? [] : root.getCollectionTracks(colData.rules)
 
                 MouseArea {
                     id: colMouse
                     anchors.fill: parent
                     hoverEnabled: true
-                    acceptedButtons: Qt.LeftButton | Qt.RightButton
+                    acceptedButtons: isFolder ? Qt.LeftButton : (Qt.LeftButton | Qt.RightButton)
                     onClicked: {
+                        if (isFolder) {
+                            root.currentFolderPath = modelData.path;
+                            return;
+                        }
                         if (mouse.button === Qt.RightButton) {
                             collectionContextMenu.targetTracks = matchedTracks;
                             collectionContextMenu.popup();
@@ -114,13 +233,13 @@ Item {
                         
                         // Mock as album and open details modal
                         var mockAlbum = {
-                            id: modelData.id,
-                            name: modelData.name,
+                            id: colData.id,
+                            name: colData.name,
                             artist: qsTr("Smart Collection"),
                             year: 0,
                             genre: "",
-                            coverPath: modelData.coverPath || "",
-                            displayMode: modelData.displayMode || "tracks",
+                            coverPath: colData.coverPath || "",
+                            displayMode: colData.displayMode || "tracks",
                             tracks: matchedTracks,
                             discs: [1],
                             totalDuration: matchedTracks.reduce(function(acc, val) { return acc + (val.duration || 0); }, 0)
@@ -128,7 +247,7 @@ Item {
                         window.openAlbum(mockAlbum);
                     }
                     onDoubleClicked: {
-                        if (matchedTracks.length > 0) {
+                        if (!isFolder && matchedTracks.length > 0) {
                             player.setQueue(matchedTracks, 0);
                         }
                     }
@@ -150,7 +269,7 @@ Item {
 
                         Image {
                             id: colCover
-                            source: modelData.coverPath || ""
+                            source: isFolder ? "" : (colData.coverPath || "")
                             anchors.fill: parent
                             fillMode: Image.PreserveAspectCrop
                             visible: source != ""
@@ -158,18 +277,18 @@ Item {
 
                         Image {
                             anchors.centerIn: parent
-                            source: "image://theme/bookmarks"
+                            source: isFolder ? "image://theme/folder" : "image://theme/bookmarks"
                             width: 50
                             height: 50
-                            visible: colCover.source == ""
-                            opacity: 0.5
+                            visible: isFolder || colCover.source == ""
+                            opacity: isFolder ? 0.75 : 0.5
                         }
 
                         // Play Button Overlay
                         Rectangle {
                             anchors.fill: parent
                             color: "#80000000"
-                            opacity: (colMouse.containsMouse && !albumModal.visible) ? 1.0 : 0.0
+                            opacity: (!isFolder && colMouse.containsMouse && !albumModal.visible) ? 1.0 : 0.0
                             visible: opacity > 0.0
 
                             Button {
@@ -206,8 +325,8 @@ Item {
                                 }
 
                                 onClicked: {
-                                    if (parent.parent.parent.matchedTracks.length > 0) {
-                                        player.setQueue(parent.parent.parent.matchedTracks, 0);
+                                    if (!isFolder && matchedTracks.length > 0) {
+                                        player.setQueue(matchedTracks, 0);
                                     }
                                 }
                             }
@@ -224,7 +343,7 @@ Item {
                     }
 
                     Text {
-                        text: matchedTracks.length + " matching track" + (matchedTracks.length === 1 ? "" : "s")
+                        text: isFolder ? qsTr("Folder") : matchedTracks.length + " matching track" + (matchedTracks.length === 1 ? "" : "s")
                         color: "#9ea2c0"
                         font.pixelSize: 12
                         elide: Text.ElideRight
@@ -235,10 +354,11 @@ Item {
                     RowLayout {
                         Layout.fillWidth: true
                         Layout.preferredHeight: 24
+                        visible: !isFolder
 
                         Button {
                             flat: true
-                            onClicked: editCollection(modelData)
+                            onClicked: editCollection(colData)
                             contentItem: Text {
                                 text: qsTr("Edit")
                                 color: "#ffffff"
@@ -252,7 +372,7 @@ Item {
 
                         Button {
                             flat: true
-                            onClicked: database.deleteCollection(modelData.id)
+                            onClicked: database.deleteCollection(colData.id)
                             contentItem: Text {
                                 text: qsTr("Delete")
                                 color: "#ff5555"
@@ -279,7 +399,7 @@ Item {
 
         Rectangle {
             width: 500
-            height: 570
+            height: 640
             anchors.centerIn: parent
             color: "#1e1e30"
             border.color: "#14ffffff"
@@ -333,6 +453,20 @@ Item {
                         id: colDisplayModeCombo
                         Layout.fillWidth: true
                         model: ["Track List View", "Album Cover Grid"]
+                    }
+                }
+
+                // Folder Input
+                ColumnLayout {
+                    Layout.fillWidth: true
+                    spacing: 4
+                    Text { text: qsTr("Folder (Optional, e.g. 60s Compilations)"); color: "#ffffff"; font.pixelSize: 13 }
+                    TextField {
+                        id: colFolderInput
+                        Layout.fillWidth: true
+                        color: "#ffffff"
+                        placeholderText: qsTr("Leave blank for Root level")
+                        background: Rectangle { color: "#33000000"; border.color: "#14ffffff"; radius: 8 }
                     }
                 }
 
@@ -551,7 +685,7 @@ Item {
                             }
 
                             var displayMode = colDisplayModeCombo.currentIndex === 1 ? "albums" : "tracks";
-                            database.saveCollection(editDialog.colId, colNameInput.text.trim(), colCoverInput.text.trim(), displayMode, updatedRules);
+                            database.saveCollection(editDialog.colId, colNameInput.text.trim(), colCoverInput.text.trim(), displayMode, updatedRules, colFolderInput.text.trim());
                             editDialog.visible = false;
                         }
                     }
@@ -566,6 +700,7 @@ Item {
             colNameInput.text = collection.name;
             colCoverInput.text = collection.coverPath || "";
             colDisplayModeCombo.currentIndex = (collection.displayMode === "albums") ? 1 : 0;
+            colFolderInput.text = collection.folder || "";
             // Construct a deep copy of rules list
             var list = [];
             for (var i = 0; i < collection.rules.length; ++i) {
@@ -581,6 +716,7 @@ Item {
             colNameInput.text = "";
             colCoverInput.text = "";
             colDisplayModeCombo.currentIndex = 0;
+            colFolderInput.text = root.currentFolderPath;
             editDialog.rulesModel = [{ field: "album", operator: "contains", value: "" }];
         }
         editDialog.visible = true;

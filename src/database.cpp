@@ -220,7 +220,7 @@ void Database::removeMusicDir(const QString &dir) {
     }
 }
 
-void Database::saveCollection(const QString &id, const QString &name, const QString &coverPath, const QString &displayMode, const QVariantList &rules) {
+void Database::saveCollection(const QString &id, const QString &name, const QString &coverPath, const QString &displayMode, const QVariantList &rules, const QString &folder) {
     QJsonObject colObj;
     QString finalId = id;
     
@@ -233,6 +233,7 @@ void Database::saveCollection(const QString &id, const QString &name, const QStr
     colObj["coverPath"] = coverPath;
     colObj["displayMode"] = displayMode;
     colObj["rules"] = QJsonArray::fromVariantList(rules);
+    colObj["folder"] = folder.trimmed();
 
     // If updating, replace existing
     bool found = false;

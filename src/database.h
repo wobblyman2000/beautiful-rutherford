@@ -106,7 +106,7 @@ public:
     Q_INVOKABLE void removeMusicDir(const QString &dir);
     
     // Smart Collections CRUD
-    Q_INVOKABLE void saveCollection(const QString &id, const QString &name, const QString &coverPath, const QString &displayMode, const QVariantList &rules);
+    Q_INVOKABLE void saveCollection(const QString &id, const QString &name, const QString &coverPath, const QString &displayMode, const QVariantList &rules, const QString &folder = QString());
     Q_INVOKABLE void deleteCollection(const QString &id);
     Q_INVOKABLE void setTrackRating(const QString &trackId, int rating);
     Q_INVOKABLE bool writeTrackTags(const QString &filePath, const QString &title, const QString &artist, const QString &album, const QString &genre, int year, const QString &albumType);
