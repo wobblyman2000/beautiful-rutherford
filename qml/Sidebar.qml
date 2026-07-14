@@ -112,6 +112,49 @@ Rectangle {
                 pageKey: "settings"
                 iconName: "settings-configure"
             }
+
+            // Divider
+            Rectangle {
+                Layout.fillWidth: true
+                height: 1
+                color: "#14ffffff"
+                Layout.topMargin: 8
+                Layout.bottomMargin: 8
+            }
+
+            Button {
+                id: quitSidebarBtn
+                Layout.fillWidth: true
+                Layout.preferredHeight: 44
+                flat: true
+                
+                contentItem: RowLayout {
+                    spacing: 12
+                    anchors.fill: parent
+                    anchors.leftMargin: 12
+
+                    Image {
+                        source: "image://theme/system-log-out"
+                        Layout.preferredWidth: 20
+                        Layout.preferredHeight: 20
+                        opacity: 0.6
+                    }
+
+                    Text {
+                        text: qsTr("Quit")
+                        color: "#ff5555"
+                        font.pixelSize: 15
+                        font.weight: Font.DemiBold
+                    }
+                }
+
+                background: Rectangle {
+                    color: quitSidebarBtn.hovered ? "#1aff5555" : "transparent"
+                    radius: 8
+                }
+
+                onClicked: Qt.quit()
+            }
         }
     }
 }

@@ -203,6 +203,91 @@ ApplicationWindow {
         anchors.fill: parent
         spacing: 0
 
+        // Custom Window Control Bar for FullScreen Mode
+        RowLayout {
+            id: windowControlsBar
+            Layout.fillWidth: true
+            Layout.preferredHeight: 32
+            visible: window.visibility === ApplicationWindow.FullScreen
+            spacing: 0
+            
+            Rectangle {
+                anchors.fill: parent
+                color: "#161625"
+                border.color: "#14ffffff"
+                border.width: 1
+            }
+
+            Text {
+                text: qsTr("Aether Player")
+                color: "#666a8a"
+                font.pixelSize: 11
+                font.weight: Font.Medium
+                Layout.leftMargin: 12
+                Layout.alignment: Qt.AlignVCenter
+            }
+
+            Item { Layout.fillWidth: true }
+
+            Button {
+                id: minWindowBtn
+                flat: true
+                Layout.preferredWidth: 46
+                Layout.preferredHeight: 32
+                contentItem: Text {
+                    text: "—"
+                    color: minWindowBtn.hovered ? "#00f2fe" : "#88ffffff"
+                    font.pixelSize: 10
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+                background: Rectangle {
+                    color: minWindowBtn.hovered ? "#14ffffff" : "transparent"
+                }
+                onClicked: window.showMinimized()
+            }
+
+            Button {
+                id: maxWindowBtn
+                flat: true
+                Layout.preferredWidth: 46
+                Layout.preferredHeight: 32
+                contentItem: Text {
+                    text: "❐"
+                    color: maxWindowBtn.hovered ? "#00f2fe" : "#88ffffff"
+                    font.pixelSize: 10
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+                background: Rectangle {
+                    color: maxWindowBtn.hovered ? "#14ffffff" : "transparent"
+                }
+                onClicked: {
+                    window.visibility = ApplicationWindow.Maximized;
+                    window.preTheaterVisibility = ApplicationWindow.Maximized;
+                }
+            }
+
+            Button {
+                id: closeWindowBtn
+                flat: true
+                Layout.preferredWidth: 46
+                Layout.preferredHeight: 32
+                contentItem: Text {
+                    text: "✕"
+                    color: closeWindowBtn.hovered ? "#ffffff" : "#88ffffff"
+                    font.pixelSize: 12
+                    font.bold: true
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                }
+                background: Rectangle {
+                    color: closeWindowBtn.hovered ? "#e81123" : "transparent"
+                }
+                onClicked: Qt.quit()
+            }
+        }
+
         RowLayout {
             Layout.fillWidth: true
             Layout.fillHeight: true
