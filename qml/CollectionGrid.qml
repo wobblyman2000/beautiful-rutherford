@@ -210,6 +210,20 @@ Item {
                 property var colData: isFolder ? null : modelData.data
                 property var matchedTracks: isFolder ? [] : root.getCollectionTracks(colData.rules)
 
+                // Resolve cover art from collection settings or automatically from matched tracks
+                property string autoCoverPath: {
+                    if (isFolder) return "";
+                    if (colData.coverPath && colData.coverPath !== "") {
+                        return colData.coverPath;
+                    }
+                    for (var i = 0; i < matchedTracks.length; ++i) {
+                        if (matchedTracks[i].coverPath && matchedTracks[i].coverPath !== "") {
+                            return matchedTracks[i].coverPath;
+                        }
+                    }
+                    return "";
+                }
+
                 MouseArea {
                     id: colMouse
                     anchors.fill: parent
@@ -238,7 +252,7 @@ Item {
                             artist: qsTr("Smart Collection"),
                             year: 0,
                             genre: "",
-                            coverPath: colData.coverPath || "",
+                            coverPath: parent.autoCoverPath,
                             displayMode: colData.displayMode || "tracks",
                             tracks: matchedTracks,
                             discs: [1],
@@ -269,7 +283,7 @@ Item {
 
                         Image {
                             id: colCover
-                            source: isFolder ? "" : (colData.coverPath || "")
+                            source: parent.parent.autoCoverPath
                             anchors.fill: parent
                             fillMode: Image.PreserveAspectCrop
                             visible: source != ""
