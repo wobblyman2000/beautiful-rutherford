@@ -46,6 +46,7 @@ Rectangle {
                 Layout.fillWidth: true
                 Layout.preferredHeight: 44
                 flat: true
+                focusPolicy: Qt.NoFocus
                 
                 contentItem: RowLayout {
                     spacing: 12
@@ -127,6 +128,7 @@ Rectangle {
                 Layout.fillWidth: true
                 Layout.preferredHeight: 44
                 flat: true
+                focusPolicy: Qt.NoFocus
                 
                 contentItem: RowLayout {
                     spacing: 12
