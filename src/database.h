@@ -85,12 +85,16 @@ class Database : public QObject {
     Q_PROPERTY(QStringList allGenres READ allGenres NOTIFY tracksChanged)
     Q_PROPERTY(QStringList allArtists READ allArtists NOTIFY tracksChanged)
     Q_PROPERTY(QStringList allAlbums READ allAlbums NOTIFY tracksChanged)
+    Q_PROPERTY(QVariantList libraries READ librariesVariant NOTIFY librariesChanged)
+    Q_PROPERTY(QString activeLibraryId READ activeLibraryId NOTIFY activeLibraryChanged)
+    Q_PROPERTY(QString activeLibraryName READ activeLibraryName NOTIFY activeLibraryChanged)
 
 public:
     explicit Database(QObject *parent = nullptr);
 
     static Database* instance();
     QString getDbFilePath() const;
+    QString getLibraryDataFilePath(const QString &libId) const;
 
     QStringList musicDirs() const;
     void setMusicDirs(const QStringList &dirs);
@@ -100,6 +104,9 @@ public:
 
     QVariantList tracksVariant() const;
     QVariantList collectionsVariant() const;
+    QVariantList librariesVariant() const;
+    QString activeLibraryId() const;
+    QString activeLibraryName() const;
     
     Q_INVOKABLE QStringList allGenres() const;
     Q_INVOKABLE QStringList allArtists() const;
@@ -107,6 +114,12 @@ public:
 
     Q_INVOKABLE void addMusicDir(const QString &dir);
     Q_INVOKABLE void removeMusicDir(const QString &dir);
+    
+    // Multiple Libraries Management
+    Q_INVOKABLE void createLibrary(const QString &name, const QStringList &dirs);
+    Q_INVOKABLE void deleteLibrary(const QString &id);
+    Q_INVOKABLE void setActiveLibrary(const QString &id);
+    Q_INVOKABLE void renameLibrary(const QString &id, const QString &newName);
     
     // Smart Collections CRUD
     Q_INVOKABLE void saveCollection(const QString &id, const QString &name, const QString &coverPath, const QString &displayMode, const QVariantList &rules, const QString &folder = QString());
@@ -119,6 +132,8 @@ signals:
     void musicDirsChanged();
     void tracksChanged();
     void collectionsChanged();
+    void librariesChanged();
+    void activeLibraryChanged();
 
 private slots:
     void onDirectoryChanged(const QString &path);
@@ -127,11 +142,19 @@ private slots:
 private:
     void load();
     void save();
+    void loadMaster();
+    void saveMaster();
+    void loadLibraryData(const QString &libId);
+    void saveLibraryData(const QString &libId);
+    void saveLibraryDataHelper(const QString &libId, const QList<Track> &tracks, const QJsonArray &collections);
     void setupDirectoryWatcher();
 
     QStringList m_musicDirs;
     QList<Track> m_tracks;
     QJsonArray m_collections;
+    
+    QJsonArray m_libraries;
+    QString m_activeLibraryId;
     
     QFileSystemWatcher *m_watcher = nullptr;
     QTimer *m_watchDebounceTimer = nullptr;

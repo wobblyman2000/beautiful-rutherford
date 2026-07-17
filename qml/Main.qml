@@ -766,6 +766,179 @@ ApplicationWindow {
                                 font.weight: Font.Bold
                             }
 
+                             // Libraries Card
+                             Rectangle {
+                                 Layout.fillWidth: true
+                                 implicitHeight: libCardLayout.implicitHeight + 40
+                                 color: "#73191928"
+                                 border.color: "#14ffffff"
+                                 border.width: 1
+                                 radius: 16
+
+                                 ColumnLayout {
+                                     id: libCardLayout
+                                     anchors.fill: parent
+                                     anchors.margins: 20
+                                     spacing: 16
+
+                                     Text {
+                                         text: qsTr("Manage Libraries")
+                                         color: "#ffffff"
+                                         font.pixelSize: 18
+                                         font.weight: Font.DemiBold
+                                     }
+
+                                     Text {
+                                         text: qsTr("Create and switch between multiple independent music libraries. Deleting a library only clears its index and does not touch your audio files.")
+                                         color: "#9ea2c0"
+                                         font.pixelSize: 13
+                                         Layout.fillWidth: true
+                                     }
+
+                                     // Create Library Row
+                                     RowLayout {
+                                         spacing: 12
+                                         Layout.fillWidth: true
+
+                                         TextField {
+                                             id: newLibInput
+                                             placeholderText: qsTr("Library Name (e.g. Rock, Classical)")
+                                             Layout.fillWidth: true
+                                             color: "#ffffff"
+                                             background: Rectangle {
+                                                 color: "#33000000"
+                                                 border.color: "#14ffffff"
+                                                 radius: 8
+                                             }
+                                         }
+
+                                         Button {
+                                             text: qsTr("Create Library")
+                                             onClicked: {
+                                                 if (newLibInput.text.trim()) {
+                                                     database.createLibrary(newLibInput.text.trim(), []);
+                                                     newLibInput.text = "";
+                                                 }
+                                             }
+                                         }
+                                     }
+
+                                     // Libraries List
+                                     ColumnLayout {
+                                         Layout.fillWidth: true
+                                         spacing: 8
+
+                                         Repeater {
+                                             model: database.libraries
+                                             delegate: Rectangle {
+                                                 Layout.fillWidth: true
+                                                 height: 54
+                                                 color: database.activeLibraryId === modelData.id ? "#0d00f2fe" : "#05ffffff"
+                                                 border.color: database.activeLibraryId === modelData.id ? "#3300f2fe" : "#14ffffff"
+                                                 border.width: 1
+                                                 radius: 8
+
+                                                 RowLayout {
+                                                     anchors.fill: parent
+                                                     anchors.leftMargin: 12
+                                                     anchors.rightMargin: 12
+
+                                                     ColumnLayout {
+                                                         Layout.fillWidth: true
+                                                         spacing: 2
+
+                                                         RowLayout {
+                                                             spacing: 8
+                                                             Text {
+                                                                 text: modelData.name
+                                                                 color: database.activeLibraryId === modelData.id ? "#00f2fe" : "#ffffff"
+                                                                 font.pixelSize: 14
+                                                                 font.weight: Font.Bold
+                                                             }
+                                                             Rectangle {
+                                                                 visible: database.activeLibraryId === modelData.id
+                                                                 color: "#1a00f2fe"
+                                                                 border.color: "#4000f2fe"
+                                                                 border.width: 1
+                                                                 radius: 4
+                                                                 width: 50
+                                                                 height: 18
+                                                                 Text {
+                                                                     anchors.centerIn: parent
+                                                                     text: qsTr("ACTIVE")
+                                                                     color: "#00f2fe"
+                                                                     font.pixelSize: 9
+                                                                     font.weight: Font.Bold
+                                                                 }
+                                                             }
+                                                         }
+
+                                                         Text {
+                                                             text: modelData.musicDirs.length === 1 ? qsTr("1 Monitored Folder") : qsTr("%1 Monitored Folders").arg(modelData.musicDirs.length)
+                                                             color: "#666a8a"
+                                                             font.pixelSize: 11
+                                                         }
+                                                     }
+
+                                                     RowLayout {
+                                                         spacing: 8
+
+                                                         Button {
+                                                             text: qsTr("Rename")
+                                                             flat: true
+                                                             Layout.preferredHeight: 28
+                                                             visible: database.activeLibraryId !== modelData.id
+                                                             contentItem: Text {
+                                                                 text: parent.text
+                                                                 color: "#9ea2c0"
+                                                                 font.pixelSize: 12
+                                                             }
+                                                             onClicked: {
+                                                                 renameLibDialog.targetLibId = modelData.id;
+                                                                 renameLibDialog.targetLibName = modelData.name;
+                                                                 renameLibInput.text = modelData.name;
+                                                                 renameLibDialog.open();
+                                                             }
+                                                         }
+
+                                                         Button {
+                                                             text: qsTr("Activate")
+                                                             flat: true
+                                                             Layout.preferredHeight: 28
+                                                             visible: database.activeLibraryId !== modelData.id
+                                                             contentItem: Text {
+                                                                 text: parent.text
+                                                                 color: "#00f2fe"
+                                                                 font.pixelSize: 12
+                                                                 font.weight: Font.Bold
+                                                             }
+                                                             onClicked: database.setActiveLibrary(modelData.id)
+                                                         }
+
+                                                         Button {
+                                                             text: qsTr("Delete")
+                                                             flat: true
+                                                             Layout.preferredHeight: 28
+                                                             visible: database.libraries.length > 1
+                                                             contentItem: Text {
+                                                                 text: parent.text
+                                                                 color: "#ff5555"
+                                                                 font.pixelSize: 12
+                                                             }
+                                                             onClicked: {
+                                                                 confirmDeleteLibDialog.targetLibId = modelData.id;
+                                                                 confirmDeleteLibDialog.targetLibName = modelData.name;
+                                                                 confirmDeleteLibDialog.open();
+                                                             }
+                                                         }
+                                                     }
+                                                 }
+                                             }
+                                         }
+                                     }
+                                 }
+                             }
+
                             // Folders Card
                             Rectangle {
                                 Layout.fillWidth: true
@@ -984,7 +1157,7 @@ ApplicationWindow {
                                         ColumnLayout {
                                             spacing: 2
                                             Text {
-                                                text: qsTr("Aether Player — Version 1.2.2")
+                                                text: qsTr("Aether Player — Version 1.3.0")
                                                 color: "#00f2fe"
                                                 font.pixelSize: 13
                                                 font.weight: Font.Bold
@@ -1585,6 +1758,137 @@ ApplicationWindow {
                         database.saveCollection(colId, name, "", saveColDisplayCombo.currentText, activeRules);
                         saveColDialog.close();
                         saveColNameInput.text = "";
+                    }
+                }
+            }
+        }
+    }
+
+    // Rename Library Popup
+    Popup {
+        id: renameLibDialog
+        x: (window.width - width) / 2
+        y: (window.height - height) / 2
+        width: 320
+        height: 180
+        modal: true
+        focus: true
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+
+        property string targetLibId: ""
+        property string targetLibName: ""
+
+        background: Rectangle {
+            color: "#1e1e30"
+            border.color: "#14ffffff"
+            radius: 12
+        }
+
+        ColumnLayout {
+            anchors.fill: parent
+            anchors.margins: 20
+            spacing: 12
+
+            Text {
+                text: qsTr("Rename Library")
+                color: "#ffffff"
+                font.pixelSize: 16
+                font.weight: Font.Bold
+            }
+
+            ColumnLayout {
+                Layout.fillWidth: true
+                spacing: 4
+                Text { text: qsTr("Library Name"); color: "#9ea2c0"; font.pixelSize: 11 }
+                TextField {
+                    id: renameLibInput
+                    Layout.fillWidth: true
+                    color: "#ffffff"
+                    background: Rectangle { color: "#33000000"; border.color: "#14ffffff"; radius: 6 }
+                }
+            }
+
+            Item { Layout.fillHeight: true }
+
+            RowLayout {
+                Layout.fillWidth: true
+                spacing: 12
+                Item { Layout.fillWidth: true }
+                Button {
+                    text: qsTr("Cancel")
+                    onClicked: renameLibDialog.close()
+                }
+                Button {
+                    text: qsTr("Rename")
+                    highlighted: true
+                    onClicked: {
+                        var name = renameLibInput.text.trim();
+                        if (name !== "") {
+                            database.renameLibrary(renameLibDialog.targetLibId, name);
+                            renameLibDialog.close();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Confirm Delete Library Popup
+    Popup {
+        id: confirmDeleteLibDialog
+        x: (window.width - width) / 2
+        y: (window.height - height) / 2
+        width: 340
+        height: 180
+        modal: true
+        focus: true
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+
+        property string targetLibId: ""
+        property string targetLibName: ""
+
+        background: Rectangle {
+            color: "#1e1e30"
+            border.color: "#ff555540"
+            radius: 12
+        }
+
+        ColumnLayout {
+            anchors.fill: parent
+            anchors.margins: 20
+            spacing: 12
+
+            Text {
+                text: qsTr("Delete Library")
+                color: "#ff5555"
+                font.pixelSize: 16
+                font.weight: Font.Bold
+            }
+
+            Text {
+                text: qsTr("Are you sure you want to delete '%1'? This only clears Aether's database and will not delete your files from the disk.").arg(confirmDeleteLibDialog.targetLibName)
+                color: "#9ea2c0"
+                font.pixelSize: 12
+                wrapMode: Text.WordWrap
+                Layout.fillWidth: true
+            }
+
+            Item { Layout.fillHeight: true }
+
+            RowLayout {
+                Layout.fillWidth: true
+                spacing: 12
+                Item { Layout.fillWidth: true }
+                Button {
+                    text: qsTr("Cancel")
+                    onClicked: confirmDeleteLibDialog.close()
+                }
+                Button {
+                    text: qsTr("Delete")
+                    highlighted: true
+                    onClicked: {
+                        database.deleteLibrary(confirmDeleteLibDialog.targetLibId);
+                        confirmDeleteLibDialog.close();
                     }
                 }
             }

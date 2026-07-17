@@ -32,81 +32,18 @@ QString Database::getDbFilePath() const {
 }
 
 void Database::load() {
-    QString path = getDbFilePath();
-    QFile file(path);
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qWarning() << "No database file found. Initializing empty DB at:" << path;
-        save();
-        return;
-    }
-
-    QByteArray data = file.readAll();
-    file.close();
-
-    QJsonDocument doc = QJsonDocument::fromJson(data);
-    if (!doc.isObject()) {
-        qWarning() << "Invalid database format. Resetting DB.";
-        save();
-        return;
-    }
-
-    QJsonObject root = doc.object();
+    loadMaster();
+    loadLibraryData(m_activeLibraryId);
     
-    // Load Settings
-    QJsonObject settings = root["settings"].toObject();
-    QJsonArray dirs = settings["musicDirs"].toArray();
-    m_musicDirs.clear();
-    for (const auto &dirVal : dirs) {
-        m_musicDirs.append(dirVal.toString());
-    }
-
-    // Load Tracks
-    QJsonArray tracksArr = root["tracks"].toArray();
-    m_tracks.clear();
-    for (const auto &trackVal : tracksArr) {
-        m_tracks.append(Track::fromJsonObject(trackVal.toObject()));
-    }
-
-    // Load Collections
-    m_collections = root["collections"].toArray();
-
     emit musicDirsChanged();
     emit tracksChanged();
     emit collectionsChanged();
+    emit librariesChanged();
+    emit activeLibraryChanged();
 }
 
 void Database::save() {
-    QString path = getDbFilePath();
-    QFile file(path);
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        qWarning() << "Failed to write database file at:" << path;
-        return;
-    }
-
-    QJsonObject root;
-    
-    // Save Settings
-    QJsonObject settings;
-    QJsonArray dirs;
-    for (const auto &dir : m_musicDirs) {
-        dirs.append(dir);
-    }
-    settings["musicDirs"] = dirs;
-    root["settings"] = settings;
-
-    // Save Tracks
-    QJsonArray tracksArr;
-    for (const auto &track : m_tracks) {
-        tracksArr.append(track.toJsonObject());
-    }
-    root["tracks"] = tracksArr;
-
-    // Save Collections
-    root["collections"] = m_collections;
-
-    QJsonDocument doc(root);
-    file.write(doc.toJson(QJsonDocument::Indented));
-    file.close();
+    saveLibraryData(m_activeLibraryId);
 }
 
 QStringList Database::musicDirs() const {
@@ -114,11 +51,32 @@ QStringList Database::musicDirs() const {
 }
 
 void Database::setMusicDirs(const QStringList &dirs) {
-    if (m_musicDirs != dirs) {
+    bool modified = false;
+    for (int i = 0; i < m_libraries.size(); ++i) {
+        QJsonObject lib = m_libraries[i].toObject();
+        if (lib["id"].toString() == m_activeLibraryId) {
+            QJsonArray arr;
+            for (const auto &d : dirs) {
+                arr.append(d);
+            }
+            lib["musicDirs"] = arr;
+            m_libraries[i] = lib;
+            modified = true;
+            break;
+        }
+    }
+    
+    if (modified || m_musicDirs != dirs) {
         m_musicDirs = dirs;
+        saveMaster();
         save();
         setupDirectoryWatcher();
         emit musicDirsChanged();
+        emit librariesChanged();
+        
+        if (LibraryScanner::instance()) {
+            LibraryScanner::instance()->startScan();
+        }
     }
 }
 
@@ -204,19 +162,71 @@ QStringList Database::allAlbums() const {
 }
 
 void Database::addMusicDir(const QString &dir) {
-    if (!m_musicDirs.contains(dir)) {
-        m_musicDirs.append(dir);
-        save();
+    bool modified = false;
+    for (int i = 0; i < m_libraries.size(); ++i) {
+        QJsonObject lib = m_libraries[i].toObject();
+        if (lib["id"].toString() == m_activeLibraryId) {
+            QJsonArray dirs = lib["musicDirs"].toArray();
+            QString cleanDir = dir.trimmed();
+            
+            bool exists = false;
+            for (const auto &dVal : dirs) {
+                if (dVal.toString() == cleanDir) {
+                    exists = true;
+                    break;
+                }
+            }
+            
+            if (!exists) {
+                dirs.append(cleanDir);
+                lib["musicDirs"] = dirs;
+                m_libraries[i] = lib;
+                modified = true;
+            }
+            break;
+        }
+    }
+    
+    if (modified) {
+        saveMaster();
         setupDirectoryWatcher();
         emit musicDirsChanged();
+        emit librariesChanged();
+        
+        if (LibraryScanner::instance()) {
+            LibraryScanner::instance()->startScan();
+        }
     }
 }
 
 void Database::removeMusicDir(const QString &dir) {
-    if (m_musicDirs.removeOne(dir)) {
-        save();
+    bool modified = false;
+    for (int i = 0; i < m_libraries.size(); ++i) {
+        QJsonObject lib = m_libraries[i].toObject();
+        if (lib["id"].toString() == m_activeLibraryId) {
+            QJsonArray dirs = lib["musicDirs"].toArray();
+            for (int j = 0; j < dirs.size(); ++j) {
+                if (dirs[j].toString() == dir) {
+                    dirs.removeAt(j);
+                    lib["musicDirs"] = dirs;
+                    m_libraries[i] = lib;
+                    modified = true;
+                    break;
+                }
+            }
+            break;
+        }
+    }
+    
+    if (modified) {
+        saveMaster();
         setupDirectoryWatcher();
         emit musicDirsChanged();
+        emit librariesChanged();
+        
+        if (LibraryScanner::instance()) {
+            LibraryScanner::instance()->startScan();
+        }
     }
 }
 
@@ -399,3 +409,269 @@ void Database::setupDirectoryWatcher() {
         qDebug() << "Library Watcher: Watching" << toWatch.size() << "directories recursively.";
     }
 }
+
+QString Database::getLibraryDataFilePath(const QString &libId) const {
+    return QStringLiteral("%1/db_lib_%2.json").arg(PROJECT_SOURCE_DIR, libId);
+}
+
+void Database::loadMaster() {
+    QString path = getDbFilePath();
+    QFile file(path);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qWarning() << "No master database file found. Creating default master.";
+        QJsonObject defaultLib;
+        defaultLib["id"] = QStringLiteral("default");
+        defaultLib["name"] = QStringLiteral("Default Library");
+        defaultLib["musicDirs"] = QJsonArray();
+        m_libraries.append(defaultLib);
+        m_activeLibraryId = QStringLiteral("default");
+        saveMaster();
+        return;
+    }
+
+    QByteArray data = file.readAll();
+    file.close();
+
+    QJsonDocument doc = QJsonDocument::fromJson(data);
+    if (!doc.isObject()) {
+        qWarning() << "Invalid master database format.";
+        return;
+    }
+
+    QJsonObject root = doc.object();
+    
+    if (!root.contains("libraries")) {
+        qDebug() << "Migrating old database to multi-library layout...";
+        
+        QJsonObject settings = root["settings"].toObject();
+        QJsonArray dirs = settings["musicDirs"].toArray();
+        
+        QJsonObject defaultLib;
+        defaultLib["id"] = QStringLiteral("default");
+        defaultLib["name"] = QStringLiteral("Default Library");
+        defaultLib["musicDirs"] = dirs;
+        m_libraries.append(defaultLib);
+        m_activeLibraryId = QStringLiteral("default");
+        
+        QJsonArray tracksArr = root["tracks"].toArray();
+        QList<Track> oldTracks;
+        for (const auto &trackVal : tracksArr) {
+            oldTracks.append(Track::fromJsonObject(trackVal.toObject()));
+        }
+        QJsonArray oldCollections = root["collections"].toArray();
+        
+        saveLibraryDataHelper(QStringLiteral("default"), oldTracks, oldCollections);
+        saveMaster();
+        return;
+    }
+
+    m_libraries = root["libraries"].toArray();
+    m_activeLibraryId = root["activeLibraryId"].toString();
+    if (m_activeLibraryId.isEmpty() && !m_libraries.isEmpty()) {
+        m_activeLibraryId = m_libraries[0].toObject()["id"].toString();
+    }
+}
+
+void Database::saveMaster() {
+    QString path = getDbFilePath();
+    QFile file(path);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qWarning() << "Failed to write master database file at:" << path;
+        return;
+    }
+
+    QJsonObject root;
+    root["activeLibraryId"] = m_activeLibraryId;
+    root["libraries"] = m_libraries;
+
+    QJsonDocument doc(root);
+    file.write(doc.toJson(QJsonDocument::Indented));
+    file.close();
+}
+
+void Database::loadLibraryData(const QString &libId) {
+    QString path = getLibraryDataFilePath(libId);
+    QFile file(path);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qWarning() << "Library data file not found at:" << path;
+        m_tracks.clear();
+        m_collections = QJsonArray();
+        return;
+    }
+
+    QByteArray data = file.readAll();
+    file.close();
+
+    QJsonDocument doc = QJsonDocument::fromJson(data);
+    if (!doc.isObject()) {
+        m_tracks.clear();
+        m_collections = QJsonArray();
+        return;
+    }
+
+    QJsonObject root = doc.object();
+    
+    QJsonArray tracksArr = root["tracks"].toArray();
+    m_tracks.clear();
+    for (const auto &trackVal : tracksArr) {
+        m_tracks.append(Track::fromJsonObject(trackVal.toObject()));
+    }
+
+    m_collections = root["collections"].toArray();
+    
+    m_musicDirs.clear();
+    for (const auto &libVal : m_libraries) {
+        QJsonObject lib = libVal.toObject();
+        if (lib["id"].toString() == libId) {
+            QJsonArray dirs = lib["musicDirs"].toArray();
+            for (const auto &dirVal : dirs) {
+                m_musicDirs.append(dirVal.toString());
+            }
+            break;
+        }
+    }
+}
+
+void Database::saveLibraryData(const QString &libId) {
+    saveLibraryDataHelper(libId, m_tracks, m_collections);
+}
+
+void Database::saveLibraryDataHelper(const QString &libId, const QList<Track> &tracks, const QJsonArray &collections) {
+    QString path = getLibraryDataFilePath(libId);
+    
+    QFileInfo info(path);
+    QDir().mkpath(info.absolutePath());
+    
+    QFile file(path);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qWarning() << "Failed to write library data file at:" << path;
+        return;
+    }
+
+    QJsonObject root;
+    
+    QJsonArray tracksArr;
+    for (const auto &track : tracks) {
+        tracksArr.append(track.toJsonObject());
+    }
+    root["tracks"] = tracksArr;
+
+    root["collections"] = collections;
+
+    QJsonDocument doc(root);
+    file.write(doc.toJson(QJsonDocument::Indented));
+    file.close();
+}
+
+QVariantList Database::librariesVariant() const {
+    return m_libraries.toVariantList();
+}
+
+QString Database::activeLibraryId() const {
+    return m_activeLibraryId;
+}
+
+QString Database::activeLibraryName() const {
+    for (const auto &libVal : m_libraries) {
+        QJsonObject lib = libVal.toObject();
+        if (lib["id"].toString() == m_activeLibraryId) {
+            return lib["name"].toString();
+        }
+    }
+    return QStringLiteral("Unknown Library");
+}
+
+void Database::createLibrary(const QString &name, const QStringList &dirs) {
+    QString id = QStringLiteral("lib-%1").arg(QDateTime::currentMSecsSinceEpoch());
+    QJsonObject libObj;
+    libObj["id"] = id;
+    libObj["name"] = name.trimmed().isEmpty() ? QStringLiteral("New Library") : name.trimmed();
+    QJsonArray dirsArr;
+    for (const auto &d : dirs) {
+        if (!d.trimmed().isEmpty()) {
+            dirsArr.append(d.trimmed());
+        }
+    }
+    libObj["musicDirs"] = dirsArr;
+    
+    m_libraries.append(libObj);
+    saveMaster();
+    
+    QList<Track> emptyTracks;
+    QJsonArray emptyCollections;
+    saveLibraryDataHelper(id, emptyTracks, emptyCollections);
+    
+    emit librariesChanged();
+    setActiveLibrary(id);
+    
+    if (!dirs.isEmpty()) {
+        if (LibraryScanner::instance()) {
+            LibraryScanner::instance()->startScan();
+        }
+    }
+}
+
+void Database::deleteLibrary(const QString &id) {
+    if (m_libraries.size() <= 1) {
+        return;
+    }
+    
+    int indexToDelete = -1;
+    for (int i = 0; i < m_libraries.size(); ++i) {
+        if (m_libraries[i].toObject()["id"].toString() == id) {
+            indexToDelete = i;
+            break;
+        }
+    }
+    
+    if (indexToDelete != -1) {
+        QString filePath = getLibraryDataFilePath(id);
+        QFile::remove(filePath);
+        
+        m_libraries.removeAt(indexToDelete);
+        saveMaster();
+        emit librariesChanged();
+        
+        if (m_activeLibraryId == id) {
+            QString nextActiveId = m_libraries[0].toObject()["id"].toString();
+            setActiveLibrary(nextActiveId);
+        }
+    }
+}
+
+void Database::setActiveLibrary(const QString &id) {
+    if (m_activeLibraryId == id) return;
+    
+    saveLibraryData(m_activeLibraryId);
+    m_activeLibraryId = id;
+    saveMaster();
+    loadLibraryData(m_activeLibraryId);
+    setupDirectoryWatcher();
+    
+    emit activeLibraryChanged();
+    emit musicDirsChanged();
+    emit tracksChanged();
+    emit collectionsChanged();
+}
+
+void Database::renameLibrary(const QString &id, const QString &newName) {
+    bool modified = false;
+    for (int i = 0; i < m_libraries.size(); ++i) {
+        QJsonObject lib = m_libraries[i].toObject();
+        if (lib["id"].toString() == id) {
+            lib["name"] = newName.trimmed().isEmpty() ? QStringLiteral("Unnamed Library") : newName.trimmed();
+            m_libraries[i] = lib;
+            modified = true;
+            break;
+        }
+    }
+    
+    if (modified) {
+        saveMaster();
+        emit librariesChanged();
+        if (m_activeLibraryId == id) {
+            emit activeLibraryChanged();
+        }
+    }
+}
+
