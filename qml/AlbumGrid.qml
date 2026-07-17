@@ -102,15 +102,15 @@ Item {
         // 4. Convert to list model format (only keep letters with items to prevent scroll jitter)
         var resultModel = [];
         for (var idx = 0; idx < alphabet.length; ++idx) {
-            var char = alphabet[idx];
-            var list = letterGroups[char];
+            var ch = alphabet[idx];
+            var list = letterGroups[ch];
             if (list.length === 0) continue;
             
             // Sort albums alphabetically
             list.sort(function(x, y) { return x.name.localeCompare(y.name); });
             
             resultModel.push({
-                letter: char,
+                letter: ch,
                 albums: list,
                 hasItems: true
             });
@@ -264,7 +264,7 @@ Item {
                             width: 170
                             height: 230
                             color: "#73191928"
-                            border.color: cardMouseArea.containsMouse ? "#1effffff" : "#12ffffff"
+                            border.color: (coverMouseArea.containsMouse || textMouseArea.containsMouse) ? "#1effffff" : "#12ffffff"
                             radius: 16
                             clip: true
 
@@ -324,52 +324,66 @@ Item {
                                         }
                                     }
 
+                                    MouseArea {
+                                        id: coverMouseArea
+                                        anchors.fill: parent
+                                        hoverEnabled: true
+                                        cursorShape: Qt.PointingHandCursor
+                                        acceptedButtons: Qt.LeftButton | Qt.RightButton
+                                        
+                                        onClicked: {
+                                            if (mouse.button === Qt.RightButton) {
+                                                albumContextMenu.targetTracks = modelData.tracks;
+                                                albumContextMenu.popup();
+                                                return;
+                                            }
+                                            player.setQueue(modelData.tracks, 0);
+                                        }
+                                    }
                                 }
 
                                 // Text details
-                                Text {
-                                    text: modelData.name + (modelData.year > 0 ? " (" + modelData.year + ")" : "")
-                                    color: "#ffffff"
-                                    font.pixelSize: 14
-                                    font.weight: Font.DemiBold
-                                    elide: Text.ElideRight
+                                ColumnLayout {
+                                    id: textDetailsContainer
                                     Layout.fillWidth: true
+                                    spacing: 2
+
+                                    Text {
+                                        text: modelData.name + (modelData.year > 0 ? " (" + modelData.year + ")" : "")
+                                        color: "#ffffff"
+                                        font.pixelSize: 14
+                                        font.weight: Font.DemiBold
+                                        elide: Text.ElideRight
+                                        Layout.fillWidth: true
+                                    }
+
+                                    Text {
+                                        text: modelData.artist
+                                        color: "#9ea2c0"
+                                        font.pixelSize: 12
+                                        elide: Text.ElideRight
+                                        Layout.fillWidth: true
+                                    }
+
+                                    MouseArea {
+                                        id: textMouseArea
+                                        anchors.fill: parent
+                                        hoverEnabled: true
+                                        cursorShape: Qt.PointingHandCursor
+                                        onClicked: {
+                                            window.openAlbum(modelData);
+                                        }
+                                    }
                                 }
-
-                                Text {
-                                    text: modelData.artist
-                                    color: "#9ea2c0"
-                                    font.pixelSize: 12
-                                    elide: Text.ElideRight
-                                    Layout.fillWidth: true
-                                }
-                            }
-
-                             MouseArea {
-                                 id: cardMouseArea
-                                 anchors.fill: parent
-                                 hoverEnabled: true
-                                 acceptedButtons: Qt.LeftButton | Qt.RightButton
-                                 
-                                 onClicked: {
-                                     if (mouse.button === Qt.RightButton) {
-                                         albumContextMenu.targetTracks = modelData.tracks;
-                                         albumContextMenu.popup();
-                                         return;
-                                     }
-                                     window.openAlbum(modelData);
-                                 }
-
-                                 onDoubleClicked: {
-                                     player.setQueue(modelData.tracks, 0);
-                                 }
-                             }
                         }
                     }
                 }
             }
         }
     }
+}
+
+
 
     Menu {
         id: albumContextMenu

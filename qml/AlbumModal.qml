@@ -42,8 +42,8 @@ Rectangle {
     // Modal Content Panel
     Rectangle {
         id: modalContent
-        width: 800
-        height: parent.height * 0.85
+        width: Math.min(parent.width * 0.9, 1000)
+        height: Math.min(parent.height * 0.85, modalContentLayout.implicitHeight + 60)
         anchors.centerIn: parent
         color: "#1a1a2a"
         border.color: "#14ffffff"
@@ -55,6 +55,7 @@ Rectangle {
         Behavior on y { NumberAnimation { duration: 300; easing.type: Easing.OutQuad } }
 
         ColumnLayout {
+            id: modalContentLayout
             anchors.fill: parent
             anchors.margins: 30
             spacing: 24
@@ -235,7 +236,7 @@ Rectangle {
 
                 ColumnLayout {
                     id: tracklistContainer
-                    width: parent.width
+                    width: parent ? parent.width : 800
                     spacing: 20
 
                     Repeater {
@@ -284,7 +285,9 @@ Rectangle {
                                             anchors.fill: parent
                                             anchors.leftMargin: 12
                                             anchors.rightMargin: 12
+                                            spacing: 12
 
+                                            // Track Number
                                             Text {
                                                 text: trackObj.trackNo > 0 ? trackObj.trackNo : (index + 1)
                                                 color: isPlaying ? "#00f2fe" : "#666a8a"
@@ -293,43 +296,54 @@ Rectangle {
                                                 Layout.preferredWidth: 30
                                             }
 
-                                            ColumnLayout {
+                                            // Title
+                                            Text {
+                                                text: trackObj.title
+                                                color: isPlaying ? "#00f2fe" : "#ffffff"
+                                                font.pixelSize: 13
+                                                font.weight: Font.Medium
+                                                elide: Text.ElideRight
                                                 Layout.fillWidth: true
-                                                spacing: 2
+                                                Layout.preferredWidth: 220
+                                            }
 
-                                                Text {
-                                                    text: trackObj.title
-                                                    color: isPlaying ? "#00f2fe" : "#ffffff"
-                                                    font.pixelSize: 14
-                                                    font.weight: Font.Medium
-                                                    elide: Text.ElideRight
-                                                    Layout.fillWidth: true
-                                                }
+                                            // Artist
+                                            Text {
+                                                id: trackArtistLabel
+                                                text: trackObj.artist || ""
+                                                color: trackArtistMouse.containsMouse ? "#00f2fe" : (isPlaying ? "#7ae6ff" : "#9ea2c0")
+                                                font.pixelSize: 12
+                                                elide: Text.ElideRight
+                                                Layout.fillWidth: true
+                                                Layout.preferredWidth: 160
+                                                visible: root.shouldShowArtist(root.activeAlbum)
 
-                                                Text {
-                                                    id: trackArtistLabel
-                                                    text: trackObj.artist || ""
-                                                    color: trackArtistMouse.containsMouse ? "#00f2fe" : (isPlaying ? "#7ae6ff" : "#9ea2c0")
-                                                    font.pixelSize: 11
-                                                    elide: Text.ElideRight
-                                                    Layout.fillWidth: true
-                                                    visible: root.shouldShowArtist(root.activeAlbum)
-
-                                                    MouseArea {
-                                                        id: trackArtistMouse
-                                                        anchors.fill: parent
-                                                        hoverEnabled: true
-                                                        cursorShape: Qt.PointingHandCursor
-                                                        onClicked: {
-                                                            if (trackObj.artist) {
-                                                                root.visible = false;
-                                                                window.openArtist(trackObj.artist);
-                                                            }
+                                                MouseArea {
+                                                    id: trackArtistMouse
+                                                    anchors.fill: parent
+                                                    hoverEnabled: true
+                                                    cursorShape: Qt.PointingHandCursor
+                                                    onClicked: {
+                                                        if (trackObj.artist) {
+                                                            root.visible = false;
+                                                            window.openArtist(trackObj.artist);
                                                         }
                                                     }
                                                 }
                                             }
 
+                                            // Album (visible in smart collections or compilation views)
+                                            Text {
+                                                text: trackObj.album || ""
+                                                color: isPlaying ? "#7ae6ff" : "#9ea2c0"
+                                                font.pixelSize: 12
+                                                elide: Text.ElideRight
+                                                Layout.fillWidth: true
+                                                Layout.preferredWidth: 160
+                                                visible: root.activeAlbum && (root.activeAlbum.artist === "Various Artists" || root.activeAlbum.artist === "Smart Collection" || root.activeAlbum.displayMode === "collections")
+                                            }
+
+                                            // Rating Stars
                                             Row {
                                                 spacing: 2
                                                 Layout.alignment: Qt.AlignVCenter
@@ -363,6 +377,7 @@ Rectangle {
                                                 }
                                             }
 
+                                            // Edit Button
                                             Button {
                                                 id: editTagBtn
                                                 text: qsTr("Edit")
@@ -379,10 +394,13 @@ Rectangle {
                                                 }
                                             }
 
+                                            // Duration
                                             Text {
                                                 text: formatTime(trackObj.duration)
                                                 color: isPlaying ? "#00f2fe" : "#666a8a"
                                                 font.pixelSize: 13
+                                                Layout.preferredWidth: 40
+                                                horizontalAlignment: Text.AlignRight
                                             }
                                         }
 
