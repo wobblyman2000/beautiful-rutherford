@@ -247,19 +247,19 @@ Rectangle {
 
                             // CD section header (CD 1, CD 2)
                             Text {
-                                text: qsTr("CD %1").arg(modelData.discNo)
-                                color: "#666a8a"
-                                font.pixelSize: 13
+                                text: (root.activeAlbum ? root.activeAlbum.name : "") + " — CD " + modelData.discNo
+                                color: "#00f2fe"
+                                font.pixelSize: 14
                                 font.weight: Font.Bold
-                                visible: root.groupedTracks.length > 1
+                                visible: true
                                 Layout.fillWidth: true
                             }
 
                             Rectangle {
                                 Layout.fillWidth: true
                                 height: 1
-                                color: "#0dffffff"
-                                visible: root.groupedTracks.length > 1
+                                color: "#14ffffff"
+                                visible: true
                             }
 
                             // Tracks list
@@ -502,6 +502,18 @@ Rectangle {
         }
         root.activeAlbum = albumObj;
         
+        // Sort tracks by disc number first, then track number
+        if (albumObj && albumObj.tracks) {
+            albumObj.tracks.sort(function(a, b) {
+                var d1 = a.discNo || 1;
+                var d2 = b.discNo || 1;
+                if (d1 !== d2) return d1 - d2;
+                var t1 = a.trackNo || 0;
+                var t2 = b.trackNo || 0;
+                return t1 - t2;
+            });
+        }
+
         // Group tracks by CD
         var grouped = {};
         for (var i = 0; i < albumObj.tracks.length; ++i) {

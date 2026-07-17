@@ -1157,7 +1157,7 @@ ApplicationWindow {
                                         }
 
                                         Text {
-                                            text: (modelData.artist || qsTr("Unknown Artist")) + " • " + (modelData.album || qsTr("Unknown Album"))
+                                            text: (modelData.artist || qsTr("Unknown Artist")) + " • " + (modelData.album || qsTr("Unknown Album")) + (modelData.discNo > 0 ? " — CD " + modelData.discNo : "")
                                             color: index === player.queueIndex ? "#7ae6ff" : "#666a8a"
                                             font.pixelSize: 10
                                             elide: Text.ElideRight
