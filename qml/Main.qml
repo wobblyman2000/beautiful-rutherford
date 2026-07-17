@@ -19,6 +19,7 @@ ApplicationWindow {
     property bool autoTheaterEnabled: false
     property bool autoTheaterOnlyWhenPlaying: false
     property bool showLyricsPanel: false
+    property bool showRightQueuePanel: true
     property var djRulesModel: [{ field: "album", operator: "contains", value: "" }]
     property int preTheaterVisibility: ApplicationWindow.FullScreen
 
@@ -375,6 +376,31 @@ ApplicationWindow {
                                 font.weight: Font.Medium
                             }
                         }
+
+                        // Toggle Right Queue Panel Button
+                        Button {
+                            id: toggleQueueBtn
+                            flat: true
+                            Layout.preferredWidth: 38
+                            Layout.preferredHeight: 38
+                            
+                            background: Rectangle {
+                                color: window.showRightQueuePanel ? "#1a00f2fe" : (toggleQueueBtn.hovered ? "#0affffff" : "transparent")
+                                border.color: window.showRightQueuePanel ? "#4000f2fe" : "transparent"
+                                border.width: 1
+                                radius: 8
+                            }
+                            
+                            contentItem: Image {
+                                source: "image://theme/media-playlist-normal"
+                                anchors.centerIn: parent
+                                width: 18
+                                height: 18
+                                opacity: window.showRightQueuePanel ? 1.0 : 0.6
+                            }
+                            
+                            onClicked: window.showRightQueuePanel = !window.showRightQueuePanel
+                        }
                     }
                 }
 
@@ -405,17 +431,15 @@ ApplicationWindow {
                     }
 
                     // Auto-DJ Dashboard Page
-                    RowLayout {
+                    Item {
                         anchors.fill: parent
                         anchors.margins: 30
-                        spacing: 24
                         visible: window.activePage === "autodj"
 
                         // Left Pane: Filters & Configuration
                         Rectangle {
                             id: rulesCardLeftDJ
-                            Layout.preferredWidth: 500
-                            Layout.fillHeight: true
+                            anchors.fill: parent
                             color: "#73191928"
                             border.color: "#14ffffff"
                             border.width: 1
@@ -721,164 +745,6 @@ ApplicationWindow {
                             }
                         }
 
-                        // Right Pane: Minimal Queue Inspector
-                        Rectangle {
-                            Layout.fillWidth: true
-                            Layout.fillHeight: true
-                            color: "#73191928"
-                            border.color: "#14ffffff"
-                            border.width: 1
-                            radius: 16
-
-                            ColumnLayout {
-                                anchors.fill: parent
-                                anchors.margins: 20
-                                spacing: 14
-
-                                RowLayout {
-                                    Layout.fillWidth: true
-                                    Text {
-                                        text: qsTr("Current Queue List")
-                                        color: "#ffffff"
-                                        font.pixelSize: 20
-                                        font.weight: Font.Bold
-                                    }
-                                    Item { Layout.fillWidth: true }
-                                    Button {
-                                        id: clearQueueBtnBtn
-                                        flat: true
-                                        contentItem: Text { text: qsTr("Clear Queue"); color: "#ff5555"; font.weight: Font.Bold }
-                                        onClicked: player.clearQueue()
-                                    }
-                                }
-
-                                ScrollView {
-                                    Layout.fillWidth: true
-                                    Layout.fillHeight: true
-                                    clip: true
-
-                                    ListView {
-                                        id: queueListView
-                                        model: player.queue
-                                        spacing: 4
-
-                                        delegate: Rectangle {
-                                            width: queueListView.width
-                                            height: 48
-                                            color: index === player.queueIndex ? "#1a00f2fe" : (queueMouse.containsMouse ? "#0dffffff" : "transparent")
-                                            border.color: index === player.queueIndex ? "#4000f2fe" : "transparent"
-                                            radius: 8
-
-                                            MouseArea {
-                                                id: queueMouse
-                                                anchors.fill: parent
-                                                hoverEnabled: true
-                                                onDoubleClicked: {
-                                                    player.setQueue(player.queue, index);
-                                                }
-                                            }
-
-                                            RowLayout {
-                                                anchors.fill: parent
-                                                anchors.leftMargin: 12
-                                                anchors.rightMargin: 12
-                                                spacing: 12
-
-                                                Text {
-                                                    text: (index + 1).toString()
-                                                    color: index === player.queueIndex ? "#00f2fe" : "#666a8a"
-                                                    font.pixelSize: 13
-                                                    font.weight: Font.DemiBold
-                                                    Layout.preferredWidth: 24
-                                                    horizontalAlignment: Text.AlignRight
-                                                    Layout.alignment: Qt.AlignVCenter
-                                                }
-
-                                                Rectangle {
-                                                    width: 32
-                                                    height: 32
-                                                    radius: 4
-                                                    color: "#111111"
-                                                    clip: true
-                                                    Layout.alignment: Qt.AlignVCenter
-
-                                                    Image {
-                                                        source: modelData.coverPath || ""
-                                                        anchors.fill: parent
-                                                        fillMode: Image.PreserveAspectCrop
-                                                        visible: source !== ""
-                                                    }
-
-                                                    Image {
-                                                        anchors.centerIn: parent
-                                                        source: "image://theme/media-optical"
-                                                        width: 16
-                                                        height: 16
-                                                        visible: !modelData.coverPath
-                                                        opacity: 0.4
-                                                    }
-                                                }
-
-                                                Text {
-                                                    text: modelData.title || qsTr("Unknown Track")
-                                                    color: index === player.queueIndex ? "#00f2fe" : "#ffffff"
-                                                    font.pixelSize: 13
-                                                    font.weight: Font.Medium
-                                                    elide: Text.ElideRight
-                                                    Layout.fillWidth: true
-                                                    Layout.preferredWidth: 150
-                                                    Layout.alignment: Qt.AlignVCenter
-                                                }
-
-                                                Text {
-                                                    text: modelData.artist || qsTr("Unknown Artist")
-                                                    color: index === player.queueIndex ? "#7ae6ff" : "#9ea2c0"
-                                                    font.pixelSize: 11
-                                                    elide: Text.ElideRight
-                                                    Layout.fillWidth: true
-                                                    Layout.preferredWidth: 100
-                                                    Layout.alignment: Qt.AlignVCenter
-                                                }
-
-                                                Text {
-                                                    text: modelData.album || qsTr("Unknown Album")
-                                                    color: index === player.queueIndex ? "#7ae6ff" : "#9ea2c0"
-                                                    font.pixelSize: 11
-                                                    elide: Text.ElideRight
-                                                    Layout.fillWidth: true
-                                                    Layout.preferredWidth: 100
-                                                    Layout.alignment: Qt.AlignVCenter
-                                                }
-
-                                                Text {
-                                                    text: playerBar.formatTime(modelData.duration)
-                                                    color: index === player.queueIndex ? "#00f2fe" : "#666a8a"
-                                                    font.pixelSize: 12
-                                                    Layout.alignment: Qt.AlignVCenter
-                                                }
-
-                                                Button {
-                                                    id: queueItemDelBtnBtn
-                                                    flat: true
-                                                    Layout.preferredWidth: 32
-                                                    Layout.preferredHeight: 32
-                                                    Layout.alignment: Qt.AlignVCenter
-                                                    onClicked: player.removeQueueIndex(index)
-                                                    contentItem: Text {
-                                                        text: "✕"
-                                                        color: "#ff5555"
-                                                        font.bold: true
-                                                        font.pixelSize: 14
-                                                        horizontalAlignment: Text.AlignHCenter
-                                                        verticalAlignment: Text.AlignVCenter
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     }
 
                     // Settings View
@@ -1155,6 +1021,182 @@ ApplicationWindow {
                 LyricsVisualizer {
                     anchors.fill: parent
                     anchors.margins: 20
+                }
+            }
+
+            // Collapsible Right Sidebar Queue Panel (MusicBee Style!)
+            Rectangle {
+                id: rightQueuePanel
+                Layout.fillHeight: true
+                Layout.preferredWidth: window.showRightQueuePanel ? 300 : 0
+                visible: Layout.preferredWidth > 0
+                clip: true
+                color: "#990d0d15" // glassmorphism dark overlay matching sidebar
+                border.color: "#14ffffff"
+                border.width: 1
+
+                Behavior on Layout.preferredWidth {
+                    NumberAnimation { duration: 250; easing.type: Easing.OutQuad }
+                }
+
+                ColumnLayout {
+                    anchors.fill: parent
+                    anchors.margins: 16
+                    spacing: 12
+
+                    // Header Row
+                    RowLayout {
+                        Layout.fillWidth: true
+                        Text {
+                            text: qsTr("Playing Queue")
+                            color: "#ffffff"
+                            font.pixelSize: 15
+                            font.weight: Font.Bold
+                            Layout.fillWidth: true
+                        }
+                        
+                        Text {
+                            text: player.queue.length + " " + (player.queue.length === 1 ? qsTr("track") : qsTr("tracks"))
+                            color: "#666a8a"
+                            font.pixelSize: 11
+                            Layout.rightMargin: 8
+                        }
+
+                        Button {
+                            id: globalClearQueueBtn
+                            flat: true
+                            contentItem: Text {
+                                text: qsTr("Clear")
+                                color: "#ff5555"
+                                font.pixelSize: 12
+                                font.weight: Font.DemiBold
+                            }
+                            onClicked: player.clearQueue()
+                        }
+                    }
+
+                    // Divider
+                    Rectangle {
+                        Layout.fillWidth: true
+                        height: 1
+                        color: "#14ffffff"
+                    }
+
+                    // Queue List
+                    ScrollView {
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                        clip: true
+
+                        ListView {
+                            id: globalQueueListView
+                            model: player.queue
+                            spacing: 4
+
+                            delegate: Rectangle {
+                                width: globalQueueListView.width
+                                height: 48
+                                color: index === player.queueIndex ? "#1a00f2fe" : (gQueueMouse.containsMouse ? "#0dffffff" : "transparent")
+                                border.color: index === player.queueIndex ? "#4000f2fe" : "transparent"
+                                radius: 8
+
+                                MouseArea {
+                                    id: gQueueMouse
+                                    anchors.fill: parent
+                                    hoverEnabled: true
+                                    onDoubleClicked: {
+                                        player.setQueue(player.queue, index);
+                                    }
+                                }
+
+                                RowLayout {
+                                    anchors.fill: parent
+                                    anchors.leftMargin: 8
+                                    anchors.rightMargin: 8
+                                    spacing: 8
+
+                                    // Thumbnail
+                                    Rectangle {
+                                        width: 32
+                                        height: 32
+                                        radius: 4
+                                        color: "#111111"
+                                        clip: true
+                                        Layout.alignment: Qt.AlignVCenter
+
+                                        Image {
+                                            source: modelData.coverPath || ""
+                                            anchors.fill: parent
+                                            fillMode: Image.PreserveAspectCrop
+                                            visible: source !== ""
+                                        }
+
+                                        Image {
+                                            anchors.centerIn: parent
+                                            source: "image://theme/media-optical"
+                                            width: 14
+                                            height: 14
+                                            visible: !modelData.coverPath
+                                            opacity: 0.4
+                                        }
+                                    }
+
+                                    // Track Info Column
+                                    ColumnLayout {
+                                        spacing: 1
+                                        Layout.fillWidth: true
+                                        Layout.alignment: Qt.AlignVCenter
+
+                                        Text {
+                                            text: modelData.title || qsTr("Unknown Track")
+                                            color: index === player.queueIndex ? "#00f2fe" : "#ffffff"
+                                            font.pixelSize: 12
+                                            font.weight: Font.Medium
+                                            elide: Text.ElideRight
+                                            Layout.fillWidth: true
+                                        }
+
+                                        Text {
+                                            text: (modelData.artist || qsTr("Unknown Artist")) + " • " + (modelData.album || qsTr("Unknown Album"))
+                                            color: index === player.queueIndex ? "#7ae6ff" : "#666a8a"
+                                            font.pixelSize: 10
+                                            elide: Text.ElideRight
+                                            Layout.fillWidth: true
+                                        }
+                                    }
+
+                                    // Time
+                                    Text {
+                                        text: {
+                                            var mins = Math.floor((modelData.duration || 0) / 60);
+                                            var secs = Math.floor((modelData.duration || 0) % 60);
+                                            return mins + ":" + (secs < 10 ? "0" : "") + secs;
+                                        }
+                                        color: index === player.queueIndex ? "#00f2fe" : "#666a8a"
+                                        font.pixelSize: 10
+                                        Layout.alignment: Qt.AlignVCenter
+                                    }
+
+                                    // Remove button
+                                    Button {
+                                        id: gQueueDelBtn
+                                        flat: true
+                                        Layout.preferredWidth: 24
+                                        Layout.preferredHeight: 24
+                                        Layout.alignment: Qt.AlignVCenter
+                                        onClicked: player.removeQueueIndex(index)
+                                        contentItem: Text {
+                                            text: "✕"
+                                            color: "#ff5555"
+                                            font.pixelSize: 11
+                                            horizontalAlignment: Text.AlignHCenter
+                                            verticalAlignment: Text.AlignVCenter
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
