@@ -883,54 +883,80 @@ ApplicationWindow {
                                                      RowLayout {
                                                          spacing: 8
 
-                                                         Button {
-                                                             text: qsTr("Rename")
-                                                             flat: true
-                                                             Layout.preferredHeight: 28
-                                                             visible: database.activeLibraryId !== modelData.id
-                                                             contentItem: Text {
-                                                                 text: parent.text
-                                                                 color: "#9ea2c0"
-                                                                 font.pixelSize: 12
-                                                             }
-                                                             onClicked: {
-                                                                 renameLibDialog.targetLibId = modelData.id;
-                                                                 renameLibDialog.targetLibName = modelData.name;
-                                                                 renameLibInput.text = modelData.name;
-                                                                 renameLibDialog.open();
-                                                             }
-                                                         }
+                                                         // Rename Button
+                                                          Text {
+                                                              text: qsTr("Rename")
+                                                              color: renameMouse.containsMouse ? "#ffffff" : "#9ea2c0"
+                                                              font.pixelSize: 13
+                                                              font.weight: Font.Medium
+                                                              visible: database.activeLibraryId !== modelData.id
+                                                              verticalAlignment: Text.AlignVCenter
+                                                              leftPadding: 8
+                                                              rightPadding: 8
+                                                              topPadding: 6
+                                                              bottomPadding: 6
 
-                                                         Button {
-                                                             text: qsTr("Activate")
-                                                             flat: true
-                                                             Layout.preferredHeight: 28
-                                                             visible: database.activeLibraryId !== modelData.id
-                                                             contentItem: Text {
-                                                                 text: parent.text
-                                                                 color: "#00f2fe"
-                                                                 font.pixelSize: 12
-                                                                 font.weight: Font.Bold
-                                                             }
-                                                             onClicked: database.setActiveLibrary(modelData.id)
-                                                         }
+                                                              MouseArea {
+                                                                  id: renameMouse
+                                                                  anchors.fill: parent
+                                                                  hoverEnabled: true
+                                                                  cursorShape: Qt.PointingHandCursor
+                                                                  onClicked: {
+                                                                      renameLibDialog.targetLibId = modelData.id;
+                                                                      renameLibDialog.targetLibName = modelData.name;
+                                                                      renameLibInput.text = modelData.name;
+                                                                      renameLibDialog.open();
+                                                                  }
+                                                              }
+                                                          }
 
-                                                         Button {
-                                                             text: qsTr("Delete")
-                                                             flat: true
-                                                             Layout.preferredHeight: 28
-                                                             visible: database.libraries.length > 1
-                                                             contentItem: Text {
-                                                                 text: parent.text
-                                                                 color: "#ff5555"
-                                                                 font.pixelSize: 12
-                                                             }
-                                                             onClicked: {
-                                                                 confirmDeleteLibDialog.targetLibId = modelData.id;
-                                                                 confirmDeleteLibDialog.targetLibName = modelData.name;
-                                                                 confirmDeleteLibDialog.open();
-                                                             }
-                                                         }
+                                                          // Activate Button
+                                                          Text {
+                                                              text: qsTr("Activate")
+                                                              color: activateMouse.containsMouse ? "#00f2fe" : "#7ae6ff"
+                                                              font.pixelSize: 13
+                                                              font.weight: Font.Bold
+                                                              visible: database.activeLibraryId !== modelData.id
+                                                              verticalAlignment: Text.AlignVCenter
+                                                              leftPadding: 8
+                                                              rightPadding: 8
+                                                              topPadding: 6
+                                                              bottomPadding: 6
+
+                                                              MouseArea {
+                                                                  id: activateMouse
+                                                                  anchors.fill: parent
+                                                                  hoverEnabled: true
+                                                                  cursorShape: Qt.PointingHandCursor
+                                                                  onClicked: database.setActiveLibrary(modelData.id)
+                                                              }
+                                                          }
+
+                                                          // Delete Button
+                                                          Text {
+                                                              text: qsTr("Delete")
+                                                              color: deleteMouse.containsMouse ? "#ff4444" : "#ff6b6b"
+                                                              font.pixelSize: 13
+                                                              font.weight: Font.Medium
+                                                              visible: database.libraries.length > 1
+                                                              verticalAlignment: Text.AlignVCenter
+                                                              leftPadding: 8
+                                                              rightPadding: 8
+                                                              topPadding: 6
+                                                              bottomPadding: 6
+
+                                                              MouseArea {
+                                                                  id: deleteMouse
+                                                                  anchors.fill: parent
+                                                                  hoverEnabled: true
+                                                                  cursorShape: Qt.PointingHandCursor
+                                                                  onClicked: {
+                                                                      confirmDeleteLibDialog.targetLibId = modelData.id;
+                                                                      confirmDeleteLibDialog.targetLibName = modelData.name;
+                                                                      confirmDeleteLibDialog.open();
+                                                                  }
+                                                              }
+                                                          }
                                                      }
                                                  }
                                              }
@@ -986,7 +1012,13 @@ ApplicationWindow {
                                         }
 
                                         Button {
-                                            text: qsTr("Add Folder")
+                                            text: qsTr("Browse...")
+                                            onClicked: musicFolderDialog.open()
+                                        }
+
+                                        Button {
+                                            text: qsTr("Add Path")
+                                            highlighted: true
                                             onClicked: {
                                                 if (folderInput.text.trim()) {
                                                     database.addMusicDir(folderInput.text.trim());
@@ -1157,7 +1189,7 @@ ApplicationWindow {
                                         ColumnLayout {
                                             spacing: 2
                                             Text {
-                                                text: qsTr("Aether Player — Version 1.3.0")
+                                                text: qsTr("Aether Player — Version 1.3.1")
                                                 color: "#00f2fe"
                                                 font.pixelSize: 13
                                                 font.weight: Font.Bold
@@ -1892,6 +1924,20 @@ ApplicationWindow {
                     }
                 }
             }
+        }
+    }
+
+    // Native Folder Dialog
+    Platform.FolderDialog {
+        id: musicFolderDialog
+        title: qsTr("Select Music Folder")
+        onAccepted: {
+            var path = folder.toString();
+            if (path.indexOf("file://") === 0) {
+                path = path.substring(7);
+            }
+            path = decodeURIComponent(path);
+            database.addMusicDir(path);
         }
     }
 }
