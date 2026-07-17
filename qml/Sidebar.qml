@@ -70,8 +70,6 @@ Rectangle {
 
                 background: Rectangle {
                     color: window.activePage === pageKey ? "#1a00f2fe" : (parent.hovered ? "#08ffffff" : "transparent")
-                    border.color: window.activePage === pageKey ? "#4000f2fe" : "transparent"
-                    border.width: 1
                     radius: 8
                 }
 

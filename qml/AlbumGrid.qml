@@ -260,12 +260,15 @@ Item {
                         model: modelData.albums
 
                         delegate: Rectangle {
+                            id: albumCardRect
                             width: 170
                             height: 230
                             color: "#73191928"
                             border.color: cardMouseArea.containsMouse ? "#1effffff" : "#12ffffff"
                             radius: 16
                             clip: true
+
+                            property bool isPlayingAlbum: player.currentTrack && player.currentTrack.album === modelData.name && player.currentTrack.artist === modelData.artist
 
                             ColumnLayout {
                                 anchors.fill: parent
@@ -280,6 +283,8 @@ Item {
                                     radius: 12
                                     clip: true
                                     Layout.alignment: Qt.AlignHCenter
+                                    border.color: isPlayingAlbum ? "#00f2fe" : "transparent"
+                                    border.width: isPlayingAlbum ? 3 : 0
 
                                     Image {
                                         id: albumCover
@@ -319,59 +324,11 @@ Item {
                                         }
                                     }
 
-                                    // Quick play overlay
-                                    Rectangle {
-                                        anchors.fill: parent
-                                        color: "#80000000"
-                                        opacity: (cardMouseArea.containsMouse && !albumModal.visible) ? 1.0 : 0.0
-                                        visible: opacity > 0.0
-                                        
-                                        Behavior on opacity { NumberAnimation { duration: 200 } }
-
-                                        Button {
-                                            id: quickPlayBtn
-                                            width: 44
-                                            height: 44
-                                            anchors.centerIn: parent
-                                            flat: true
-                                            
-                                            background: Rectangle {
-                                                color: "#00f2fe"
-                                                radius: width / 2
-                                            }
-
-                                            contentItem: Item {
-                                                anchors.fill: parent
-                                                Canvas {
-                                                    anchors.centerIn: parent
-                                                    anchors.horizontalCenterOffset: 1.5
-                                                    width: 11
-                                                    height: 13
-                                                    onPaint: {
-                                                        var ctx = getContext("2d");
-                                                        ctx.reset();
-                                                        ctx.fillStyle = "#1a1a2a";
-                                                        ctx.beginPath();
-                                                        ctx.moveTo(0, 0);
-                                                        ctx.lineTo(width, height / 2);
-                                                        ctx.lineTo(0, height);
-                                                        ctx.closePath();
-                                                        ctx.fill();
-                                                    }
-                                                }
-                                            }
-
-                                            onClicked: {
-                                                // Convert variant array to QVariantList to set queue
-                                                player.setQueue(modelData.tracks, 0);
-                                            }
-                                        }
-                                    }
                                 }
 
                                 // Text details
                                 Text {
-                                    text: modelData.name
+                                    text: modelData.name + (modelData.year > 0 ? " (" + modelData.year + ")" : "")
                                     color: "#ffffff"
                                     font.pixelSize: 14
                                     font.weight: Font.DemiBold
@@ -398,12 +355,6 @@ Item {
                                      if (mouse.button === Qt.RightButton) {
                                          albumContextMenu.targetTracks = modelData.tracks;
                                          albumContextMenu.popup();
-                                         return;
-                                     }
-
-                                     // Make sure we didn't click the quick play overlay button
-                                     var relativePos = mapToItem(quickPlayBtn, mouse.x, mouse.y);
-                                     if (quickPlayBtn.contains(relativePos)) {
                                          return;
                                      }
                                      window.openAlbum(modelData);
