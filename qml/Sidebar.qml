@@ -39,41 +39,47 @@ Rectangle {
             Layout.alignment: Qt.AlignTop
 
             // Button helper
-            component NavButton : Button {
+            component NavButton : Item {
+                property string text: ""
                 property string pageKey: ""
                 property string iconName: ""
                 
                 Layout.fillWidth: true
                 Layout.preferredHeight: 44
-                flat: true
-                focusPolicy: Qt.NoFocus
                 
-                contentItem: RowLayout {
-                    spacing: 12
+                Rectangle {
                     anchors.fill: parent
-                    anchors.leftMargin: 12
-
-                    Image {
-                        source: "image://theme/" + iconName
-                        Layout.preferredWidth: 20
-                        Layout.preferredHeight: 20
-                        opacity: window.activePage === pageKey ? 1.0 : 0.6
-                    }
-
-                    Text {
-                        text: parent.parent.text
-                        color: window.activePage === pageKey ? "#00f2fe" : "#9ea2c0"
-                        font.pixelSize: 15
-                        font.weight: window.activePage === pageKey ? Font.DemiBold : Font.Normal
-                    }
-                }
-
-                background: Rectangle {
-                    color: window.activePage === pageKey ? "#1a00f2fe" : (parent.hovered ? "#08ffffff" : "transparent")
+                    color: window.activePage === pageKey ? "#1a00f2fe" : (navMouse.containsMouse ? "#08ffffff" : "transparent")
                     radius: 8
+                    
+                    RowLayout {
+                        spacing: 12
+                        anchors.fill: parent
+                        anchors.leftMargin: 12
+
+                        Image {
+                            source: "image://theme/" + iconName
+                            Layout.preferredWidth: 20
+                            Layout.preferredHeight: 20
+                            opacity: window.activePage === pageKey ? 1.0 : 0.6
+                        }
+
+                        Text {
+                            text: parent.parent.parent.text
+                            color: window.activePage === pageKey ? "#00f2fe" : "#9ea2c0"
+                            font.pixelSize: 15
+                            font.weight: window.activePage === pageKey ? Font.DemiBold : Font.Normal
+                        }
+                    }
                 }
 
-                onClicked: window.activePage = pageKey
+                MouseArea {
+                    id: navMouse
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: window.activePage = pageKey
+                }
             }
 
             NavButton {
@@ -121,39 +127,44 @@ Rectangle {
                 Layout.bottomMargin: 8
             }
 
-            Button {
+            Item {
                 id: quitSidebarBtn
                 Layout.fillWidth: true
                 Layout.preferredHeight: 44
-                flat: true
-                focusPolicy: Qt.NoFocus
                 
-                contentItem: RowLayout {
-                    spacing: 12
+                Rectangle {
                     anchors.fill: parent
-                    anchors.leftMargin: 12
-
-                    Image {
-                        source: "image://theme/system-log-out"
-                        Layout.preferredWidth: 20
-                        Layout.preferredHeight: 20
-                        opacity: 0.6
-                    }
-
-                    Text {
-                        text: qsTr("Quit")
-                        color: "#ff5555"
-                        font.pixelSize: 15
-                        font.weight: Font.DemiBold
-                    }
-                }
-
-                background: Rectangle {
-                    color: quitSidebarBtn.hovered ? "#1aff5555" : "transparent"
+                    color: quitMouse.containsMouse ? "#1aff5555" : "transparent"
                     radius: 8
+                    
+                    RowLayout {
+                        spacing: 12
+                        anchors.fill: parent
+                        anchors.leftMargin: 12
+
+                        Image {
+                            source: "image://theme/system-log-out"
+                            Layout.preferredWidth: 20
+                            Layout.preferredHeight: 20
+                            opacity: 0.6
+                        }
+
+                        Text {
+                            text: qsTr("Quit")
+                            color: "#ff5555"
+                            font.pixelSize: 15
+                            font.weight: Font.DemiBold
+                        }
+                    }
                 }
 
-                onClicked: Qt.quit()
+                MouseArea {
+                    id: quitMouse
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: Qt.quit()
+                }
             }
         }
     }

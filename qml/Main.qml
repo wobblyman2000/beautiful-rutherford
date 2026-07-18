@@ -1194,7 +1194,7 @@ ApplicationWindow {
                                         ColumnLayout {
                                             spacing: 2
                                             Text {
-                                                text: qsTr("Aether Player — Version 1.3.7")
+                                                text: qsTr("Aether Player — Version 1.3.8")
                                                 color: "#00f2fe"
                                                 font.pixelSize: 13
                                                 font.weight: Font.Bold
