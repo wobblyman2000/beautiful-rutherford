@@ -677,3 +677,25 @@ void Database::renameLibrary(const QString &id, const QString &newName) {
     }
 }
 
+void Database::resetLibraryCache() {
+    m_tracks.clear();
+    m_collections = QJsonArray();
+    saveLibraryData(m_activeLibraryId);
+    
+    QString coversCacheDir = QStringLiteral("%1/cache/covers").arg(PROJECT_SOURCE_DIR);
+    QDir dir(coversCacheDir);
+    if (dir.exists()) {
+        QFileInfoList list = dir.entryInfoList(QDir::Files);
+        for (const auto &fileInfo : list) {
+            QFile::remove(fileInfo.absoluteFilePath());
+        }
+    }
+    
+    emit tracksChanged();
+    emit collectionsChanged();
+    
+    if (LibraryScanner::instance()) {
+        LibraryScanner::instance()->startScan();
+    }
+}
+

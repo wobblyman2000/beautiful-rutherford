@@ -120,6 +120,7 @@ public:
     Q_INVOKABLE void deleteLibrary(const QString &id);
     Q_INVOKABLE void setActiveLibrary(const QString &id);
     Q_INVOKABLE void renameLibrary(const QString &id, const QString &newName);
+    Q_INVOKABLE void resetLibraryCache();
     
     // Smart Collections CRUD
     Q_INVOKABLE void saveCollection(const QString &id, const QString &name, const QString &coverPath, const QString &displayMode, const QVariantList &rules, const QString &folder = QString());

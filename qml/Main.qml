@@ -1089,6 +1089,11 @@ ApplicationWindow {
                                         }
 
                                         Button {
+                                            text: qsTr("Reset Cache & Rescan")
+                                            onClicked: confirmResetCacheDialog.open()
+                                        }
+
+                                        Button {
                                             text: qsTr("Scan Library Now")
                                             onClicked: scanner.startScan()
                                         }
@@ -1189,7 +1194,7 @@ ApplicationWindow {
                                         ColumnLayout {
                                             spacing: 2
                                             Text {
-                                                text: qsTr("Aether Player — Version 1.3.6")
+                                                text: qsTr("Aether Player — Version 1.3.7")
                                                 color: "#00f2fe"
                                                 font.pixelSize: 13
                                                 font.weight: Font.Bold
@@ -1921,6 +1926,65 @@ ApplicationWindow {
                     onClicked: {
                         database.deleteLibrary(confirmDeleteLibDialog.targetLibId);
                         confirmDeleteLibDialog.close();
+                    }
+                }
+            }
+        }
+    }
+
+    // Confirm Reset Cache Popup
+    Popup {
+        id: confirmResetCacheDialog
+        x: (window.width - width) / 2
+        y: (window.height - height) / 2
+        width: 340
+        height: 190
+        modal: true
+        focus: true
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+
+        background: Rectangle {
+            color: "#1e1e30"
+            border.color: "#ff555540"
+            radius: 12
+        }
+
+        ColumnLayout {
+            anchors.fill: parent
+            anchors.margins: 20
+            spacing: 12
+
+            Text {
+                text: qsTr("Reset Library Cache")
+                color: "#ff5555"
+                font.pixelSize: 16
+                font.weight: Font.Bold
+            }
+
+            Text {
+                text: qsTr("This will clear Aether's database track list and cover art images cache for the active library, and perform a complete fresh rescan. Original audio files on your disk will NOT be touched.")
+                color: "#9ea2c0"
+                font.pixelSize: 12
+                wrapMode: Text.WordWrap
+                Layout.fillWidth: true
+            }
+
+            Item { Layout.fillHeight: true }
+
+            RowLayout {
+                Layout.fillWidth: true
+                spacing: 12
+                Item { Layout.fillWidth: true }
+                Button {
+                    text: qsTr("Cancel")
+                    onClicked: confirmResetCacheDialog.close()
+                }
+                Button {
+                    text: qsTr("Reset & Rescan")
+                    highlighted: true
+                    onClicked: {
+                        database.resetLibraryCache();
+                        confirmResetCacheDialog.close();
                     }
                 }
             }
