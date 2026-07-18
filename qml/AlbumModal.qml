@@ -286,64 +286,36 @@ Rectangle {
 
                                         RowLayout {
                                             anchors.fill: parent
-                                            anchors.leftMargin: 12
-                                            anchors.rightMargin: 12
+                                            anchors.leftMargin: 16
+                                            anchors.rightMargin: 16
                                             spacing: 12
 
-                                            // Track Number
                                             Text {
-                                                text: trackObj.trackNo > 0 ? trackObj.trackNo : (index + 1)
-                                                color: isPlaying ? "#00f2fe" : "#666a8a"
-                                                font.pixelSize: 13
-                                                font.weight: Font.DemiBold
-                                                Layout.preferredWidth: 30
-                                            }
-
-                                            // Title
-                                            Text {
-                                                text: trackObj.title
-                                                color: isPlaying ? "#00f2fe" : "#ffffff"
-                                                font.pixelSize: 13
-                                                font.weight: Font.Medium
-                                                elide: Text.ElideRight
-                                                Layout.fillWidth: true
-                                                Layout.preferredWidth: 220
-                                            }
-
-                                            // Artist
-                                            Text {
-                                                id: trackArtistLabel
-                                                text: trackObj.artist || ""
-                                                color: trackArtistMouse.containsMouse ? "#00f2fe" : (isPlaying ? "#7ae6ff" : "#9ea2c0")
-                                                font.pixelSize: 12
-                                                elide: Text.ElideRight
-                                                Layout.fillWidth: true
-                                                Layout.preferredWidth: 160
-                                                visible: true
-
-                                                MouseArea {
-                                                    id: trackArtistMouse
-                                                    anchors.fill: parent
-                                                    hoverEnabled: true
-                                                    cursorShape: Qt.PointingHandCursor
-                                                    onClicked: {
-                                                        if (trackObj.artist) {
-                                                            root.visible = false;
-                                                            window.openArtist(trackObj.artist);
-                                                        }
+                                                id: trackMainText
+                                                textFormat: Text.RichText
+                                                text: {
+                                                    var trackNum = trackObj.trackNo > 0 ? (trackObj.trackNo < 10 ? "0" + trackObj.trackNo : trackObj.trackNo) : (index + 1);
+                                                    var numColor = isPlaying ? "#00f2fe" : "#666a8a";
+                                                    var titleColor = isPlaying ? "#00f2fe" : "#ffffff";
+                                                    var artistColor = isPlaying ? "#7ae6ff" : "#9ea2c0";
+                                                    var albumColor = isPlaying ? "#7ae6ff" : "#666a8a";
+                                                    
+                                                    var res = "<font color='" + numColor + "'><b>" + trackNum + "</b></font> &nbsp;&nbsp;&nbsp;&nbsp; " +
+                                                              "<font color='" + titleColor + "'>" + trackObj.title + "</font>";
+                                                    
+                                                    if (trackObj.artist) {
+                                                        res += " <font color='" + artistColor + "'> &nbsp;—&nbsp; " + trackObj.artist + "</font>";
                                                     }
+                                                    
+                                                    var currentAlbumName = root.activeAlbum ? root.activeAlbum.name : "";
+                                                    if (trackObj.album && trackObj.album !== currentAlbumName) {
+                                                        res += " <font color='" + albumColor + "'><i> (" + trackObj.album + ")</i></font>";
+                                                    }
+                                                    return res;
                                                 }
-                                            }
-
-                                            // Album (visible in smart collections or compilation views)
-                                            Text {
-                                                text: trackObj.album || ""
-                                                color: isPlaying ? "#7ae6ff" : "#9ea2c0"
-                                                font.pixelSize: 12
+                                                font.pixelSize: 13
                                                 elide: Text.ElideRight
                                                 Layout.fillWidth: true
-                                                Layout.preferredWidth: 160
-                                                visible: root.activeAlbum && (root.activeAlbum.artist === "Various Artists" || root.activeAlbum.artist === "Smart Collection" || root.activeAlbum.displayMode === "collections")
                                             }
 
                                             // Duration
@@ -351,7 +323,7 @@ Rectangle {
                                                 text: formatTime(trackObj.duration)
                                                 color: isPlaying ? "#00f2fe" : "#666a8a"
                                                 font.pixelSize: 13
-                                                Layout.preferredWidth: 40
+                                                Layout.preferredWidth: 45
                                                 horizontalAlignment: Text.AlignRight
                                             }
                                         }
