@@ -181,6 +181,7 @@ void Database::addMusicDir(const QString &dir) {
                 dirs.append(cleanDir);
                 lib["musicDirs"] = dirs;
                 m_libraries[i] = lib;
+                m_musicDirs.append(cleanDir);
                 modified = true;
             }
             break;
@@ -210,6 +211,7 @@ void Database::removeMusicDir(const QString &dir) {
                     dirs.removeAt(j);
                     lib["musicDirs"] = dirs;
                     m_libraries[i] = lib;
+                    m_musicDirs.removeOne(dir);
                     modified = true;
                     break;
                 }
