@@ -1189,7 +1189,7 @@ ApplicationWindow {
                                         ColumnLayout {
                                             spacing: 2
                                             Text {
-                                                text: qsTr("Aether Player — Version 1.3.1")
+                                                text: qsTr("Aether Player — Version 1.3.2")
                                                 color: "#00f2fe"
                                                 font.pixelSize: 13
                                                 font.weight: Font.Bold
@@ -1932,11 +1932,15 @@ ApplicationWindow {
         id: musicFolderDialog
         title: qsTr("Select Music Folder")
         onAccepted: {
+            console.log("FolderDialog Accepted. Raw url:", folder);
             var path = folder.toString();
             if (path.indexOf("file://") === 0) {
                 path = path.substring(7);
+            } else if (path.indexOf("file:") === 0) {
+                path = path.substring(5);
             }
             path = decodeURIComponent(path);
+            console.log("FolderDialog parsed local path:", path);
             database.addMusicDir(path);
         }
     }
