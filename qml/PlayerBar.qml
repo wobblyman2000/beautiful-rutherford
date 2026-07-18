@@ -162,7 +162,7 @@ Rectangle {
                     icon.name: "media-playlist-shuffle"
                     flat: true
                     opacity: player.shuffle ? 1.0 : 0.5
-                    icon.color: player.shuffle ? "#00f2fe" : "#ffffff"
+                    icon.color: player.shuffle ? window.themeAccentColor : "#ffffff"
                     onClicked: player.shuffle = !player.shuffle
                 }
 
@@ -261,7 +261,7 @@ Rectangle {
                     icon.name: player.loopStatus === "Track" ? "media-playlist-repeat-song" : "media-playlist-repeat"
                     flat: true
                     opacity: player.loopStatus !== "None" ? 1.0 : 0.5
-                    icon.color: player.loopStatus !== "None" ? "#00f2fe" : "#ffffff"
+                    icon.color: player.loopStatus !== "None" ? window.themeAccentColor : "#ffffff"
                     onClicked: {
                         if (player.loopStatus === "None") player.loopStatus = "Playlist";
                         else if (player.loopStatus === "Playlist") player.loopStatus = "Track";
@@ -298,7 +298,7 @@ Rectangle {
                         Rectangle {
                             width: progressSlider.visualPosition * parent.width
                             height: parent.height
-                            color: "#00f2fe"
+                            color: window.themeAccentColor
                             radius: 2
                         }
                     }
@@ -358,7 +358,7 @@ Rectangle {
                     text: qsTr("Auto-DJ")
                     font.pixelSize: 10
                     font.weight: Font.Bold
-                    color: player.autoDJ ? "#00f2fe" : "#ffffff"
+                    color: player.autoDJ ? window.themeAccentColor : "#ffffff"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                 }
@@ -375,7 +375,7 @@ Rectangle {
                     text: qsTr("EQ")
                     font.pixelSize: 10
                     font.weight: Font.Bold
-                    color: eqPopup.visible ? "#00f2fe" : "#ffffff"
+                    color: eqPopup.visible ? window.themeAccentColor : "#ffffff"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                 }
@@ -389,7 +389,7 @@ Rectangle {
                     text: qsTr("Mini")
                     font.pixelSize: 10
                     font.weight: Font.Bold
-                    color: window.isCompactMode ? "#00f2fe" : "#ffffff"
+                    color: window.isCompactMode ? window.themeAccentColor : "#ffffff"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                 }
@@ -403,7 +403,7 @@ Rectangle {
                     text: qsTr("Theater")
                     font.pixelSize: 10
                     font.weight: Font.Bold
-                    color: window.isTheaterMode ? "#00f2fe" : "#ffffff"
+                    color: window.isTheaterMode ? window.themeAccentColor : "#ffffff"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                 }
@@ -417,7 +417,7 @@ Rectangle {
                     text: qsTr("Lyrics")
                     font.pixelSize: 10
                     font.weight: Font.Bold
-                    color: window.showLyricsPanel ? "#00f2fe" : "#ffffff"
+                    color: window.showLyricsPanel ? window.themeAccentColor : "#ffffff"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                 }
@@ -455,7 +455,7 @@ Rectangle {
                     Rectangle {
                         width: volumeSlider.visualPosition * parent.width
                         height: parent.height
-                        color: "#00f2fe"
+                        color: window.themeAccentColor
                         radius: 2
                     }
                 }

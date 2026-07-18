@@ -11,7 +11,13 @@ ApplicationWindow {
     visibility: ApplicationWindow.FullScreen
     title: qsTr("Aether Player")
     
+    SystemPalette {
+        id: sysPalette
+        colorGroup: SystemPalette.Active
+    }
+
     // Global properties
+    property color themeAccentColor: sysPalette.highlight
     property string activePage: "albums"
     property string searchQuery: ""
     property bool isCompactMode: false
@@ -1194,8 +1200,8 @@ ApplicationWindow {
                                         ColumnLayout {
                                             spacing: 2
                                             Text {
-                                                text: qsTr("Aether Player — Version 1.3.8")
-                                                color: "#00f2fe"
+                                                text: qsTr("Aether Player — Version 1.3.9")
+                                                color: window.themeAccentColor
                                                 font.pixelSize: 13
                                                 font.weight: Font.Bold
                                             }

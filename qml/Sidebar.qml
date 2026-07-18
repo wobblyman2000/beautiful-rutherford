@@ -20,7 +20,7 @@ Rectangle {
 
             Text {
                 text: "Aether"
-                color: "#00f2fe"
+                color: window.themeAccentColor
                 font.pixelSize: 28
                 font.weight: Font.Bold
                 anchors.centerIn: parent
@@ -49,7 +49,7 @@ Rectangle {
                 
                 Rectangle {
                     anchors.fill: parent
-                    color: window.activePage === pageKey ? "#1a00f2fe" : (navMouse.containsMouse ? "#08ffffff" : "transparent")
+                    color: window.activePage === pageKey ? Qt.rgba(window.themeAccentColor.r, window.themeAccentColor.g, window.themeAccentColor.b, 0.15) : (navMouse.containsMouse ? "#08ffffff" : "transparent")
                     radius: 8
                     
                     RowLayout {
@@ -66,7 +66,7 @@ Rectangle {
 
                         Text {
                             text: parent.parent.parent.text
-                            color: window.activePage === pageKey ? "#00f2fe" : "#9ea2c0"
+                            color: window.activePage === pageKey ? window.themeAccentColor : "#9ea2c0"
                             font.pixelSize: 15
                             font.weight: window.activePage === pageKey ? Font.DemiBold : Font.Normal
                         }
