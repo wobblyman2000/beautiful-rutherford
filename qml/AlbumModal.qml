@@ -243,16 +243,19 @@ Rectangle {
                         model: root.groupedTracks
 
                         delegate: ColumnLayout {
+                            id: discGroupContainer
                             Layout.fillWidth: true
                             spacing: 8
 
+                            property var discGroup: modelData
+
                             // CD section header (CD 1, CD 2)
                             Text {
-                                text: (root.activeAlbum ? root.activeAlbum.name : "") + " — CD " + modelData.discNo
+                                text: (root.activeAlbum ? root.activeAlbum.name : "") + " — CD " + discGroup.discNo
                                 color: "#00f2fe"
                                 font.pixelSize: 14
                                 font.weight: Font.Bold
-                                visible: true
+                                visible: root.groupedTracks.length > 1
                                 Layout.fillWidth: true
                             }
 
@@ -260,7 +263,7 @@ Rectangle {
                                 Layout.fillWidth: true
                                 height: 1
                                 color: "#14ffffff"
-                                visible: true
+                                visible: root.groupedTracks.length > 1
                             }
 
                             // Tracks list
@@ -269,7 +272,7 @@ Rectangle {
                                 spacing: 2
 
                                 Repeater {
-                                    model: modelData.tracks
+                                    model: discGroup.tracks
 
                                     delegate: Rectangle {
                                         id: trackRow
@@ -278,7 +281,7 @@ Rectangle {
                                         color: isPlaying ? "#0d00f2fe" : (trackMouse.containsMouse ? "#08ffffff" : "transparent")
                                         radius: 6
 
-                                        property var trackObj: modelData
+                                        property var trackObj: discGroup.tracks[index]
                                         property bool isPlaying: player.currentTrack.id === trackObj.id
 
                                         RowLayout {
@@ -316,7 +319,7 @@ Rectangle {
                                                 elide: Text.ElideRight
                                                 Layout.fillWidth: true
                                                 Layout.preferredWidth: 160
-                                                visible: root.shouldShowArtist(root.activeAlbum)
+                                                visible: true
 
                                                 MouseArea {
                                                     id: trackArtistMouse
