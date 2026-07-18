@@ -346,57 +346,6 @@ Rectangle {
                                                 visible: root.activeAlbum && (root.activeAlbum.artist === "Various Artists" || root.activeAlbum.artist === "Smart Collection" || root.activeAlbum.displayMode === "collections")
                                             }
 
-                                            // Rating Stars
-                                            Row {
-                                                spacing: 2
-                                                Layout.alignment: Qt.AlignVCenter
-                                                Layout.preferredWidth: 80
-                                                visible: (trackObj.rating > 0) || trackMouse.containsMouse
-
-                                                Repeater {
-                                                    model: 5
-                                                    delegate: MouseArea {
-                                                        width: 14
-                                                        height: 14
-                                                        hoverEnabled: true
-                                                        cursorShape: Qt.PointingHandCursor
-
-                                                        Text {
-                                                            anchors.centerIn: parent
-                                                            text: index < trackObj.rating ? "★" : "☆"
-                                                            color: index < trackObj.rating ? "#ffd700" : (trackMouse.containsMouse ? "#33ffffff" : "transparent")
-                                                            font.pixelSize: 13
-                                                        }
-
-                                                        onClicked: {
-                                                            var nextRating = index + 1;
-                                                            if (trackObj.rating === nextRating) {
-                                                                database.setTrackRating(trackObj.id, 0);
-                                                            } else {
-                                                                database.setTrackRating(trackObj.id, nextRating);
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-
-                                            // Edit Button
-                                            Button {
-                                                id: editTagBtn
-                                                text: qsTr("Edit")
-                                                flat: true
-                                                Layout.preferredHeight: 24
-                                                visible: trackMouse.containsMouse
-                                                contentItem: Text {
-                                                    text: editTagBtn.text
-                                                    font.pixelSize: 11
-                                                    color: "#00f2fe"
-                                                }
-                                                onClicked: {
-                                                    root.openTagEditor(trackObj);
-                                                }
-                                            }
-
                                             // Duration
                                             Text {
                                                 text: formatTime(trackObj.duration)
@@ -523,9 +472,12 @@ Rectangle {
         }
         root.activeAlbum = albumObj;
         
-        // Sort tracks by disc number first, then track number
+        var tracksCopy = [];
         if (albumObj && albumObj.tracks) {
-            albumObj.tracks.sort(function(a, b) {
+            for (var m = 0; m < albumObj.tracks.length; ++m) {
+                tracksCopy.push(albumObj.tracks[m]);
+            }
+            tracksCopy.sort(function(a, b) {
                 var d1 = a.discNo || 1;
                 var d2 = b.discNo || 1;
                 if (d1 !== d2) return d1 - d2;
@@ -537,8 +489,8 @@ Rectangle {
 
         // Group tracks by CD
         var grouped = {};
-        for (var i = 0; i < albumObj.tracks.length; ++i) {
-            var track = albumObj.tracks[i];
+        for (var i = 0; i < tracksCopy.length; ++i) {
+            var track = tracksCopy[i];
             var disc = track.discNo || 1;
             if (!grouped[disc]) grouped[disc] = [];
             grouped[disc].push(track);
@@ -557,8 +509,8 @@ Rectangle {
         // Group tracks into unique album objects for album cover view
         var albumsMap = {};
         var uniqueList = [];
-        for (var j = 0; j < albumObj.tracks.length; ++j) {
-            var t = albumObj.tracks[j];
+        for (var j = 0; j < tracksCopy.length; ++j) {
+            var t = tracksCopy[j];
             var albName = t.album || "Unknown Album";
             if (!albumsMap[albName]) {
                 albumsMap[albName] = {
@@ -834,14 +786,6 @@ Rectangle {
             onTriggered: {
                 if (tracksContextMenu.targetTrack) {
                     player.queueLast(tracksContextMenu.targetTrack);
-                }
-            }
-        }
-        MenuItem {
-            text: qsTr("Edit Tags...")
-            onTriggered: {
-                if (tracksContextMenu.targetTrack) {
-                    root.openTagEditor(tracksContextMenu.targetTrack);
                 }
             }
         }
